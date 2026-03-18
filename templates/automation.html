@@ -1,0 +1,281 @@
+{% extends "base.html" %}
+{% block title %}Automation — Clinical Data Pipeline{% endblock %}
+{% block content %}
+<div class="fade-in">
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h4 class="mb-0"><i class="fas fa-robot text-primary me-2"></i> Pipeline Automation</h4>
+  <button class="btn btn-clinical btn-sm" data-bs-toggle="modal" data-bs-target="#addScheduleModal">
+    <i class="fas fa-plus me-1"></i> New Schedule
+  </button>
+</div>
+
+<!-- DAG Overview -->
+<div class="card card-clinical mb-3">
+  <div class="card-header"><i class="fas fa-project-diagram me-2"></i> DAG Pipeline Flow</div>
+  <div class="card-body">
+    <div class="d-flex align-items-center justify-content-center gap-2 flex-wrap py-2">
+      <div class="text-center px-3 py-2 rounded" style="background:#cd7f3220;border:2px solid #cd7f32">
+        <i class="fas fa-layer-group fa-lg" style="color:#cd7f32"></i><br>
+        <small class="fw-semibold">Bronze</small><br><small class="text-muted">Ingest</small>
+      </div>
+      <i class="fas fa-arrow-right text-muted"></i>
+      <div class="text-center px-3 py-2 rounded" style="background:#c0c0c020;border:2px solid #808080">
+        <i class="fas fa-filter fa-lg" style="color:#808080"></i><br>
+        <small class="fw-semibold">Silver</small><br><small class="text-muted">Clean</small>
+      </div>
+      <i class="fas fa-arrow-right text-muted"></i>
+      <div class="text-center px-3 py-2 rounded" style="background:#ffd70020;border:2px solid #ffa500">
+        <i class="fas fa-star fa-lg" style="color:#ffa500"></i><br>
+        <small class="fw-semibold">Gold</small><br><small class="text-muted">Enrich</small>
+      </div>
+      <i class="fas fa-arrow-right text-muted"></i>
+      <div class="text-center px-3 py-2 rounded" style="background:#7c3aed20;border:2px solid #7c3aed">
+        <i class="fas fa-brain fa-lg" style="color:#7c3aed"></i><br>
+        <small class="fw-semibold">Prediction</small><br><small class="text-muted">ML Risk</small>
+      </div>
+      <i class="fas fa-arrow-right text-muted"></i>
+      <div class="text-center px-3 py-2 rounded" style="background:#16a34a20;border:2px solid #16a34a">
+        <i class="fas fa-bell fa-lg" style="color:#16a34a"></i><br>
+        <small class="fw-semibold">Notify</small><br><small class="text-muted">Email</small>
+      </div>
+    </div>
+    <p class="text-muted small text-center mt-2 mb-0">
+      Schedules trigger the full 4-stage pipeline automatically. Each stage runs sequentially with dependency checks.
+    </p>
+  </div>
+</div>
+
+<!-- Active Schedules -->
+<div class="card card-clinical mb-3">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <span><i class="fas fa-calendar-alt me-2"></i> Active Schedules</span>
+    <div>
+      <select class="form-select form-select-sm d-inline-block" style="width:auto" id="dbFilterSchedule" onchange="loadSchedules()">
+        <option value="">All Databases</option>
+      </select>
+    </div>
+  </div>
+  <div class="card-body p-0">
+    <table class="table table-hover mb-0">
+      <thead class="table-dark">
+        <tr><th>Database</th><th>Type</th><th>Cron</th><th>Next Run</th><th>Last Run</th><th>Runs</th><th>Status</th><th>Actions</th></tr>
+      </thead>
+      <tbody id="scheduleTableBody">
+        <tr><td colspan="8" class="text-center py-3"><i class="fas fa-spinner fa-spin"></i> Loading…</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<!-- Execution History -->
+<div class="card card-clinical">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <span><i class="fas fa-history me-2"></i> Execution History</span>
+    <button class="btn btn-outline-primary btn-sm" onclick="loadRuns()"><i class="fas fa-sync"></i> Refresh</button>
+  </div>
+  <div class="card-body p-0">
+    <table class="table table-hover mb-0">
+      <thead class="table-dark">
+        <tr><th>Database</th><th>Schedule</th><th>Started</th><th>Completed</th><th>Duration</th><th>Trigger</th><th>Status</th></tr>
+      </thead>
+      <tbody id="runsTableBody">
+        <tr><td colspan="7" class="text-center py-3"><i class="fas fa-spinner fa-spin"></i> Loading…</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</div>
+
+<!-- Add Schedule Modal -->
+<div class="modal fade" id="addScheduleModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-calendar-plus me-2"></i> New Pipeline Schedule</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Database <span class="text-danger">*</span></label>
+          <select class="form-select" id="schedDb"></select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Schedule Type</label>
+          <select class="form-select" id="schedType" onchange="updateCron()">
+            <option value="hourly">Every Hour</option>
+            <option value="daily" selected>Daily</option>
+            <option value="weekly">Weekly (Monday)</option>
+            <option value="monthly">Monthly (1st)</option>
+            <option value="custom">Custom Cron</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Time (for daily/weekly/monthly)</label>
+          <input type="time" class="form-control" id="schedTime" value="02:00" onchange="updateCron()">
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Cron Expression</label>
+          <input type="text" class="form-control font-monospace" id="schedCron" value="0 2 * * *">
+          <div class="form-text">
+            Format: <code>minute hour day month weekday</code> &nbsp;|&nbsp;
+            <a href="https://crontab.guru" target="_blank">crontab.guru</a>
+          </div>
+        </div>
+        <div class="alert alert-info py-2 small" id="cronPreview">
+          <i class="fas fa-info-circle me-1"></i> <span id="cronPreviewText">Runs daily at 02:00 UTC</span>
+        </div>
+        <div id="addSchedError" class="alert alert-danger d-none py-2 small"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button class="btn btn-clinical" onclick="createSchedule()"><i class="fas fa-save me-1"></i> Create Schedule</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+const CRON_PRESETS = {
+  hourly: () => '0 * * * *',
+  daily: () => { const [h,m] = (document.getElementById('schedTime').value||'02:00').split(':'); return `${m} ${h} * * *`; },
+  weekly: () => { const [h,m] = (document.getElementById('schedTime').value||'02:00').split(':'); return `${m} ${h} * * 1`; },
+  monthly: () => { const [h,m] = (document.getElementById('schedTime').value||'02:00').split(':'); return `${m} ${h} 1 * *`; },
+  custom: () => document.getElementById('schedCron').value
+};
+const CRON_LABELS = {
+  hourly: 'Runs every hour',
+  daily: t => `Runs daily at ${t} UTC`,
+  weekly: t => `Runs every Monday at ${t} UTC`,
+  monthly: t => `Runs on the 1st of every month at ${t} UTC`,
+  custom: c => `Custom: ${c}`
+};
+
+function updateCron() {
+  const type = document.getElementById('schedType').value;
+  const time = document.getElementById('schedTime').value || '02:00';
+  if (type !== 'custom') {
+    const cron = CRON_PRESETS[type]();
+    document.getElementById('schedCron').value = cron;
+    document.getElementById('schedCron').readOnly = true;
+  } else {
+    document.getElementById('schedCron').readOnly = false;
+  }
+  const label = typeof CRON_LABELS[type] === 'function' ? CRON_LABELS[type](time) : CRON_LABELS[type];
+  document.getElementById('cronPreviewText').textContent = label;
+}
+
+async function loadDatabases() {
+  const r = await fetch('/api/database/list?validate=false');
+  const dbs = await r.json() || [];
+  const sel = document.getElementById('schedDb');
+  const filterSel = document.getElementById('dbFilterSchedule');
+  sel.innerHTML = dbs.map(d => `<option value="${d.id}">${d.name}</option>`).join('');
+  filterSel.innerHTML = '<option value="">All Databases</option>' + dbs.map(d => `<option value="${d.id}">${d.name}</option>`).join('');
+}
+
+async function loadSchedules() {
+  const dbId = document.getElementById('dbFilterSchedule').value;
+  const url = '/api/schedules' + (dbId ? `?database_id=${dbId}` : '');
+  const r = await fetch(url);
+  const d = await r.json();
+  const tbody = document.getElementById('scheduleTableBody');
+  if (!d.success || !d.schedules.length) {
+    tbody.innerHTML = '<tr><td colspan="8" class="text-center text-muted py-3">No schedules configured. Click "New Schedule" to add one.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = d.schedules.map(s => `
+    <tr>
+      <td><strong>${s.database_name}</strong></td>
+      <td><span class="badge bg-secondary">${s.schedule_type}</span></td>
+      <td><code class="small">${s.cron_expression}</code></td>
+      <td><small>${s.next_run || '—'}</small></td>
+      <td><small>${s.last_run || 'Never'}</small></td>
+      <td><span class="badge bg-info">${s.run_count}</span></td>
+      <td><span class="badge ${s.is_active ? 'bg-success' : 'bg-secondary'}">${s.is_active ? 'Active' : 'Paused'}</span></td>
+      <td>
+        <button class="btn btn-xs btn-sm btn-outline-success py-0 px-1 me-1" title="Run Now" onclick="runNow(${s.id})"><i class="fas fa-play"></i></button>
+        <button class="btn btn-xs btn-sm btn-outline-warning py-0 px-1 me-1" title="${s.is_active ? 'Pause' : 'Resume'}" onclick="toggleSchedule(${s.id},${!s.is_active})">
+          <i class="fas fa-${s.is_active ? 'pause' : 'play'}"></i>
+        </button>
+        <button class="btn btn-xs btn-sm btn-outline-danger py-0 px-1" title="Delete" onclick="deleteSchedule(${s.id})"><i class="fas fa-trash"></i></button>
+      </td>
+    </tr>`).join('');
+}
+
+async function loadRuns() {
+  const r = await fetch('/api/schedules/runs?limit=30');
+  const d = await r.json();
+  const tbody = document.getElementById('runsTableBody');
+  if (!d.success || !d.runs.length) {
+    tbody.innerHTML = '<tr><td colspan="7" class="text-center text-muted py-3">No execution history yet.</td></tr>';
+    return;
+  }
+  tbody.innerHTML = d.runs.map(r => {
+    const sc = {'completed':'bg-success','running':'bg-primary','failed':'bg-danger'}[r.status]||'bg-secondary';
+    const dur = r.duration_sec != null ? `${r.duration_sec}s` : '—';
+    return `<tr>
+      <td>${r.database_name}</td>
+      <td><code class="small">${r.cron}</code></td>
+      <td><small>${r.started_at||'—'}</small></td>
+      <td><small>${r.completed_at||'—'}</small></td>
+      <td>${dur}</td>
+      <td><span class="badge bg-secondary">${r.triggered_by}</span></td>
+      <td><span class="badge ${sc}">${r.status}</span>${r.error_message?`<br><small class="text-danger">${r.error_message}</small>`:''}</td>
+    </tr>`;
+  }).join('');
+}
+
+async function createSchedule() {
+  const errEl = document.getElementById('addSchedError');
+  errEl.classList.add('d-none');
+  const body = {
+    database_id: document.getElementById('schedDb').value,
+    schedule_type: document.getElementById('schedType').value,
+    cron_expression: document.getElementById('schedCron').value.trim()
+  };
+  if (!body.database_id || !body.cron_expression) {
+    errEl.textContent = 'Database and cron expression are required.'; errEl.classList.remove('d-none'); return;
+  }
+  const r = await fetch('/api/schedules', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(body) });
+  const d = await r.json();
+  if (d.success) {
+    bootstrap.Modal.getInstance(document.getElementById('addScheduleModal')).hide();
+    showNotification(d.message, 'success');
+    loadSchedules();
+  } else {
+    errEl.textContent = d.message; errEl.classList.remove('d-none');
+  }
+}
+
+async function runNow(id) {
+  const r = await fetch(`/api/schedules/${id}/run-now`, { method: 'POST' });
+  const d = await r.json();
+  showNotification(d.message, d.success ? 'success' : 'danger');
+  setTimeout(() => { loadSchedules(); loadRuns(); }, 2000);
+}
+
+async function toggleSchedule(id, active) {
+  await fetch(`/api/schedules/${id}`, { method: 'PUT', headers: {'Content-Type':'application/json'}, body: JSON.stringify({is_active: active}) });
+  loadSchedules();
+}
+
+async function deleteSchedule(id) {
+  if (!confirm('Delete this schedule?')) return;
+  await fetch(`/api/schedules/${id}`, { method: 'DELETE' });
+  showNotification('Schedule deleted', 'success');
+  loadSchedules();
+}
+
+document.addEventListener('DOMContentLoaded', async () => {
+  await loadDatabases();
+  updateCron();
+  loadSchedules();
+  loadRuns();
+  setInterval(() => { loadSchedules(); loadRuns(); }, 30000);
+});
+</script>
+{% endblock %}

@@ -1,0 +1,20 @@
+{"subject_id":"S001","ae_id":"AE001","pt_code":"10019211","pt_name":"Headache","Severity":"MILD","related":"Y","serious":"N","ae_start_date":"2023-02-15"}
+{"subject_id":"S002","ae_id":"AE002","pt_code":"10028813","pt_name":"Nausea","severity":"moderate","related":"Y","serious":"N","ae_start_date":"15/02/2023"}
+{"subject_id":"S003","ae_id":"AE003","pt_code":"10000486","pt_name":"Abdominal pain","SEVERITY":"SEVERE","related":"N","serious":"Y","ae_start_date":"2023-02-17"}
+{"subject_id":"S004","ae_id":"AE004","pt_code":"10019211","pt_name":"Headache","severity":"Mild","related":"Y","serious":"N","ae_start_date":"Feb 18 2023"}
+{"subject_id":"S005","ae_id":"AE005","pt_code":"10047700","pt_name":"Vomiting","severity":"","related":"Y","serious":"N","ae_start_date":"2023-02-19"}
+{"subject_id":"S006","ae_id":"AE006","pt_code":"10028813","pt_name":"Nausea","severity":"MODERATE","related":"N","serious":"N","ae_start_date":"2023-02-20"}
+{"subject_id":"S007","ae_id":"AE007","pt_code":"10000486","pt_name":"Abdominal pain","severity":"mild","related":"Y","serious":"N","ae_start_date":"2023-02-21"}
+{"subject_id":"S008","ae_id":"AE008","pt_code":"10019211","pt_name":"Headache","severity":"SEVERE","related":"Y","serious":"Y","ae_start_date":"2023-02-22"}
+{"subject_id":"S009","ae_id":"AE009","pt_code":"10047700","pt_name":"Vomiting","severity":"Moderate","related":"N","serious":"N","ae_start_date":"22-02-2023"}
+{"subject_id":"S010","ae_id":"AE010","pt_code":"10028813","pt_name":"Nausea","severity":"MILD","related":"Y","serious":"N","ae_start_date":"2023-02-24"}
+{"subject_id":"S011","ae_id":"AE011","pt_code":"10000486","pt_name":"Abdominal pain","severity":"severe","related":"Y","serious":"Y","ae_start_date":"2023-02-25"}
+{"subject_id":"S012","ae_id":"AE012","pt_code":"10019211","pt_name":"Headache","severity":"mild","related":"N","serious":"N","ae_start_date":"2023-02-26"}
+{"subject_id":"S013","ae_id":"AE013","pt_code":"10047700","pt_name":"Vomiting","severity":"MODERATE","related":"Y","serious":"N","ae_start_date":"2023-02-27"}
+{"subject_id":"S014","ae_id":"AE014","pt_code":"10028813","pt_name":"Nausea","severity":"Mild","related":"Y","serious":"N","ae_start_date":"2023-02-28"}
+{"subject_id":"S015","ae_id":"AE015","pt_code":"10000486","pt_name":"Abdominal pain","severity":"SEVERE","related":"N","serious":"Y","ae_start_date":"2023-03-01"}
+{"subject_id":"S016","ae_id":"AE016","pt_code":"10019211","pt_name":"Headache","severity":"moderate","related":"Y","serious":"N","ae_start_date":"01/03/2023"}
+{"subject_id":"S017","ae_id":"AE017","pt_code":"10047700","pt_name":"Vomiting","severity":"MILD","related":"N","serious":"N","ae_start_date":"2023-03-03"}
+{"subject_id":"S018","ae_id":"AE018","pt_code":"10028813","pt_name":"Nausea","severity":"Severe","related":"Y","serious":"Y","ae_start_date":"2023-03-04"}
+{"subject_id":"S019","ae_id":"AE019","pt_code":"10000486","pt_name":"Abdominal pain","severity":"mild","related":"Y","serious":"N","ae_start_date":"2023-03-05"}
+{"subject_id":"S020","ae_id":"AE020","pt_code":"10019211","pt_name":"Headache","severity":"MODERATE","related":"N","serious":"N","ae_start_date":"2023-03-06"}

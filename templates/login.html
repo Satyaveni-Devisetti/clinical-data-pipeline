@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Login — Clinical Data Pipeline</title>
+  <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+  <link href="{{ url_for('static', filename='css/all.min.css') }}" rel="stylesheet">
+  <style>
+    body { background: linear-gradient(135deg, #1a365d 0%, #2c5282 50%, #3182ce 100%); min-height: 100vh; display: flex; align-items: center; justify-content: center; }
+    .login-card { background: white; border-radius: 16px; box-shadow: 0 20px 60px rgba(0,0,0,0.3); padding: 2.5rem; width: 100%; max-width: 420px; }
+    .login-logo { text-align: center; margin-bottom: 1.5rem; }
+    .login-logo i { font-size: 3rem; color: #2c5282; }
+    .login-logo h4 { color: #1a365d; font-weight: 700; margin-top: 0.5rem; }
+    .login-logo p { color: #718096; font-size: 0.875rem; }
+    .btn-login { background: linear-gradient(135deg, #2c5282, #3182ce); border: none; width: 100%; padding: 0.75rem; font-size: 1rem; font-weight: 600; border-radius: 8px; }
+    .btn-login:hover { background: linear-gradient(135deg, #1a365d, #2c5282); }
+    .form-control:focus { border-color: #3182ce; box-shadow: 0 0 0 0.2rem rgba(49,130,206,0.25); }
+    .role-badge { display: inline-block; padding: 2px 8px; border-radius: 12px; font-size: 0.75rem; font-weight: 600; }
+  </style>
+</head>
+<body>
+  <div class="login-card">
+    <div class="login-logo">
+      <i class="fas fa-hospital-alt"></i>
+      <h4>Clinical Data Pipeline</h4>
+      <p>Secure access — please sign in</p>
+    </div>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+      {% if messages %}
+        {% for category, message in messages %}
+          <div class="alert alert-{{ 'danger' if category == 'error' else category }} py-2 small">{{ message }}</div>
+        {% endfor %}
+      {% endif %}
+    {% endwith %}
+
+    <form method="POST">
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Username</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="fas fa-user"></i></span>
+          <input type="text" name="username" class="form-control" placeholder="Enter username" required autofocus>
+        </div>
+      </div>
+      <div class="mb-4">
+        <label class="form-label fw-semibold">Password</label>
+        <div class="input-group">
+          <span class="input-group-text"><i class="fas fa-lock"></i></span>
+          <input type="password" name="password" class="form-control" placeholder="Enter password" required>
+        </div>
+      </div>
+      <button type="submit" class="btn btn-primary btn-login">
+        <i class="fas fa-sign-in-alt me-2"></i> Sign In
+      </button>
+    </form>
+
+    <hr class="my-3">
+    <div class="text-center small text-muted">
+      <strong>Default admin:</strong> admin / Admin@123
+    </div>
+  </div>
+</body>
+</html>

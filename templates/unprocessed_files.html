@@ -1,0 +1,219 @@
+{% extends "base.html" %}
+{% block title %}Unprocessed Data – Clinical Data Pipeline{% endblock %}
+{% block content %}
+<div class="fade-in">
+
+<!-- DB selector bar -->
+<div class="card card-clinical mb-3">
+  <div class="card-body py-2 d-flex align-items-center gap-3 flex-wrap">
+    <i class="fas fa-database text-primary"></i>
+    <strong>Database:</strong>
+    <select class="form-select form-select-sm w-auto" id="dbSelect" onchange="onDbChange(this.value)"></select>
+    <small class="text-muted">Showing data quality issues detected during Silver layer processing</small>
+    <div class="ms-auto d-flex gap-2">
+      <select class="form-select form-select-sm w-auto" id="srcFilter" onchange="filterTable()">
+        <option value="">All Sources</option>
+        <option value="Subjects">Subjects</option>
+        <option value="Labs">Labs</option>
+        <option value="Adverse Events">Adverse Events</option>
+      </select>
+      <input type="text" class="form-control form-control-sm" style="width:200px" id="searchInput"
+             placeholder="Search subject ID / column…" oninput="filterTable()">
+      <button class="btn btn-sm btn-outline-secondary" onclick="loadData()">
+        <i class="fas fa-sync"></i>
+      </button>
+      <button class="btn btn-sm btn-outline-success" onclick="exportCSV()">
+        <i class="fas fa-download"></i> Export
+      </button>
+      <a href="{{ url_for('upload') }}" class="btn btn-sm btn-outline-primary">
+        <i class="fas fa-arrow-left"></i> Back
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- KPI strip -->
+<div class="row g-3 mb-3">
+  <div class="col-6 col-md-3"><div class="metric-card"><div class="metric-value text-danger" id="kpiTotal">—</div><div class="metric-label">Total Issues</div></div></div>
+  <div class="col-6 col-md-3"><div class="metric-card"><div class="metric-value text-warning" id="kpiSubj">—</div><div class="metric-label">Subject Issues</div></div></div>
+  <div class="col-6 col-md-3"><div class="metric-card"><div class="metric-value text-info" id="kpiLab">—</div><div class="metric-label">Lab Issues</div></div></div>
+  <div class="col-6 col-md-3"><div class="metric-card"><div class="metric-value text-orange" id="kpiAE">—</div><div class="metric-label">AE Issues</div></div></div>
+</div>
+
+<!-- Summary cards -->
+<div id="summarySection" class="mb-3" style="display:none">
+  <div class="card card-clinical">
+    <div class="card-header"><i class="fas fa-chart-bar me-2"></i>Issue Summary by Reason</div>
+    <div class="card-body p-0">
+      <div class="table-responsive">
+        <table class="table table-sm mb-0">
+          <thead class="table-light"><tr><th>Source</th><th>Reason</th><th>Count</th></tr></thead>
+          <tbody id="summaryTbody"></tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Detail table -->
+<div class="card card-clinical">
+  <div class="card-header d-flex justify-content-between align-items-center">
+    <span><i class="fas fa-exclamation-triangle text-warning me-2"></i>Unprocessed / Flagged Records</span>
+    <small class="text-muted" id="rowCount"></small>
+  </div>
+  <div class="card-body p-0">
+    <div class="table-responsive" style="max-height:520px;overflow-y:auto">
+      <table class="table table-hover table-sm mb-0">
+        <thead class="table-dark sticky-top">
+          <tr>
+            <th>Source</th><th>Subject ID</th><th>Column</th>
+            <th>Raw Value</th><th>Reason</th><th>Detected At</th><th></th>
+          </tr>
+        </thead>
+        <tbody id="detailTbody">
+          <tr><td colspan="7" class="text-center py-4 text-muted">
+            <div class="spinner-border spinner-border-sm me-2"></div>Loading…
+          </td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</div>
+
+<!-- Row detail modal -->
+<div class="modal fade" id="rowModal" tabindex="-1">
+  <div class="modal-dialog"><div class="modal-content">
+    <div class="modal-header"><h6 class="modal-title">Row Detail</h6>
+      <button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+    <div class="modal-body" id="rowModalBody"></div>
+  </div></div>
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+let allRecords=[], dbId=null;
+
+const srcColor={Subjects:'primary',Labs:'success','Adverse Events':'warning'};
+const reasonColor=r=>{
+  if(r.includes('NULL')||r.includes('empty'))return 'danger';
+  if(r.includes('Unrecognised')||r.includes('UNIT'))return 'warning';
+  if(r.includes('Negative')||r.includes('INVALID'))return 'danger';
+  return 'secondary';
+};
+
+async function loadData(){
+  if(!dbId)return;
+  document.getElementById('detailTbody').innerHTML=
+    '<tr><td colspan="7" class="text-center py-4 text-muted"><div class="spinner-border spinner-border-sm me-2"></div>Loading…</td></tr>';
+  const r=await fetch(`/api/unprocessed/data?database_id=${dbId}`);
+  const d=await r.json();
+  if(!d.success){
+    document.getElementById('detailTbody').innerHTML=
+      `<tr><td colspan="7" class="text-center text-danger py-3">${d.message}</td></tr>`;
+    return;
+  }
+  allRecords=d.records||[];
+  renderSummary(d.summary||[]);
+  updateKPIs();
+  filterTable();
+}
+
+function updateKPIs(){
+  document.getElementById('kpiTotal').textContent=allRecords.length.toLocaleString();
+  document.getElementById('kpiSubj').textContent=allRecords.filter(r=>r.source==='Subjects').length.toLocaleString();
+  document.getElementById('kpiLab').textContent=allRecords.filter(r=>r.source==='Labs').length.toLocaleString();
+  document.getElementById('kpiAE').textContent=allRecords.filter(r=>r.source==='Adverse Events').length.toLocaleString();
+}
+
+function renderSummary(summary){
+  if(!summary.length){document.getElementById('summarySection').style.display='none';return;}
+  document.getElementById('summarySection').style.display='';
+  document.getElementById('summaryTbody').innerHTML=summary.map(s=>`
+    <tr>
+      <td><span class="badge bg-${srcColor[s.source]||'secondary'}">${s.source}</span></td>
+      <td>${s.reason}</td>
+      <td><span class="badge bg-${reasonColor(s.reason)}">${s.count}</span></td>
+    </tr>`).join('');
+}
+
+function filterTable(){
+  const src=document.getElementById('srcFilter').value;
+  const search=document.getElementById('searchInput').value.toLowerCase();
+  const filtered=allRecords.filter(r=>
+    (!src||r.source===src)&&
+    (!search||(r.subject_id||'').toLowerCase().includes(search)||(r.column_name||'').toLowerCase().includes(search)||(r.reason||'').toLowerCase().includes(search))
+  );
+  document.getElementById('rowCount').textContent=`${filtered.length} record${filtered.length!==1?'s':''}`;
+  renderDetail(filtered);
+}
+
+function renderDetail(records){
+  const tbody=document.getElementById('detailTbody');
+  if(!records.length){
+    tbody.innerHTML='<tr><td colspan="7" class="text-center py-4 text-success"><i class="fas fa-check-circle me-2"></i>No issues found for the selected filter</td></tr>';
+    return;
+  }
+  tbody.innerHTML=records.map(r=>`
+    <tr>
+      <td><span class="badge bg-${srcColor[r.source]||'secondary'}">${r.source}</span></td>
+      <td><code>${r.subject_id}</code></td>
+      <td><span class="text-danger fw-semibold">${r.column_name}</span></td>
+      <td><small class="text-muted font-monospace">${truncate(r.raw_value,30)}</small></td>
+      <td><span class="badge bg-${reasonColor(r.reason)} text-wrap" style="max-width:260px;white-space:normal">${r.reason}</span></td>
+      <td><small>${r.detected_at?new Date(r.detected_at).toLocaleString():'—'}</small></td>
+      <td><button class="btn btn-xs btn-outline-secondary btn-sm py-0 px-1" onclick='showDetail(${JSON.stringify(r)})'><i class="fas fa-eye"></i></button></td>
+    </tr>`).join('');
+}
+
+function truncate(s,n){return s&&s.length>n?s.slice(0,n)+'…':s||'—';}
+
+function showDetail(r){
+  const rows=r.row_data?Object.entries(r.row_data).map(([k,v])=>`<tr><td class="fw-semibold">${k}</td><td>${v}</td></tr>`).join(''):'<tr><td colspan="2" class="text-muted">No raw data captured</td></tr>';
+  document.getElementById('rowModalBody').innerHTML=`
+    <table class="table table-sm mb-3">
+      <tr><td>Source</td><td><span class="badge bg-${srcColor[r.source]||'secondary'}">${r.source}</span></td></tr>
+      <tr><td>Subject ID</td><td><code>${r.subject_id}</code></td></tr>
+      <tr><td>Column</td><td><strong class="text-danger">${r.column_name}</strong></td></tr>
+      <tr><td>Raw Value</td><td><code>${r.raw_value}</code></td></tr>
+      <tr><td>Reason</td><td>${r.reason}</td></tr>
+      <tr><td>Detected At</td><td>${r.detected_at?new Date(r.detected_at).toLocaleString():'—'}</td></tr>
+    </table>
+    <p class="fw-semibold mb-1">Raw Row Data</p>
+    <table class="table table-sm table-bordered"><tbody>${rows}</tbody></table>`;
+  new bootstrap.Modal(document.getElementById('rowModal')).show();
+}
+
+function exportCSV(){
+  if(!allRecords.length){showNotification('No data to export','warning');return;}
+  const hdr=['Source','Subject ID','Column','Raw Value','Reason','Detected At'];
+  const rows=allRecords.map(r=>[r.source,r.subject_id,r.column_name,r.raw_value,r.reason,r.detected_at||''].map(v=>`"${String(v).replace(/"/g,'""')}"`).join(','));
+  const csv=[hdr.join(','),...rows].join('\n');
+  const a=document.createElement('a');
+  a.href='data:text/csv;charset=utf-8,'+encodeURIComponent(csv);
+  a.download=`unprocessed_records_db${dbId}.csv`;
+  a.click();
+  showNotification('Exported successfully','success');
+}
+
+async function onDbChange(val){
+  dbId=parseInt(val);
+  await fetch('/api/database/select',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({database_id:dbId})});
+  loadData();
+}
+
+async function init(){
+  const dbs=await fetch('/api/database/list?validate=true').then(r=>r.json());
+  const avail=(dbs||[]).filter(d=>d.is_available);
+  if(!avail.length){showNotification('Please connect a database first','warning');return;}
+  const sess=await fetch('/api/database/current').then(r=>r.json());
+  dbId=(sess.success&&avail.find(d=>d.id===sess.database.id))?sess.database.id:avail[0].id;
+  const sel=document.getElementById('dbSelect');
+  sel.innerHTML=avail.map(d=>`<option value="${d.id}" ${d.id===dbId?'selected':''}>${d.name}</option>`).join('');
+  loadData();
+}
+
+document.addEventListener('DOMContentLoaded',init);
+</script>
+{% endblock %}

@@ -1,0 +1,15 @@
+<?xml version="1.0"?>
+<labs>
+  <lab>
+    <subject_id>SUB001</subject_id>
+    <testcode>ALT</testcode>
+    <resultvalue>45</resultvalue>
+    <units>U/L</units>
+  </lab>
+  <lab>
+    <subject_id>SUB002</subject_id>
+    <testcode>AST</testcode>
+    <resultvalue>32</resultvalue>
+    <units>U/L</units>
+  </lab>
+</labs>

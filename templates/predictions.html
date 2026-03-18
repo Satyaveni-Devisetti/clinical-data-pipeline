@@ -1,0 +1,378 @@
+{% extends "base.html" %}
+{% block title %}Predictions – Clinical Data Pipeline{% endblock %}
+{% block content %}
+<div class="fade-in">
+
+<!-- ── FILTER BAR ────────────────────────────────────────────────────────── -->
+<div class="card card-clinical mb-3">
+  <div class="card-body py-2">
+    <div class="row g-2 align-items-end">
+      <div class="col-auto"><label class="form-label mb-0 fw-semibold">Database</label>
+        <select class="form-select form-select-sm" id="dbSelect" onchange="onDbChange(this.value)"></select></div>
+      <div class="col-auto"><label class="form-label mb-0 fw-semibold">Site</label>
+        <select class="form-select form-select-sm" id="fSite"><option value="">All Sites</option></select></div>
+      <div class="col-auto"><label class="form-label mb-0 fw-semibold">Risk Level</label>
+        <select class="form-select form-select-sm" id="fRisk">
+          <option value="">All</option><option value="High">High</option>
+          <option value="Medium">Medium</option><option value="Low">Low</option>
+        </select></div>
+      <div class="col-auto pt-3">
+        <button class="btn btn-clinical btn-sm" onclick="refreshAll()"><i class="fas fa-sync"></i> Refresh</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── KPI STRIP ─────────────────────────────────────────────────────────── -->
+<div class="row g-3 mb-3">
+  <div class="col-6 col-md-3"><div class="metric-card"><div class="metric-value text-primary" id="kpiSites">—</div><div class="metric-label">Sites Monitored</div></div></div>
+  <div class="col-6 col-md-3"><div class="metric-card"><div class="metric-value text-danger" id="kpiHigh">—</div><div class="metric-label">High Risk Sites</div></div></div>
+  <div class="col-6 col-md-3"><div class="metric-card"><div class="metric-value text-warning" id="kpiMedium">—</div><div class="metric-label">Medium Risk Sites</div></div></div>
+  <div class="col-6 col-md-3"><div class="metric-card"><div class="metric-value text-success" id="kpiLow">—</div><div class="metric-label">Low Risk Sites</div></div></div>
+</div>
+
+<!-- ── ROW 1: Risk Category Pie | Predicted AE by Site ───────────────────── -->
+<div class="row g-3 mb-3">
+  <div class="col-md-4">
+    <div class="card card-clinical h-100">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-chart-pie text-danger me-1"></i> Dashboard 2 — Risk Category Distribution</span>
+        <small class="text-muted">site_predictions · Pie</small>
+      </div>
+      <div class="card-body"><div id="ch_risk_pie" style="height:280px"></div></div>
+    </div>
+  </div>
+  <div class="col-md-8">
+    <div class="card card-clinical h-100">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-liver text-warning me-1"></i> Dashboard 1 — Predicted AEs by Site (Liver Toxicity Risk)</span>
+        <small class="text-muted">site_predictions · Bar Chart</small>
+      </div>
+      <div class="card-body"><div id="ch_pred_ae_site" style="height:280px"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ROW 2: High-Risk Subjects by Site | Risk by Treatment Arm ─────────── -->
+<div class="row g-3 mb-3">
+  <div class="col-md-6">
+    <div class="card card-clinical h-100">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-map-marker-alt text-danger me-1"></i> Dashboard 3 — High-Risk Sites (Predicted ALT Elevation)</span>
+        <small class="text-muted">site_predictions ⋈ gold_subjects · Bar</small>
+      </div>
+      <div class="card-body"><div id="ch_high_risk_site" style="height:280px"></div></div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card card-clinical h-100">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-pills text-purple me-1"></i> Dashboard 7 — Risk Distribution by Treatment Arm</span>
+        <small class="text-muted">site_predictions ⋈ gold_subjects · Bar</small>
+      </div>
+      <div class="card-body"><div id="ch_risk_by_arm" style="height:280px"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ROW 3: Predicted Safety Flags Timeline | Serious Events Trend ──────── -->
+<div class="row g-3 mb-3">
+  <div class="col-md-7">
+    <div class="card card-clinical h-100">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-calendar-check text-info me-1"></i> Dashboard 5 — Predicted Safety Flags Over Time</span>
+        <small class="text-muted">site_predictions · Line Chart</small>
+      </div>
+      <div class="card-body"><div id="ch_pred_timeline" style="height:280px"></div></div>
+    </div>
+  </div>
+  <div class="col-md-5">
+    <div class="card card-clinical h-100">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-chart-bar text-success me-1"></i> Dashboard 4 — Predicted Serious Events Distribution</span>
+        <small class="text-muted">site_predictions · Bar Chart</small>
+      </div>
+      <div class="card-body"><div id="ch_pred_serious" style="height:280px"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ROW 4: High-Risk Subjects with AEs | Site Predictions Table ────────── -->
+<div class="row g-3 mb-3">
+  <div class="col-md-5">
+    <div class="card card-clinical h-100">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-user-injured text-danger me-1"></i> Dashboard 6 — High-Risk Sites with AE Burden</span>
+        <small class="text-muted">site_predictions ⋈ gold_ae · Bar</small>
+      </div>
+      <div class="card-body"><div id="ch_highrisk_ae" style="height:280px"></div></div>
+    </div>
+  </div>
+  <div class="col-md-7">
+    <div class="card card-clinical h-100">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-table text-primary me-1"></i> Site Predictions Summary Table</span>
+        <div>
+          <input type="text" class="form-control form-control-sm d-inline-block" style="width:140px"
+            placeholder="Search site…" id="tblSearch" oninput="filterTable()">
+        </div>
+      </div>
+      <div class="card-body p-0">
+        <div class="table-responsive" style="max-height:320px;overflow-y:auto">
+          <table class="table table-sm table-hover mb-0">
+            <thead class="table-dark sticky-top">
+              <tr>
+                <th>Site</th><th>Pred. AEs</th><th>Pred. Serious</th>
+                <th>Risk Group</th><th>Pred. Date</th><th></th>
+              </tr>
+            </thead>
+            <tbody id="predTable"><tr><td colspan="6" class="text-center text-muted py-3">Loading…</td></tr></tbody>
+          </table>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /fade-in -->
+
+<!-- Site Detail Modal -->
+<div class="modal fade" id="siteModal" tabindex="-1">
+  <div class="modal-dialog modal-lg">
+    <div class="modal-content">
+      <div class="modal-header"><h5 class="modal-title" id="siteModalTitle">Site Details</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button></div>
+      <div class="modal-body" id="siteModalBody"></div>
+      <div class="modal-footer"><button class="btn btn-secondary" data-bs-dismiss="modal">Close</button></div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+const COLORS={
+  blue:'#2563eb',green:'#16a34a',red:'#dc2626',orange:'#ea580c',
+  purple:'#7c3aed',teal:'#0d9488',yellow:'#ca8a04',
+  palette:['#16a34a','#ca8a04','#dc2626','#2563eb','#7c3aed','#0d9488']
+};
+const LAYOUT_BASE={
+  margin:{t:30,r:20,b:50,l:60},
+  paper_bgcolor:'rgba(0,0,0,0)',
+  plot_bgcolor:'rgba(248,250,252,1)',
+  font:{family:'Segoe UI,sans-serif',size:12,color:'#374151'},
+  xaxis:{gridcolor:'#e5e7eb',linecolor:'#d1d5db'},
+  yaxis:{gridcolor:'#e5e7eb',linecolor:'#d1d5db'}
+};
+const CFG={responsive:true,displayModeBar:false};
+
+let dbId=null, predsData=[];
+
+async function api(url){const r=await fetch(url);return r.json();}
+
+function empty(id,msg='No data available'){
+  const el=document.getElementById(id);
+  if(el)el.innerHTML=`<div class="d-flex align-items-center justify-content-center h-100 text-muted"><i class="fas fa-chart-bar me-2"></i>${msg}</div>`;
+}
+
+function bar(id,x,y,opts={}){
+  if(!x||!x.length){empty(id);return;}
+  Plotly.newPlot(id,[{x,y,type:'bar',marker:{color:opts.colors||opts.color||COLORS.blue,opacity:0.85},
+    hovertemplate:'%{x}<br><b>%{y}</b><extra></extra>',...(opts.trace||{})}],
+    {...LAYOUT_BASE,xaxis:{...LAYOUT_BASE.xaxis,title:opts.xTitle||'',tickangle:-30},
+     yaxis:{...LAYOUT_BASE.yaxis,title:opts.yTitle||'Count'},...(opts.layout||{})},CFG);
+}
+
+function pie(id,labels,values){
+  if(!labels||!labels.length){empty(id);return;}
+  Plotly.newPlot(id,[{labels,values,type:'pie',hole:0.4,
+    marker:{colors:[COLORS.green,COLORS.yellow,COLORS.red,COLORS.blue]},
+    hovertemplate:'%{label}<br><b>%{value} sites</b> (%{percent})<extra></extra>',
+    textinfo:'label+percent'}],
+    {...LAYOUT_BASE,margin:{t:30,r:10,b:10,l:10},showlegend:true},CFG);
+}
+
+function line(id,x,y,opts={}){
+  if(!x||!x.length){empty(id);return;}
+  Plotly.newPlot(id,[{x,y,type:'scatter',mode:'lines+markers',
+    line:{color:opts.color||COLORS.blue,width:2.5},
+    marker:{size:7,color:opts.color||COLORS.blue},
+    hovertemplate:'%{x}<br><b>%{y}</b><extra></extra>',...(opts.trace||{})}],
+    {...LAYOUT_BASE,xaxis:{...LAYOUT_BASE.xaxis,title:opts.xTitle||''},
+     yaxis:{...LAYOUT_BASE.yaxis,title:opts.yTitle||''},...(opts.layout||{})},CFG);
+}
+
+async function loadAll(){
+  const d=await api(`/api/predictions/data?database_id=${dbId}`);
+  if(!d.success){
+    showNotification('No prediction data found. Run the pipeline first.','warning');
+    ['kpiSites','kpiHigh','kpiMedium','kpiLow'].forEach(id=>{document.getElementById(id).textContent='0';});
+    document.getElementById('predTable').innerHTML='<tr><td colspan="6" class="text-center text-muted py-3">No predictions yet. Run the pipeline first.</td></tr>';
+    return;
+  }
+  predsData=d.data.predictions||[];
+  const summary=d.data.site_summary||[];
+
+  // KPIs
+  const high=predsData.filter(p=>p.predicted_risk_group==='High').length;
+  const med=predsData.filter(p=>p.predicted_risk_group==='Medium').length;
+  const low=predsData.filter(p=>p.predicted_risk_group==='Low').length;
+  document.getElementById('kpiSites').textContent=predsData.length;
+  document.getElementById('kpiHigh').textContent=high;
+  document.getElementById('kpiMedium').textContent=med;
+  document.getElementById('kpiLow').textContent=low;
+
+  // D2 – Risk pie
+  const riskGroups=['Low','Medium','High'];
+  const riskCounts=riskGroups.map(g=>predsData.filter(p=>p.predicted_risk_group===g).length);
+  pie('ch_risk_pie',riskGroups,riskCounts);
+
+  // D1 – Predicted AEs by site
+  const sites=predsData.map(p=>p.site_id);
+  const predAEs=predsData.map(p=>p.predicted_total_ae||0);
+  const riskColors=predsData.map(p=>p.predicted_risk_group==='High'?COLORS.red:p.predicted_risk_group==='Medium'?COLORS.yellow:COLORS.green);
+  bar('ch_pred_ae_site',sites,predAEs,{xTitle:'Site ID',yTitle:'Predicted AEs',colors:riskColors});
+
+  // D3 – High-risk sites
+  const highSites=predsData.filter(p=>p.predicted_risk_group==='High');
+  const hrNames=highSites.map(p=>p.site_id);
+  const hrCounts=highSites.map(p=>{const sm=summary.find(x=>x.site_id===p.site_id);return sm?sm.total_adverse_events:0;});
+  bar('ch_high_risk_site',hrNames,hrCounts,{xTitle:'Site ID',yTitle:'Current AEs',color:COLORS.red});
+
+  // D4 – Predicted serious events
+  const predSerious=predsData.map(p=>p.predicted_total_serious_events||0);
+  bar('ch_pred_serious',sites,predSerious,{xTitle:'Site ID',yTitle:'Pred. Serious Events',color:COLORS.orange});
+
+  // D5 – Timeline: predicted AEs per site as a bar (more useful than single-point line)
+  const byDate={};
+  predsData.forEach(p=>{if(p.prediction_date){byDate[p.prediction_date]=(byDate[p.prediction_date]||0)+(p.predicted_total_ae||0);}});
+  const dates=Object.keys(byDate).sort();
+  if(dates.length<=1){
+    // Single date — show predicted AEs per site as a bar chart instead
+    const siteIds=predsData.map(p=>p.site_id);
+    const siteAEs=predsData.map(p=>p.predicted_total_ae||0);
+    const riskCols=predsData.map(p=>p.predicted_risk_group==='High'?COLORS.red:p.predicted_risk_group==='Medium'?COLORS.yellow:COLORS.green);
+    bar('ch_pred_timeline',siteIds,siteAEs,{xTitle:'Site ID',yTitle:'Predicted AEs',colors:riskCols,layout:{title:{text:'Predicted AEs per Site',font:{size:13}}}});
+  } else {
+    line('ch_pred_timeline',dates,dates.map(d=>byDate[d]),{xTitle:'Prediction Date',yTitle:'Total Predicted AEs',color:COLORS.teal});
+  }
+
+  // D6 – High-risk sites with AE burden
+  bar('ch_highrisk_ae',hrNames,hrCounts,{xTitle:'Site ID',yTitle:'Total AEs',color:COLORS.red});
+
+  // D7 – Avg predicted AEs per risk group
+  const armMap={};
+  predsData.forEach(p=>{
+    const g=p.predicted_risk_group||'Unknown';
+    if(!armMap[g])armMap[g]={sum:0,n:0};
+    armMap[g].sum+=(p.predicted_total_ae||0);
+    armMap[g].n++;
+  });
+  const armLabels=Object.keys(armMap);
+  const armAvg=armLabels.map(k=>+(armMap[k].sum/armMap[k].n).toFixed(1));
+  bar('ch_risk_by_arm',armLabels,armAvg,{xTitle:'Risk Group',yTitle:'Avg Predicted AEs',
+    colors:armLabels.map(l=>l==='High'?COLORS.red:l==='Medium'?COLORS.yellow:COLORS.green)});
+
+  renderTable(predsData);
+}
+
+function renderTable(data){
+  const fSite=document.getElementById('fSite').value;
+  const fRisk=document.getElementById('fRisk').value;
+  const search=document.getElementById('tblSearch').value.toLowerCase();
+  const filtered=data.filter(p=>
+    (!fSite||p.site_id===fSite)&&
+    (!fRisk||p.predicted_risk_group===fRisk)&&
+    (!search||p.site_id.toLowerCase().includes(search))
+  );
+  const tbody=document.getElementById('predTable');
+  if(!filtered.length){tbody.innerHTML='<tr><td colspan="6" class="text-center text-muted py-3">No matching data</td></tr>';return;}
+  tbody.innerHTML=filtered.map(p=>{
+    const rc=p.predicted_risk_group==='High'?'danger':p.predicted_risk_group==='Medium'?'warning':'success';
+    return `<tr>
+      <td><code>${p.site_id}</code></td>
+      <td>${p.predicted_total_ae??'—'}</td>
+      <td>${p.predicted_total_serious_events??'—'}</td>
+      <td><span class="badge bg-${rc}">${p.predicted_risk_group||'—'}</span></td>
+      <td>${p.prediction_date||'—'}</td>
+      <td><button class="btn btn-xs btn-outline-primary btn-sm py-0 px-1" onclick="showDetail('${p.site_id}')"><i class="fas fa-eye"></i></button></td>
+    </tr>`;
+  }).join('');
+}
+
+function filterTable(){renderTable(predsData);}
+
+function showDetail(siteId){
+  const p=predsData.find(x=>x.site_id===siteId);
+  if(!p)return;
+  const rc=p.predicted_risk_group==='High'?'danger':p.predicted_risk_group==='Medium'?'warning':'success';
+  const rec=p.predicted_risk_group==='High'
+    ?'<strong>Immediate Action:</strong> Schedule site visit within 2 weeks. Review data quality and reporting procedures.'
+    :p.predicted_risk_group==='Medium'
+    ?'<strong>Monitor Closely:</strong> Increase remote monitoring frequency. Review monthly safety reports.'
+    :'<strong>Continue Monitoring:</strong> Maintain standard schedule. Share best practices.';
+  document.getElementById('siteModalTitle').textContent=`Site Prediction Details: ${siteId}`;
+  document.getElementById('siteModalBody').innerHTML=`
+    <div class="row">
+      <div class="col-md-6">
+        <table class="table table-sm"><tbody>
+          <tr><td>Predicted Total AEs</td><td><strong>${p.predicted_total_ae??'—'}</strong></td></tr>
+          <tr><td>Predicted Serious AEs</td><td><strong>${p.predicted_total_serious_events??'—'}</strong></td></tr>
+          <tr><td>Predicted AE Signals</td><td><strong>${p.predicted_total_ae_signal_count??'—'}</strong></td></tr>
+          <tr><td>Predicted New Subjects</td><td><strong>${p.predicted_new_subjects??'—'}</strong></td></tr>
+          <tr><td>Prediction Date</td><td>${p.prediction_date||'—'}</td></tr>
+        </tbody></table>
+      </div>
+      <div class="col-md-6">
+        <div class="text-center mb-3">
+          <span class="badge bg-${rc} fs-5 px-4 py-2">${p.predicted_risk_group} Risk</span>
+        </div>
+        <div class="alert alert-${rc} mt-2">${rec}</div>
+      </div>
+    </div>`;
+  new bootstrap.Modal(document.getElementById('siteModal')).show();
+}
+
+async function onDbChange(val){
+  dbId=parseInt(val);
+  await fetch('/api/database/select',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({database_id:dbId})});
+  loadAll();
+}
+
+async function refreshAll(){loadAll();}
+
+async function init(){
+  const dbs=await api('/api/database/list?validate=true');
+  const avail=(dbs||[]).filter(d=>d.is_available);
+  if(!avail.length){showNotification('Please connect a database first','warning');return;}
+  const sess=await api('/api/database/current');
+  dbId=(sess.success&&avail.find(d=>d.id===sess.database.id))?sess.database.id:avail[0].id;
+  const sel=document.getElementById('dbSelect');
+  sel.innerHTML=avail.map(d=>`<option value="${d.id}" ${d.id===dbId?'selected':''}>${d.name}</option>`).join('');
+
+  const fd=await api(`/api/analytics/filters?database_id=${dbId}`);
+  if(fd.success){
+    const fSite=document.getElementById('fSite');
+    fSite.innerHTML='<option value="">All Sites</option>'+fd.sites.map(s=>`<option value="${s}">${s}</option>`).join('');
+  }
+  loadAll();
+}
+
+document.getElementById('fSite').addEventListener('change',()=>renderTable(predsData));
+document.getElementById('fRisk').addEventListener('change',()=>renderTable(predsData));
+
+document.addEventListener('DOMContentLoaded',init);
+
+window.addEventListener('storage',e=>{
+  if(e.key==='pipeline_completed'){
+    const data=JSON.parse(e.newValue||'{}');
+    if(String(data.database_id)===String(dbId)){showNotification('Pipeline completed – refreshing…','info');loadAll();}
+  }
+});
+
+window.addEventListener('resize',()=>{
+  ['ch_risk_pie','ch_pred_ae_site','ch_high_risk_site','ch_risk_by_arm',
+   'ch_pred_timeline','ch_pred_serious','ch_highrisk_ae'].forEach(id=>{try{Plotly.Plots.resize(id);}catch(e){}});
+});
+</script>
+{% endblock %}

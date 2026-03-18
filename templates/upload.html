@@ -1,0 +1,2864 @@
+{% extends "base.html" %}
+
+{% block title %}Upload Files - Clinical Data Pipeline{% endblock %}
+
+{% block content %}
+<style>
+/* Database Connection Section - Old Style */
+.db-connection-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.recent-db-btn {
+    background: #007bff;
+    border: none;
+    color: white;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-size: 14px;
+    cursor: pointer;
+}
+
+.recent-db-btn:hover {
+    background: #0056b3;
+}
+
+.db-status-badge {
+    font-size: 0.75rem;
+    padding: 0.25rem 0.5rem;
+    border-radius: 4px;
+    font-weight: 500;
+}
+
+.database-item {
+    border: 1px solid #dee2e6;
+    margin-bottom: 10px;
+    border-radius: 4px;
+    opacity: 0;
+    animation: fadeIn 0.3s ease-in forwards;
+    transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.database-item:nth-child(1) { animation-delay: 0.1s; }
+.database-item:nth-child(2) { animation-delay: 0.2s; }
+.database-item:nth-child(3) { animation-delay: 0.3s; }
+.database-item:nth-child(4) { animation-delay: 0.4s; }
+.database-item:nth-child(5) { animation-delay: 0.5s; }
+.database-item:nth-child(6) { animation-delay: 0.6s; }
+.database-item:nth-child(7) { animation-delay: 0.7s; }
+.database-item:nth-child(8) { animation-delay: 0.8s; }
+.database-item:nth-child(9) { animation-delay: 0.9s; }
+.database-item:nth-child(10) { animation-delay: 1.0s; }
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+        transform: translateY(10px);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+.database-item:hover {
+    background-color: #f8f9fa;
+}
+
+.btn-primary:hover {
+    background-color: #0056b3;
+    border-color: #0056b3;
+}
+
+.btn-danger:hover {
+    background-color: #c82333;
+    border-color: #bd2130;
+}
+
+.database-item {
+    transition: opacity 0.3s ease, background-color 0.3s ease;
+}
+
+.database-item:hover {
+    background-color: #f8f9fa;
+}
+
+.recent-db-modal {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    z-index: 1000;
+    justify-content: center;
+    align-items: center;
+}
+
+.recent-db-content {
+    background: white;
+    border-radius: 12px;
+    padding: 30px;
+    max-width: 800px;
+    max-height: 80vh;
+    overflow-y: auto;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+}
+
+/* Custom Modal Styles */
+.modal {
+    display: none;
+    position: fixed;
+    z-index: 1050;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgba(0,0,0,0.4);
+}
+
+.modal-dialog {
+    background-color: #fefefe;
+    margin: 10% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 90%;
+    max-width: 500px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+    animation: modalFadeIn 0.3s ease-out;
+}
+
+.modal-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding-bottom: 15px;
+    border-bottom: 1px solid #dee2e6;
+    margin-bottom: 15px;
+}
+
+.modal-title {
+    margin: 0;
+    color: var(--clinical-primary);
+    font-weight: 600;
+}
+
+.btn-close {
+    background: none;
+    border: none;
+    font-size: 24px;
+    color: #999;
+    cursor: pointer;
+    padding: 0;
+    line-height: 1;
+}
+
+.btn-close:hover {
+    color: #666;
+}
+
+.modal-body {
+    padding: 15px 0;
+}
+
+.modal-footer {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    padding-top: 15px;
+    border-top: 1px solid #dee2e6;
+    margin-top: 15px;
+}
+
+/* Connection Animations */
+.connecting-spinner {
+    display: inline-block;
+    width: 16px;
+    height: 16px;
+    border: 2px solid #f3f3f3;
+    border-radius: 50%;
+    border-top-color: var(--clinical-primary);
+    border-right-color: var(--clinical-primary);
+    border-bottom-color: var(--clinical-primary);
+    border-left-color: transparent;
+    animation: spin 1s linear infinite;
+    margin-right: 8px;
+}
+
+/* Only animate when element has connecting class */
+.connecting-spinner.connecting {
+    animation: spin 1s linear infinite;
+}
+
+/* Connection Progress Overlay */
+.connection-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.8);
+    z-index: 2000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: overlayFadeIn 0.3s ease-out;
+}
+
+.connection-overlay-content {
+    background: white;
+    padding: 40px;
+    border-radius: 12px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+    text-align: center;
+    min-width: 300px;
+    animation: contentSlideIn 0.4s ease-out;
+}
+
+.connection-spinner-large {
+    width: 40px;
+    height: 40px;
+    border: 4px solid #f3f3f3;
+    border-radius: 50%;
+    border-top-color: var(--clinical-primary);
+    border-right-color: var(--clinical-primary);
+    border-bottom-color: var(--clinical-primary);
+    border-left-color: transparent;
+    animation: none;
+    margin: 0 auto 20px;
+}
+
+/* Only animate when overlay has connecting class */
+.connection-overlay.connecting .connection-spinner-large {
+    animation: spin 1s linear infinite;
+}
+
+.connection-progress-bar {
+    width: 200px;
+    height: 6px;
+    background: #e9ecef;
+    border-radius: 3px;
+    overflow: hidden;
+    margin: 15px auto 0;
+}
+
+.connection-progress-fill {
+    height: 100%;
+    background: linear-gradient(90deg, var(--clinical-primary), var(--clinical-secondary));
+    border-radius: 3px;
+    width: 0%;
+    transition: width 2s ease-in-out;
+    animation: progressPulse 2s ease-in-out infinite;
+}
+
+/* Prevent form fields from being affected during connection */
+#databaseForm.connecting .form-control {
+    pointer-events: none;
+    opacity: 0.6;
+    background-color: #f8f9fa;
+}
+
+#databaseForm.connecting label {
+    opacity: 0.6;
+}
+
+#connectBtn.connecting {
+    position: relative;
+    overflow: hidden;
+}
+
+#connectBtn.connecting .button-text {
+    opacity: 0.8;
+}
+
+@keyframes spin {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+}
+
+@keyframes overlayFadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes contentSlideIn {
+    from {
+        opacity: 0;
+        transform: translateY(-20px) scale(0.9);
+    }
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+@keyframes progressPulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
+}
+
+@keyframes modalFadeIn {
+    from {
+        opacity: 0;
+        transform: scale(0.7);
+    }
+    to {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+/* File Sections */
+.file-section-btn {
+    background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+    border: none;
+    color: white;
+    padding: 12px 24px;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    margin-bottom: 15px;
+    width: 100%;
+}
+
+.file-section-btn:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(240, 147, 251, 0.4);
+}
+
+.file-info-panel {
+    display: none;
+    background: rgba(255, 255, 255, 0.95);
+    border-radius: 12px;
+    padding: 20px;
+    margin-bottom: 20px;
+    box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+    border: 1px solid #e9ecef;
+}
+
+.file-info-card {
+    background: white;
+    border-radius: 8px;
+    padding: 15px;
+    margin-bottom: 15px;
+    border-left: 4px solid #007bff;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    transition: all 0.3s ease;
+}
+
+.file-info-card:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+}
+
+.file-info-card.unprocessed {
+    border-left-color: #dc3545;
+}
+
+.file-card-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    margin-bottom: 10px;
+}
+
+.file-card-title {
+    font-weight: 600;
+    color: #333;
+    margin-bottom: 5px;
+}
+
+.file-card-meta {
+    font-size: 12px;
+    color: #666;
+    line-height: 1.4;
+}
+
+.close-card-btn {
+    background: #6c757d;
+    border: none;
+    color: white;
+    padding: 4px 8px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.close-card-btn:hover {
+    background: #5a6268;
+}
+
+.delete-btn {
+    background: #dc3545;
+    border: none;
+    color: white;
+    padding: 5px 10px;
+    border-radius: 4px;
+    font-size: 12px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.delete-btn:hover {
+    background: #c82333;
+}
+
+.connect-history-btn {
+    background: #28a745;
+    border: none;
+    color: white;
+    padding: 6px 12px;
+    border-radius: 4px;
+    font-size: 13px;
+    cursor: pointer;
+}
+
+.connect-history-btn:hover {
+    background: #218838;
+}
+
+.connect-history-btn:disabled {
+    background: #6c757d;
+    cursor: not-allowed;
+}
+
+/* File Upload Sections */
+.upload-sections-container {
+    display: flex;
+    gap: 20px;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.upload-sections-container.no-database {
+    opacity: 0.4;
+    pointer-events: none;
+}
+
+.upload-sections-container.no-database .upload-area {
+    background-color: #f8f9fa;
+    border: 2px dashed #dee2e6;
+}
+
+.upload-sections-container.no-database h6,
+.upload-sections-container.no-database p,
+.upload-sections-container.no-database i {
+    opacity: 0.6;
+}
+
+.upload-section {
+    flex: 1;
+    border: 2px solid #e9ecef;
+    border-radius: 12px;
+    padding: 20px;
+    background: white;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+}
+
+.upload-section:hover {
+    border-color: #007bff;
+    box-shadow: 0 4px 15px rgba(0, 123, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.upload-area {
+    text-align: center;
+    padding: 20px;
+    border-radius: 8px;
+    background: #f8f9fa;
+    transition: all 0.3s ease;
+}
+
+.upload-area:hover {
+    background: #e9ecef;
+}
+
+/* Pipeline Progress Visualization */
+.pipeline-progress-container {
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 12px;
+    padding: 20px;
+    backdrop-filter: blur(10px);
+}
+
+.pipeline-boxes {
+    display: flex;
+    gap: 15px;
+    justify-content: space-between;
+    margin-bottom: 20px;
+}
+
+.pipeline-box {
+    flex: 1;
+    background: rgba(255, 255, 255, 0.9);
+    border-radius: 12px;
+    padding: 20px;
+    border: 2px solid #e9ecef;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    transition: all 0.3s ease;
+}
+
+#bronze-box.processing {
+    border-color: #CD7F32;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(205, 127, 50, 0.3);
+    background: linear-gradient(135deg, rgba(205, 127, 50, 0.1) 0%, rgba(205, 127, 50, 0.2) 100%);
+}
+
+#bronze-box.processing::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(205, 127, 50, 0.4), transparent);
+    animation: bronzeColorFill 2s ease-in-out infinite;
+}
+
+#bronze-box.completed {
+    border-color: #CD7F32;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(205, 127, 50, 0.3);
+    background: linear-gradient(135deg, rgba(205, 127, 50, 0.2) 0%, rgba(205, 127, 50, 0.3) 100%);
+}
+
+#bronze-box.completed::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(205, 127, 50, 0.5) 0%, rgba(205, 127, 50, 0.1) 100%);
+    animation: bronzeCompletedFill 1s ease-out;
+}
+
+#silver-box.processing {
+    border-color: #C0C0C0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(192, 192, 192, 0.3);
+    background: linear-gradient(135deg, rgba(192, 192, 192, 0.1) 0%, rgba(192, 192, 192, 0.2) 100%);
+}
+
+#silver-box.processing::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(192, 192, 192, 0.4), transparent);
+    animation: silverColorFill 2s ease-in-out infinite;
+}
+
+#silver-box.completed {
+    border-color: #C0C0C0;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(192, 192, 192, 0.3);
+    background: linear-gradient(135deg, rgba(192, 192, 192, 0.2) 0%, rgba(192, 192, 192, 0.3) 100%);
+}
+
+#silver-box.completed::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(192, 192, 192, 0.5) 0%, rgba(192, 192, 192, 0.1) 100%);
+    animation: silverCompletedFill 1s ease-out;
+}
+
+#gold-box.processing {
+    border-color: #FFD700;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.1) 0%, rgba(255, 215, 0, 0.2) 100%);
+}
+
+#gold-box.processing::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 215, 0, 0.4), transparent);
+    animation: goldColorFill 2s ease-in-out infinite;
+}
+
+#gold-box.completed {
+    border-color: #FFD700;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(255, 215, 0, 0.3);
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.2) 0%, rgba(255, 215, 0, 0.3) 100%);
+}
+
+#gold-box.completed::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(255, 215, 0, 0.5) 0%, rgba(255, 215, 0, 0.1) 100%);
+    animation: goldCompletedFill 1s ease-out;
+}
+
+#prediction-box.processing {
+    border-color: #87CEEB;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(135, 206, 235, 0.3);
+    background: linear-gradient(135deg, rgba(135, 206, 235, 0.1) 0%, rgba(135, 206, 235, 0.2) 100%);
+}
+
+#prediction-box.processing::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(135, 206, 235, 0.4), transparent);
+    animation: skyBlueColorFill 2s ease-in-out infinite;
+}
+
+#prediction-box.completed {
+    border-color: #87CEEB;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 20px rgba(135, 206, 235, 0.3);
+    background: linear-gradient(135deg, rgba(135, 206, 235, 0.2) 0%, rgba(135, 206, 235, 0.3) 100%);
+}
+
+#prediction-box.completed::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(135, 206, 235, 0.5) 0%, rgba(135, 206, 235, 0.1) 100%);
+    animation: skyBlueCompletedFill 1s ease-out;
+}
+
+@keyframes bronzeColorFill {
+    0% { left: -100%; opacity: 0; }
+    50% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+}
+
+@keyframes bronzeCompletedFill {
+    0% { transform: scaleX(0); opacity: 0; }
+    100% { transform: scaleX(1); opacity: 1; }
+}
+
+@keyframes silverColorFill {
+    0% { left: -100%; opacity: 0; }
+    50% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+}
+
+@keyframes silverCompletedFill {
+    0% { transform: scaleX(0); opacity: 0; }
+    100% { transform: scaleX(1); opacity: 1; }
+}
+
+@keyframes goldColorFill {
+    0% { left: -100%; opacity: 0; }
+    50% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+}
+
+@keyframes goldCompletedFill {
+    0% { transform: scaleX(0); opacity: 0; }
+    100% { transform: scaleX(1); opacity: 1; }
+}
+
+@keyframes skyBlueColorFill {
+    0% { left: -100%; opacity: 0; }
+    50% { opacity: 1; }
+    100% { left: 100%; opacity: 0; }
+}
+
+@keyframes skyBlueCompletedFill {
+    0% { transform: scaleX(0); opacity: 0; }
+    100% { transform: scaleX(1); opacity: 1; }
+}
+
+.pipeline-box-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin-bottom: 10px;
+    justify-content: center;
+    gap: 8px;
+    margin-bottom: 15px;
+    font-weight: 600;
+    color: #333;
+}
+
+.pipeline-icon {
+    font-size: 24px;
+}
+
+.pipeline-status {
+    text-align: center;
+    font-size: 14px;
+    color: #666;
+}
+
+.pipeline-timestamp {
+    text-align: center;
+    font-size: 12px;
+    color: #999;
+    margin-top: 10px;
+}
+</style>
+
+<!-- Database Connection Section -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card card-clinical" id="dbConnectionCard">
+            <div class="card-body">
+                <div class="db-connection-header">
+                    <h5 class="mb-0"><i class="fas fa-database"></i> Database Connection</h5>
+                    <div class="d-flex align-items-center">
+                        <span id="connectionStatus" class="badge bg-secondary me-2">Not Connected</span>
+                        <button id="disconnectBtn" class="btn btn-sm btn-outline-danger d-none me-2" onclick="disconnectDatabase()" title="Disconnect from current database">
+                            <i class="fas fa-unlink"></i> Disconnect
+                        </button>
+                        <button class="recent-db-btn" onclick="toggleRecentDatabases()">
+                            <i class="fas fa-plug"></i> Recent Connections
+                        </button>
+                    </div>
+                </div>
+                
+                <div id="connectionForm">
+                    <form id="databaseForm">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="dbName" class="form-label">Database Name</label>
+                                    <input type="text" class="form-control" id="dbName" placeholder="Enter database name">
+                                </div>
+                            </div>
+                            <div class="col-md-6">
+                                <div class="mb-3">
+                                    <label for="dbUrl" class="form-label">PostgreSQL Connection URL</label>
+                                    <textarea class="form-control" id="dbUrl" rows="3" 
+                                              placeholder="postgresql://username:password@host:port/database"></textarea>
+                                    <div class="form-text">Example: postgresql://neondb_owner:password@ep-host.neon.tech/neondb</div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="d-grid gap-2 d-md-flex justify-content-md-start">
+                            <button type="submit" class="btn btn-clinical" id="connectBtn">
+                                <i class="fas fa-plug"></i> Connect Database
+                            </button>
+                        </div>
+                    </form>
+                    <div id="dbConnectionStatus" class="mt-3"></div>
+                </div>
+                
+                <div id="connectionSuccess" class="d-none">
+                    <div class="alert alert-success">
+                        <i class="fas fa-check-circle"></i> 
+                        <strong>Database Connected Successfully!</strong>
+                        <div class="mt-2">
+                            <small id="connectedDbInfo"></small>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Custom Confirmation Modal -->
+<div id="confirmModal" class="modal" style="display: none;">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="confirmModalTitle">Confirm Action</h5>
+                <button type="button" class="btn-close" onclick="closeConfirmModal()">&times;</button>
+            </div>
+            <div class="modal-body">
+                <p id="confirmModalMessage">Are you sure you want to proceed?</p>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" onclick="closeConfirmModal()">Cancel</button>
+                <button type="button" class="btn btn-danger" id="confirmModalBtn">Confirm</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Connection Progress Overlay -->
+<div id="connectionProgressOverlay" class="connection-overlay" style="display: none;">
+    <div class="connection-overlay-content">
+        <div class="connection-spinner-large"></div>
+        <h5 id="connectionProgressText">Connecting to database...</h5>
+        <div class="connection-progress-bar">
+            <div class="connection-progress-fill" id="connectionProgressBar"></div>
+        </div>
+    </div>
+</div>
+
+<!-- Recent Database Connections Modal -->
+<div id="recentDbModal" class="recent-db-modal">
+    <div class="recent-db-content">
+        <div class="d-flex justify-content-between align-items-center mb-4">
+            <h5 class="mb-0"><i class="fas fa-history"></i> Recent Database Connections</h5>
+            <button class="btn btn-secondary" onclick="toggleRecentDatabases()">×</button>
+        </div>
+        <div id="databaseList">
+            <div class="text-center text-muted">
+                <i class="fas fa-database fa-3x mb-3"></i>
+                <p>No database connections yet. Connect your first database above.</p>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- File Upload Section -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card card-clinical">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="fas fa-upload"></i> File Upload</h5>
+            </div>
+            <div class="card-body">
+                <div class="upload-sections-container">
+                    <div class="upload-section" data-file-type="subjects">
+                        <div class="upload-area" id="subjectsUploadArea">
+                            <i class="fas fa-users fa-3x mb-3 text-primary"></i>
+                            <h6>Subjects Data</h6>
+                            <p class="text-muted small">Upload CSV file with subject information</p>
+                            <input type="file" id="subjectsFile" accept=".csv" style="display: none;">
+                            <button class="btn btn-outline-primary btn-sm" onclick="handleSubjectsFileClick()">
+                                Choose File
+                            </button>
+                        </div>
+                        <div class="upload-progress d-none">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar"></div>
+                            </div>
+                        </div>
+                        <div class="upload-result d-none"></div>
+                    </div>
+                    <div class="upload-section" data-file-type="labs">
+                        <div class="upload-area" id="labsUploadArea">
+                            <i class="fas fa-vial fa-3x mb-3 text-success"></i>
+                            <h6>Labs Data</h6>
+                            <p class="text-muted small">Upload XML file with laboratory results</p>
+                            <input type="file" id="labsFile" accept=".xml" style="display: none;">
+                            <button class="btn btn-outline-success btn-sm" onclick="handleLabsFileClick()">
+                                Choose File
+                            </button>
+                        </div>
+                        <div class="upload-progress d-none">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar"></div>
+                            </div>
+                        </div>
+                        <div class="upload-result d-none"></div>
+                    </div>
+                    <div class="upload-section" data-file-type="aes">
+                        <div class="upload-area" id="aesUploadArea">
+                            <i class="fas fa-exclamation-triangle fa-3x mb-3 text-warning"></i>
+                            <h6>Adverse Events</h6>
+                            <p class="text-muted small">Upload NDJSON file with adverse events</p>
+                            <input type="file" id="aesFile" accept=".ndjson,.json" style="display: none;">
+                            <button class="btn btn-outline-warning btn-sm" onclick="handleAESFileClick()">
+                                Choose File
+                            </button>
+                        </div>
+                        <div class="upload-progress d-none">
+                            <div class="progress">
+                                <div class="progress-bar" role="progressbar"></div>
+                            </div>
+                        </div>
+                        <div class="upload-result d-none"></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Pipeline Control Section -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="card card-clinical">
+            <div class="card-header">
+                <h5 class="mb-0"><i class="fas fa-cogs"></i> Pipeline Control</h5>
+            </div>
+            <div class="card-body">
+                <div class="pipeline-progress-container">
+                    <div class="pipeline-boxes">
+                        <div class="pipeline-box" id="bronze-box">
+                            <div class="pipeline-box-header">
+                                <i class="fas fa-database pipeline-icon text-warning"></i>
+                                Bronze
+                            </div>
+                            <div class="pipeline-status">Ready</div>
+                            <div class="pipeline-timestamp"></div>
+                        </div>
+                        <div class="pipeline-box" id="silver-box">
+                            <div class="pipeline-box-header">
+                                <i class="fas fa-exchange-alt pipeline-icon text-info"></i>
+                                Silver
+                            </div>
+                            <div class="pipeline-status">Ready</div>
+                            <div class="pipeline-timestamp"></div>
+                        </div>
+                        <div class="pipeline-box" id="gold-box">
+                            <div class="pipeline-box-header">
+                                <i class="fas fa-gem pipeline-icon text-warning"></i>
+                                Gold
+                            </div>
+                            <div class="pipeline-status">Ready</div>
+                            <div class="pipeline-timestamp"></div>
+                        </div>
+                        <div class="pipeline-box" id="prediction-box">
+                            <div class="pipeline-box-header">
+                                <i class="fas fa-brain pipeline-icon text-success"></i>
+                                Prediction
+                            </div>
+                            <div class="pipeline-status">Ready</div>
+                            <div class="pipeline-timestamp"></div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Pipeline Progress Component -->
+                <div class="pipeline-progress-info mt-3">
+                    <div class="card bg-light">
+                        <div class="card-body">
+                            <h6 class="card-title mb-3">Pipeline Progress</h6>
+                            <div class="progress mb-2">
+                                <div id="pipelineProgressBar" class="progress-bar progress-bar-striped progress-bar-animated" role="progressbar" style="width: 0%"></div>
+                            </div>
+                            <div id="pipelineStatusText" class="small text-muted">Ready to start pipeline</div>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-4 d-flex justify-content-center gap-3 align-items-center flex-wrap">
+                    <button id="runPipelineBtn" class="btn btn-success btn-lg" disabled>
+                        <i class="fas fa-play"></i> Run Pipeline
+                    </button>
+                    <button id="viewReportBtn" class="btn btn-primary btn-lg d-none" onclick="openReport()">
+                        <i class="fas fa-file-medical-alt"></i> View Report
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- File Information Section -->
+<div class="row mb-4">
+    <div class="col-12">
+        <div class="d-flex gap-3 mb-3">
+            <button class="file-section-btn" onclick="toggleFileHistory()">
+                <i class="fas fa-history"></i> File History
+            </button>
+            <button class="file-section-btn" onclick="toggleUnprocessedFiles()">
+                <i class="fas fa-exclamation-triangle"></i> Unprocessed Files
+            </button>
+        </div>
+        <div id="fileHistoryPanel" class="file-info-panel">
+            <div id="fileHistoryContent">
+                <div class="text-center text-muted">
+                    <i class="fas fa-file fa-3x mb-3"></i>
+                    <p>No files uploaded yet.</p>
+                </div>
+            </div>
+        </div>
+        <div id="unprocessedFilesPanel" class="file-info-panel">
+            <div class="d-flex justify-content-between align-items-center mb-2 px-1">
+                <span class="fw-semibold text-muted small">Unprocessed Records</span>
+                <button class="btn btn-sm btn-outline-warning" onclick="downloadUnprocessed()" id="downloadUnprocessedBtn">
+                    <i class="fas fa-download"></i> Download
+                </button>
+            </div>
+            <div id="unprocessedFilesContent">
+                <div class="text-center text-muted">
+                    <i class="fas fa-check-circle fa-3x mb-3"></i>
+                    <p>All files processed successfully!</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Database connection functionality
+let currentDatabaseId = null;
+
+async function connectDatabase(name, url) {
+    try {
+        // Show connecting animation
+        showConnectingAnimation();
+        
+        const response = await makeRequest('/api/database/connect', {
+            method: 'POST',
+            body: JSON.stringify({ name, url })
+        });
+        
+        // Hide connecting animation
+        hideConnectingAnimation();
+        
+        if (response.success) {
+            currentDatabaseId = response.database_id;
+            // Set as current session so results/analytics/predictions pages auto-load it
+            await makeRequest('/api/database/select', {
+                method: 'POST',
+                body: JSON.stringify({ database_id: response.database_id })
+            });
+            updateConnectionStatus(true, name);
+            
+            // Load file list and check pipeline status
+            loadFileList();
+            checkPipelineStatus();
+            updateRunPipelineButtonState(); // Update button state
+        } else {
+            document.getElementById('dbConnectionStatus').innerHTML = `
+                <div class="alert alert-danger">
+                    <i class="fas fa-exclamation-triangle"></i> ${response.message}
+                </div>
+            `;
+            updateRunPipelineButtonState(); // Update button state on error
+        }
+    } catch (error) {
+        // Hide connecting animation
+        hideConnectingAnimation();
+        
+        document.getElementById('dbConnectionStatus').innerHTML = `
+            <div class="alert alert-danger">
+                <i class="fas fa-exclamation-triangle"></i> Connection failed: ${error.message}
+            </div>
+        `;
+        updateRunPipelineButtonState(); // Update button state on error
+    }
+}
+
+// Database form submission
+document.getElementById('databaseForm').addEventListener('submit', async (e) => {
+    e.preventDefault();
+    
+    const name = document.getElementById('dbName').value;
+    const url = document.getElementById('dbUrl').value;
+    
+    if (!name || !url) {
+        document.getElementById('dbConnectionStatus').innerHTML = `
+            <div class="alert alert-warning">
+                <i class="fas fa-exclamation-triangle"></i> Please fill in all fields
+            </div>
+        `;
+        return;
+    }
+    
+    // Show loading state
+    const submitBtn = e.target.querySelector('button[type="submit"]');
+    const dbForm = document.getElementById('databaseForm');
+    
+    // Show connecting animation BEFORE attempting connection
+    showConnectingAnimation();
+    
+    // Add connecting class to form to disable fields
+    dbForm.classList.add('connecting');
+    
+    // Update button text without spinner
+    submitBtn.textContent = 'Connecting...';
+    submitBtn.classList.add('connecting');
+    submitBtn.disabled = true;
+    
+    await connectDatabase(name, url);
+    
+    // Reset button state
+    dbForm.classList.remove('connecting');
+    
+    submitBtn.textContent = 'Connect Database';
+    submitBtn.classList.remove('connecting');
+    submitBtn.disabled = false;
+});
+
+// Toggle recent databases modal
+function toggleRecentDatabases() {
+    const modal = document.getElementById('recentDbModal');
+    modal.style.display = modal.style.display === 'flex' ? 'none' : 'flex';
+    
+    if (modal.style.display === 'flex') {
+        loadDatabaseList();
+    }
+}
+
+// Load database list
+async function loadDatabaseList(validateConnections = true, retryCount = 0) {
+    try {
+        console.log('🔄 Loading database list...', validateConnections ? '(with validation)' : '(fast mode)', retryCount > 0 ? `(retry ${retryCount})` : '');
+        
+        const listContainer = document.getElementById('databaseList');
+        
+        // Show loading indicator immediately
+        listContainer.innerHTML = `
+            <div class="text-center p-4">
+                <div class="spinner-border text-primary mb-3" role="status">
+                    <span class="visually-hidden">Loading...</span>
+                </div>
+                <h6 class="text-muted">${validateConnections ? 'Validating database connections...' : 'Loading database connections...'}</h6>
+                <small class="text-muted">${validateConnections ? 'Checking if databases still exist' : 'Using cached status'}${retryCount > 0 ? ' (retrying...)' : ''}</small>
+            </div>
+        `;
+        
+        // Always validate on first load to detect deleted databases
+        const url = validateConnections ? '/api/database/list?validate=true' : '/api/database/list?validate=false';
+        const databases = await makeRequest(url);
+        console.log('📊 Database list response:', databases);
+        console.log('📊 Database count:', databases.length);
+        
+        if (databases.length === 0) {
+            console.log('❌ No databases found');
+            listContainer.innerHTML = `
+                <div class="text-center text-muted">
+                    <i class="fas fa-database fa-3x mb-3"></i>
+                    <p>No database connections yet. Connect your first database above.</p>
+                </div>
+            `;
+            return;
+        }
+        
+        console.log('✅ Found databases, rendering list...');
+        
+        // Sort databases: unavailable ones first for better visibility
+        const sortedDatabases = databases.sort((a, b) => {
+            if (a.is_available === b.is_available) return 0;
+            return a.is_available ? 1 : -1; // Unavailable databases first
+        });
+        
+        listContainer.innerHTML = sortedDatabases.map(db => {
+            console.log('🔍 Processing database:', db.name, 'Available:', db.is_available);
+            
+            // Simple status determination
+            let statusBadge, statusText, statusIcon;
+            
+            if (db.is_available) {
+                statusBadge = 'badge bg-success';
+                statusText = 'Available';
+                statusIcon = 'fas fa-check-circle';
+            } else {
+                statusBadge = 'badge bg-danger';
+                statusText = 'Not Available';
+                statusIcon = 'fas fa-times-circle';
+            }
+            
+            return `
+            <div class="database-item d-flex justify-content-between align-items-center p-3 border-bottom" id="db-item-${db.id}" data-available="${db.is_available}">
+                <div class="flex-grow-1">
+                    <div class="d-flex align-items-center mb-1">
+                        <h6 class="mb-0 me-2">${db.name}</h6>
+                        <span class="${statusBadge}" id="db-status-${db.id}">
+                            <i class="${statusIcon}" style="margin-right: 4px;"></i>
+                            ${statusText}
+                        </span>
+                    </div>
+                    <small class="text-muted">Last connected: ${db.last_connected ? new Date(db.last_connected).toLocaleDateString() : 'Never'}</small>
+                    <br>
+                    <small class="text-muted">${db.url.substring(0, 50)}...</small>
+                </div>
+                <div class="d-flex gap-2">
+                    <button class="btn btn-sm btn-primary" onclick="connectToHistoryDatabase('${db.name}', '${db.url}', ${db.id}, event)" ${!db.is_available ? 'disabled' : ''}>
+                        <i class="fas fa-plug"></i> Connect
+                    </button>
+                    <button class="btn btn-sm btn-danger" onclick="deleteDatabase(${db.id}, '${db.name}')" title="Delete connection">
+                        <i class="fas fa-trash"></i>
+                    </button>
+                </div>
+            </div>
+        `;
+        }).join('');
+        
+        // Add refresh button for re-validation
+        listContainer.innerHTML += `
+            <div class="text-center p-3">
+                <button class="btn btn-sm btn-outline-primary" onclick="loadDatabaseList(true, 0)">
+                    <i class="fas fa-sync-alt"></i> Refresh Status
+                </button>
+                <small class="text-muted d-block mt-2">Click to check database availability again</small>
+                <small class="text-muted d-block">Unavailable databases shown first</small>
+            </div>
+        `;
+        
+        // Add visual indicators for unavailable databases
+        setTimeout(() => {
+            document.querySelectorAll('.database-item[data-available="false"]').forEach(item => {
+                item.style.backgroundColor = '#fff5f5'; // Light red background
+                item.style.borderLeft = '4px solid #dc3545'; // Red left border
+            });
+        }, 100);
+        
+        console.log('✅ Database list rendered successfully');
+        
+    } catch (error) {
+        console.error('❌ Failed to load database list:', error);
+        
+        // Retry logic for network issues
+        if (retryCount < 2 && validateConnections) {
+            console.log(`🔄 Retrying database list loading... attempt ${retryCount + 1}`);
+            setTimeout(() => loadDatabaseList(validateConnections, retryCount + 1), 2000);
+            return;
+        }
+        
+        document.getElementById('databaseList').innerHTML = `
+            <div class="alert alert-danger">
+                <i class="fas fa-exclamation-triangle"></i> Failed to load database connections
+                <br><small>${error.message}</small>
+            </div>
+        `;
+    }
+}
+
+// Validate single database connection
+async function validateSingleDatabase(dbId, dbName, dbUrl) {
+    try {
+        console.log(`🔄 Validating database: ${dbName}`);
+        
+        // Update status to checking
+        const statusElement = document.getElementById(`db-status-${dbId}`);
+        if (statusElement) {
+            statusElement.className = 'db-status-badge badge bg-warning';
+            statusElement.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Checking...';
+        }
+        
+        // Validate the specific database
+        const response = await makeRequest('/api/database/validate', {
+            method: 'POST',
+            body: JSON.stringify({ url: dbUrl })
+        });
+        
+        if (response.success) {
+            statusElement.className = 'db-status-badge badge bg-success';
+            statusElement.innerHTML = 'Available';
+            console.log(`✅ Database ${dbName} is available`);
+        } else {
+            statusElement.className = 'db-status-badge badge bg-danger';
+            statusElement.innerHTML = 'Not Available';
+            console.log(`❌ Database ${dbName} is not available`);
+        }
+        
+    } catch (error) {
+        console.error(`❌ Failed to validate database ${dbName}:`, error);
+        const statusElement = document.getElementById(`db-status-${dbId}`);
+        if (statusElement) {
+            statusElement.className = 'db-status-badge badge bg-warning';
+            statusElement.innerHTML = 'Unknown';
+        }
+    }
+}
+
+// Validate database status and update UI
+async function validateDatabaseStatus(db) {
+    const statusElement = document.getElementById(`db-status-${db.id}`);
+    const itemElement = document.getElementById(`db-item-${db.id}`);
+    
+    if (!statusElement) return;
+    
+    try {
+        const response = await makeRequest('/api/database/validate', {
+            method: 'POST',
+            body: JSON.stringify({ url: db.url })
+        });
+        
+        if (response.success) {
+            statusElement.className = 'db-status-badge badge bg-success';
+            statusElement.innerHTML = 'Available';
+            itemElement.style.opacity = '1';
+        } else {
+            statusElement.className = 'db-status-badge badge bg-danger';
+            statusElement.innerHTML = 'Not Available';
+            itemElement.style.opacity = '0.7';
+        }
+    } catch (error) {
+        statusElement.className = 'db-status-badge badge bg-warning';
+        statusElement.innerHTML = 'Unknown';
+        itemElement.style.opacity = '0.8';
+    }
+}
+
+// Connect to database from history with validation
+async function connectToHistoryDatabase(name, url, id, event) {
+    event.stopPropagation();
+    
+    // Show loading state
+    const button = event.target;
+    let originalText = button.innerHTML;
+    
+    try {
+        button.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Validating...';
+        button.classList.add('connecting');
+        button.disabled = true;
+        
+        // First validate the database connection
+        const validationResponse = await makeRequest('/api/database/validate', {
+            method: 'POST',
+            body: JSON.stringify({ url })
+        });
+        
+        if (!validationResponse.success) {
+            // Database no longer exists, show user-friendly error message
+            showNotification(`Database "${name}" is no longer available on Neon DB`, 'error');
+            
+            // Reset button state before returning
+            button.innerHTML = originalText;
+            button.disabled = false;
+            return;
+        }
+        
+        // Database is valid, proceed with connection
+        button.innerHTML = '<i class="fas fa-circle-notch fa-spin"></i> Connecting...';
+        button.classList.add('connecting');
+        const connectResponse = await makeRequest('/api/database/connect', {
+            method: 'POST',
+            body: JSON.stringify({ url, name })
+        });
+        
+        if (connectResponse.success) {
+            showNotification(`Connected to "${name}" successfully`, 'success');
+            currentDatabaseId = connectResponse.database_id;
+            updateConnectionStatus(true, name);
+            // Set as current session so results/analytics/predictions pages auto-load it
+            await makeRequest('/api/database/select', {
+                method: 'POST',
+                body: JSON.stringify({ database_id: connectResponse.database_id })
+            });
+            updateRunPipelineButtonState();
+            loadFileHistory();
+            loadUnprocessedFiles();
+            checkPipelineStatus();
+        } else {
+            console.log('❌ Failed to connect to history database:', connectResponse.message);
+            showNotification('Failed to connect to database', 'error');
+        }
+    } catch (error) {
+        console.error('Failed to connect to history database:', error);
+        showNotification('Error connecting to database: ' + error.message, 'error');
+    } finally {
+        // Reset button state
+        button.innerHTML = originalText;
+        button.classList.remove('connecting');
+        button.disabled = false;
+    }
+}
+
+// Custom alert dialog
+function showCustomAlert(title, message, type = 'info') {
+    // Create modal overlay
+    const modalOverlay = document.createElement('div');
+    modalOverlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        animation: fadeIn 0.3s ease;
+    `;
+    
+    // Create modal content
+    const modalContent = document.createElement('div');
+    modalContent.style.cssText = `
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        max-width: 400px;
+        width: 90%;
+        animation: slideIn 0.3s ease;
+    `;
+    
+    // Set icon and colors based on type
+    let icon, color;
+    switch(type) {
+        case 'error':
+            icon = 'fa-exclamation-circle';
+            color = '#dc3545';
+            break;
+        case 'success':
+            icon = 'fa-check-circle';
+            color = '#28a745';
+            break;
+        case 'warning':
+            icon = 'fa-exclamation-triangle';
+            color = '#ffc107';
+            break;
+        default:
+            icon = 'fa-info-circle';
+            color = '#007bff';
+    }
+    
+    modalContent.innerHTML = `
+        <div style="margin-bottom: 20px;">
+            <h5 style="margin: 0; color: ${color}; font-size: 18px;">
+                <i class="fas ${icon}" style="margin-right: 8px;"></i>
+                ${title}
+            </h5>
+        </div>
+        <div style="margin-bottom: 25px; color: #6c757d; line-height: 1.5;">
+            ${message}
+        </div>
+        <div style="display: flex; justify-content: flex-end;">
+            <button id="okBtn" style="
+                padding: 8px 16px;
+                border: 1px solid ${color};
+                background: ${color};
+                color: white;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 14px;
+            " onmouseover="this.style.background='${type === 'error' ? '#c82333' : (type === 'success' ? '#218838' : color)}'" onmouseout="this.style.background='${color}'">
+                OK
+            </button>
+        </div>
+    `;
+    
+    modalOverlay.appendChild(modalContent);
+    document.body.appendChild(modalOverlay);
+    
+    // Add event listener
+    const okBtn = modalContent.querySelector('#okBtn');
+    okBtn.addEventListener('click', () => {
+        document.body.removeChild(modalOverlay);
+    });
+    
+    // Close on overlay click
+    modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) {
+            document.body.removeChild(modalOverlay);
+        }
+    });
+    
+    // Auto-close after 5 seconds for info messages
+    if (type === 'info' || type === 'success') {
+        setTimeout(() => {
+            if (document.body.contains(modalOverlay)) {
+                document.body.removeChild(modalOverlay);
+            }
+        }, 5000);
+    }
+}
+
+// Custom confirmation dialog
+function showCustomConfirm(title, message, onConfirm, onCancel) {
+    // Create modal overlay
+    const modalOverlay = document.createElement('div');
+    modalOverlay.style.cssText = `
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: rgba(0, 0, 0, 0.5);
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        z-index: 9999;
+        animation: fadeIn 0.3s ease;
+    `;
+    
+    // Create modal content
+    const modalContent = document.createElement('div');
+    modalContent.style.cssText = `
+        background: white;
+        padding: 30px;
+        border-radius: 8px;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.3);
+        max-width: 400px;
+        width: 90%;
+        animation: slideIn 0.3s ease;
+    `;
+    
+    modalContent.innerHTML = `
+        <div style="margin-bottom: 20px;">
+            <h5 style="margin: 0; color: #dc3545; font-size: 18px;">
+                <i class="fas fa-exclamation-triangle" style="margin-right: 8px;"></i>
+                ${title}
+            </h5>
+        </div>
+        <div style="margin-bottom: 25px; color: #6c757d; line-height: 1.5;">
+            ${message}
+        </div>
+        <div style="display: flex; gap: 10px; justify-content: flex-end;">
+            <button id="cancelBtn" style="
+                padding: 8px 16px;
+                border: 1px solid #6c757d;
+                background: white;
+                color: #6c757d;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 14px;
+            " onmouseover="this.style.background='#f8f9fa'" onmouseout="this.style.background='white'">
+                Cancel
+            </button>
+            <button id="confirmBtn" style="
+                padding: 8px 16px;
+                border: 1px solid #dc3545;
+                background: #dc3545;
+                color: white;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 14px;
+            " onmouseover="this.style.background='#c82333'" onmouseout="this.style.background='#dc3545'">
+                Delete
+            </button>
+        </div>
+    `;
+    
+    modalOverlay.appendChild(modalContent);
+    document.body.appendChild(modalOverlay);
+    
+    // Add event listeners
+    const confirmBtn = modalContent.querySelector('#confirmBtn');
+    const cancelBtn = modalContent.querySelector('#cancelBtn');
+    
+    confirmBtn.addEventListener('click', () => {
+        document.body.removeChild(modalOverlay);
+        if (onConfirm) onConfirm();
+    });
+    
+    cancelBtn.addEventListener('click', () => {
+        document.body.removeChild(modalOverlay);
+        if (onCancel) onCancel();
+    });
+    
+    // Close on overlay click
+    modalOverlay.addEventListener('click', (e) => {
+        if (e.target === modalOverlay) {
+            document.body.removeChild(modalOverlay);
+            if (onCancel) onCancel();
+        }
+    });
+    
+    // Add CSS animations
+    const style = document.createElement('style');
+    style.textContent = `
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+        @keyframes slideIn {
+            from { 
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to { 
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+    `;
+    document.head.appendChild(style);
+}
+
+// Delete database
+async function deleteDatabase(dbId, dbName) {
+    showCustomConfirm(
+        'Delete Database Connection',
+        `Are you sure you want to delete the database connection "<strong>${dbName}</strong>"? This action cannot be undone.`,
+        async () => {
+            try {
+                console.log(`🗑️ Deleting database: ${dbName} (ID: ${dbId})`);
+                
+                const response = await makeRequest(`/api/database/${dbId}/delete`, {
+                    method: 'DELETE'
+                });
+                
+                if (response.success) {
+                    console.log(`✅ Database deleted successfully: ${dbName}`);
+                    
+                    // Remove deleted database from the list immediately without re-validation
+                    const deletedElement = document.getElementById(`db-item-${dbId}`);
+                    if (deletedElement) {
+                        deletedElement.style.opacity = '0';
+                        deletedElement.style.transform = 'translateX(-100%)';
+                        setTimeout(() => deletedElement.remove(), 300);
+                    }
+                    
+                    // Show success message
+                    const listContainer = document.getElementById('databaseList');
+                    const successMessage = document.createElement('div');
+                    successMessage.className = 'alert alert-success mb-3';
+                    successMessage.innerHTML = `
+                        <i class="fas fa-check-circle"></i> 
+                        Database "${dbName}" deleted successfully
+                    `;
+                    listContainer.insertBefore(successMessage, listContainer.firstChild);
+                    
+                    // Remove success message after 3 seconds
+                    setTimeout(() => successMessage.remove(), 3000);
+                    
+                    // Update database count if no databases left
+                    const remainingDatabases = document.querySelectorAll('.database-item');
+                    if (remainingDatabases.length === 0) {
+                        setTimeout(() => {
+                            listContainer.innerHTML = `
+                                <div class="text-center text-muted">
+                                    <i class="fas fa-database fa-3x mb-3"></i>
+                                    <p>No database connections yet. Connect your first database above.</p>
+                                </div>
+                            `;
+                        }, 500);
+                    }
+                    
+                } else {
+                    console.error(`❌ Failed to delete database: ${response.message}`);
+                    showCustomAlert('Error', `Failed to delete database: ${response.message}`, 'error');
+                }
+                
+            } catch (error) {
+                console.error(`❌ Failed to delete database ${dbName}:`, error);
+                showCustomAlert('Error', `Failed to delete database: ${error.message}`, 'error');
+            }
+        },
+        () => {
+            console.log('❌ Database deletion cancelled');
+        }
+    );
+}
+
+// Update connection status
+function updateConnectionStatus(connected, dbName = '') {
+    const statusBadge = document.getElementById('connectionStatus');
+    const connectionForm = document.getElementById('connectionForm');
+    const connectionSuccess = document.getElementById('connectionSuccess');
+    const connectedDbInfo = document.getElementById('connectedDbInfo');
+    const disconnectBtn = document.getElementById('disconnectBtn');
+    const uploadSectionsContainer = document.querySelector('.upload-sections-container');
+    
+    if (connected) {
+        statusBadge.textContent = 'Connected';
+        statusBadge.className = 'badge bg-success me-2';
+        connectionForm.classList.add('d-none');
+        connectionSuccess.classList.remove('d-none');
+        connectedDbInfo.textContent = `Connected to: ${dbName}`;
+        
+        // Show disconnect button
+        disconnectBtn.classList.remove('d-none');
+        
+        // Enable upload sections
+        uploadSectionsContainer.classList.remove('no-database');
+        
+        // Disable form inputs
+        document.getElementById('dbName').disabled = true;
+        document.getElementById('dbUrl').disabled = true;
+        document.getElementById('connectBtn').disabled = true;
+    } else {
+        statusBadge.textContent = 'Not Connected';
+        statusBadge.className = 'badge bg-secondary me-2';
+        connectionForm.classList.remove('d-none');
+        connectionSuccess.classList.add('d-none');
+        
+        // Hide disconnect button
+        disconnectBtn.classList.add('d-none');
+        
+        // Disable upload sections
+        uploadSectionsContainer.classList.add('no-database');
+        
+        // Enable form inputs
+        document.getElementById('dbName').disabled = false;
+        document.getElementById('dbUrl').disabled = false;
+        document.getElementById('connectBtn').disabled = false;
+    }
+}
+
+// Disconnect from current database
+async function disconnectDatabase() {
+    // Show custom confirmation modal
+    const confirmed = await showConfirmModal(
+        'Disconnect Database',
+        'Are you sure you want to disconnect from the current database? This will clear all active connections and reset the upload section.'
+    );
+    
+    if (!confirmed) {
+        return;
+    }
+    
+    try {
+        // Show disconnecting animation
+        showDisconnectingAnimation();
+        
+        // Simulate disconnection delay for better UX
+        await new Promise(resolve => setTimeout(resolve, 1000));
+        
+        // Clear current database connection
+        currentDatabaseId = null;
+        
+        // Update UI to disconnected state
+        updateConnectionStatus(false, '');
+        
+        // Reset upload section
+        resetUploadSection();
+        
+        // Reset uploaded types tracking
+        uploadedTypes.subjects = false;
+        uploadedTypes.labs = false;
+        uploadedTypes.aes = false;
+        updateUploadBadges();
+        
+        // Clear any running pipeline status
+        const runBtn = document.getElementById('runPipelineBtn');
+        runBtn.disabled = true;
+        runBtn.innerHTML = '<i class="fas fa-play"></i> Run Pipeline (Connect Database First)';
+        
+        // Reset pipeline boxes
+        ['bronze-box', 'silver-box', 'gold-box', 'prediction-box'].forEach(boxId => {
+            const box = document.getElementById(boxId);
+            if (box) {
+                box.classList.remove('completed', 'running');
+                box.querySelector('.pipeline-status').textContent = 'Ready';
+                box.querySelector('.pipeline-timestamp').textContent = '';
+            }
+        });
+        
+        // Hide disconnecting animation
+        hideDisconnectingAnimation();
+        
+        // Show success notification
+        showNotification('Database disconnected successfully', 'success');
+        
+    } catch (error) {
+        hideDisconnectingAnimation();
+        console.error('Failed to disconnect database:', error);
+        showNotification('Error disconnecting from database', 'error');
+    }
+}
+
+// Show connecting animation
+function showConnectingAnimation() {
+    const overlay = document.getElementById('connectionProgressOverlay');
+    const progressText = document.getElementById('connectionProgressText');
+    const progressBar = document.getElementById('connectionProgressBar');
+    const connectBtn = document.getElementById('connectBtn');
+    
+    // Show overlay
+    overlay.style.display = 'flex';
+    overlay.classList.add('connecting');
+    progressText.textContent = 'Connecting to database...';
+    
+    // Animate progress bar - extended for slow connections
+    setTimeout(() => {
+        progressBar.style.width = '20%';
+    }, 200);
+    setTimeout(() => {
+        progressBar.style.width = '40%';
+    }, 600);
+    setTimeout(() => {
+        progressBar.style.width = '60%';
+    }, 1200);
+    setTimeout(() => {
+        progressBar.style.width = '80%';
+    }, 2000);
+    setTimeout(() => {
+        progressBar.style.width = '95%';
+    }, 3000);
+}
+
+// Hide connecting animation
+function hideConnectingAnimation() {
+    const overlay = document.getElementById('connectionProgressOverlay');
+    const connectBtn = document.getElementById('connectBtn');
+    
+    // Hide overlay with fade out
+    overlay.classList.remove('connecting');
+    overlay.style.animation = 'overlayFadeIn 0.3s ease-in reverse';
+    setTimeout(() => {
+        overlay.style.display = 'none';
+        overlay.style.animation = '';
+    }, 300);
+    
+    // Reset main connect button if it was modified
+    if (connectBtn && connectBtn.textContent === 'Connecting...') {
+        connectBtn.textContent = 'Connect Database';
+        connectBtn.disabled = false;
+    }
+}
+
+// Show disconnecting animation
+function showDisconnectingAnimation() {
+    const overlay = document.getElementById('connectionProgressOverlay');
+    const progressText = document.getElementById('connectionProgressText');
+    const progressBar = document.getElementById('connectionProgressBar');
+    const disconnectBtn = document.getElementById('disconnectBtn');
+    
+    // Show overlay
+    overlay.style.display = 'flex';
+    progressText.textContent = 'Disconnecting from database...';
+    
+    // Animate progress bar - extended for slow disconnections
+    setTimeout(() => {
+        progressBar.style.width = '20%';
+    }, 200);
+    setTimeout(() => {
+        progressBar.style.width = '40%';
+    }, 600);
+    setTimeout(() => {
+        progressBar.style.width = '60%';
+    }, 1200);
+    setTimeout(() => {
+        progressBar.style.width = '80%';
+    }, 2000);
+    setTimeout(() => {
+        progressBar.style.width = '95%';
+    }, 3000);
+    
+    // Update button text without spinner
+    disconnectBtn.disabled = true;
+    disconnectBtn.textContent = 'Disconnecting...';
+}
+
+// Hide disconnecting animation
+function hideDisconnectingAnimation() {
+    const overlay = document.getElementById('connectionProgressOverlay');
+    const disconnectBtn = document.getElementById('disconnectBtn');
+    
+    // Hide overlay with fade out
+    overlay.classList.remove('connecting');
+    overlay.style.animation = 'overlayFadeIn 0.3s ease-in reverse';
+    setTimeout(() => {
+        overlay.style.display = 'none';
+        overlay.style.animation = '';
+    }, 300);
+    
+    // Reset disconnect button if it was modified
+    if (disconnectBtn && disconnectBtn.textContent === 'Disconnecting...') {
+        disconnectBtn.textContent = 'Disconnect';
+        disconnectBtn.disabled = false;
+    }
+}
+
+// Show custom confirmation modal
+function showConfirmModal(title, message) {
+    return new Promise((resolve) => {
+        const modal = document.getElementById('confirmModal');
+        const modalTitle = document.getElementById('confirmModalTitle');
+        const modalMessage = document.getElementById('confirmModalMessage');
+        const confirmBtn = document.getElementById('confirmModalBtn');
+        
+        modalTitle.textContent = title;
+        modalMessage.textContent = message;
+        confirmBtn.textContent = 'Confirm';
+        confirmBtn.className = 'btn btn-danger';
+        
+        modal.style.display = 'block';
+        
+        // Handle confirm button click
+        confirmBtn.onclick = () => {
+            modal.style.display = 'none';
+            resolve(true);
+        };
+        
+        // Handle cancel button click
+        const cancelBtn = modal.querySelector('.btn-secondary');
+        cancelBtn.onclick = () => {
+            modal.style.display = 'none';
+            resolve(false);
+        };
+        
+        // Handle close button click
+        const closeBtn = modal.querySelector('.btn-close');
+        closeBtn.onclick = () => {
+            modal.style.display = 'none';
+            resolve(false);
+        };
+        
+        // Close on escape key
+        const handleEscape = (e) => {
+            if (e.key === 'Escape') {
+                modal.style.display = 'none';
+                resolve(false);
+                document.removeEventListener('keydown', handleEscape);
+            }
+        };
+        document.addEventListener('keydown', handleEscape);
+    });
+}
+
+// Close confirmation modal
+function closeConfirmModal() {
+    const modal = document.getElementById('confirmModal');
+    modal.style.display = 'none';
+}
+
+// Reset upload section
+function resetUploadSection() {
+    // Clear file lists - check if elements exist first
+    const subjectsList = document.getElementById('subjectsFileList');
+    const labsList = document.getElementById('labsFileList');
+    const aesList = document.getElementById('aesFileList');
+    
+    if (subjectsList) subjectsList.innerHTML = '';
+    if (labsList) labsList.innerHTML = '';
+    if (aesList) aesList.innerHTML = '';
+    
+    // Reset upload areas
+    document.querySelectorAll('.upload-area').forEach(area => {
+        area.classList.remove('has-file');
+    });
+    
+    // Update button states
+    updateRunPipelineButtonState();
+}
+
+// Navigate to file history page
+function toggleFileHistory() {
+    window.location.href = '/file-history';
+}
+
+// Navigate to unprocessed files page
+function toggleUnprocessedFiles() {
+    window.location.href = '/unprocessed-files';
+}
+
+function downloadUnprocessed() {
+    if (!currentDatabaseId) { showNotification('Connect a database first', 'warning'); return; }
+    window.location.href = `/api/unprocessed/download?database_id=${currentDatabaseId}`;
+}
+
+// Load file history
+async function loadFileHistory() {
+    try {
+        const files = await makeRequest('/api/files/list');
+        const content = document.getElementById('fileHistoryContent');
+        
+        // Handle API errors
+        if (!files || typeof files !== 'object') {
+            content.innerHTML = `
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle"></i> Unable to load file history. Please try again.
+                </div>
+            `;
+            return;
+        }
+        
+        // Handle different response formats
+        let fileList = [];
+        if (Array.isArray(files)) {
+            fileList = files;
+        } else if (files.success && Array.isArray(files.data)) {
+            fileList = files.data;
+        } else if (files.success === false) {
+            content.innerHTML = `
+                <div class="alert alert-danger">
+                    <i class="fas fa-exclamation-triangle"></i> ${files.message || 'Failed to load file history'}
+                </div>
+            `;
+            return;
+        } else {
+            console.error('Unexpected files response format:', files);
+            content.innerHTML = `
+                <div class="alert alert-warning">
+                    <i class="fas fa-exclamation-triangle"></i> Unexpected response format. Please refresh the page.
+                </div>
+            `;
+            return;
+        }
+        
+        if (fileList.length === 0) {
+            content.innerHTML = `
+                <div class="text-center text-muted">
+                    <i class="fas fa-file fa-3x mb-3"></i>
+                    <p>No files uploaded yet.</p>
+                </div>
+            `;
+            return;
+        }
+        
+        content.innerHTML = fileList.map(file => `
+            <div class="file-info-card" id="file-card-${file.id}">
+                <div class="file-card-header">
+                    <div>
+                        <div class="file-card-title">${file.original_filename || file.filename || 'Unknown file'}</div>
+                        <div class="file-card-meta">
+                            Type: ${file.file_type || 'Unknown'} | 
+                            Records: ${file.record_count || 0} | 
+                            Size: ${formatFileSize(file.file_size || 0)} | 
+                            Uploaded: ${file.uploaded_at ? new Date(file.uploaded_at).toLocaleString() : 'Unknown'}
+                        </div>
+                    </div>
+                    <div>
+                        <button class="delete-btn me-2" onclick="deleteFile(${file.id})">
+                            <i class="fas fa-trash"></i> Delete
+                        </button>
+                        <button class="close-card-btn" onclick="closeFileCard(${file.id})">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+        
+    } catch (error) {
+        console.error('Failed to load file history:', error);
+        document.getElementById('fileHistoryContent').innerHTML = `
+            <div class="alert alert-danger">
+                <i class="fas fa-exclamation-triangle"></i> Failed to load file history: ${error.message}
+            </div>
+        `;
+    }
+}
+
+// Load unprocessed files
+async function loadUnprocessedFiles() {
+    try {
+        const status = await makeRequest('/api/files/upload_status');
+        const content = document.getElementById('unprocessedFilesContent');
+        
+        if (!status.success || status.data.unprocessed_files.length === 0) {
+            content.innerHTML = `
+                <div class="text-center text-muted">
+                    <i class="fas fa-check-circle fa-3x mb-3"></i>
+                    <p>All files processed successfully!</p>
+                </div>
+            `;
+            return;
+        }
+        
+        const unprocessedFiles = status.data.unprocessed_files;
+        content.innerHTML = unprocessedFiles.map((file, index) => `
+            <div class="file-info-card unprocessed" id="unprocessed-card-${index}">
+                <div class="file-card-header">
+                    <div>
+                        <div class="file-card-title">${file.filename}</div>
+                        <div class="file-card-meta">
+                            Type: ${file.file_type} | 
+                            Status: ${file.status}
+                        </div>
+                        <div class="mt-2">
+                            <strong>Failure Reason:</strong> File validation failed. Please check the file format and required columns.
+                        </div>
+                    </div>
+                    <div>
+                        <button class="close-card-btn" onclick="closeUnprocessedCard(${index})">
+                            <i class="fas fa-times"></i>
+                        </button>
+                    </div>
+                </div>
+            </div>
+        `).join('');
+        
+    } catch (error) {
+        console.error('Failed to load unprocessed files:', error);
+        document.getElementById('unprocessedFilesContent').innerHTML = `
+            <div class="alert alert-danger">
+                <i class="fas fa-exclamation-triangle"></i> Failed to load unprocessed files
+            </div>
+        `;
+    }
+}
+
+// Close file card
+function closeFileCard(fileId) {
+    const card = document.getElementById(`file-card-${fileId}`);
+    if (card) {
+        card.style.transition = 'all 0.3s ease';
+        card.style.opacity = '0';
+        card.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            card.remove();
+        }, 300);
+    }
+}
+
+// Close unprocessed card
+function closeUnprocessedCard(index) {
+    const card = document.getElementById(`unprocessed-card-${index}`);
+    if (card) {
+        card.style.transition = 'all 0.3s ease';
+        card.style.opacity = '0';
+        card.style.transform = 'translateX(100%)';
+        setTimeout(() => {
+            card.remove();
+        }, 300);
+    }
+}
+
+// Delete file
+async function deleteFile(fileId) {
+    if (!confirm('Are you sure you want to delete this file?')) {
+        return;
+    }
+    
+    try {
+        const response = await makeRequest(`/api/files/${fileId}/delete`, {
+            method: 'DELETE'
+        });
+        
+        if (response.success) {
+            loadFileHistory();
+            loadUnprocessedFiles();
+            checkPipelineStatus();
+        }
+    } catch (error) {
+        console.error('Failed to delete file:', error);
+    }
+}
+
+// Format file size
+function formatFileSize(bytes) {
+    if (bytes === 0) return '0 Bytes';
+    const k = 1024;
+    const sizes = ['Bytes', 'KB', 'MB', 'GB'];
+    const i = Math.floor(Math.log(bytes) / Math.log(k));
+    return parseFloat((bytes / Math.pow(k, i)).toFixed(2)) + ' ' + sizes[i];
+}
+
+// Track which file types have been successfully uploaded this session
+const uploadedTypes = { subjects: false, labs: false, aes: false };
+
+// Mark a file type as successfully uploaded and re-evaluate button
+function markFileTypeUploaded(fileType, success) {
+    uploadedTypes[fileType] = success;
+    updateRunPipelineButtonState();
+    updateUploadBadges();
+}
+
+// Show visual badge on each upload section
+function updateUploadBadges() {
+    ['subjects', 'labs', 'aes'].forEach(ft => {
+        const section = document.querySelector(`[data-file-type="${ft}"]`);
+        if (!section) return;
+        const area = section.querySelector('.upload-area');
+        if (uploadedTypes[ft]) {
+            area.style.borderColor = '#28a745';
+            area.style.background = 'rgba(40,167,69,0.07)';
+        } else {
+            area.style.borderColor = '';
+            area.style.background = '';
+        }
+    });
+}
+
+// Upload button click handlers
+function handleSubjectsFileClick() {
+    if (!currentDatabaseId) {
+        showNotification('Please connect to a database first before uploading files', 'error');
+        return;
+    }
+    document.getElementById('subjectsFile').click();
+}
+
+function handleLabsFileClick() {
+    if (!currentDatabaseId) {
+        showNotification('Please connect to a database first before uploading files', 'error');
+        return;
+    }
+    document.getElementById('labsFile').click();
+}
+
+function handleAESFileClick() {
+    if (!currentDatabaseId) {
+        showNotification('Please connect to a database first before uploading files', 'error');
+        return;
+    }
+    document.getElementById('aesFile').click();
+}
+
+// File upload functionality
+const uploadedFilesSet = new Set();
+const CHUNK_SIZE = 2 * 1024 * 1024; // 2MB chunks for better performance
+
+async function handleFileUpload(file, fileType) {
+    console.log('🚀 handleFileUpload called');
+    console.log('📁 File:', file.name, 'Type:', fileType, 'Size:', file.size);
+    console.log('🔍 currentDatabaseId:', currentDatabaseId);
+    
+    // Check database connection first
+    if (!currentDatabaseId) {
+        showNotification('Please connect to a database first before uploading files', 'error');
+        return;
+    }
+    
+    if (uploadedFilesSet.has(file.name)) {
+        showUploadResult(fileType, 'File already uploaded', false);
+        return;
+    }
+
+    // Use chunked upload for files larger than 500KB for better performance
+    const CHUNK_THRESHOLD = 500 * 1024; // 500KB threshold
+    
+    console.log(`📊 File size: ${file.size} bytes, Threshold: ${CHUNK_THRESHOLD} bytes`);
+    
+    if (file.size > CHUNK_THRESHOLD) {
+        console.log('📊 Using CHUNKED upload for large file');
+        await handleChunkedUpload(file, fileType);
+    } else {
+        console.log('📊 Using REGULAR upload for small file');
+        await handleRegularUpload(file, fileType);
+    }
+}
+
+async function handleChunkedUpload(file, fileType) {
+    // Generate unique upload ID
+    const uploadId = generateUploadId();
+    const totalChunks = Math.ceil(file.size / CHUNK_SIZE);
+    
+    console.log(`📊 Will upload ${totalChunks} chunks of ${CHUNK_SIZE} bytes each sequentially`);
+    
+    showUploadProgress(fileType, 0);
+    
+    try {
+        // Upload chunks SEQUENTIALLY to avoid session conflicts
+        console.log(`🚀 Starting SEQUENTIAL upload of ${totalChunks} chunks`);
+        
+        for (let chunkIndex = 0; chunkIndex < totalChunks; chunkIndex++) {
+            const start = chunkIndex * CHUNK_SIZE;
+            const end = Math.min(start + CHUNK_SIZE, file.size);
+            const chunk = file.slice(start, end);
+            
+            console.log(`📤 Uploading chunk ${chunkIndex + 1}/${totalChunks} (${chunk.size} bytes)`);
+            
+            const formData = new FormData();
+            formData.append('chunk', chunk);
+            formData.append('chunk_index', chunkIndex);
+            formData.append('total_chunks', totalChunks);
+            formData.append('file_type', fileType);
+            formData.append('database_id', currentDatabaseId);
+            formData.append('filename', file.name);
+            formData.append('file_size', file.size);
+            formData.append('upload_id', uploadId);
+            
+            let result;
+            try {
+            const response = await fetch('/api/files/upload_chunked?v=' + Date.now(), {
+                method: 'POST',
+                body: formData
+            });
+            
+            console.log(`📊 Response status: ${response.status}`);
+            console.log(`📊 Response headers: ${response.headers.get('content-type')}`);
+            console.log(`📊 Response URL was: /api/files/upload_chunked`);
+            console.log(`📊 Request URL being called:`, '/api/files/upload_chunked');
+            
+            if (!response.ok) {
+                console.error(`❌ HTTP Error: Chunk ${chunkIndex + 1} upload failed: ${response.status}`);
+                throw new Error(`Chunk ${chunkIndex + 1} upload failed: ${response.status}`);
+            }
+            
+            result = await response.json();
+            console.log(`📊 Chunk result:`, result);
+            
+            if (!result.success) {
+                console.error(`❌ Server Error: Chunk ${chunkIndex + 1}: ${result.message}`);
+                throw new Error(`Chunk ${chunkIndex + 1}: ${result.message}`);
+            }
+        } catch (error) {
+            console.error(`❌ Fetch Error: Chunk ${chunkIndex + 1}: ${error.message}`);
+            throw error;
+        }
+            
+            // Update progress
+            const progress = Math.round(((chunkIndex + 1) / totalChunks) * 100);
+            const chunkInfo = `Chunk ${chunkIndex + 1}/${totalChunks}`;
+            showUploadProgress(fileType, progress, chunkInfo);
+            
+            console.log(`✅ Chunk ${chunkIndex + 1}/${totalChunks} uploaded successfully`);
+            
+            // If this is the last chunk, check the final result
+            if (chunkIndex === totalChunks - 1) {
+                console.log('📊 Final chunk processed, checking result...');
+                
+                if (result.success && result.file) {
+                    uploadedFilesSet.add(file.name);
+                    showUploadResult(fileType, result.message, true, result.file);
+                    loadFileHistory();
+                    loadUnprocessedFiles();
+                    updateRunPipelineButtonState();
+                } else if (result.success) {
+                    showUploadResult(fileType, result.message, true);
+                    updateRunPipelineButtonState();
+                } else {
+                    showUploadResult(fileType, result.message || 'Upload failed', false);
+                }
+            }
+        }
+        
+    } catch (error) {
+        console.error('❌ Sequential chunked upload error:', error);
+        showUploadResult(fileType, `Upload failed: ${error.message}`, false);
+    }
+}
+
+async function uploadChunk(chunk, chunkIndex, totalChunks, fileType, uploadId, file) {
+    const start = chunkIndex * CHUNK_SIZE;
+    const end = Math.min(start + CHUNK_SIZE, file.size);
+    
+    console.log(`�� Uploading chunk ${chunkIndex + 1}/${totalChunks} (${chunk.size} bytes)`);
+    
+    const formData = new FormData();
+    formData.append('chunk', chunk);
+    formData.append('chunk_index', chunkIndex);
+    formData.append('total_chunks', totalChunks);
+    formData.append('file_type', fileType);
+    formData.append('database_id', currentDatabaseId);
+    formData.append('filename', file.name);
+    formData.append('file_size', file.size);
+    formData.append('upload_id', uploadId);
+    
+    const response = await fetch('/api/files/upload_chunked', {
+        method: 'POST',
+        body: formData
+    });
+    
+    if (!response.ok) {
+        throw new Error(`Chunk ${chunkIndex + 1} upload failed: ${response.status}`);
+    }
+    
+    const result = await response.json();
+    
+    if (!result.success) {
+        throw new Error(`Chunk ${chunkIndex + 1}: ${result.message}`);
+    }
+    
+    // Update progress
+    const progress = Math.round(((chunkIndex + 1) / totalChunks) * 100);
+    const chunkInfo = `Chunk ${chunkIndex + 1}/${totalChunks}`;
+    showUploadProgress(fileType, progress, chunkInfo);
+    
+    console.log(`✅ Chunk ${chunkIndex + 1}/${totalChunks} uploaded successfully`);
+    
+    return result;
+}
+
+async function handleRegularUpload(file, fileType) {
+    const formData = new FormData();
+    formData.append('file', file);
+    formData.append('file_type', fileType);
+    formData.append('database_id', currentDatabaseId);
+    console.log('✅ Added database_id to form data:', currentDatabaseId);
+
+    showUploadProgress(fileType, 0);
+
+    try {
+        console.log('📡 Making upload request to /api/files/upload_optimized');
+        const response = await fetch('/api/files/upload_optimized', {
+            method: 'POST',
+            body: formData
+        });
+        
+        console.log('📊 Upload response status:', response.status);
+        console.log('📊 Upload response headers:', response.headers.get('content-type'));
+        
+        // Check if response is JSON before parsing
+        const contentType = response.headers.get('content-type');
+        if (!contentType || !contentType.includes('application/json')) {
+            console.error('❌ Response is not JSON:', response.text());
+            showUploadResult(fileType, 'Server returned non-JSON response', false);
+            return;
+        }
+
+        const result = await response.json();
+        console.log('📊 Upload result:', result);
+
+        if (result.success) {
+            uploadedFilesSet.add(file.name);
+            showUploadResult(fileType, result.message, true, result.file);
+            loadFileHistory();
+            loadUnprocessedFiles();
+            updateRunPipelineButtonState();
+        } else {
+            // Handle duplicate file case
+            if (result.duplicate) {
+                showUploadResult(fileType, result.message + ' (Duplicate file not uploaded)', false);
+            } else {
+                showUploadResult(fileType, result.message, false);
+            }
+        }
+    } catch (error) {
+        console.error('❌ Upload error:', error);
+        showUploadResult(fileType, `Upload failed: ${error.message}`, false);
+    }
+}
+
+function generateUploadId() {
+    return Date.now().toString(36) + Math.random().toString(36).substr(2);
+}
+
+function showUploadProgress(fileType, progress, chunkInfo = null) {
+    const section = document.querySelector(`[data-file-type="${fileType}"]`);
+    const progressDiv = section.querySelector('.upload-progress');
+    const progressBar = progressDiv.querySelector('.progress-bar');
+    
+    progressDiv.classList.remove('d-none');
+    progressBar.style.width = `${progress}%`;
+    
+    if (chunkInfo) {
+        progressBar.textContent = `${progress}% - ${chunkInfo}`;
+    } else {
+        progressBar.textContent = `${progress}%`;
+    }
+}
+
+function showUploadResult(fileType, message, success, fileData = null) {
+    const section = document.querySelector(`[data-file-type="${fileType}"]`);
+    const resultDiv = section.querySelector('.upload-result');
+    const progressDiv = section.querySelector('.upload-progress');
+    
+    progressDiv.classList.add('d-none');
+    resultDiv.classList.remove('d-none');
+    
+    const alertClass = success ? 'alert-success' : 'alert-danger';
+    const icon = success ? 'fa-check-circle' : 'fa-exclamation-triangle';
+    
+    let content = `
+        <div class="alert ${alertClass}">
+            <i class="fas ${icon}"></i> ${message}
+        </div>
+    `;
+    
+    if (fileData) {
+        content += `
+            <small class="text-muted">
+                Records: ${fileData.record_count || 0} | 
+                Size: ${formatFileSize(fileData.file_size)}
+            </small>
+        `;
+    }
+    
+    resultDiv.innerHTML = content;
+
+    // Track upload success per type and update button
+    markFileTypeUploaded(fileType, success);
+}
+
+// Setup file upload handlers
+['subjects', 'labs', 'aes'].forEach(fileType => {
+    const fileInput = document.getElementById(`${fileType}File`);
+    const uploadArea = document.getElementById(`${fileType}UploadArea`);
+    
+    fileInput.addEventListener('change', (e) => {
+        const file = e.target.files[0];
+        if (file) {
+            handleFileUpload(file, fileType);
+        }
+    });
+    
+    // Drag and drop
+    uploadArea.addEventListener('dragover', (e) => {
+        e.preventDefault();
+        uploadArea.classList.add('border-primary', 'bg-light');
+    });
+    
+    uploadArea.addEventListener('dragleave', (e) => {
+        e.preventDefault();
+        uploadArea.classList.remove('border-primary', 'bg-light');
+    });
+    
+    uploadArea.addEventListener('drop', (e) => {
+        e.preventDefault();
+        uploadArea.classList.remove('border-primary', 'bg-light');
+        
+        const file = e.dataTransfer.files[0];
+        if (file) {
+            handleFileUpload(file, fileType);
+        }
+    });
+});
+
+// Pipeline functionality
+async function runPipeline() {
+    console.log('🚀 runPipeline function called');
+    console.log('🔍 currentDatabaseId:', currentDatabaseId);
+    
+    if (!currentDatabaseId) {
+        console.log('❌ No database connection');
+        alert('Please connect to a database first');
+        return;
+    }
+
+    console.log('🔄 Starting pipeline request...');
+    
+    // Show loading state
+    const runBtn = document.getElementById('runPipelineBtn');
+    const originalText = runBtn.innerHTML;
+    runBtn.disabled = true;
+    runBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Starting Pipeline...';
+
+    try {
+        console.log('📡 Making API request to /api/pipeline/run');
+        const formData = new FormData();
+        formData.append('database_id', currentDatabaseId);
+        const response = await fetch('/api/pipeline/run', {
+            method: 'POST',
+            body: formData
+        });
+        const responseData = await response.json();
+        
+        if (responseData.success) {
+            console.log('✅ Pipeline started successfully');
+            
+            // Add a small delay to ensure the first status check shows 'running'
+            setTimeout(() => {
+                // Start monitoring pipeline status
+                monitorPipeline();
+            }, 500);
+        } else {
+            console.log('❌ Pipeline failed to start:', responseData.message);
+            alert(`Failed to start pipeline: ${responseData.message}`);
+            runBtn.disabled = false;
+            runBtn.innerHTML = originalText;
+        }
+    } catch (error) {
+        console.error('❌ Failed to run pipeline:', error);
+        alert(`Failed to run pipeline: ${error.message}`);
+        runBtn.disabled = false;
+        runBtn.innerHTML = originalText;
+    }
+}
+
+async function resetPipeline() {
+    if (!currentDatabaseId) return;
+
+    try {
+        const response = await makeRequest('/api/pipeline/reset', {
+            method: 'POST',
+            body: JSON.stringify({ database_id: currentDatabaseId })
+        });
+
+        if (response.success) {
+            checkPipelineStatus();
+        }
+    } catch (error) {
+        console.error('Failed to reset pipeline:', error);
+    }
+}
+
+async function forceCompletePipeline() {
+    if (!currentDatabaseId) return;
+
+    try {
+        const response = await makeRequest('/api/pipeline/force_complete', {
+            method: 'POST',
+            body: JSON.stringify({ database_id: currentDatabaseId })
+        });
+
+        if (response.success) {
+            checkPipelineStatus();
+        }
+    } catch (error) {
+        console.error('Failed to force complete pipeline:', error);
+    }
+}
+
+// Pipeline status monitoring
+async function checkPipelineStatus() {
+    if (!currentDatabaseId) return;
+    
+    try {
+        const status = await makeRequest(`/api/pipeline/status?database_id=${currentDatabaseId}`);
+        updatePipelineUI(status.data);
+    } catch (error) {
+        console.error('Failed to check pipeline status:', error);
+    }
+}
+
+function updatePipelineUI(status) {
+    const stages = ['bronze', 'silver', 'gold', 'prediction'];
+    const stageLabels = {
+        bronze: 'Raw data validated',
+        silver: 'Data cleaned & pseudonymized',
+        gold: 'Analytics-ready data built',
+        prediction: 'Risk predictions generated'
+    };
+
+    stages.forEach(stage => {
+        const box = document.getElementById(`${stage}-box`);
+        const stageStatus = status[stage];
+        const statusEl = box.querySelector('.pipeline-status');
+        const tsEl = box.querySelector('.pipeline-timestamp');
+
+        box.className = 'pipeline-box';
+
+        if (stageStatus === 'running') {
+            box.classList.add('processing');
+            statusEl.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Processing...';
+            if (tsEl) tsEl.textContent = '';
+        } else if (stageStatus === 'completed') {
+            box.classList.add('completed');
+            statusEl.innerHTML = `<i class="fas fa-check-circle text-success"></i> ${stageLabels[stage]}`;
+            if (tsEl) tsEl.textContent = 'Done';
+        } else {
+            statusEl.textContent = 'Waiting';
+            if (tsEl) tsEl.textContent = '';
+        }
+    });
+
+    // Button state
+    const runBtn = document.getElementById('runPipelineBtn');
+    const viewReportBtn = document.getElementById('viewReportBtn');
+
+    const allCompleted = stages.every(s => status[s] === 'completed');
+
+    if (allCompleted) {
+        // Pipeline already completed — show View Report, disable Run
+        runBtn.innerHTML = '<i class="fas fa-check-circle"></i> Pipeline Completed';
+        runBtn.classList.remove('btn-success');
+        runBtn.classList.add('btn-secondary');
+        runBtn.disabled = true;
+        viewReportBtn.classList.remove('d-none');
+
+        // Update progress bar
+        const progressBar = document.getElementById('pipelineProgressBar');
+        const statusText = document.getElementById('pipelineStatusText');
+        if (progressBar) {
+            progressBar.style.width = '100%';
+            progressBar.classList.remove('progress-bar-animated');
+            progressBar.classList.add('bg-success');
+        }
+        if (statusText) statusText.textContent = 'Pipeline completed successfully! All layers processed.';
+    } else if (status.overall_status === 'running') {
+        runBtn.disabled = true;
+        const running = stages.find(s => status[s] === 'running');
+        const stageNames = { bronze: 'Bronze', silver: 'Silver', gold: 'Gold', prediction: 'Prediction' };
+        runBtn.innerHTML = `<i class="fas fa-spinner fa-spin"></i> Running ${running ? stageNames[running] : ''}...`;
+    }
+}
+
+let pipelineMonitorInterval = null;
+
+function monitorPipeline() {
+    // Clear any existing monitor to prevent duplicate intervals
+    if (pipelineMonitorInterval) {
+        clearInterval(pipelineMonitorInterval);
+        pipelineMonitorInterval = null;
+    }
+
+    const runBtn = document.getElementById('runPipelineBtn');
+    runBtn.disabled = true;
+    runBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Starting Pipeline...';
+
+    // Reset all boxes to waiting state at pipeline start
+    ['bronze', 'silver', 'gold', 'prediction'].forEach(stage => {
+        const box = document.getElementById(`${stage}-box`);
+        box.className = 'pipeline-box';
+        box.querySelector('.pipeline-status').textContent = 'Waiting';
+    });
+
+    let completionNotified = false;
+
+    pipelineMonitorInterval = setInterval(async () => {
+        try {
+            const status = await makeRequest(`/api/pipeline/status?database_id=${currentDatabaseId}`);
+            updatePipelineUI(status.data);
+            updatePipelineProgress(status.data);
+
+            // Check all 4 stages completed
+            const allStages = ['bronze', 'silver', 'gold', 'prediction'];
+            const allCompleted = allStages.every(stage => status.data[stage] === 'completed');
+
+            if (allCompleted && !completionNotified) {
+                completionNotified = true;
+                clearInterval(pipelineMonitorInterval);
+                pipelineMonitorInterval = null;
+
+                // Button: completed state
+                runBtn.innerHTML = '<i class="fas fa-check-circle"></i> Pipeline Completed';
+                runBtn.classList.remove('btn-success');
+                runBtn.classList.add('btn-secondary');
+                runBtn.disabled = true;
+
+                // Show View Report button
+                const viewReportBtn = document.getElementById('viewReportBtn');
+                viewReportBtn.classList.remove('d-none');
+                viewReportBtn.classList.add('animate__animated', 'animate__fadeIn');
+
+                // Progress bar full green
+                const progressBar = document.getElementById('pipelineProgressBar');
+                const statusText = document.getElementById('pipelineStatusText');
+                progressBar.style.width = '100%';
+                progressBar.classList.remove('progress-bar-animated');
+                progressBar.classList.add('bg-success');
+                statusText.textContent = 'Pipeline completed successfully! All layers processed.';
+
+                showNotification('Pipeline complete! Click "View Report" to see the Clinical Safety Summary Report.', 'success');
+
+                // Refresh file history
+                loadFileHistory();
+                loadUnprocessedFiles();
+
+                // Notify other pages to refresh their data
+                localStorage.setItem('pipeline_completed', JSON.stringify({
+                    database_id: currentDatabaseId,
+                    timestamp: Date.now()
+                }));
+            }
+        } catch (error) {
+            console.error('Pipeline monitoring error:', error);
+        }
+    }, 2000);
+}
+
+// Update pipeline progress bar and status text
+function updatePipelineProgress(status) {
+    const progressBar = document.getElementById('pipelineProgressBar');
+    const statusText = document.getElementById('pipelineStatusText');
+
+    const stages = ['bronze', 'silver', 'gold', 'prediction'];
+    const stageDescriptions = {
+        bronze: 'Bronze: Validating raw ingested data...',
+        silver: 'Silver: Cleaning, standardizing & pseudonymizing data...',
+        gold:   'Gold: Building analytics-ready tables with safety signals...',
+        prediction: 'Prediction: Generating site risk predictions...'
+    };
+
+    const completedCount = stages.filter(s => status[s] === 'completed').length;
+    const runningStage  = stages.find(s => status[s] === 'running');
+
+    // Progress = completed stages + 0.5 for the currently running one
+    const progressPct = ((completedCount + (runningStage ? 0.5 : 0)) / stages.length) * 100;
+    progressBar.style.width = `${progressPct}%`;
+
+    if (status.overall_status === 'running') {
+        progressBar.classList.add('progress-bar-animated');
+        progressBar.classList.remove('bg-success');
+        statusText.textContent = runningStage
+            ? stageDescriptions[runningStage]
+            : 'Starting pipeline...';
+    } else if (completedCount === stages.length) {
+        progressBar.style.width = '100%';
+        progressBar.classList.remove('progress-bar-animated');
+        progressBar.classList.add('bg-success');
+        statusText.textContent = 'Pipeline completed successfully! All layers processed.';
+    } else {
+        progressBar.classList.remove('progress-bar-animated', 'bg-success');
+        statusText.textContent = 'Ready to start pipeline';
+    }
+}
+
+function openReport() {
+    window.open(`/report?database_id=${currentDatabaseId}`, '_blank');
+}
+
+// Event listeners
+document.getElementById('runPipelineBtn').addEventListener('click', runPipeline);
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+    // Don't auto-load database - require manual connection
+    // loadCurrentDatabase();
+    
+    // DISABLE automatic pipeline status monitoring to prevent interference
+    // setInterval(checkPipelineStatus, 5000);
+    
+    // Check button state immediately
+    setTimeout(updateRunPipelineButtonState, 1000);
+});
+
+// Update run pipeline button state
+function updateRunPipelineButtonState() {
+    const runBtn = document.getElementById('runPipelineBtn');
+    if (!runBtn) return;
+
+    if (!currentDatabaseId) {
+        runBtn.disabled = true;
+        runBtn.innerHTML = '<i class="fas fa-play"></i> Run Pipeline (Connect Database First)';
+        return;
+    }
+
+    const allUploaded = uploadedTypes.subjects && uploadedTypes.labs && uploadedTypes.aes;
+
+    if (allUploaded) {
+        runBtn.disabled = false;
+        runBtn.removeAttribute('disabled');
+        runBtn.innerHTML = '<i class="fas fa-play"></i> Run Pipeline';
+    } else {
+        runBtn.disabled = true;
+        const missing = Object.entries(uploadedTypes)
+            .filter(([, v]) => !v)
+            .map(([k]) => k)
+            .join(', ');
+        runBtn.innerHTML = `<i class="fas fa-play"></i> Run Pipeline (Upload ${missing} first)`;
+    }
+}
+
+// Manual override function for debugging
+function forceEnablePipelineButton() {
+    const runBtn = document.getElementById('runPipelineBtn');
+    if (runBtn) {
+        console.log('🔧 Force enabling pipeline button');
+        runBtn.disabled = false;
+        runBtn.removeAttribute('disabled');
+        runBtn.classList.remove('disabled');
+        runBtn.innerHTML = '<i class="fas fa-play"></i> Run Pipeline';
+        console.log('✅ Button force enabled');
+    }
+}
+
+// Add to global scope for console access
+window.forceEnablePipelineButton = forceEnablePipelineButton;
+
+async function loadCurrentDatabase() {
+    try {
+        const response = await makeRequest('/api/database/current');
+        if (response.success) {
+            currentDatabaseId = response.database.id;
+            document.getElementById('dbConnectionStatus').innerHTML = `
+                <div class="alert alert-info">
+                    <i class="fas fa-info-circle"></i> Connected to: ${response.database.name}
+                </div>
+            `;
+            loadFileList();
+            checkPipelineStatus();
+            updateRunPipelineButtonState(); // Update button state
+        }
+    } catch (error) {
+        console.error('Failed to load current database:', error);
+        updateRunPipelineButtonState(); // Update button state even on error
+    }
+}
+
+async function loadFileList() {
+    // This function can be used to refresh the file list
+    // Implementation depends on your specific requirements
+}
+
+// Helper function for API requests
+async function makeRequest(url, options = {}) {
+    const defaultOptions = {
+        headers: {
+            'Content-Type': 'application/json',
+        },
+    };
+    
+    const response = await fetch(url, { ...defaultOptions, ...options });
+    
+    if (!response.ok) {
+        throw new Error(`HTTP error! status: ${response.status}`);
+    }
+    
+    return await response.json();
+}
+</script>
+{% endblock %}

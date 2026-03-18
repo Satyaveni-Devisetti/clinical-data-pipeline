@@ -1,0 +1,459 @@
+{% extends "base.html" %}
+{% block title %}Analytics – Clinical Data Pipeline{% endblock %}
+{% block content %}
+<div class="fade-in">
+
+<!-- ── GLOBAL FILTER BAR ─────────────────────────────────────────────────── -->
+<div class="card card-clinical mb-3">
+  <div class="card-body py-2">
+    <div class="row g-2 align-items-end">
+      <div class="col-auto"><label class="form-label mb-0 fw-semibold">Database</label>
+        <select class="form-select form-select-sm" id="dbSelect" onchange="onDbChange(this.value)"></select></div>
+      <div class="col-auto"><label class="form-label mb-0 fw-semibold">Site</label>
+        <select class="form-select form-select-sm" id="fSite"><option value="">All Sites</option></select></div>
+      <div class="col-auto"><label class="form-label mb-0 fw-semibold">Treatment Arm</label>
+        <select class="form-select form-select-sm" id="fArm"><option value="">All Arms</option></select></div>
+      <div class="col-auto"><label class="form-label mb-0 fw-semibold">Severity</label>
+        <select class="form-select form-select-sm" id="fSeverity"><option value="">All</option></select></div>
+      <div class="col-auto"><label class="form-label mb-0 fw-semibold">Lab Test</label>
+        <select class="form-select form-select-sm" id="fTest"><option value="">All Tests</option></select></div>
+      <div class="col-auto"><label class="form-label mb-0 fw-semibold">Date From</label>
+        <input type="date" class="form-control form-control-sm" id="fDateFrom"></div>
+      <div class="col-auto"><label class="form-label mb-0 fw-semibold">Date To</label>
+        <input type="date" class="form-control form-control-sm" id="fDateTo"></div>
+      <div class="col-auto pt-3">
+        <button class="btn btn-clinical btn-sm" onclick="applyFilters()"><i class="fas fa-filter"></i> Apply</button>
+        <button class="btn btn-outline-primary btn-sm ms-1" onclick="refreshAll()"><i class="fas fa-sync"></i> Refresh</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ── KPI STRIP ─────────────────────────────────────────────────────────── -->
+<div class="row g-3 mb-3">
+  <div class="col-6 col-md-3"><div class="metric-card"><div class="metric-value text-primary" id="kpiSubjects">—</div><div class="metric-label">Total Subjects</div></div></div>
+  <div class="col-6 col-md-3"><div class="metric-card"><div class="metric-value text-warning" id="kpiAEs">—</div><div class="metric-label">Total AEs</div></div></div>
+  <div class="col-6 col-md-3"><div class="metric-card"><div class="metric-value text-danger" id="kpiSerious">—</div><div class="metric-label">Serious AEs</div></div></div>
+  <div class="col-6 col-md-3"><div class="metric-card"><div class="metric-value text-info" id="kpiLabs">—</div><div class="metric-label">Lab Records</div></div></div>
+</div>
+
+<!-- ── ROW 1: Enrollment by Site | Gender Distribution ───────────────────── -->
+<div class="row g-3 mb-3">
+  <div class="col-md-7">
+    <div class="card card-clinical h-100">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-hospital-alt text-primary me-1"></i> Dashboard 1 — Study Enrollment by Site</span>
+        <small class="text-muted">gold_subjects · Bar Chart</small>
+      </div>
+      <div class="card-body"><div id="ch_enrollment" style="height:280px"></div></div>
+    </div>
+  </div>
+  <div class="col-md-5">
+    <div class="card card-clinical h-100">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-venus-mars text-info me-1"></i> Dashboard 2 — Gender Distribution</span>
+        <small class="text-muted">gold_subjects · Pie Chart</small>
+      </div>
+      <div class="card-body"><div id="ch_gender" style="height:280px"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ROW 2: Age Histogram | Treatment Arm ──────────────────────────────── -->
+<div class="row g-3 mb-3">
+  <div class="col-md-6">
+    <div class="card card-clinical h-100">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-chart-bar text-success me-1"></i> Dashboard 3 — Age Distribution</span>
+        <small class="text-muted">gold_subjects · Histogram</small>
+      </div>
+      <div class="card-body"><div id="ch_age" style="height:280px"></div></div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card card-clinical h-100">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-pills text-warning me-1"></i> Dashboard 4 — Treatment Arm Distribution</span>
+        <small class="text-muted">gold_subjects · Bar Chart</small>
+      </div>
+      <div class="card-body"><div id="ch_arm" style="height:280px"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ROW 3: AE by Severity | Serious vs Non-Serious ────────────────────── -->
+<div class="row g-3 mb-3">
+  <div class="col-md-6">
+    <div class="card card-clinical h-100">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-exclamation-triangle text-danger me-1"></i> Dashboard 5 — AEs by Severity</span>
+        <small class="text-muted">gold_ae · Bar Chart</small>
+      </div>
+      <div class="card-body"><div id="ch_ae_severity" style="height:280px"></div></div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card card-clinical h-100">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-heartbeat text-danger me-1"></i> Dashboard 13 — Serious vs Non-Serious AEs</span>
+        <small class="text-muted">gold_ae · Pie Chart</small>
+      </div>
+      <div class="card-body"><div id="ch_serious" style="height:280px"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ROW 4: Top AEs (horizontal) | AEs by Site ─────────────────────────── -->
+<div class="row g-3 mb-3">
+  <div class="col-md-7">
+    <div class="card card-clinical h-100">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-list-ol text-warning me-1"></i> Dashboard 6 — Most Common Adverse Events</span>
+        <small class="text-muted">gold_ae · Horizontal Bar</small>
+      </div>
+      <div class="card-body"><div id="ch_top_aes" style="height:320px"></div></div>
+    </div>
+  </div>
+  <div class="col-md-5">
+    <div class="card card-clinical h-100">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-map-marker-alt text-primary me-1"></i> Dashboard 7 — AEs by Site</span>
+        <small class="text-muted">gold_ae ⋈ gold_subjects · Bar Chart</small>
+      </div>
+      <div class="card-body"><div id="ch_ae_site" style="height:320px"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ROW 5: AE Timeline | ALT Trend ────────────────────────────────────── -->
+<div class="row g-3 mb-3">
+  <div class="col-md-6">
+    <div class="card card-clinical h-100">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-calendar-alt text-info me-1"></i> Dashboard 8 — Adverse Event Timeline</span>
+        <small class="text-muted">gold_ae · Line Chart</small>
+      </div>
+      <div class="card-body"><div id="ch_ae_timeline" style="height:280px"></div></div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card card-clinical h-100">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-flask text-success me-1"></i> Dashboard 9 — ALT Lab Result Trend</span>
+        <small class="text-muted">gold_labs (ALT) · Line Chart</small>
+      </div>
+      <div class="card-body"><div id="ch_alt_trend" style="height:280px"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ROW 6: Abnormal Labs | Safety Flags ────────────────────────────────── -->
+<div class="row g-3 mb-3">
+  <div class="col-md-6">
+    <div class="card card-clinical h-100">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-vials text-danger me-1"></i> Dashboard 10 — Abnormal Lab Results by Test</span>
+        <small class="text-muted">gold_labs · Bar Chart</small>
+      </div>
+      <div class="card-body"><div id="ch_abnormal" style="height:280px"></div></div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="card card-clinical h-100">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-shield-alt text-danger me-1"></i> Dashboard 11 — Safety Flag Distribution</span>
+        <small class="text-muted">gold_labs · Bar Chart</small>
+      </div>
+      <div class="card-body"><div id="ch_safety_flags" style="height:280px"></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ── ROW 7: Site Safety | Lab Trend Over Time ───────────────────────────── -->
+<div class="row g-3 mb-4">
+  <div class="col-md-5">
+    <div class="card card-clinical h-100">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-building text-warning me-1"></i> Dashboard 12 — Site Safety Performance</span>
+        <small class="text-muted">gold_labs ⋈ gold_subjects · Bar Chart</small>
+      </div>
+      <div class="card-body"><div id="ch_site_safety" style="height:280px"></div></div>
+    </div>
+  </div>
+  <div class="col-md-7">
+    <div class="card card-clinical h-100">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <span><i class="fas fa-chart-line text-success me-1"></i> Dashboard 14 — Lab Results Trend Over Time</span>
+        <small class="text-muted">gold_labs · Line Chart</small>
+      </div>
+      <div class="card-body">
+        <div class="mb-2">
+          <select class="form-select form-select-sm w-auto d-inline-block" id="labTrendTest" onchange="loadLabTrend()">
+            <option value="ALT">ALT</option><option value="AST">AST</option>
+            <option value="ALP">ALP</option><option value="TBILI">TBILI</option>
+            <option value="CREAT">CREAT</option><option value="GLUC">GLUC</option>
+            <option value="HGB">HGB</option><option value="WBC">WBC</option>
+          </select>
+        </div>
+        <div id="ch_lab_trend" style="height:240px"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+</div><!-- /fade-in -->
+{% endblock %}
+
+{% block scripts %}
+<script>
+const COLORS = {
+  blue:'#2563eb', green:'#16a34a', red:'#dc2626', orange:'#ea580c',
+  purple:'#7c3aed', teal:'#0d9488', yellow:'#ca8a04', pink:'#db2777',
+  slate:'#475569', indigo:'#4338ca',
+  palette:['#2563eb','#16a34a','#dc2626','#ea580c','#7c3aed','#0d9488','#ca8a04','#db2777','#1d4ed8','#15803d']
+};
+const LAYOUT_BASE = {
+  margin:{t:30,r:20,b:50,l:60},
+  paper_bgcolor:'rgba(0,0,0,0)',
+  plot_bgcolor:'rgba(248,250,252,1)',
+  font:{family:'Segoe UI,sans-serif',size:12,color:'#374151'},
+  xaxis:{gridcolor:'#e5e7eb',linecolor:'#d1d5db'},
+  yaxis:{gridcolor:'#e5e7eb',linecolor:'#d1d5db'}
+};
+const CFG = {responsive:true, displayModeBar:false};
+
+let dbId = null;
+
+/* ── helpers ── */
+function getFilters() {
+  return {
+    site: document.getElementById('fSite').value,
+    arm: document.getElementById('fArm').value,
+    severity: document.getElementById('fSeverity').value,
+    test: document.getElementById('fTest').value,
+    date_from: document.getElementById('fDateFrom').value,
+    date_to: document.getElementById('fDateTo').value,
+  };
+}
+
+function filterParams() {
+  const f = getFilters();
+  const p = new URLSearchParams({database_id: dbId});
+  if (f.site) p.set('site_id', f.site);
+  if (f.arm) p.set('arm', f.arm);
+  if (f.severity) p.set('severity', f.severity);
+  if (f.test) p.set('test_code', f.test);
+  if (f.date_from) p.set('date_from', f.date_from);
+  if (f.date_to) p.set('date_to', f.date_to);
+  return p.toString();
+}
+
+async function api(url){ const r=await fetch(url); return r.json(); }
+
+function empty(id, msg='No data available'){
+  const el=document.getElementById(id);
+  if(el) el.innerHTML=`<div class="d-flex align-items-center justify-content-center h-100 text-muted"><i class="fas fa-chart-bar me-2"></i>${msg}</div>`;
+}
+
+function bar(id, x, y, opts={}){
+  if(!x||!x.length){empty(id);return;}
+  Plotly.newPlot(id,[{x,y,type:'bar',marker:{color:opts.color||COLORS.blue,opacity:0.85},
+    hovertemplate:'%{x}<br><b>%{y}</b><extra></extra>',...(opts.trace||{})}],
+    {...LAYOUT_BASE,xaxis:{...LAYOUT_BASE.xaxis,title:opts.xTitle||'',tickangle:-30},
+     yaxis:{...LAYOUT_BASE.yaxis,title:opts.yTitle||'Count'},...(opts.layout||{})},CFG);
+}
+
+function hbar(id, x, y, opts={}){
+  if(!x||!x.length){empty(id);return;}
+  Plotly.newPlot(id,[{x,y,type:'bar',orientation:'h',marker:{color:opts.color||COLORS.orange,opacity:0.85},
+    hovertemplate:'%{y}<br><b>%{x}</b><extra></extra>'}],
+    {...LAYOUT_BASE,margin:{t:30,r:20,b:40,l:180},
+     xaxis:{...LAYOUT_BASE.xaxis,title:'Count'},
+     yaxis:{...LAYOUT_BASE.yaxis,title:'',automargin:true},...(opts.layout||{})},CFG);
+}
+
+function pie(id, labels, values, opts={}){
+  if(!labels||!labels.length){empty(id);return;}
+  Plotly.newPlot(id,[{labels,values,type:'pie',hole:opts.hole||0,
+    marker:{colors:COLORS.palette},
+    hovertemplate:'%{label}<br><b>%{value}</b> (%{percent})<extra></extra>',
+    textinfo:'label+percent'}],
+    {...LAYOUT_BASE,margin:{t:30,r:20,b:20,l:20},showlegend:true,...(opts.layout||{})},CFG);
+}
+
+function line(id, x, y, opts={}){
+  if(!x||!x.length){empty(id);return;}
+  Plotly.newPlot(id,[{x,y,type:'scatter',mode:'lines+markers',
+    line:{color:opts.color||COLORS.blue,width:2.5},
+    marker:{size:7,color:opts.color||COLORS.blue},
+    hovertemplate:'%{x}<br><b>%{y}</b><extra></extra>',...(opts.trace||{})}],
+    {...LAYOUT_BASE,xaxis:{...LAYOUT_BASE.xaxis,title:opts.xTitle||''},
+     yaxis:{...LAYOUT_BASE.yaxis,title:opts.yTitle||''},...(opts.layout||{})},CFG);
+}
+
+/* ── load functions ── */
+async function loadKPIs(){
+  const d=await api(`/api/analytics/data?${filterParams()}`);
+  if(!d.success)return;
+  document.getElementById('kpiSubjects').textContent=d.data.total_subjects.toLocaleString();
+  document.getElementById('kpiAEs').textContent=d.data.total_aes.toLocaleString();
+  document.getElementById('kpiSerious').textContent=d.data.serious_aes.toLocaleString();
+  document.getElementById('kpiLabs').textContent=d.data.total_labs.toLocaleString();
+}
+
+async function loadEnrollment(){
+  const d=await api(`/api/analytics/enrollment-by-site?${filterParams()}`);
+  if(!d.success){empty('ch_enrollment');return;}
+  bar('ch_enrollment',d.sites,d.counts,{xTitle:'Site ID',yTitle:'Subjects',color:COLORS.blue});
+}
+
+async function loadGender(){
+  const d=await api(`/api/analytics/gender-distribution?${filterParams()}`);
+  if(!d.success){empty('ch_gender');return;}
+  pie('ch_gender',d.labels,d.values,{hole:0.35});
+}
+
+async function loadAge(){
+  const d=await api(`/api/analytics/age-distribution?${filterParams()}`);
+  if(!d.success||!d.ages.length){empty('ch_age');return;}
+  Plotly.newPlot('ch_age',[{x:d.ages,type:'histogram',nbinsx:15,
+    marker:{color:COLORS.teal,opacity:0.8},
+    hovertemplate:'Age: %{x}<br><b>Count: %{y}</b><extra></extra>'}],
+    {...LAYOUT_BASE,xaxis:{...LAYOUT_BASE.xaxis,title:'Age (years)'},
+     yaxis:{...LAYOUT_BASE.yaxis,title:'Count'}},CFG);
+}
+
+async function loadArm(){
+  const d=await api(`/api/analytics/arm-distribution?${filterParams()}`);
+  if(!d.success){empty('ch_arm');return;}
+  bar('ch_arm',d.arms,d.counts,{xTitle:'Treatment Arm',color:COLORS.purple});
+}
+
+async function loadAESeverity(){
+  const d=await api(`/api/analytics/ae-by-severity?${filterParams()}`);
+  if(!d.success){empty('ch_ae_severity');return;}
+  const cmap={MILD:COLORS.yellow,MODERATE:COLORS.orange,SEVERE:COLORS.red};
+  const colors=d.severities.map(s=>cmap[s.toUpperCase()]||COLORS.blue);
+  bar('ch_ae_severity',d.severities,d.counts,{xTitle:'Severity',trace:{marker:{color:colors,opacity:0.85}}});
+}
+
+async function loadTopAEs(){
+  const d=await api(`/api/analytics/top-aes?${filterParams()}`);
+  if(!d.success){empty('ch_top_aes');return;}
+  hbar('ch_top_aes',d.counts.slice().reverse(),d.names.slice().reverse(),{color:COLORS.indigo});
+}
+
+async function loadAEBySite(){
+  const d=await api(`/api/analytics/ae-by-site?${filterParams()}`);
+  if(!d.success){empty('ch_ae_site');return;}
+  bar('ch_ae_site',d.sites,d.counts,{xTitle:'Site ID',color:COLORS.red});
+}
+
+async function loadAETimeline(){
+  const d=await api(`/api/analytics/ae-timeline?${filterParams()}`);
+  if(!d.success){empty('ch_ae_timeline');return;}
+  line('ch_ae_timeline',d.dates,d.counts,{xTitle:'Month',yTitle:'AE Count',color:COLORS.blue});
+}
+
+async function loadALTTrend(){
+  const d=await api(`/api/analytics/alt-trend?${filterParams()}`);
+  if(!d.success){empty('ch_alt_trend');return;}
+  line('ch_alt_trend',d.visits,d.avg_values,{xTitle:'Visit',yTitle:'Avg ALT (U/L)',color:COLORS.green,
+    trace:{hovertemplate:'Visit: %{x}<br><b>Avg ALT: %{y} U/L</b><extra></extra>'}});
+}
+
+async function loadAbnormal(){
+  const d=await api(`/api/analytics/abnormal-labs?${filterParams()}`);
+  if(!d.success){empty('ch_abnormal');return;}
+  bar('ch_abnormal',d.tests,d.counts,{xTitle:'Test Code',yTitle:'Safety Signals',color:COLORS.red});
+}
+
+async function loadSafetyFlags(){
+  const d=await api(`/api/analytics/safety-flags?${filterParams()}`);
+  if(!d.success){empty('ch_safety_flags');return;}
+  const colors=[COLORS.orange,COLORS.red,COLORS.yellow,COLORS.pink];
+  bar('ch_safety_flags',d.flags,d.counts,{xTitle:'Safety Flag',trace:{marker:{color:colors,opacity:0.85}}});
+}
+
+async function loadSiteSafety(){
+  const d=await api(`/api/analytics/site-safety?${filterParams()}`);
+  if(!d.success){empty('ch_site_safety');return;}
+  bar('ch_site_safety',d.sites,d.counts,{xTitle:'Site ID',yTitle:'Safety Signals',color:COLORS.orange});
+}
+
+async function loadSerious(){
+  const d=await api(`/api/analytics/serious-vs-nonserious?${filterParams()}`);
+  if(!d.success){empty('ch_serious');return;}
+  pie('ch_serious',d.labels,d.values,{hole:0.4});
+}
+
+async function loadLabTrend(){
+  const tc=document.getElementById('labTrendTest').value||'ALT';
+  const p=filterParams()+'&test_code='+tc;
+  const d=await api(`/api/analytics/lab-trend-over-time?${p}`);
+  if(!d.success){empty('ch_lab_trend');return;}
+  line('ch_lab_trend',d.dates,d.values,{xTitle:'Month',yTitle:`Avg ${tc}`,color:COLORS.teal,
+    trace:{hovertemplate:`%{x}<br><b>Avg ${tc}: %{y}</b><extra></extra>`}});
+}
+
+/* ── filters & controls ── */
+async function loadFilters(){
+  const d=await api(`/api/analytics/filters?database_id=${dbId}`);
+  if(!d.success)return;
+  const fill=(id,arr,allLabel='All')=>{
+    const el=document.getElementById(id);
+    const cur=el.value;
+    el.innerHTML=`<option value="">${allLabel}</option>`+arr.map(v=>`<option value="${v}">${v}</option>`).join('');
+    if(cur)el.value=cur;
+  };
+  fill('fSite',d.sites,'All Sites');
+  fill('fArm',d.arms,'All Arms');
+  fill('fSeverity',d.severities,'All');
+  const tEl=document.getElementById('fTest');
+  tEl.innerHTML='<option value="">All Tests</option>'+d.tests.map(t=>`<option value="${t}">${t}</option>`).join('');
+  document.getElementById('labTrendTest').innerHTML=d.tests.map(t=>`<option value="${t}">${t}</option>`).join('');
+}
+
+function applyFilters(){ refreshAll(); }
+
+function refreshAll(){
+  loadKPIs(); loadEnrollment(); loadGender(); loadAge(); loadArm();
+  loadAESeverity(); loadTopAEs(); loadAEBySite(); loadAETimeline();
+  loadALTTrend(); loadAbnormal(); loadSafetyFlags(); loadSiteSafety();
+  loadSerious(); loadLabTrend();
+}
+
+async function onDbChange(val){
+  dbId=parseInt(val);
+  await fetch('/api/database/select',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({database_id:dbId})});
+  loadFilters(); refreshAll();
+}
+
+/* ── init ── */
+async function init(){
+  const dbs=await api('/api/database/list?validate=true');
+  const avail=(dbs||[]).filter(d=>d.is_available);
+  if(!avail.length){showNotification('Please connect a database first','warning');return;}
+  const sess=await api('/api/database/current');
+  dbId=(sess.success&&avail.find(d=>d.id===sess.database.id))?sess.database.id:avail[0].id;
+  const sel=document.getElementById('dbSelect');
+  sel.innerHTML=avail.map(d=>`<option value="${d.id}" ${d.id===dbId?'selected':''}>${d.name}</option>`).join('');
+  loadFilters(); refreshAll();
+}
+
+document.addEventListener('DOMContentLoaded', init);
+
+window.addEventListener('storage',e=>{
+  if(e.key==='pipeline_completed'){
+    const data=JSON.parse(e.newValue||'{}');
+    if(String(data.database_id)===String(dbId)){showNotification('Pipeline completed – refreshing…','info');refreshAll();}
+  }
+});
+
+window.addEventListener('resize',()=>{
+  ['ch_enrollment','ch_gender','ch_age','ch_arm','ch_ae_severity','ch_top_aes',
+   'ch_ae_site','ch_ae_timeline','ch_alt_trend','ch_abnormal','ch_safety_flags',
+   'ch_site_safety','ch_serious','ch_lab_trend'].forEach(id=>{try{Plotly.Plots.resize(id);}catch(e){}});
+});
+</script>
+{% endblock %}

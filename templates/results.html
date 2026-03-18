@@ -1,0 +1,392 @@
+{% extends "base.html" %}
+{% block title %}Results - Clinical Data Pipeline{% endblock %}
+
+{% block content %}
+<div class="row fade-in">
+  <div class="col-12">
+    <div class="card card-clinical">
+      <div class="card-header d-flex justify-content-between align-items-center">
+        <h4 class="mb-0"><i class="fas fa-chart-bar"></i> Pipeline Results</h4>
+        <div class="d-flex gap-2">
+          <select class="form-select form-select-sm" id="dbSelectorDropdown" style="width:auto" onchange="switchDatabase(this.value)">
+            <option value="">Select Database…</option>
+          </select>
+          <button class="btn btn-sm btn-outline-primary" onclick="loadAllLayerData()">
+            <i class="fas fa-sync"></i> Refresh
+          </button>
+          <button class="btn btn-sm btn-clinical" id="downloadLayerBtn" onclick="downloadCurrentLayer()">
+            <i class="fas fa-download"></i> Download
+          </button>
+        </div>
+      </div>
+      <div class="card-body">
+        <!-- Layer Tabs -->
+        <ul class="nav nav-tabs" id="layerTabs" role="tablist">
+          <li class="nav-item"><button class="nav-link active" data-bs-toggle="tab" data-bs-target="#bronze" data-layer="bronze" type="button"><i class="fas fa-cube"></i> Bronze Layer</button></li>
+          <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#silver" data-layer="silver" type="button"><i class="fas fa-shield-alt"></i> Silver Layer</button></li>
+          <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#gold" data-layer="gold" type="button"><i class="fas fa-trophy"></i> Gold Layer</button></li>
+          <li class="nav-item"><button class="nav-link" data-bs-toggle="tab" data-bs-target="#prediction" data-layer="prediction" type="button"><i class="fas fa-brain"></i> Prediction Layer</button></li>
+        </ul>
+
+        <div class="tab-content" id="layerTabContent">
+
+          <!-- Bronze Layer -->
+          <div class="tab-pane fade show active" id="bronze" role="tabpanel">
+            <div class="row mt-4">
+              <div class="col-md-3 mb-3"><div class="metric-card"><div class="metric-value" id="bronzeSubjects">—</div><div class="metric-label">Subjects</div></div></div>
+              <div class="col-md-3 mb-3"><div class="metric-card"><div class="metric-value" id="bronzeLabs">—</div><div class="metric-label">Lab Records</div></div></div>
+              <div class="col-md-3 mb-3"><div class="metric-card"><div class="metric-value" id="bronzeAEs">—</div><div class="metric-label">Adverse Events</div></div></div>
+              <div class="col-md-3 mb-3"><div class="metric-card"><div class="metric-value" id="bronzeTotal">—</div><div class="metric-label">Total Records</div></div></div>
+            </div>
+            <div class="table-responsive mt-3">
+              <table class="table table-clinical table-hover">
+                <thead><tr><th>Table</th><th>Records</th><th>Last Updated</th><th>Actions</th></tr></thead>
+                <tbody id="bronzeTableList"><tr><td colspan="4" class="text-center text-muted"><i class="fas fa-spinner fa-spin"></i> Loading…</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Silver Layer -->
+          <div class="tab-pane fade" id="silver" role="tabpanel">
+            <div class="row mt-4">
+              <div class="col-md-3 mb-3"><div class="metric-card"><div class="metric-value" id="silverSubjects">—</div><div class="metric-label">Cleaned Subjects</div></div></div>
+              <div class="col-md-3 mb-3"><div class="metric-card"><div class="metric-value" id="silverLabs">—</div><div class="metric-label">Normalized Labs</div></div></div>
+              <div class="col-md-3 mb-3"><div class="metric-card"><div class="metric-value" id="silverAEs">—</div><div class="metric-label">Processed AEs</div></div></div>
+              <div class="col-md-3 mb-3"><div class="metric-card"><div class="metric-value" id="silverErrors">—</div><div class="metric-label">Unprocessed Records</div></div></div>
+            </div>
+            <div class="table-responsive mt-3">
+              <table class="table table-clinical table-hover">
+                <thead><tr><th>Table</th><th>Records</th><th>Data Quality</th><th>Actions</th></tr></thead>
+                <tbody id="silverTableList"><tr><td colspan="4" class="text-center text-muted"><i class="fas fa-spinner fa-spin"></i> Loading…</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Gold Layer -->
+          <div class="tab-pane fade" id="gold" role="tabpanel">
+            <div class="row mt-4">
+              <div class="col-md-3 mb-3"><div class="metric-card"><div class="metric-value" id="goldSubjects">—</div><div class="metric-label">Subjects</div></div></div>
+              <div class="col-md-3 mb-3"><div class="metric-card"><div class="metric-value" id="goldLabs">—</div><div class="metric-label">Lab Records</div></div></div>
+              <div class="col-md-3 mb-3"><div class="metric-card"><div class="metric-value" id="goldAEs">—</div><div class="metric-label">Adverse Events</div></div></div>
+              <div class="col-md-3 mb-3"><div class="metric-card"><div class="metric-value" id="goldSites">—</div><div class="metric-label">Site Summaries</div></div></div>
+            </div>
+            <div class="table-responsive mt-3">
+              <table class="table table-clinical table-hover">
+                <thead><tr><th>Table</th><th>Records</th><th>Pseudonymized</th><th>Actions</th></tr></thead>
+                <tbody id="goldTableList"><tr><td colspan="4" class="text-center text-muted"><i class="fas fa-spinner fa-spin"></i> Loading…</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Prediction Layer -->
+          <div class="tab-pane fade" id="prediction" role="tabpanel">
+            <div class="row mt-4">
+              <div class="col-md-3 mb-3"><div class="metric-card"><div class="metric-value text-primary" id="predictionSites">—</div><div class="metric-label">Sites Predicted</div></div></div>
+              <div class="col-md-3 mb-3"><div class="metric-card"><div class="metric-value text-danger" id="predictionHighRisk">—</div><div class="metric-label">High Risk Sites</div></div></div>
+              <div class="col-md-3 mb-3"><div class="metric-card"><div class="metric-value text-warning" id="predictionMedRisk">—</div><div class="metric-label">Medium Risk Sites</div></div></div>
+              <div class="col-md-3 mb-3"><div class="metric-card"><div class="metric-value text-success" id="predictionLowRisk">—</div><div class="metric-label">Low Risk Sites</div></div></div>
+            </div>
+            <div class="table-responsive mt-3">
+              <table class="table table-clinical table-hover">
+                <thead><tr><th>Site ID</th><th>Predicted AEs</th><th>Predicted Serious AEs</th><th>Risk Group</th><th>Prediction Date</th></tr></thead>
+                <tbody id="predictionTableList"><tr><td colspan="5" class="text-center text-muted"><i class="fas fa-spinner fa-spin"></i> Loading…</td></tr></tbody>
+              </table>
+            </div>
+          </div>
+
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Data Preview Modal -->
+<div class="modal fade" id="dataModal" tabindex="-1">
+  <div class="modal-dialog modal-xl">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="dataModalTitle">Data Preview</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div id="dataModalLoading" class="text-center py-4"><i class="fas fa-spinner fa-spin fa-2x"></i></div>
+        <div class="table-responsive d-none" id="dataModalTableWrap">
+          <table class="table table-sm table-striped" id="dataPreviewTable">
+            <thead id="dataPreviewHead"></thead>
+            <tbody id="dataPreviewBody"></tbody>
+          </table>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        <button type="button" class="btn btn-clinical" id="modalDownloadBtn"><i class="fas fa-download"></i> Download CSV</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+let currentDatabaseId = null;
+let currentLayer = 'bronze';
+let currentModalTable = null;
+let currentModalLayer = null;
+
+// Track active tab
+document.querySelectorAll('#layerTabs button[data-layer]').forEach(btn => {
+  btn.addEventListener('shown.bs.tab', e => { currentLayer = e.target.dataset.layer; });
+});
+
+// ── Database selector ──────────────────────────────────────────────────────
+async function initDatabases() {
+  try {
+    const dbs = await makeRequest('/api/database/list?validate=true');
+    const avail = (dbs || []).filter(d => d.is_available);
+    const sel = document.getElementById('dbSelectorDropdown');
+    if (!avail.length) {
+      sel.innerHTML = '<option value="">No databases connected</option>';
+      showNotification('Please connect a database first', 'warning');
+      return;
+    }
+    sel.innerHTML = avail.map(d => `<option value="${d.id}">${d.name}</option>`).join('');
+
+    const sess = await makeRequest('/api/database/current');
+    if (sess.success && avail.find(d => d.id === sess.database.id)) {
+      currentDatabaseId = sess.database.id;
+    } else {
+      currentDatabaseId = avail[0].id;
+      await makeRequest('/api/database/select', { method: 'POST', body: JSON.stringify({ database_id: currentDatabaseId }) });
+    }
+    sel.value = currentDatabaseId;
+    loadAllLayerData();
+  } catch (e) { console.error(e); }
+}
+
+async function switchDatabase(val) {
+  if (!val) return;
+  currentDatabaseId = parseInt(val);
+  await makeRequest('/api/database/select', { method: 'POST', body: JSON.stringify({ database_id: currentDatabaseId }) });
+  loadAllLayerData();
+}
+
+// ── Load all layers ────────────────────────────────────────────────────────
+function loadAllLayerData() {
+  loadBronzeLayer();
+  loadSilverLayer();
+  loadGoldLayer();
+  loadPredictionLayer();
+}
+
+// ── Bronze ─────────────────────────────────────────────────────────────────
+async function loadBronzeLayer() {
+  if (!currentDatabaseId) return;
+  try {
+    const d = await makeRequest(`/api/bronze/data?database_id=${currentDatabaseId}`);
+    const s = d.success ? d.data.subjects : 0;
+    const l = d.success ? d.data.labs : 0;
+    const a = d.success ? d.data.aes : 0;
+    document.getElementById('bronzeSubjects').textContent = s.toLocaleString();
+    document.getElementById('bronzeLabs').textContent = l.toLocaleString();
+    document.getElementById('bronzeAEs').textContent = a.toLocaleString();
+    document.getElementById('bronzeTotal').textContent = (s + l + a).toLocaleString();
+
+    const tables = [
+      { name: 'bronze.bronze_subjects', label: 'bronze_subjects', records: s },
+      { name: 'bronze.bronze_labs',     label: 'bronze_labs',     records: l },
+      { name: 'bronze.bronze_aes',      label: 'bronze_aes',      records: a },
+    ];
+    document.getElementById('bronzeTableList').innerHTML = tables.map(t => `
+      <tr>
+        <td><code>${t.label}</code></td>
+        <td>${t.records.toLocaleString()}</td>
+        <td><span class="badge bg-secondary">Raw</span></td>
+        <td>
+          <button class="btn btn-sm btn-outline-success" onclick="downloadSingleTable('${t.name}','bronze')"><i class="fas fa-download"></i> CSV</button>
+        </td>
+      </tr>`).join('');
+  } catch (e) { console.error(e); }
+}
+
+// ── Silver ─────────────────────────────────────────────────────────────────
+async function loadSilverLayer() {
+  if (!currentDatabaseId) return;
+  try {
+    const d = await makeRequest(`/api/silver/data?database_id=${currentDatabaseId}`);
+    const s = d.success ? d.data.subjects : 0;
+    const l = d.success ? d.data.labs : 0;
+    const a = d.success ? d.data.aes : 0;
+    document.getElementById('silverSubjects').textContent = s.toLocaleString();
+    document.getElementById('silverLabs').textContent = l.toLocaleString();
+    document.getElementById('silverAEs').textContent = a.toLocaleString();
+
+    // Unprocessed count
+    try {
+      const up = await makeRequest(`/api/unprocessed/data?database_id=${currentDatabaseId}`);
+      document.getElementById('silverErrors').textContent = up.success ? (up.total || 0).toLocaleString() : '0';
+    } catch { document.getElementById('silverErrors').textContent = '0'; }
+
+    const tables = [
+      { name: 'silver.silver_subjects', label: 'silver_subjects', records: s, quality: 'Cleaned' },
+      { name: 'silver.silver_labs',     label: 'silver_labs',     records: l, quality: 'Normalized' },
+      { name: 'silver.silver_ae',       label: 'silver_ae',       records: a, quality: 'Validated' },
+    ];
+    document.getElementById('silverTableList').innerHTML = tables.map(t => `
+      <tr>
+        <td><code>${t.label}</code></td>
+        <td>${t.records.toLocaleString()}</td>
+        <td><span class="badge bg-success">${t.quality}</span></td>
+        <td>
+          <button class="btn btn-sm btn-outline-success" onclick="downloadSingleTable('${t.name}','silver')"><i class="fas fa-download"></i> CSV</button>
+        </td>
+      </tr>`).join('');
+  } catch (e) { console.error(e); }
+}
+
+// ── Gold ───────────────────────────────────────────────────────────────────
+async function loadGoldLayer() {
+  if (!currentDatabaseId) return;
+  try {
+    const d = await makeRequest(`/api/gold/data?database_id=${currentDatabaseId}`);
+    const s = d.success ? d.data.subjects : 0;
+    const l = d.success ? d.data.labs : 0;
+    const a = d.success ? d.data.aes : 0;
+    const sites = d.success ? (d.data.sites || 0) : 0;
+    document.getElementById('goldSubjects').textContent = s.toLocaleString();
+    document.getElementById('goldLabs').textContent = l.toLocaleString();
+    document.getElementById('goldAEs').textContent = a.toLocaleString();
+    document.getElementById('goldSites').textContent = sites.toLocaleString ? sites.toLocaleString() : sites;
+
+    const tables = [
+      { name: 'gold.gold_subjects',   label: 'gold_subjects',   records: s },
+      { name: 'gold.gold_labs',       label: 'gold_labs',       records: l },
+      { name: 'gold.gold_ae',         label: 'gold_ae',         records: a },
+      { name: 'gold.phi_site_summary',label: 'phi_site_summary',records: sites },
+    ];
+    document.getElementById('goldTableList').innerHTML = tables.map(t => `
+      <tr>
+        <td><code>${t.label}</code></td>
+        <td>${typeof t.records === 'number' ? t.records.toLocaleString() : t.records}</td>
+        <td><span class="badge bg-success">Yes</span></td>
+        <td>
+          <button class="btn btn-sm btn-outline-success" onclick="downloadSingleTable('${t.name}','gold')"><i class="fas fa-download"></i> CSV</button>
+        </td>
+      </tr>`).join('');
+  } catch (e) { console.error(e); }
+}
+
+// ── Prediction ─────────────────────────────────────────────────────────────
+async function loadPredictionLayer() {
+  if (!currentDatabaseId) return;
+  try {
+    const d = await makeRequest(`/api/predictions/data?database_id=${currentDatabaseId}`);
+    if (!d.success) {
+      document.getElementById('predictionSites').textContent = '0';
+      document.getElementById('predictionHighRisk').textContent = '0';
+      document.getElementById('predictionMedRisk').textContent = '0';
+      document.getElementById('predictionLowRisk').textContent = '0';
+      document.getElementById('predictionTableList').innerHTML = '<tr><td colspan="6" class="text-center text-muted">No predictions yet. Run the pipeline first.</td></tr>';
+      return;
+    }
+    const preds = d.data.predictions || [];
+    const high = preds.filter(p => p.predicted_risk_group === 'High').length;
+    const med  = preds.filter(p => p.predicted_risk_group === 'Medium').length;
+    const low  = preds.filter(p => p.predicted_risk_group === 'Low').length;
+
+    document.getElementById('predictionSites').textContent = preds.length;
+    document.getElementById('predictionHighRisk').textContent = high;
+    document.getElementById('predictionMedRisk').textContent = med;
+    document.getElementById('predictionLowRisk').textContent = low;
+
+    document.getElementById('predictionTableList').innerHTML = preds.length ? preds.map(p => {
+      const rc = p.predicted_risk_group === 'High' ? 'danger' : p.predicted_risk_group === 'Medium' ? 'warning' : 'success';
+      return `<tr>
+        <td><code>${p.site_id}</code></td>
+        <td>${p.predicted_total_ae ?? '—'}</td>
+        <td>${p.predicted_total_serious_events ?? '—'}</td>
+        <td><span class="badge bg-${rc}">${p.predicted_risk_group || '—'}</span></td>
+        <td>${p.prediction_date || '—'}</td>
+      </tr>`;
+    }).join('') : '<tr><td colspan="5" class="text-center text-muted">No predictions yet</td></tr>';
+  } catch (e) { console.error(e); }
+}
+
+// ── View table in modal ────────────────────────────────────────────────────
+async function viewTable(tableName, layer) {
+  currentModalTable = tableName;
+  currentModalLayer = layer;
+  document.getElementById('dataModalTitle').textContent = `Preview: ${tableName.split('.')[1] || tableName}`;
+  document.getElementById('dataModalLoading').classList.remove('d-none');
+  document.getElementById('dataModalTableWrap').classList.add('d-none');
+  new bootstrap.Modal(document.getElementById('dataModal')).show();
+
+  try {
+    const d = await makeRequest(`/api/layer/table-data?database_id=${currentDatabaseId}&table=${tableName}&limit=100`);
+    document.getElementById('dataModalLoading').classList.add('d-none');
+    if (!d.success || !d.rows.length) {
+      document.getElementById('dataPreviewBody').innerHTML = '<tr><td class="text-muted">No data</td></tr>';
+      document.getElementById('dataModalTableWrap').classList.remove('d-none');
+      return;
+    }
+    document.getElementById('dataPreviewHead').innerHTML = `<tr>${d.columns.map(c => `<th>${c}</th>`).join('')}</tr>`;
+    document.getElementById('dataPreviewBody').innerHTML = d.rows.map(row =>
+      `<tr>${d.columns.map(c => `<td>${row[c] !== null && row[c] !== undefined ? row[c] : '—'}</td>`).join('')}</tr>`
+    ).join('');
+    document.getElementById('dataModalTableWrap').classList.remove('d-none');
+
+    // Wire download button
+    document.getElementById('modalDownloadBtn').onclick = () => {
+      const csv = [d.columns.join(','), ...d.rows.map(r => d.columns.map(c => `"${r[c] ?? ''}"`).join(','))].join('\n');
+      triggerDownload(csv, `${tableName.replace('.','_')}.csv`);
+    };
+  } catch (e) {
+    document.getElementById('dataModalLoading').innerHTML = `<p class="text-danger">Failed to load data: ${e.message}</p>`;
+  }
+}
+
+// ── Download current layer as ZIP ──────────────────────────────────────────
+function downloadCurrentLayer() {
+  if (!currentDatabaseId) { showNotification('Select a database first', 'warning'); return; }
+  showNotification(`Preparing ${currentLayer} layer download…`, 'info');
+  window.location.href = `/api/layer/download?database_id=${currentDatabaseId}&layer=${currentLayer}`;
+}
+
+// ── Download single table as CSV ───────────────────────────────────────────
+async function downloadSingleTable(tableName, layer) {
+  if (!currentDatabaseId) { showNotification('Select a database first', 'warning'); return; }
+  showNotification(`Preparing download for ${tableName}…`, 'info');
+  // Use the backend ZIP endpoint but for a single-table layer equivalent
+  // Build a direct CSV download via the table-data endpoint
+  try {
+    const d = await makeRequest(`/api/layer/table-data?database_id=${currentDatabaseId}&table=${tableName}&limit=50000`);
+    if (!d.success || !d.rows || !d.rows.length) {
+      showNotification('No data to download', 'warning'); return;
+    }
+    const csv = [d.columns.join(','), ...d.rows.map(r => d.columns.map(c => `"${r[c] !== null && r[c] !== undefined ? String(r[c]).replace(/"/g,'""') : ''}"`).join(','))].join('\n');
+    triggerDownload(csv, `${tableName.replace('.','_')}_${currentDatabaseId}.csv`);
+    showNotification('Download started', 'success');
+  } catch (e) { showNotification('Download failed: ' + e.message, 'error'); }
+}
+
+function triggerDownload(content, filename) {
+  const blob = new Blob([content], { type: 'text/csv' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url; a.download = filename; a.click();
+  URL.revokeObjectURL(url);
+}
+
+// ── Init ───────────────────────────────────────────────────────────────────
+document.addEventListener('DOMContentLoaded', initDatabases);
+
+window.addEventListener('storage', e => {
+  if (e.key === 'pipeline_completed') {
+    const data = JSON.parse(e.newValue || '{}');
+    if (String(data.database_id) === String(currentDatabaseId)) {
+      showNotification('Pipeline completed — refreshing results…', 'info');
+      loadAllLayerData();
+    }
+  }
+});
+</script>
+{% endblock %}

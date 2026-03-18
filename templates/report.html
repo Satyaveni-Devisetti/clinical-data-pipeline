@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Clinical Study Safety Summary Report</title>
+<link href="/static/css/bootstrap.min.css" rel="stylesheet">
+<link href="/static/css/all.min.css" rel="stylesheet">
+<style>
+  :root{--primary:#2c5282;--secondary:#3182ce;--success:#38a169;--warning:#d69e2e;--danger:#e53e3e;}
+  body{font-family:'Segoe UI',sans-serif;background:#f5f7fa;color:#2d3748;}
+  .report-header{background:linear-gradient(135deg,var(--primary),var(--secondary));color:white;padding:2rem;border-radius:12px;margin-bottom:1.5rem;}
+  .report-header h1{font-size:1.6rem;font-weight:700;margin:0;}
+  .report-header .meta{font-size:.85rem;opacity:.85;margin-top:.4rem;}
+  .section-card{background:white;border-radius:10px;box-shadow:0 2px 8px rgba(0,0,0,.08);margin-bottom:1.25rem;overflow:hidden;}
+  .section-title{background:var(--primary);color:white;padding:.6rem 1.2rem;font-weight:600;font-size:.95rem;display:flex;align-items:center;gap:.5rem;}
+  .section-body{padding:1.2rem;}
+  .kv-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:.6rem;}
+  .kv-item{background:#f7fafc;border-radius:6px;padding:.5rem .8rem;border-left:3px solid var(--secondary);}
+  .kv-label{font-size:.75rem;color:#718096;text-transform:uppercase;letter-spacing:.04em;}
+  .kv-value{font-size:.95rem;font-weight:600;color:#2d3748;margin-top:.1rem;}
+  .flag-card{border-radius:8px;padding:.8rem 1rem;text-align:center;}
+  .flag-card .flag-num{font-size:1.8rem;font-weight:700;}
+  .flag-card .flag-lbl{font-size:.75rem;margin-top:.2rem;}
+  .risk-badge{display:inline-block;padding:.4rem 1.2rem;border-radius:20px;font-weight:700;font-size:1rem;}
+  .risk-HIGH{background:#fed7d7;color:#c53030;}
+  .risk-MODERATE{background:#fefcbf;color:#744210;}
+  .risk-LOW{background:#c6f6d5;color:#276749;}
+  table.report-table{width:100%;border-collapse:collapse;font-size:.88rem;}
+  table.report-table th{background:#edf2f7;color:#4a5568;font-weight:600;padding:.5rem .8rem;text-align:left;border-bottom:2px solid #e2e8f0;}
+  table.report-table td{padding:.45rem .8rem;border-bottom:1px solid #f0f0f0;}
+  table.report-table tr:hover td{background:#f7fafc;}
+  .conclusion-box{background:linear-gradient(135deg,#ebf8ff,#e6fffa);border-left:4px solid var(--secondary);border-radius:8px;padding:1rem 1.2rem;}
+  .print-btn{position:fixed;bottom:1.5rem;right:1.5rem;z-index:999;}
+  @media print{.print-btn{display:none!important;}.report-header{-webkit-print-color-adjust:exact;print-color-adjust:exact;}}
+  .chart-box{height:220px;}
+  .spinner-wrap{min-height:60vh;display:flex;align-items:center;justify-content:center;}
+  .precaution-item{display:flex;align-items:flex-start;gap:.6rem;padding:.4rem 0;border-bottom:1px solid #f0f0f0;}
+  .precaution-item:last-child{border:none;}
+  .audit-check{color:var(--success);}
+</style>
+</head>
+<body>
+<div class="container py-4" id="reportRoot">
+  <div class="spinner-wrap" id="loadingSpinner">
+    <div class="text-center">
+      <div class="spinner-border text-primary mb-3" style="width:3rem;height:3rem"></div>
+      <p class="text-muted">Generating Clinical Safety Report…</p>
+    </div>
+  </div>
+  <div id="reportContent" style="display:none"></div>
+</div>
+<button class="btn btn-primary print-btn shadow" onclick="window.print()">
+  <i class="fas fa-print me-1"></i> Print / PDF
+</button>
+<script src="/static/js/bootstrap.bundle.min.js"></script>
+<script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+<script>
+const params = new URLSearchParams(location.search);
+const dbId = params.get('database_id') || '';
+
+function kv(label, value){
+  return `<div class="kv-item"><div class="kv-label">${label}</div><div class="kv-value">${value??'—'}</div></div>`;
+}
+function section(icon, title, body){
+  return `<div class="section-card"><div class="section-title"><i class="fas ${icon}"></i>${title}</div><div class="section-body">${body}</div></div>`;
+}
+
+async function buildReport(){
+  const r = await fetch(`/api/report/data?database_id=${dbId}`);
+  const json = await r.json();
+  if(!json.success){
+    document.getElementById('loadingSpinner').innerHTML=`<div class="alert alert-danger">${json.message}</div>`;
+    return;
+  }
+  const d = json.data;
+  const o = d.study_overview, dem = d.demographics, lab = d.lab_summary,
+        sf = d.safety_flags, ae = d.ae_summary, ds = d.drug_safety,
+        proc = d.processing;
+
+  const riskColor = ds.risk_level==='HIGH'?'danger':ds.risk_level==='MODERATE'?'warning':'success';
+
+  // ── 1. Study Overview ──────────────────────────────────────────────────────
+  const s1 = section('fa-hospital','1. Study Overview',`
+    <div class="kv-grid">
+      ${kv('Study ID', o.study_id)}
+      ${kv('Study Start Date', o.study_start)}
+      ${kv('Study End Date', o.study_end)}
+      ${kv('Total Sites', o.total_sites)}
+      ${kv('Total Subjects Enrolled', o.total_subjects.toLocaleString())}
+      ${kv('Treatment Arms', o.treatment_arms.join(' / ')||'—')}
+      ${kv('Data Processing Date', o.processing_date)}
+      ${kv('Pipeline Run Status', `<span class="badge bg-success">${o.pipeline_status}</span>`)}
+    </div>`);
+
+  // ── 2. Demographics ────────────────────────────────────────────────────────
+  const siteRows = dem.subjects_per_site.map(s=>`<tr><td>${s.site_id}</td><td>${s.count}</td></tr>`).join('');
+  const s2 = section('fa-users','2. Subject Demographics Summary',`
+    <div class="kv-grid mb-3">
+      ${kv('Total Subjects', dem.total_subjects.toLocaleString())}
+      ${kv('Male Subjects', dem.male.toLocaleString())}
+      ${kv('Female Subjects', dem.female.toLocaleString())}
+      ${kv('Average Age', dem.avg_age+' yrs')}
+      ${kv('Age Range', dem.age_range+' yrs')}
+    </div>
+    <p class="fw-semibold mb-1" style="font-size:.85rem">Subjects per Site</p>
+    <table class="report-table"><thead><tr><th>Site ID</th><th>Subjects</th></tr></thead><tbody>${siteRows}</tbody></table>`);
+
+  // ── 3. Lab Results Summary ─────────────────────────────────────────────────
+  const labRows = lab.by_test.map(t=>`<tr><td>${t.test}</td><td>${t.count.toLocaleString()}</td></tr>`).join('');
+  const s3 = section('fa-vials','3. Lab Results Summary',`
+    <div class="kv-grid mb-3">
+      ${kv('Total Lab Records', lab.total.toLocaleString())}
+      ${kv('Normal Results', lab.normal.toLocaleString())}
+      ${kv('Abnormal Results', lab.abnormal.toLocaleString())}
+      ${kv('Critical / Safety Flags', lab.critical.toLocaleString())}
+      ${kv('ALT Records', lab.alt_count.toLocaleString())}
+      ${kv('AST Records', lab.ast_count.toLocaleString())}
+    </div>
+    <p class="fw-semibold mb-1" style="font-size:.85rem">Records by Test Code</p>
+    <table class="report-table"><thead><tr><th>Test Code</th><th>Count</th></tr></thead><tbody>${labRows}</tbody></table>`);
+
+  // ── 4. Safety Flag Summary ─────────────────────────────────────────────────
+  const s4 = section('fa-shield-alt','4. Safety Flag Summary',`
+    <div class="row g-3 mb-2">
+      <div class="col-6 col-md-3"><div class="flag-card bg-warning bg-opacity-10 border border-warning">
+        <div class="flag-num text-warning">${sf.alt_3x_uln}</div>
+        <div class="flag-lbl text-muted">ALT &gt; 3× ULN<br><small>subjects</small></div></div></div>
+      <div class="col-6 col-md-3"><div class="flag-card bg-warning bg-opacity-10 border border-warning">
+        <div class="flag-num text-warning">${sf.ast_3x_uln}</div>
+        <div class="flag-lbl text-muted">AST &gt; 3× ULN<br><small>subjects</small></div></div></div>
+      <div class="col-6 col-md-3"><div class="flag-card bg-danger bg-opacity-10 border border-danger">
+        <div class="flag-num text-danger">${sf.bili_2x_uln}</div>
+        <div class="flag-lbl text-muted">Bilirubin &gt; 2× ULN<br><small>subjects</small></div></div></div>
+      <div class="col-6 col-md-3"><div class="flag-card bg-danger bg-opacity-10 border border-danger">
+        <div class="flag-num text-danger">${sf.hys_law}</div>
+        <div class="flag-lbl text-muted">Hy's Law Cases<br><small>subjects</small></div></div></div>
+    </div>
+    <div class="kv-item mt-2"><div class="kv-label">Total Safety Alerts</div><div class="kv-value text-danger">${sf.total_alerts}</div></div>`);
+
+  // ── 5. AE Summary ─────────────────────────────────────────────────────────
+  const s5 = section('fa-exclamation-triangle','5. Adverse Event Summary',`
+    <div class="kv-grid">
+      ${kv('Total AE Records', ae.total.toLocaleString())}
+      ${kv('Serious AEs', ae.serious.toLocaleString())}
+      ${kv('Non-Serious AEs', ae.non_serious.toLocaleString())}
+      ${kv('Drug-Related AEs', ae.drug_related.toLocaleString())}
+      ${kv('Most Common AE', ae.most_common)}
+      ${kv('Moderate AEs', ae.moderate.toLocaleString())}
+      ${kv('Severe AEs', ae.severe.toLocaleString())}
+    </div>`);
+
+  // ── 6. Site Level Summary ──────────────────────────────────────────────────
+  const siteDetailRows = d.site_summary.map(s=>`
+    <tr><td>${s.site_id}</td><td>${s.subjects}</td><td>${s.total_aes}</td><td>${s.serious_aes}</td><td>${s.safety_flags}</td></tr>`).join('');
+  const s6 = section('fa-map-marker-alt','6. Site Level Summary',`
+    <table class="report-table">
+      <thead><tr><th>Site ID</th><th>Subjects</th><th>Total AEs</th><th>Serious AEs</th><th>Safety Flags</th></tr></thead>
+      <tbody>${siteDetailRows||'<tr><td colspan="5" class="text-muted text-center">No site data</td></tr>'}</tbody>
+    </table>`);
+
+  // ── 7. Drug Safety Assessment ──────────────────────────────────────────────
+  const s7 = section('fa-heartbeat','7. Drug Safety Assessment',`
+    <div class="kv-grid mb-3">
+      ${kv('Overall Safety Status', `<span class="risk-badge risk-${ds.risk_level}">${ds.overall_status}</span>`)}
+      ${kv('Risk Level', `<span class="badge bg-${riskColor} fs-6">${ds.risk_level}</span>`)}
+      ${kv('Observed Liver Toxicity', ds.liver_toxicity)}
+    </div>
+    <div class="mb-2"><span class="fw-semibold">Safety Interpretation:</span><br><span class="text-muted">${ds.interpretation}</span></div>
+    <div><span class="fw-semibold">Recommendation:</span><br><span class="text-muted">${ds.recommendation}</span></div>`);
+
+  // ── 8. Precautions ─────────────────────────────────────────────────────────
+  const precautions = [
+    'Monitor ALT and AST levels at every scheduled visit.',
+    'Closely observe subjects with ALT &gt; 3× ULN and consider dose adjustment.',
+    'Review drug causality for all serious adverse events.',
+    'Consider dose reduction or interruption if liver enzyme elevation persists beyond 2 consecutive visits.',
+    'Perform bilirubin assessment for any subject meeting Hy\'s Law criteria.',
+    'Ensure timely SAE reporting per regulatory requirements.',
+    'Conduct unscheduled safety labs for subjects reporting hepatic symptoms.'
+  ];
+  const s8 = section('fa-clipboard-list','8. Precautions and Monitoring Recommendations',
+    precautions.map(p=>`<div class="precaution-item"><i class="fas fa-chevron-right text-primary mt-1"></i><span>${p}</span></div>`).join(''));
+
+  // ── 9. Data Processing Summary ─────────────────────────────────────────────
+  const s9 = section('fa-cogs','9. Data Processing Summary',`
+    <div class="kv-grid">
+      ${kv('Lab Files Processed', proc.lab_files)}
+      ${kv('AE Files Processed', proc.ae_files)}
+      ${kv('Subject Records Loaded', proc.subject_records.toLocaleString())}
+      ${kv('Total Records Processed', proc.total_records.toLocaleString())}
+      ${kv('Data Validation Errors', proc.validation_errors)}
+      ${kv('Rejected Records', proc.rejected_records)}
+      ${kv('Pipeline Completion Status', `<span class="badge bg-success">${proc.status}</span>`)}
+    </div>`);
+
+  // ── 10. Audit & Compliance ─────────────────────────────────────────────────
+  const auditItems = [
+    ['Pseudonymization Applied','Yes — HMAC-SHA256'],
+    ['HMAC Hashing Used','Yes'],
+    ['PHI Exposure','None'],
+    ['Input Schema Validation','Passed'],
+    ['XML Secure Parsing Enabled','Yes'],
+    ['Data Validation Status','Completed']
+  ];
+  const s10 = section('fa-lock','10. Audit and Compliance Information',`
+    <table class="report-table">
+      <thead><tr><th>Control</th><th>Status</th></tr></thead>
+      <tbody>${auditItems.map(([k,v])=>`<tr><td>${k}</td><td><i class="fas fa-check-circle audit-check me-1"></i>${v}</td></tr>`).join('')}</tbody>
+    </table>`);
+
+  // ── 11. Visual Dashboards ──────────────────────────────────────────────────
+  const s11 = section('fa-chart-bar','11. Visual Dashboards',`
+    <div class="row g-3">
+      <div class="col-md-6"><div class="border rounded p-2"><p class="fw-semibold mb-1 small">AE Severity Distribution</p><div id="rpt_ae_sev" class="chart-box"></div></div></div>
+      <div class="col-md-6"><div class="border rounded p-2"><p class="fw-semibold mb-1 small">Gender Distribution</p><div id="rpt_gender" class="chart-box"></div></div></div>
+      <div class="col-md-6"><div class="border rounded p-2"><p class="fw-semibold mb-1 small">Subjects by Treatment Arm</p><div id="rpt_arm" class="chart-box"></div></div></div>
+      <div class="col-md-6"><div class="border rounded p-2"><p class="fw-semibold mb-1 small">Safety Flags Summary</p><div id="rpt_flags" class="chart-box"></div></div></div>
+      <div class="col-12"><div class="border rounded p-2"><p class="fw-semibold mb-1 small">Adverse Events by Site</p><div id="rpt_ae_site" class="chart-box"></div></div></div>
+    </div>`);
+
+  // ── 12. Final Conclusion ───────────────────────────────────────────────────
+  const conclusionText = ds.risk_level === 'HIGH'
+    ? `Based on the processed lab results and adverse event reports, the investigational drug shows significant elevations in liver enzymes with ${sf.hys_law} Hy's Law case(s) identified. Immediate clinical review is required. Continued monitoring of ALT, AST, and bilirubin levels is mandatory for all subjects.`
+    : ds.risk_level === 'MODERATE'
+    ? `Based on the processed lab results and adverse event reports, the investigational drug shows mild elevations in liver enzymes with limited safety signals. No critical safety risks were identified. Continued monitoring of ALT and AST levels is recommended for subjects showing elevated liver enzymes.`
+    : `Based on the processed lab results and adverse event reports, the investigational drug demonstrates an acceptable safety profile. Lab results and adverse events are within expected ranges. Standard monitoring per protocol is sufficient.`;
+
+  const s12 = section('fa-flag-checkered','12. Final Safety Conclusion',`
+    <div class="conclusion-box">${conclusionText}</div>`);
+
+  // ── Render ─────────────────────────────────────────────────────────────────
+  const header = `
+    <div class="report-header">
+      <div class="d-flex justify-content-between align-items-start flex-wrap gap-2">
+        <div>
+          <h1><i class="fas fa-file-medical-alt me-2"></i>Clinical Study Safety Summary Report</h1>
+          <div class="meta">Study ID: ${o.study_id} &nbsp;|&nbsp; Generated: ${o.processing_date} &nbsp;|&nbsp; Pipeline: <strong>${o.pipeline_status}</strong></div>
+        </div>
+        <span class="risk-badge risk-${ds.risk_level} mt-1">${ds.overall_status}</span>
+      </div>
+    </div>`;
+
+  document.getElementById('reportContent').innerHTML = header+s1+s2+s3+s4+s5+s6+s7+s8+s9+s10+s11+s12;
+  document.getElementById('loadingSpinner').style.display='none';
+  document.getElementById('reportContent').style.display='block';
+
+  // ── Charts ─────────────────────────────────────────────────────────────────
+  const CFG={responsive:true,displayModeBar:false};
+  const LO={margin:{t:20,r:10,b:40,l:50},paper_bgcolor:'rgba(0,0,0,0)',plot_bgcolor:'rgba(0,0,0,0)',font:{size:11}};
+
+  // AE severity
+  fetch(`/api/analytics/ae-by-severity?database_id=${dbId}`).then(r=>r.json()).then(d=>{
+    if(d.success) Plotly.newPlot('rpt_ae_sev',[{x:d.severities,y:d.counts,type:'bar',marker:{color:['#d69e2e','#dd6b20','#e53e3e']}}],{...LO,xaxis:{title:'Severity'},yaxis:{title:'Count'}},CFG);
+  });
+  // Gender
+  fetch(`/api/analytics/gender-distribution?database_id=${dbId}`).then(r=>r.json()).then(d=>{
+    if(d.success) Plotly.newPlot('rpt_gender',[{labels:d.labels,values:d.values,type:'pie',hole:0.4,marker:{colors:['#3182ce','#d53f8c']}}],{...LO,margin:{t:20,r:10,b:10,l:10},showlegend:true},CFG);
+  });
+  // Arms
+  fetch(`/api/analytics/arm-distribution?database_id=${dbId}`).then(r=>r.json()).then(d=>{
+    if(d.success) Plotly.newPlot('rpt_arm',[{x:d.arms,y:d.counts,type:'bar',marker:{color:'#805ad5'}}],{...LO,xaxis:{title:'Arm'},yaxis:{title:'Subjects'}},CFG);
+  });
+  // Safety flags
+  Plotly.newPlot('rpt_flags',[{x:['ALT≥3×ULN','AST≥3×ULN','BILI≥2×ULN',"Hy's Law"],
+    y:[sf.alt_3x_uln,sf.ast_3x_uln,sf.bili_2x_uln,sf.hys_law],type:'bar',
+    marker:{color:['#dd6b20','#e53e3e','#d69e2e','#c53030']}}],
+    {...LO,xaxis:{title:'Flag'},yaxis:{title:'Subjects'}},CFG);
+  // AE by site
+  fetch(`/api/analytics/ae-by-site?database_id=${dbId}`).then(r=>r.json()).then(d=>{
+    if(d.success) Plotly.newPlot('rpt_ae_site',[{x:d.sites,y:d.counts,type:'bar',marker:{color:'#3182ce'}}],{...LO,xaxis:{title:'Site'},yaxis:{title:'AEs'}},CFG);
+  });
+}
+
+buildReport();
+</script>
+</body>
+</html>

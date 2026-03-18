@@ -1,0 +1,218 @@
+{% extends "base.html" %}
+{% block title %}User Management — Clinical Data Pipeline{% endblock %}
+{% block content %}
+<div class="fade-in">
+
+<div class="d-flex justify-content-between align-items-center mb-3">
+  <h4 class="mb-0"><i class="fas fa-users-cog text-primary me-2"></i> User Management</h4>
+  <button class="btn btn-clinical btn-sm" data-bs-toggle="modal" data-bs-target="#addUserModal">
+    <i class="fas fa-user-plus me-1"></i> Add User
+  </button>
+</div>
+
+<!-- Role legend -->
+<div class="d-flex gap-2 mb-3 flex-wrap">
+  <span class="badge bg-danger px-3 py-2"><i class="fas fa-crown me-1"></i> Admin — Full access + user management</span>
+  <span class="badge bg-primary px-3 py-2"><i class="fas fa-cogs me-1"></i> Data Engineer — Upload, pipeline, results</span>
+  <span class="badge bg-success px-3 py-2"><i class="fas fa-chart-bar me-1"></i> Data Analyst — Analytics &amp; Predictions</span>
+</div>
+
+<div class="card card-clinical">
+  <div class="card-body p-0">
+    <table class="table table-hover mb-0">
+      <thead class="table-dark">
+        <tr><th>Username</th><th>Email</th><th>Role</th><th>Status</th><th>Created</th><th>Actions</th></tr>
+      </thead>
+      <tbody id="userTableBody">
+        <tr><td colspan="6" class="text-center py-3"><i class="fas fa-spinner fa-spin"></i> Loading…</td></tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+</div>
+
+<!-- Add User Modal -->
+<div class="modal fade" id="addUserModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-user-plus me-2"></i> Add New User</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Username <span class="text-danger">*</span></label>
+          <input type="text" class="form-control" id="newUsername" placeholder="e.g. john_doe">
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Email <span class="text-danger">*</span></label>
+          <input type="email" class="form-control" id="newEmail" placeholder="user@example.com">
+          <div class="form-text">Login credentials will be emailed if SMTP is configured.</div>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Role <span class="text-danger">*</span></label>
+          <select class="form-select" id="newRole">
+            <option value="data_analyst">Data Analyst</option>
+            <option value="data_engineer">Data Engineer</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Password <span class="text-danger">*</span></label>
+          <div class="input-group">
+            <input type="password" class="form-control" id="newPassword" placeholder="Min 6 characters">
+            <button class="btn btn-outline-secondary" type="button" onclick="genPassword()"><i class="fas fa-dice"></i></button>
+          </div>
+        </div>
+        <div id="addUserError" class="alert alert-danger d-none py-2 small"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button class="btn btn-clinical" onclick="createUser()"><i class="fas fa-save me-1"></i> Create User</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- Edit User Modal -->
+<div class="modal fade" id="editUserModal" tabindex="-1">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title"><i class="fas fa-user-edit me-2"></i> Edit User</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+      </div>
+      <div class="modal-body">
+        <input type="hidden" id="editUserId">
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Role</label>
+          <select class="form-select" id="editRole">
+            <option value="data_analyst">Data Analyst</option>
+            <option value="data_engineer">Data Engineer</option>
+            <option value="admin">Admin</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold">Status</label>
+          <select class="form-select" id="editActive">
+            <option value="1">Active</option>
+            <option value="0">Inactive</option>
+          </select>
+        </div>
+        <div class="mb-3">
+          <label class="form-label fw-semibold">New Password <span class="text-muted small">(leave blank to keep)</span></label>
+          <input type="password" class="form-control" id="editPassword" placeholder="Leave blank to keep current">
+        </div>
+        <div id="editUserError" class="alert alert-danger d-none py-2 small"></div>
+      </div>
+      <div class="modal-footer">
+        <button class="btn btn-secondary" data-bs-dismiss="modal">Cancel</button>
+        <button class="btn btn-clinical" onclick="saveUser()"><i class="fas fa-save me-1"></i> Save Changes</button>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+const ROLE_BADGES = {
+  admin: '<span class="badge bg-danger">Admin</span>',
+  data_engineer: '<span class="badge bg-primary">Data Engineer</span>',
+  data_analyst: '<span class="badge bg-success">Data Analyst</span>'
+};
+
+async function loadUsers() {
+  const r = await fetch('/api/admin/users');
+  const users = await r.json();
+  const tbody = document.getElementById('userTableBody');
+  if (!users.length) {
+    tbody.innerHTML = '<tr><td colspan="6" class="text-center text-muted">No users found</td></tr>';
+    return;
+  }
+  tbody.innerHTML = users.map(u => `
+    <tr>
+      <td><i class="fas fa-user me-1 text-muted"></i> <strong>${u.username}</strong></td>
+      <td>${u.email}</td>
+      <td>${ROLE_BADGES[u.role] || u.role}</td>
+      <td><span class="badge ${u.is_active ? 'bg-success' : 'bg-secondary'}">${u.is_active ? 'Active' : 'Inactive'}</span></td>
+      <td><small class="text-muted">${u.created_at || '—'}</small></td>
+      <td>
+        <button class="btn btn-xs btn-outline-primary btn-sm py-0 px-2 me-1" onclick="openEdit(${u.id},'${u.role}',${u.is_active})"><i class="fas fa-edit"></i></button>
+        <button class="btn btn-xs btn-outline-danger btn-sm py-0 px-2" onclick="deleteUser(${u.id},'${u.username}')"><i class="fas fa-trash"></i></button>
+      </td>
+    </tr>`).join('');
+}
+
+function genPassword() {
+  const chars = 'ABCDEFGHJKMNPQRSTUVWXYZabcdefghjkmnpqrstuvwxyz23456789@#$!';
+  let p = '';
+  for (let i = 0; i < 10; i++) p += chars[Math.floor(Math.random() * chars.length)];
+  document.getElementById('newPassword').value = p;
+  document.getElementById('newPassword').type = 'text';
+}
+
+async function createUser() {
+  const errEl = document.getElementById('addUserError');
+  errEl.classList.add('d-none');
+  const body = {
+    username: document.getElementById('newUsername').value.trim(),
+    email: document.getElementById('newEmail').value.trim(),
+    role: document.getElementById('newRole').value,
+    password: document.getElementById('newPassword').value.trim()
+  };
+  if (!body.username || !body.email || !body.password) {
+    errEl.textContent = 'All fields are required.'; errEl.classList.remove('d-none'); return;
+  }
+  const r = await fetch('/api/admin/users', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(body) });
+  const d = await r.json();
+  if (d.success) {
+    bootstrap.Modal.getInstance(document.getElementById('addUserModal')).hide();
+    showNotification(d.message, 'success');
+    loadUsers();
+  } else {
+    errEl.textContent = d.message; errEl.classList.remove('d-none');
+  }
+}
+
+function openEdit(id, role, isActive) {
+  document.getElementById('editUserId').value = id;
+  document.getElementById('editRole').value = role;
+  document.getElementById('editActive').value = isActive ? '1' : '0';
+  document.getElementById('editPassword').value = '';
+  document.getElementById('editUserError').classList.add('d-none');
+  new bootstrap.Modal(document.getElementById('editUserModal')).show();
+}
+
+async function saveUser() {
+  const id = document.getElementById('editUserId').value;
+  const errEl = document.getElementById('editUserError');
+  errEl.classList.add('d-none');
+  const body = {
+    role: document.getElementById('editRole').value,
+    is_active: document.getElementById('editActive').value === '1',
+    password: document.getElementById('editPassword').value.trim() || undefined
+  };
+  const r = await fetch(`/api/admin/users/${id}`, { method: 'PUT', headers: {'Content-Type':'application/json'}, body: JSON.stringify(body) });
+  const d = await r.json();
+  if (d.success) {
+    bootstrap.Modal.getInstance(document.getElementById('editUserModal')).hide();
+    showNotification(d.message, 'success');
+    loadUsers();
+  } else {
+    errEl.textContent = d.message; errEl.classList.remove('d-none');
+  }
+}
+
+async function deleteUser(id, username) {
+  if (!confirm(`Delete user "${username}"? This cannot be undone.`)) return;
+  const r = await fetch(`/api/admin/users/${id}`, { method: 'DELETE' });
+  const d = await r.json();
+  if (d.success) { showNotification(d.message, 'success'); loadUsers(); }
+  else showNotification(d.message, 'danger');
+}
+
+document.addEventListener('DOMContentLoaded', loadUsers);
+</script>
+{% endblock %}

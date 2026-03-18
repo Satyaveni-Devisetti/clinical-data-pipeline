@@ -1,0 +1,660 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Clinical Data Pipeline{% endblock %}</title>
+    <link href="{{ url_for('static', filename='css/bootstrap.min.css') }}" rel="stylesheet">
+    <link href="{{ url_for('static', filename='css/all.min.css') }}" rel="stylesheet">
+    <style>
+        :root {
+            --clinical-primary: #2c5282;
+            --clinical-secondary: #3182ce;
+            --clinical-accent: #4299e1;
+            --clinical-light: #ebf8ff;
+            --clinical-dark: #1a365d;
+            --clinical-success: #38a169;
+            --clinical-warning: #d69e2e;
+            --clinical-danger: #e53e3e;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+            min-height: 100vh;
+        }
+
+        .navbar-clinical {
+            background: linear-gradient(135deg, var(--clinical-primary) 0%, var(--clinical-secondary) 100%);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        /* Enhanced Notification animations */
+        @keyframes slideInRight {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes slideOutRight {
+            from {
+                transform: translateX(0);
+                opacity: 1;
+            }
+            to {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+        }
+        
+        @keyframes bounceIn {
+            0% {
+                transform: translateX(100%) scale(0.3);
+                opacity: 0;
+            }
+            50% {
+                transform: translateX(0) scale(1.05);
+                opacity: 1;
+            }
+            70% {
+                transform: translateX(0) scale(0.95);
+                opacity: 1;
+            }
+            100% {
+                transform: translateX(0) scale(1);
+                opacity: 1;
+            }
+        }
+        
+        @keyframes pulse {
+            0%, 100% {
+                transform: scale(1);
+            }
+            50% {
+                transform: scale(1.05);
+            }
+        }
+
+        .navbar-clinical .navbar-brand {
+            color: white;
+            font-weight: 600;
+            font-size: 1.25rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            line-height: 1;
+        }
+
+        .navbar-clinical .navbar-nav {
+            align-items: center;
+        }
+
+        .navbar-clinical .nav-item.dropdown .dropdown-toggle::after {
+            display: none;
+        }
+
+        .navbar-clinical .nav-link {
+            color: rgba(255,255,255,0.9) !important;
+            transition: all 0.3s ease;
+            border-radius: 6px;
+            margin: 0 2px;
+            padding: 7px 12px !important;
+            font-size: 0.93rem;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            line-height: 1;
+        }
+
+        .navbar-clinical .nav-link:hover,
+        .navbar-clinical .nav-link.active {
+            background-color: rgba(255,255,255,0.2);
+            color: white !important;
+        }
+
+        .card-clinical {
+            border: none;
+            border-radius: 12px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .card-clinical:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 8px 15px rgba(0,0,0,0.2);
+        }
+
+        .btn-clinical {
+            background: linear-gradient(135deg, var(--clinical-primary) 0%, var(--clinical-secondary) 100%);
+            border: none;
+            color: white;
+            padding: 10px 20px;
+            border-radius: 8px;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+
+        .btn-clinical:hover {
+            background: linear-gradient(135deg, var(--clinical-secondary) 0%, var(--clinical-accent) 100%);
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+        }
+
+        .status-indicator {
+            display: inline-block;
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            margin-right: 8px;
+            animation: pulse 2s infinite;
+        }
+
+        .status-connected { background-color: var(--clinical-success); }
+        .status-processing { background-color: var(--clinical-warning); }
+        .status-error { background-color: var(--clinical-danger); }
+        .status-idle { background-color: #6c757d; }
+
+        @keyframes pulse {
+            0% { opacity: 1; }
+            50% { opacity: 0.5; }
+            100% { opacity: 1; }
+        }
+
+        .loading-spinner {
+            display: none;
+            text-align: center;
+            padding: 20px;
+        }
+
+        .loading-spinner.active {
+            display: block;
+        }
+
+        .progress-clinical {
+            height: 6px;
+            border-radius: 3px;
+            background-color: #e9ecef;
+            overflow: hidden;
+        }
+
+        .progress-clinical .progress-bar {
+            background: linear-gradient(90deg, var(--clinical-primary), var(--clinical-accent));
+            transition: width 0.3s ease;
+        }
+
+        .alert-clinical {
+            border-radius: 8px;
+            border: none;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            padding: 12px 16px;
+            margin-bottom: 8px;
+        }
+        
+        .alert-clinical.alert-success {
+            background: #28a745 !important;
+            color: white !important;
+            border-left: 4px solid #1e7e34 !important;
+            font-weight: 600;
+        }
+        
+        .alert-clinical.alert-danger {
+            background: #ffb3b3;
+            color: #721c24;
+            border-left: 4px solid #ff6b6b;
+            font-weight: 600;
+        }
+        
+        .alert-clinical.alert-warning {
+            background: #fff3cd;
+            color: #856404;
+            border-left: 4px solid #ffc107;
+            font-weight: 600;
+        }
+        
+        .alert-clinical.alert-info {
+            background: #d1ecf1;
+            color: #0c5460;
+            border-left: 4px solid #0dcaf0;
+            font-weight: 600;
+        }
+        
+        .alert-clinical .btn-close {
+            position: absolute;
+            top: 8px;
+            right: 8px;
+            padding: 4px 8px;
+            font-size: 14px;
+            background: rgba(0,0,0,0.1);
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background 0.2s ease;
+        }
+        
+        .alert-clinical .btn-close:hover {
+            background: rgba(0,0,0,0.2);
+        }
+
+        .table-clinical {
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+
+        .table-clinical thead {
+            background: linear-gradient(135deg, var(--clinical-primary) 0%, var(--clinical-secondary) 100%);
+            color: white;
+        }
+
+        .metric-card {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            text-align: center;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .metric-card:hover {
+            transform: translateY(-2px);
+        }
+
+        .metric-value {
+            font-size: 2rem;
+            font-weight: bold;
+            color: var(--clinical-primary);
+        }
+
+        .metric-label {
+            color: #6c757d;
+            font-size: 0.9rem;
+            margin-top: 5px;
+        }
+
+        .fade-in {
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        .sidebar-clinical {
+            background: white;
+            border-radius: 12px;
+            padding: 20px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+        }
+
+        .pipeline-stage {
+            padding: 15px;
+            margin: 10px 0;
+            border-radius: 8px;
+            border: 2px solid #e9ecef;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .pipeline-stage::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            transition: left 2s ease-in-out;
+            z-index: 0;
+        }
+
+        .pipeline-stage.processing::before {
+            left: 0;
+        }
+
+        .pipeline-stage.completed::before {
+            left: 0;
+        }
+
+        /* Bronze stage - real bronze color */
+        #bronze-stage.processing::before {
+            background: linear-gradient(90deg, 
+                #CD7F32 0%, 
+                #B87333 25%, 
+                #CD7F32 50%, 
+                #B87333 75%, 
+                #CD7F32 100%);
+            animation: bronzeShimmer 2s ease-in-out infinite;
+        }
+
+        #bronze-stage.completed::before {
+            background: linear-gradient(135deg, #CD7F32, #B87333);
+        }
+
+        @keyframes bronzeShimmer {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        /* Silver stage - real silver color */
+        #silver-stage.processing::before {
+            background: linear-gradient(90deg, 
+                #C0C0C0 0%, 
+                #E5E5E5 25%, 
+                #C0C0C0 50%, 
+                #E5E5E5 75%, 
+                #C0C0C0 100%);
+            animation: silverShimmer 2s ease-in-out infinite;
+        }
+
+        #silver-stage.completed::before {
+            background: linear-gradient(135deg, #C0C0C0, #E5E5E5);
+        }
+
+        @keyframes silverShimmer {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        /* Gold stage - real gold color */
+        #gold-stage.processing::before {
+            background: linear-gradient(90deg, 
+                #FFD700 0%, 
+                #FFA500 25%, 
+                #FFD700 50%, 
+                #FFA500 75%, 
+                #FFD700 100%);
+            animation: goldShimmer 2s ease-in-out infinite;
+        }
+
+        #gold-stage.completed::before {
+            background: linear-gradient(135deg, #FFD700, #FFA500);
+        }
+
+        @keyframes goldShimmer {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        /* Prediction stage - crystal blue */
+        #prediction-stage.processing::before {
+            background: linear-gradient(90deg, 
+                #00CED1 0%, 
+                #48D1CC 25%, 
+                #00CED1 50%, 
+                #48D1CC 75%, 
+                #00CED1 100%);
+            animation: predictionShimmer 2s ease-in-out infinite;
+        }
+
+        #prediction-stage.completed::before {
+            background: linear-gradient(135deg, #00CED1, #48D1CC);
+        }
+
+        @keyframes predictionShimmer {
+            0%, 100% { opacity: 0.7; }
+            50% { opacity: 1; }
+        }
+
+        .pipeline-stage > div {
+            position: relative;
+            z-index: 1;
+        }
+
+        .pipeline-stage.processing,
+        .pipeline-stage.completed {
+            border-color: #007bff;
+            transform: scale(1.02);
+            box-shadow: 0 4px 15px rgba(0,123,255,0.3);
+        }
+
+        .pipeline-stage.completed {
+            border-color: #28a745;
+            box-shadow: 0 4px 15px rgba(40,167,69,0.3);
+        }
+
+        .pipeline-stage.active {
+            background: var(--clinical-accent);
+            color: white;
+        }
+
+        .pipeline-stage.completed {
+            background: var(--clinical-success);
+            color: white;
+        }
+    </style>
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg navbar-clinical">
+        <div class="container">
+            <a class="navbar-brand" href="{{ url_for('home') }}">
+                <i class="fas fa-hospital"></i> Clinical Data Pipeline
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link {{ 'active' if request.endpoint == 'home' }}" href="{{ url_for('home') }}">
+                            <i class="fas fa-home"></i> Home
+                        </a>
+                    </li>
+                    {% if session.get('user_role') in ('admin', 'data_engineer') %}
+                    <li class="nav-item">
+                        <a class="nav-link {{ 'active' if request.endpoint == 'upload' }}" href="{{ url_for('upload') }}">
+                            <i class="fas fa-upload"></i> Upload
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ 'active' if request.endpoint == 'results' }}" href="{{ url_for('results') }}">
+                            <i class="fas fa-chart-bar"></i> Results
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if session.get('user_role') in ('admin', 'data_analyst', 'data_engineer') %}
+                    <li class="nav-item">
+                        <a class="nav-link {{ 'active' if request.endpoint == 'analytics' }}" href="{{ url_for('analytics') }}">
+                            <i class="fas fa-chart-line"></i> Analytics
+                        </a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link {{ 'active' if request.endpoint == 'predictions' }}" href="{{ url_for('predictions') }}">
+                            <i class="fas fa-brain"></i> Predictions
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if session.get('user_role') in ('admin', 'data_engineer') %}
+                    <li class="nav-item">
+                        <a class="nav-link {{ 'active' if request.endpoint == 'automation' }}" href="{{ url_for('automation') }}">
+                            <i class="fas fa-robot"></i> Automation
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if session.get('user_role') == 'admin' %}
+                    <li class="nav-item">
+                        <a class="nav-link {{ 'active' if request.endpoint == 'admin_users' }}" href="{{ url_for('admin_users') }}">
+                            <i class="fas fa-users-cog"></i> Users
+                        </a>
+                    </li>
+                    {% endif %}
+                    {% if session.get('username') %}
+                    <li class="nav-item dropdown ms-1">
+                        <a class="nav-link dropdown-toggle p-0 d-flex align-items-center justify-content-center" href="#" data-bs-toggle="dropdown" title="{{ session.get('username') }}" style="width:36px;height:36px;border-radius:50%;background:rgba(255,255,255,0.15)">
+                            <i class="fas fa-user fa-sm"></i>
+                        </a>
+                        <ul class="dropdown-menu dropdown-menu-end" style="min-width:210px">
+                            <li class="px-3 py-2">
+                                <div class="fw-semibold" style="font-size:0.92rem">{{ session.get('username') }}</div>
+                                <div class="text-muted" style="font-size:0.78rem">{{ session.get('user_email','') }}</div>
+                                <span class="badge mt-1" style="font-size:0.72rem;background:var(--clinical-secondary)">{{ session.get('user_role','').replace('_',' ').title() }}</span>
+                            </li>
+                            <li><hr class="dropdown-divider my-1"></li>
+                            <li><a class="dropdown-item text-danger" href="{{ url_for('logout') }}"><i class="fas fa-sign-out-alt me-2"></i>Logout</a></li>
+                        </ul>
+                    </li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- Fixed Notification Container -->
+    <div id="notification-container" style="position: fixed; top: 70px; right: 20px; z-index: 10000; max-width: 400px;">
+    </div>
+
+    <div class="container mt-4">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+            {% if messages %}
+                {% for category, message in messages %}
+                    <div class="alert alert-{{ 'danger' if category == 'error' else category }} alert-clinical alert-dismissible fade show" role="alert">
+                        {{ message }}
+                        <button type="button" class="btn-close" data-bs-dismiss="alert"></button>
+                    </div>
+                {% endfor %}
+            {% endif %}
+        {% endwith %}
+
+        {% block content %}{% endblock %}
+    </div>
+
+    <script src="{{ url_for('static', filename='js/bootstrap.bundle.min.js') }}"></script>
+    <script src="https://cdn.plot.ly/plotly-2.27.0.min.js"></script>
+    <script>
+        // Clinical UI utilities
+        function showLoading(element) {
+            element.innerHTML = '<div class="spinner-border text-primary" role="status"><span class="visually-hidden">Loading...</span></div>';
+        }
+
+        function hideLoading(element, originalContent) {
+            element.innerHTML = originalContent;
+        }
+
+        function showNotification(message, type = 'info') {
+            // Create a completely separate notification element that bypasses all CSS
+            const notificationElement = document.createElement('div');
+            
+            // Apply direct inline styles - no classes, no CSS dependencies
+            notificationElement.style.cssText = `
+                position: fixed;
+                top: 70px;
+                right: 20px;
+                z-index: 10000;
+                max-width: 400px;
+                padding: 15px 20px;
+                border-radius: 8px;
+                box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+                font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+                font-size: 14px;
+                animation: bounceIn 0.5s ease-out;
+                display: flex;
+                align-items: flex-start;
+            `;
+            
+            if (type === 'success') {
+                notificationElement.style.cssText += `
+                    background: #28a745;
+                    color: black;
+                    border-left: 4px solid #1e7e34;
+                `;
+            } else if (type === 'error') {
+                notificationElement.style.cssText += `
+                    background: #dc3545;
+                    color: white;
+                    border-left: 4px solid #c82333;
+                `;
+            } else if (type === 'warning') {
+                notificationElement.style.cssText += `
+                    background: #ffc107;
+                    color: #856404;
+                    border-left: 4px solid #b08500;
+                `;
+            } else {
+                notificationElement.style.cssText += `
+                    background: #0dcaf0;
+                    color: white;
+                    border-left: 4px solid #0a6ebd;
+                `;
+            }
+            
+            // Create content with direct inline styles
+            const iconMap = {
+                'success': 'fa-check-circle',
+                'error': 'fa-exclamation-triangle',
+                'warning': 'fa-exclamation-circle',
+                'info': 'fa-info-circle'
+            };
+            
+            const iconColor = (type === 'success') ? 'black' : 'white';
+            const textColor = (type === 'success') ? 'black' : 'white';
+            
+            notificationElement.innerHTML = `
+                <i class="fas ${iconMap[type]}" style="margin-right: 10px; font-size: 16px; color: ${iconColor};"></i>
+                <span style="flex-grow: 1; font-weight: 600; color: ${textColor};">${message}</span>
+                <button onclick="this.parentElement.remove()" style="background: none; border: none; color: ${iconColor}; cursor: pointer; margin-left: 10px; font-size: 18px;">
+                    <i class="fas fa-times"></i>
+                </button>
+            `;
+            
+            // Add to body directly - bypass notification container
+            document.body.appendChild(notificationElement);
+            
+            // Auto-remove after 6 seconds
+            setTimeout(() => {
+                notificationElement.style.animation = 'slideOutRight 0.3s ease-in';
+                setTimeout(() => {
+                    notificationElement.remove();
+                }, 300);
+            }, 6000);
+        }
+
+        function updateStatus(element, status) {
+            element.className = `status-indicator status-${status}`;
+        }
+
+        // API utilities
+        async function makeRequest(url, options = {}) {
+            try {
+                // Don't set Content-Type for FormData - browser sets it automatically
+                const headers = options.body instanceof FormData 
+                    ? { ...options.headers } 
+                    : { 'Content-Type': 'application/json', ...options.headers };
+                
+                const response = await fetch(url, {
+                    headers: headers,
+                    ...options
+                });
+                
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+                
+                return await response.json();
+            } catch (error) {
+                console.error('API request failed:', error);
+                showNotification('Request failed: ' + error.message, 'danger');
+                throw error;
+            }
+        }
+
+        // Initialize tooltips
+        document.addEventListener('DOMContentLoaded', function() {
+            const tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'));
+            tooltipTriggerList.map(function (tooltipTriggerEl) {
+                return new bootstrap.Tooltip(tooltipTriggerEl);
+            });
+        });
+    </script>
+
+    {% block scripts %}{% endblock %}
+</body>
+</html>

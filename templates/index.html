@@ -1,0 +1,247 @@
+{% extends "base.html" %}
+
+{% block title %}Home - Clinical Data Pipeline{% endblock %}
+
+{% block content %}
+<div class="row fade-in">
+    <div class="col-12">
+        <div class="card card-clinical">
+            <div class="card-body text-center py-5">
+                <h1 class="display-4 mb-4">
+                    <i class="fas fa-hospital text-primary"></i>
+                    Clinical Data Pipeline
+                </h1>
+                <p class="lead mb-4">
+                    Professional clinical data processing with advanced ETL pipeline and predictive analytics
+                </p>
+                
+                <!-- Pipeline Overview Section -->
+                <div class="row mt-5">
+                    <div class="col-12">
+                        <h3 class="mb-4">Multi-Layer Data Processing Pipeline</h3>
+                        <div class="row">
+                            <div class="col-md-3 mb-3">
+                                <div class="pipeline-stage text-center">
+                                    <div class="pipeline-icon bronze">
+                                        <i class="fas fa-layer-group"></i>
+                                    </div>
+                                    <h5>Bronze Layer</h5>
+                                    <p class="small text-muted">Raw data ingestion and validation</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="pipeline-stage text-center">
+                                    <div class="pipeline-icon silver">
+                                        <i class="fas fa-filter"></i>
+                                    </div>
+                                    <h5>Silver Layer</h5>
+                                    <p class="small text-muted">Data cleaning and transformation</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="pipeline-stage text-center">
+                                    <div class="pipeline-icon gold">
+                                        <i class="fas fa-star"></i>
+                                    </div>
+                                    <h5>Gold Layer</h5>
+                                    <p class="small text-muted">Business-ready processed data</p>
+                                </div>
+                            </div>
+                            <div class="col-md-3 mb-3">
+                                <div class="pipeline-stage text-center">
+                                    <div class="pipeline-icon prediction">
+                                        <i class="fas fa-brain"></i>
+                                    </div>
+                                    <h5>Prediction Layer</h5>
+                                    <p class="small text-muted">ML predictions and analytics</p>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- Features Section -->
+                <div class="row mt-5">
+                    <div class="col-md-4 mb-3">
+                        <div class="feature-card">
+                            <i class="fas fa-shield-alt fa-2x text-primary mb-2"></i>
+                            <h6>Secure Processing</h6>
+                            <p class="small text-muted">HIPAA-compliant data handling with encryption</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="feature-card">
+                            <i class="fas fa-clock fa-2x text-success mb-2"></i>
+                            <h6>Real-time Processing</h6>
+                            <p class="small text-muted">Stream processing with live monitoring</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 mb-3">
+                        <div class="feature-card">
+                            <i class="fas fa-chart-bar fa-2x text-info mb-2"></i>
+                            <h6>Advanced Analytics</h6>
+                            <p class="small text-muted">Comprehensive reporting and insights</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="row justify-content-center">
+                    <div class="col-md-8">
+                        <div class="d-grid gap-3 d-md-flex justify-content-md-center">
+                            <a href="{{ url_for('upload') }}" class="btn btn-clinical btn-lg">
+                                <i class="fas fa-upload"></i> Start Upload
+                            </a>
+                            <a href="{{ url_for('analytics') }}" class="btn btn-outline-primary btn-lg">
+                                <i class="fas fa-chart-line"></i> View Analytics
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-3 mb-4">
+        <div class="metric-card">
+            <div class="metric-value" id="totalDatabases">0</div>
+            <div class="metric-label">Database Connections</div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-4">
+        <div class="metric-card">
+            <div class="metric-value" id="totalFiles">0</div>
+            <div class="metric-label">Uploaded Files</div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-4">
+        <div class="metric-card">
+            <div class="metric-value" id="totalRecords">0</div>
+            <div class="metric-label">Total Records</div>
+        </div>
+    </div>
+    <div class="col-md-3 mb-4">
+        <div class="metric-card">
+            <div class="metric-value" id="totalPipelines">0</div>
+            <div class="metric-label">Pipeline Runs</div>
+        </div>
+    </div>
+</div>
+
+<div class="row mt-5">
+    <div class="col-md-4 mb-4">
+        <div class="card card-clinical h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-database fa-3x text-primary mb-3"></i>
+                <h5>Connect Database</h5>
+                <p class="text-muted">Connect to your PostgreSQL database and start processing clinical data</p>
+                <a href="{{ url_for('upload') }}" class="btn btn-primary">Get Started</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card card-clinical h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-upload fa-3x text-success mb-3"></i>
+                <h5>Upload Files</h5>
+                <p class="text-muted">Upload your clinical data files in CSV, XML, or NDJSON format</p>
+                <a href="{{ url_for('upload') }}" class="btn btn-success">Upload Files</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-4 mb-4">
+        <div class="card card-clinical h-100">
+            <div class="card-body text-center">
+                <i class="fas fa-chart-line fa-3x text-info mb-3"></i>
+                <h5>View Analytics</h5>
+                <p class="text-muted">Explore processed data with interactive visualizations and insights</p>
+                <a href="{{ url_for('analytics') }}" class="btn btn-info">View Analytics</a>
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block styles %}
+<style>
+.pipeline-stage {
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+}
+
+.pipeline-stage:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+}
+
+.pipeline-icon {
+    width: 60px;
+    height: 60px;
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 15px;
+    font-size: 24px;
+    color: white;
+}
+
+.pipeline-icon.bronze {
+    background: linear-gradient(135deg, #CD7F32, #8B4513);
+}
+
+.pipeline-icon.silver {
+    background: linear-gradient(135deg, #C0C0C0, #808080);
+}
+
+.pipeline-icon.gold {
+    background: linear-gradient(135deg, #FFD700, #FFA500);
+}
+
+.pipeline-icon.prediction {
+    background: linear-gradient(135deg, #6f42c1, #4c1d95);
+}
+
+.feature-card {
+    padding: 20px;
+    border-radius: 10px;
+    background: rgba(255, 255, 255, 0.05);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    transition: all 0.3s ease;
+}
+
+.feature-card:hover {
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-3px);
+}
+</style>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Load metrics
+async function loadMetrics() {
+    try {
+        const data = await makeRequest('/api/home/metrics');
+        if (data.success) {
+            document.getElementById('totalDatabases').textContent = data.databases;
+            document.getElementById('totalFiles').textContent = data.files;
+            document.getElementById('totalRecords').textContent = Number(data.records).toLocaleString();
+            document.getElementById('totalPipelines').textContent = data.pipeline_runs;
+        }
+    } catch (error) {
+        console.error('Failed to load metrics:', error);
+    }
+}
+
+// Initialize on page load
+document.addEventListener('DOMContentLoaded', function() {
+    loadMetrics();
+    setInterval(loadMetrics, 30000);
+});
+</script>
+{% endblock %}

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<labs>
+    <lab>
+        <subject_id>SUBJ001</subject_id>
+        <visitno>1</visitno>
+        <testcode>HEMOGLOBIN</testcode>
+        <resultvalue>12.5</resultvalue>
+        <units>g/dL</units>
+        <refhigh>16.0</refhigh>
+        <resultdate>2024-01-15</resultdate>
+    </lab>
+    <lab>
+        <subject_id>SUBJ001</subject_id>
+        <visitno>2</visitno>
+        <testcode>WBC</testcode>
+        <resultvalue>6500</resultvalue>
+        <units>cells/μL</units>
+        <refhigh>11000</refhigh>
+        <resultdate>2024-01-16</resultdate>
+    </lab>
+    <lab>
+        <subject_id>SUBJ002</subject_id>
+        <visitno>1</visitno>
+        <testcode>HEMOGLOBIN</testcode>
+        <resultvalue>13.2</resultvalue>
+        <units>g/dL</units>
+        <refhigh>16.0</refhigh>
+        <resultdate>2024-01-15</resultdate>
+    </lab>
+    <lab>
+        <subject_id>SUBJ003</subject_id>
+        <visitno>1</visitno>
+        <testcode>CREATININE</testcode>
+        <resultvalue>1.1</resultvalue>
+        <units>mg/dL</units>
+        <refhigh>1.2</refhigh>
+        <resultdate>2024-01-15</resultdate>
+    </lab>
+</labs>

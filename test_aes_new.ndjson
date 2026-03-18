@@ -1,0 +1,4 @@
+{"subject_id": "SUBJ001", "ae_id": "AE001", "pt_name": "Headache", "severity": "MILD", "onset_date": "2024-01-15", "stop_date": "2024-01-16"}
+{"subject_id": "SUBJ001", "ae_id": "AE002", "pt_name": "Nausea", "severity": "MODERATE", "onset_date": "2024-01-16", "stop_date": "2024-01-17"}
+{"subject_id": "SUBJ002", "ae_id": "AE003", "pt_name": "Fatigue", "severity": "MILD", "onset_date": "2024-01-15", "stop_date": "2024-01-18"}
+{"subject_id": "SUBJ003", "ae_id": "AE004", "pt_name": "Dizziness", "severity": "MODERATE", "onset_date": "2024-01-16", "stop_date": "2024-01-19"}

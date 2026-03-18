@@ -1,0 +1,146 @@
+{% extends "base.html" %}
+{% block title %}File History – Clinical Data Pipeline{% endblock %}
+{% block content %}
+<div class="fade-in">
+
+<!-- DB selector bar -->
+<div class="card card-clinical mb-3">
+  <div class="card-body py-2 d-flex align-items-center gap-3 flex-wrap">
+    <i class="fas fa-database text-primary"></i>
+    <strong>Database:</strong>
+    <select class="form-select form-select-sm w-auto" id="dbSelect" onchange="onDbChange(this.value)"></select>
+    <small class="text-muted">File history is scoped to the selected database</small>
+    <div class="ms-auto d-flex gap-2">
+      <input type="text" class="form-control form-control-sm" style="width:200px" id="searchInput"
+             placeholder="Search filename…" oninput="filterTable()">
+      <select class="form-select form-select-sm w-auto" id="typeFilter" onchange="filterTable()">
+        <option value="">All Types</option>
+        <option value="subjects">Subjects</option>
+        <option value="labs">Labs</option>
+        <option value="aes">Adverse Events</option>
+      </select>
+      <button class="btn btn-sm btn-outline-secondary" onclick="loadHistory()">
+        <i class="fas fa-sync"></i>
+      </button>
+      <a href="{{ url_for('upload') }}" class="btn btn-sm btn-outline-primary">
+        <i class="fas fa-arrow-left"></i> Back
+      </a>
+    </div>
+  </div>
+</div>
+
+<!-- KPI strip -->
+<div class="row g-3 mb-3" id="kpiStrip">
+  <div class="col-6 col-md-3"><div class="metric-card"><div class="metric-value text-primary" id="kpiTotal">—</div><div class="metric-label">Total Files</div></div></div>
+  <div class="col-6 col-md-3"><div class="metric-card"><div class="metric-value text-success" id="kpiProcessed">—</div><div class="metric-label">Processed</div></div></div>
+  <div class="col-6 col-md-3"><div class="metric-card"><div class="metric-value text-warning" id="kpiPending">—</div><div class="metric-label">Pending</div></div></div>
+  <div class="col-6 col-md-3"><div class="metric-card"><div class="metric-value text-info" id="kpiRecords">—</div><div class="metric-label">Total Records</div></div></div>
+</div>
+
+<!-- Table -->
+<div class="card card-clinical">
+  <div class="card-header"><i class="fas fa-history me-2"></i>Upload History</div>
+  <div class="card-body p-0">
+    <div class="table-responsive">
+      <table class="table table-hover mb-0">
+        <thead class="table-dark">
+          <tr>
+            <th>#</th><th>File Name</th><th>Type</th><th>Size</th>
+            <th>Records</th><th>Uploaded At</th><th>Bronze</th><th>Status</th>
+          </tr>
+        </thead>
+        <tbody id="historyTbody">
+          <tr><td colspan="8" class="text-center py-4 text-muted">
+            <div class="spinner-border spinner-border-sm me-2"></div>Loading…
+          </td></tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+</div>
+{% endblock %}
+{% block scripts %}
+<script>
+let allFiles = [], dbId = null;
+
+function fmt(bytes){
+  if(!bytes)return '0 B';
+  const k=1024,s=['B','KB','MB','GB'];
+  const i=Math.floor(Math.log(bytes)/Math.log(k));
+  return (bytes/Math.pow(k,i)).toFixed(1)+' '+s[i];
+}
+
+async function loadHistory(){
+  if(!dbId)return;
+  document.getElementById('historyTbody').innerHTML=
+    '<tr><td colspan="8" class="text-center py-4 text-muted"><div class="spinner-border spinner-border-sm me-2"></div>Loading…</td></tr>';
+  const r=await fetch(`/api/files/history?database_id=${dbId}`);
+  const d=await r.json();
+  if(!d.success){
+    document.getElementById('historyTbody').innerHTML=
+      `<tr><td colspan="8" class="text-center text-danger py-3">${d.message}</td></tr>`;
+    return;
+  }
+  allFiles=d.files||[];
+  updateKPIs(); filterTable();
+}
+
+function updateKPIs(){
+  document.getElementById('kpiTotal').textContent=allFiles.length;
+  document.getElementById('kpiProcessed').textContent=allFiles.filter(f=>f.processed).length;
+  document.getElementById('kpiPending').textContent=allFiles.filter(f=>!f.processed).length;
+  document.getElementById('kpiRecords').textContent=allFiles.reduce((s,f)=>s+(f.record_count||0),0).toLocaleString();
+}
+
+function filterTable(){
+  const search=document.getElementById('searchInput').value.toLowerCase();
+  const type=document.getElementById('typeFilter').value;
+  const filtered=allFiles.filter(f=>
+    (!search||f.filename.toLowerCase().includes(search))&&
+    (!type||f.file_type===type)
+  );
+  renderTable(filtered);
+}
+
+function renderTable(files){
+  const tbody=document.getElementById('historyTbody');
+  if(!files.length){
+    tbody.innerHTML='<tr><td colspan="8" class="text-center py-4 text-muted"><i class="fas fa-inbox me-2"></i>No files found</td></tr>';
+    return;
+  }
+  const typeColor={subjects:'primary',labs:'success',aes:'warning'};
+  tbody.innerHTML=files.map((f,i)=>`
+    <tr>
+      <td class="text-muted">${i+1}</td>
+      <td><i class="fas fa-file me-1 text-muted"></i>${f.filename}</td>
+      <td><span class="badge bg-${typeColor[f.file_type]||'secondary'}">${f.file_type}</span></td>
+      <td>${fmt(f.file_size)}</td>
+      <td>${(f.record_count||0).toLocaleString()}</td>
+      <td>${f.uploaded_at?new Date(f.uploaded_at).toLocaleString():'—'}</td>
+      <td>${f.bronze_loaded?'<span class="badge bg-success">Yes</span>':'<span class="badge bg-secondary">No</span>'}</td>
+      <td>${f.processed?'<span class="badge bg-success"><i class="fas fa-check me-1"></i>Processed</span>':'<span class="badge bg-warning text-dark"><i class="fas fa-clock me-1"></i>Pending</span>'}</td>
+    </tr>`).join('');
+}
+
+async function onDbChange(val){
+  dbId=parseInt(val);
+  await fetch('/api/database/select',{method:'POST',headers:{'Content-Type':'application/json'},body:JSON.stringify({database_id:dbId})});
+  loadHistory();
+}
+
+async function init(){
+  const dbs=await fetch('/api/database/list?validate=true').then(r=>r.json());
+  const avail=(dbs||[]).filter(d=>d.is_available);
+  if(!avail.length){showNotification('Please connect a database first','warning');return;}
+  const sess=await fetch('/api/database/current').then(r=>r.json());
+  dbId=(sess.success&&avail.find(d=>d.id===sess.database.id))?sess.database.id:avail[0].id;
+  const sel=document.getElementById('dbSelect');
+  sel.innerHTML=avail.map(d=>`<option value="${d.id}" ${d.id===dbId?'selected':''}>${d.name}</option>`).join('');
+  loadHistory();
+}
+
+document.addEventListener('DOMContentLoaded',init);
+</script>
+{% endblock %}

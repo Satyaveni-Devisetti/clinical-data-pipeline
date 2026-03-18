@@ -1,0 +1,3 @@
+subject_id,site_id,sex,dob,arm,start_date
+SUB001,SITE001,M,1990-01-15,Arm A,2024-01-01
+SUB002,SITE001,F,1985-05-20,Arm B,2024-01-02

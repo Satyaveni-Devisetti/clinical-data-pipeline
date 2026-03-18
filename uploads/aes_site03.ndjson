@@ -1,0 +1,1000 @@
+{"subject_id": "s0300043", "ae_id": "AE0300000", "pt_name": "fatigue", "pt_code": " 1000040 ", "severity": "moderate", "related": "possible", "serious": "YES", "ae_start_dt": " 2025-10-19 "}
+{"subject_id": "s0300767", "ae_id": "AE0300001", "pt_name": "Nausea", "pt_code": "1000020", "severity": "MILD", "related": " POSSIBLE ", "serious": "NO", "ae_start_dt": " 2024-10-04 "}
+{"subject_id": " S0300252 ", "ae_id": "AE0300002", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": "MODERATE", "related": " NO ", "serious": "no", "ae_start_dt": " 2025-10-21 "}
+{"subject_id": " S0300937 ", "ae_id": "AE0300003", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": "moderate", "related": " UNRELATED ", "serious": "YES", "ae_start_dt": "08/27/2024"}
+{"subject_id": "S0300923", "ae_id": "AE0300004", "pt_name": " Fatigue ", "pt_code": " 1000040 ", "severity": "moderate", "related": "POSSIBLE", "serious": "no", "ae_start_dt": " 2025-05-10 "}
+{"subject_id": "S0300399", "ae_id": "AE0300005", "pt_name": "Vomiting", "pt_code": "1000050", "severity": "moderate", "related": "yes", "serious": " NO ", "ae_start_dt": "2024-08-06"}
+{"subject_id": "S0300868", "ae_id": "AE0300006", "pt_name": " Vomiting ", "pt_code": " 1000050 ", "severity": "SEVERE", "related": " PROBABLE ", "serious": "NO", "ae_start_dt": "09-10-2025"}
+{"subject_id": "S0300562", "ae_id": "AE0300007", "pt_name": "vomiting", "pt_code": "1000050", "severity": "MODERATE", "related": "PROBABLE", "serious": "YES", "ae_start_dt": "2025-04-18"}
+{"subject_id": " S0300399 ", "ae_id": "AE0300008", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": "MODERATE", "related": " POSSIBLE ", "serious": "no", "ae_start_dt": "2025-04-15"}
+{"subject_id": "s0300471", "ae_id": "AE0300009", "pt_name": "vomiting", "pt_code": "1000050", "severity": "MILD", "related": "no", "serious": "YES", "ae_start_dt": " 2025-09-10 "}
+{"subject_id": "s0300432", "ae_id": "AE0300010", "pt_name": "headache", "pt_code": "1000010", "severity": "severe", "related": " NO ", "serious": "no", "ae_start_dt": " 2024-02-19 "}
+{"subject_id": " S0300012 ", "ae_id": "AE0300011", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": "mild", "related": " NO ", "serious": "YES", "ae_start_dt": "2024-11-18"}
+{"subject_id": "S0300174", "ae_id": "AE0300012", "pt_name": "Fatigue", "pt_code": "1000040", "severity": "mild", "related": " UNRELATED ", "serious": " NO ", "ae_start_dt": "2025-08-02"}
+{"subject_id": " S0300458 ", "ae_id": "AE0300013", "pt_name": "vomiting", "pt_code": "1000050", "severity": " SEVERE ", "related": " PROBABLE ", "serious": "YES", "ae_start_dt": "2025-12-15"}
+{"subject_id": "s0300192", "ae_id": "AE0300014", "pt_name": "headache", "pt_code": "1000010", "severity": "severe", "related": "possible", "serious": "NO", "ae_start_dt": "2024-07-05"}
+{"subject_id": "S0300312", "ae_id": "AE0300015", "pt_name": " Fatigue ", "pt_code": " 1000040 ", "severity": "MILD", "related": "probable", "serious": " YES ", "ae_start_dt": "2025-03-09"}
+{"subject_id": " S0300585 ", "ae_id": "AE0300016", "pt_name": "VOMITING", "pt_code": "1000050", "severity": " MILD ", "related": "UNRELATED", "serious": "YES", "ae_start_dt": "2025-08-10"}
+{"subject_id": "S0300427", "ae_id": "AE0300017", "pt_name": "Dizziness", "pt_code": "1000030", "severity": " MODERATE ", "related": "POSSIBLE", "serious": " NO ", "ae_start_dt": "2024-10-12"}
+{"subject_id": "S0300274", "ae_id": "AE0300018", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": " MODERATE ", "related": "YES", "serious": "NO", "ae_start_dt": "2024-04-13"}
+{"subject_id": "S0300492", "ae_id": "AE0300019", "pt_name": "Fatigue", "pt_code": " 1000040 ", "severity": "SEVERE", "related": " PROBABLE ", "serious": "yes", "ae_start_dt": " 2024-01-19 "}
+{"subject_id": " S0300949 ", "ae_id": "AE0300020", "pt_name": "Fatigue", "pt_code": "1000040", "severity": "SEVERE", "related": "yes", "serious": "YES", "ae_start_dt": "13-07-2025"}
+{"subject_id": "S0300838", "ae_id": "AE0300021", "pt_name": "VOMITING", "pt_code": "1000050", "severity": " MODERATE ", "related": "unrelated", "serious": "no", "ae_start_dt": " 2025-01-15 "}
+{"subject_id": " S0300196 ", "ae_id": "AE0300022", "pt_name": "fatigue", "pt_code": " 1000040 ", "severity": "MODERATE", "related": "possible", "serious": "YES", "ae_start_dt": "2025-01-03"}
+{"subject_id": "s0300666", "ae_id": "AE0300023", "pt_name": "Vomiting", "pt_code": "1000050", "severity": " SEVERE ", "related": "NO", "serious": " YES ", "ae_start_dt": "06/11/2025"}
+{"subject_id": "S0300016", "ae_id": "AE0300024", "pt_name": " Dizziness ", "pt_code": " 1000030 ", "severity": "SEVERE", "related": " PROBABLE ", "serious": "YES", "ae_start_dt": "09/24/2024"}
+{"subject_id": " S0300707 ", "ae_id": "AE0300025", "pt_name": "VOMITING", "pt_code": "1000050", "severity": "MODERATE", "related": "probable", "serious": "no", "ae_start_dt": "2025-07-22"}
+{"subject_id": "S0300695", "ae_id": "AE0300026", "pt_name": "headache", "pt_code": "1000010", "severity": "MILD", "related": "YES", "serious": "no", "ae_start_dt": "09/09/2025"}
+{"subject_id": "S0300200", "ae_id": "AE0300027", "pt_name": "Dizziness", "pt_code": "1000030", "severity": "moderate", "related": " UNRELATED ", "serious": "yes", "ae_start_dt": "2024-01-21"}
+{"subject_id": " S0300701 ", "ae_id": "AE0300028", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "MODERATE", "related": "probable", "serious": "no", "ae_start_dt": " 2025-05-13 "}
+{"subject_id": "s0300869", "ae_id": "AE0300029", "pt_name": "Dizziness", "pt_code": "1000030", "severity": "SEVERE", "related": " UNRELATED ", "serious": " NO ", "ae_start_dt": "2024-12-01"}
+{"subject_id": "S0300383", "ae_id": "AE0300030", "pt_name": "nausea", "pt_code": "1000020", "severity": "severe", "related": "NO", "serious": "NO", "ae_start_dt": "07/05/2024"}
+{"subject_id": "s0300168", "ae_id": "AE0300031", "pt_name": "FATIGUE", "pt_code": " 1000040 ", "severity": " SEVERE ", "related": "NO", "serious": "no", "ae_start_dt": " 2025-10-17 "}
+{"subject_id": "S0300875", "ae_id": "AE0300032", "pt_name": "Headache", "pt_code": " 1000010 ", "severity": " MODERATE ", "related": "no", "serious": "no", "ae_start_dt": "11/10/2024"}
+{"subject_id": "S0300952", "ae_id": "AE0300033", "pt_name": "Headache", "pt_code": "1000010", "severity": "SEVERE", "related": "PROBABLE", "serious": "NO", "ae_start_dt": "09/14/2025"}
+{"subject_id": "s0300774", "ae_id": "AE0300034", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "severe", "related": "PROBABLE", "serious": " YES ", "ae_start_dt": "24-07-2025"}
+{"subject_id": " S0300010 ", "ae_id": "AE0300035", "pt_name": "dizziness", "pt_code": "1000030", "severity": "MILD", "related": " YES ", "serious": " YES ", "ae_start_dt": " 2024-03-03 "}
+{"subject_id": "S0300667", "ae_id": "AE0300036", "pt_name": " Headache ", "pt_code": "1000010", "severity": "MILD", "related": "YES", "serious": "NO", "ae_start_dt": " 2026-01-04 "}
+{"subject_id": "s0300742", "ae_id": "AE0300037", "pt_name": "Vomiting", "pt_code": "1000050", "severity": " MODERATE ", "related": "PROBABLE", "serious": "YES", "ae_start_dt": "11/13/2025"}
+{"subject_id": "S0300416", "ae_id": "AE0300038", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": " MODERATE ", "related": " POSSIBLE ", "serious": " YES ", "ae_start_dt": " 2025-09-25 "}
+{"subject_id": "S0300234", "ae_id": "AE0300039", "pt_name": "HEADACHE", "pt_code": " 1000010 ", "severity": "SEVERE", "related": "UNRELATED", "serious": "NO", "ae_start_dt": "26-02-2025"}
+{"subject_id": " S0300986 ", "ae_id": "AE0300040", "pt_name": "Headache", "pt_code": "1000010", "severity": "MODERATE", "related": "UNRELATED", "serious": " YES ", "ae_start_dt": " 2025-07-09 "}
+{"subject_id": "s0300857", "ae_id": "AE0300041", "pt_name": "DIZZINESS", "pt_code": " 1000030 ", "severity": "SEVERE", "related": " UNRELATED ", "serious": "no", "ae_start_dt": "2024-01-06"}
+{"subject_id": "s0300897", "ae_id": "AE0300042", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": "mild", "related": "PROBABLE", "serious": "yes", "ae_start_dt": "2024-10-24"}
+{"subject_id": "s0300681", "ae_id": "AE0300043", "pt_name": "VOMITING", "pt_code": "1000050", "severity": "MODERATE", "related": "yes", "serious": "NO", "ae_start_dt": " 2024-05-03 "}
+{"subject_id": "S0300587", "ae_id": "AE0300044", "pt_name": " Nausea ", "pt_code": "1000020", "severity": "SEVERE", "related": "UNRELATED", "serious": "NO", "ae_start_dt": "20-05-2025"}
+{"subject_id": "S0300433", "ae_id": "AE0300045", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": "SEVERE", "related": " PROBABLE ", "serious": "NO", "ae_start_dt": "09/29/2024"}
+{"subject_id": "S0300130", "ae_id": "AE0300046", "pt_name": " Headache ", "pt_code": " 1000010 ", "severity": " MILD ", "related": "YES", "serious": "YES", "ae_start_dt": "11/20/2025"}
+{"subject_id": "S0300980", "ae_id": "AE0300047", "pt_name": " Nausea ", "pt_code": " 1000020 ", "severity": "MODERATE", "related": "possible", "serious": "NO", "ae_start_dt": " 2024-11-30 "}
+{"subject_id": "s0300274", "ae_id": "AE0300048", "pt_name": "headache", "pt_code": " 1000010 ", "severity": "SEVERE", "related": "YES", "serious": "YES", "ae_start_dt": "30-01-2024"}
+{"subject_id": "S0300762", "ae_id": "AE0300049", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": "moderate", "related": "yes", "serious": "YES", "ae_start_dt": "21-07-2024"}
+{"subject_id": " S0300278 ", "ae_id": "AE0300050", "pt_name": "VOMITING", "pt_code": "1000050", "severity": "moderate", "related": " YES ", "serious": "yes", "ae_start_dt": "2024-03-31"}
+{"subject_id": "S0300979", "ae_id": "AE0300051", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": " MODERATE ", "related": "POSSIBLE", "serious": "NO", "ae_start_dt": "2024-10-27"}
+{"subject_id": "S0300404", "ae_id": "AE0300052", "pt_name": "headache", "pt_code": "1000010", "severity": "moderate", "related": "probable", "serious": "yes", "ae_start_dt": "11/06/2024"}
+{"subject_id": "s0300947", "ae_id": "AE0300053", "pt_name": "Nausea", "pt_code": "1000020", "severity": "SEVERE", "related": "PROBABLE", "serious": "YES", "ae_start_dt": " 2025-03-11 "}
+{"subject_id": "S0300296", "ae_id": "AE0300054", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": "SEVERE", "related": "UNRELATED", "serious": "no", "ae_start_dt": " 2025-06-30 "}
+{"subject_id": "s0300779", "ae_id": "AE0300055", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": "SEVERE", "related": " YES ", "serious": " YES ", "ae_start_dt": "23-05-2024"}
+{"subject_id": "s0300351", "ae_id": "AE0300056", "pt_name": "fatigue", "pt_code": "1000040", "severity": " MODERATE ", "related": "unrelated", "serious": "NO", "ae_start_dt": "2025-02-05"}
+{"subject_id": " S0300386 ", "ae_id": "AE0300057", "pt_name": "FATIGUE", "pt_code": " 1000040 ", "severity": "severe", "related": "UNRELATED", "serious": "YES", "ae_start_dt": "28-04-2024"}
+{"subject_id": "S0300621", "ae_id": "AE0300058", "pt_name": "headache", "pt_code": "1000010", "severity": "MODERATE", "related": "UNRELATED", "serious": "NO", "ae_start_dt": "25-07-2025"}
+{"subject_id": "S0300392", "ae_id": "AE0300059", "pt_name": "NAUSEA", "pt_code": " 1000020 ", "severity": "SEVERE", "related": "UNRELATED", "serious": "NO", "ae_start_dt": "21-03-2024"}
+{"subject_id": "s0300817", "ae_id": "AE0300060", "pt_name": "Vomiting", "pt_code": "1000050", "severity": "MILD", "related": "YES", "serious": "YES", "ae_start_dt": "12/25/2024"}
+{"subject_id": "S0300222", "ae_id": "AE0300061", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": " MODERATE ", "related": "PROBABLE", "serious": "YES", "ae_start_dt": "02/14/2025"}
+{"subject_id": "s0300939", "ae_id": "AE0300062", "pt_name": "vomiting", "pt_code": "1000050", "severity": " MODERATE ", "related": " NO ", "serious": "no", "ae_start_dt": "19-07-2025"}
+{"subject_id": "s0300794", "ae_id": "AE0300063", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": "MILD", "related": " PROBABLE ", "serious": "YES", "ae_start_dt": "12/23/2024"}
+{"subject_id": "S0300090", "ae_id": "AE0300064", "pt_name": "dizziness", "pt_code": "1000030", "severity": " MILD ", "related": "YES", "serious": "YES", "ae_start_dt": "16-03-2025"}
+{"subject_id": "S0300489", "ae_id": "AE0300065", "pt_name": " Headache ", "pt_code": "1000010", "severity": "MILD", "related": " YES ", "serious": "NO", "ae_start_dt": "2025-10-25"}
+{"subject_id": "s0300468", "ae_id": "AE0300066", "pt_name": "headache", "pt_code": "1000010", "severity": " MODERATE ", "related": " UNRELATED ", "serious": "yes", "ae_start_dt": "2025-01-04"}
+{"subject_id": " S0300873 ", "ae_id": "AE0300067", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": " MODERATE ", "related": " PROBABLE ", "serious": "NO", "ae_start_dt": "02/01/2025"}
+{"subject_id": " S0300406 ", "ae_id": "AE0300068", "pt_name": "Nausea", "pt_code": "1000020", "severity": "MILD", "related": "no", "serious": " NO ", "ae_start_dt": " 2024-03-21 "}
+{"subject_id": "S0300833", "ae_id": "AE0300069", "pt_name": " Headache ", "pt_code": " 1000010 ", "severity": " MODERATE ", "related": "UNRELATED", "serious": "no", "ae_start_dt": "2025-03-24"}
+{"subject_id": "s0300727", "ae_id": "AE0300070", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": "MILD", "related": "POSSIBLE", "serious": "no", "ae_start_dt": "11/21/2025"}
+{"subject_id": "s0300941", "ae_id": "AE0300071", "pt_name": " Dizziness ", "pt_code": " 1000030 ", "severity": "SEVERE", "related": "PROBABLE", "serious": " NO ", "ae_start_dt": "09-08-2025"}
+{"subject_id": "S0300371", "ae_id": "AE0300072", "pt_name": "Fatigue", "pt_code": " 1000040 ", "severity": "moderate", "related": "NO", "serious": " NO ", "ae_start_dt": "03/09/2024"}
+{"subject_id": "S0300014", "ae_id": "AE0300073", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": "MODERATE", "related": "POSSIBLE", "serious": "NO", "ae_start_dt": " 2025-04-05 "}
+{"subject_id": "S0300852", "ae_id": "AE0300074", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": "severe", "related": " UNRELATED ", "serious": "no", "ae_start_dt": "08/14/2024"}
+{"subject_id": " S0300928 ", "ae_id": "AE0300075", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": " MODERATE ", "related": "probable", "serious": "yes", "ae_start_dt": "09/12/2024"}
+{"subject_id": "S0300568", "ae_id": "AE0300076", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": "MILD", "related": "yes", "serious": "yes", "ae_start_dt": "2024-06-17"}
+{"subject_id": "S0300861", "ae_id": "AE0300077", "pt_name": " Dizziness ", "pt_code": " 1000030 ", "severity": " MODERATE ", "related": "UNRELATED", "serious": "YES", "ae_start_dt": "02/06/2024"}
+{"subject_id": " S0300622 ", "ae_id": "AE0300078", "pt_name": " Nausea ", "pt_code": " 1000020 ", "severity": "MILD", "related": "yes", "serious": "NO", "ae_start_dt": "2025-11-29"}
+{"subject_id": "S0300356", "ae_id": "AE0300079", "pt_name": "vomiting", "pt_code": "1000050", "severity": "SEVERE", "related": "probable", "serious": "YES", "ae_start_dt": " 2024-07-06 "}
+{"subject_id": " S0300392 ", "ae_id": "AE0300080", "pt_name": "fatigue", "pt_code": " 1000040 ", "severity": "SEVERE", "related": "yes", "serious": "YES", "ae_start_dt": " 2024-09-21 "}
+{"subject_id": " S0300212 ", "ae_id": "AE0300081", "pt_name": "Headache", "pt_code": "1000010", "severity": "MILD", "related": "PROBABLE", "serious": "yes", "ae_start_dt": "02/10/2024"}
+{"subject_id": "s0300194", "ae_id": "AE0300082", "pt_name": "Dizziness", "pt_code": "1000030", "severity": " MILD ", "related": "probable", "serious": "YES", "ae_start_dt": " 2024-11-18 "}
+{"subject_id": "s0300699", "ae_id": "AE0300083", "pt_name": "vomiting", "pt_code": "1000050", "severity": "severe", "related": "UNRELATED", "serious": "no", "ae_start_dt": "12/16/2024"}
+{"subject_id": "S0300712", "ae_id": "AE0300084", "pt_name": "headache", "pt_code": "1000010", "severity": "moderate", "related": " NO ", "serious": "no", "ae_start_dt": "2024-03-08"}
+{"subject_id": "S0300554", "ae_id": "AE0300085", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "SEVERE", "related": " UNRELATED ", "serious": "NO", "ae_start_dt": "2024-05-14"}
+{"subject_id": "S0300282", "ae_id": "AE0300086", "pt_name": "Vomiting", "pt_code": "1000050", "severity": " MILD ", "related": "UNRELATED", "serious": "no", "ae_start_dt": "2024-06-18"}
+{"subject_id": "S0300489", "ae_id": "AE0300087", "pt_name": "Vomiting", "pt_code": " 1000050 ", "severity": "severe", "related": "no", "serious": " YES ", "ae_start_dt": " 2025-08-09 "}
+{"subject_id": " S0300820 ", "ae_id": "AE0300088", "pt_name": "Dizziness", "pt_code": "1000030", "severity": "mild", "related": "unrelated", "serious": "NO", "ae_start_dt": "02-07-2025"}
+{"subject_id": "S0300141", "ae_id": "AE0300089", "pt_name": " Headache ", "pt_code": "1000010", "severity": "MILD", "related": "no", "serious": "YES", "ae_start_dt": "13-04-2024"}
+{"subject_id": " S0300122 ", "ae_id": "AE0300090", "pt_name": " Nausea ", "pt_code": "1000020", "severity": "SEVERE", "related": "POSSIBLE", "serious": "YES", "ae_start_dt": "09/24/2024"}
+{"subject_id": "S0300832", "ae_id": "AE0300091", "pt_name": "NAUSEA", "pt_code": " 1000020 ", "severity": " MODERATE ", "related": "unrelated", "serious": " YES ", "ae_start_dt": "2025-06-10"}
+{"subject_id": " S0300009 ", "ae_id": "AE0300092", "pt_name": "VOMITING", "pt_code": "1000050", "severity": "severe", "related": "probable", "serious": "no", "ae_start_dt": "2025-12-26"}
+{"subject_id": "S0300265", "ae_id": "AE0300093", "pt_name": " Nausea ", "pt_code": "1000020", "severity": " MILD ", "related": "unrelated", "serious": " NO ", "ae_start_dt": "17-05-2024"}
+{"subject_id": "S0300654", "ae_id": "AE0300094", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": "MODERATE", "related": "YES", "serious": "YES", "ae_start_dt": "23-08-2024"}
+{"subject_id": "S0300608", "ae_id": "AE0300095", "pt_name": "vomiting", "pt_code": " 1000050 ", "severity": "moderate", "related": " UNRELATED ", "serious": "YES", "ae_start_dt": "2024-01-29"}
+{"subject_id": "S0300746", "ae_id": "AE0300096", "pt_name": "Fatigue", "pt_code": "1000040", "severity": "MILD", "related": " PROBABLE ", "serious": "yes", "ae_start_dt": " 2025-01-28 "}
+{"subject_id": "s0300095", "ae_id": "AE0300097", "pt_name": "dizziness", "pt_code": "1000030", "severity": " MODERATE ", "related": "UNRELATED", "serious": " YES ", "ae_start_dt": "13-02-2024"}
+{"subject_id": "S0300648", "ae_id": "AE0300098", "pt_name": " Vomiting ", "pt_code": " 1000050 ", "severity": "SEVERE", "related": " YES ", "serious": "YES", "ae_start_dt": "11/14/2025"}
+{"subject_id": " S0300856 ", "ae_id": "AE0300099", "pt_name": "VOMITING", "pt_code": " 1000050 ", "severity": "mild", "related": " POSSIBLE ", "serious": "YES", "ae_start_dt": "18-08-2024"}
+{"subject_id": " S0300373 ", "ae_id": "AE0300100", "pt_name": "DIZZINESS", "pt_code": " 1000030 ", "severity": "mild", "related": "NO", "serious": "no", "ae_start_dt": "2025-02-26"}
+{"subject_id": "S0300411", "ae_id": "AE0300101", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": "MODERATE", "related": "NO", "serious": " NO ", "ae_start_dt": "2024-03-07"}
+{"subject_id": " S0300082 ", "ae_id": "AE0300102", "pt_name": "Nausea", "pt_code": "1000020", "severity": " MILD ", "related": "YES", "serious": " YES ", "ae_start_dt": "30-11-2024"}
+{"subject_id": "S0300716", "ae_id": "AE0300103", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": "moderate", "related": "probable", "serious": "yes", "ae_start_dt": "2024-09-05"}
+{"subject_id": "s0300053", "ae_id": "AE0300104", "pt_name": "Fatigue", "pt_code": "1000040", "severity": "severe", "related": "probable", "serious": "yes", "ae_start_dt": "09/24/2024"}
+{"subject_id": "s0300079", "ae_id": "AE0300105", "pt_name": "VOMITING", "pt_code": "1000050", "severity": " MILD ", "related": "probable", "serious": "NO", "ae_start_dt": " 2024-06-21 "}
+{"subject_id": " S0300294 ", "ae_id": "AE0300106", "pt_name": "Vomiting", "pt_code": "1000050", "severity": " MILD ", "related": " PROBABLE ", "serious": "YES", "ae_start_dt": " 2024-07-02 "}
+{"subject_id": "S0300978", "ae_id": "AE0300107", "pt_name": " Headache ", "pt_code": "1000010", "severity": " MODERATE ", "related": "PROBABLE", "serious": "YES", "ae_start_dt": "02/18/2025"}
+{"subject_id": "S0300408", "ae_id": "AE0300108", "pt_name": "Fatigue", "pt_code": "1000040", "severity": "SEVERE", "related": " UNRELATED ", "serious": " NO ", "ae_start_dt": " 2024-07-17 "}
+{"subject_id": "S0300547", "ae_id": "AE0300109", "pt_name": "Vomiting", "pt_code": " 1000050 ", "severity": "SEVERE", "related": "possible", "serious": "YES", "ae_start_dt": "06-02-2024"}
+{"subject_id": " S0300613 ", "ae_id": "AE0300110", "pt_name": "Fatigue", "pt_code": "1000040", "severity": "severe", "related": "PROBABLE", "serious": "NO", "ae_start_dt": " 2024-01-09 "}
+{"subject_id": "S0300656", "ae_id": "AE0300111", "pt_name": " Headache ", "pt_code": " 1000010 ", "severity": "MODERATE", "related": "no", "serious": "NO", "ae_start_dt": " 2025-10-07 "}
+{"subject_id": "S0300513", "ae_id": "AE0300112", "pt_name": " Nausea ", "pt_code": "1000020", "severity": " SEVERE ", "related": " PROBABLE ", "serious": "NO", "ae_start_dt": "2024-09-12"}
+{"subject_id": "S0300594", "ae_id": "AE0300113", "pt_name": " Nausea ", "pt_code": "1000020", "severity": " MODERATE ", "related": "POSSIBLE", "serious": "YES", "ae_start_dt": "10/26/2024"}
+{"subject_id": "S0300051", "ae_id": "AE0300114", "pt_name": " Headache ", "pt_code": "1000010", "severity": "MILD", "related": " NO ", "serious": "YES", "ae_start_dt": "03/19/2025"}
+{"subject_id": "S0300014", "ae_id": "AE0300115", "pt_name": "Headache", "pt_code": "1000010", "severity": "mild", "related": "PROBABLE", "serious": "NO", "ae_start_dt": " 2025-02-25 "}
+{"subject_id": "S0300737", "ae_id": "AE0300116", "pt_name": "Headache", "pt_code": "1000010", "severity": "severe", "related": " POSSIBLE ", "serious": "yes", "ae_start_dt": "07/31/2025"}
+{"subject_id": "s0300778", "ae_id": "AE0300117", "pt_name": " Headache ", "pt_code": "1000010", "severity": "MODERATE", "related": " NO ", "serious": "yes", "ae_start_dt": "06/07/2025"}
+{"subject_id": "S0300920", "ae_id": "AE0300118", "pt_name": " Nausea ", "pt_code": "1000020", "severity": "MILD", "related": "NO", "serious": "yes", "ae_start_dt": " 2025-07-26 "}
+{"subject_id": " S0300231 ", "ae_id": "AE0300119", "pt_name": "Fatigue", "pt_code": "1000040", "severity": "severe", "related": " YES ", "serious": "no", "ae_start_dt": "30-04-2024"}
+{"subject_id": "S0300381", "ae_id": "AE0300120", "pt_name": "Vomiting", "pt_code": " 1000050 ", "severity": "MILD", "related": " YES ", "serious": "YES", "ae_start_dt": " 2025-06-10 "}
+{"subject_id": " S0300739 ", "ae_id": "AE0300121", "pt_name": "DIZZINESS", "pt_code": " 1000030 ", "severity": " MILD ", "related": "NO", "serious": " NO ", "ae_start_dt": "12/19/2024"}
+{"subject_id": "S0300308", "ae_id": "AE0300122", "pt_name": "Dizziness", "pt_code": " 1000030 ", "severity": "moderate", "related": "probable", "serious": "NO", "ae_start_dt": "04/19/2024"}
+{"subject_id": "S0300527", "ae_id": "AE0300123", "pt_name": " Vomiting ", "pt_code": " 1000050 ", "severity": " SEVERE ", "related": " UNRELATED ", "serious": "NO", "ae_start_dt": " 2025-10-24 "}
+{"subject_id": "s0300448", "ae_id": "AE0300124", "pt_name": " Nausea ", "pt_code": "1000020", "severity": "MODERATE", "related": "YES", "serious": " YES ", "ae_start_dt": "24-05-2024"}
+{"subject_id": "S0300561", "ae_id": "AE0300125", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": "mild", "related": "PROBABLE", "serious": " NO ", "ae_start_dt": "03/03/2024"}
+{"subject_id": "S0300923", "ae_id": "AE0300126", "pt_name": " Dizziness ", "pt_code": " 1000030 ", "severity": "MILD", "related": " POSSIBLE ", "serious": "YES", "ae_start_dt": "24-01-2025"}
+{"subject_id": "S0300822", "ae_id": "AE0300127", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": "mild", "related": " YES ", "serious": "yes", "ae_start_dt": "2024-01-14"}
+{"subject_id": "s0300249", "ae_id": "AE0300128", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": " SEVERE ", "related": " UNRELATED ", "serious": " NO ", "ae_start_dt": "2025-07-01"}
+{"subject_id": " S0300462 ", "ae_id": "AE0300129", "pt_name": "fatigue", "pt_code": "1000040", "severity": "moderate", "related": "POSSIBLE", "serious": "NO", "ae_start_dt": " 2024-01-14 "}
+{"subject_id": "s0300516", "ae_id": "AE0300130", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": "severe", "related": " UNRELATED ", "serious": "NO", "ae_start_dt": "05/29/2024"}
+{"subject_id": "S0300589", "ae_id": "AE0300131", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": " MILD ", "related": "PROBABLE", "serious": "YES", "ae_start_dt": "09-02-2025"}
+{"subject_id": "s0300764", "ae_id": "AE0300132", "pt_name": " Headache ", "pt_code": " 1000010 ", "severity": "MILD", "related": "YES", "serious": "no", "ae_start_dt": " 2024-02-07 "}
+{"subject_id": "S0300852", "ae_id": "AE0300133", "pt_name": "dizziness", "pt_code": " 1000030 ", "severity": "MODERATE", "related": "YES", "serious": "NO", "ae_start_dt": " 2025-08-05 "}
+{"subject_id": " S0300146 ", "ae_id": "AE0300134", "pt_name": " Fatigue ", "pt_code": " 1000040 ", "severity": "moderate", "related": "PROBABLE", "serious": " YES ", "ae_start_dt": "10/22/2025"}
+{"subject_id": "s0300547", "ae_id": "AE0300135", "pt_name": "Nausea", "pt_code": " 1000020 ", "severity": " MODERATE ", "related": "NO", "serious": " NO ", "ae_start_dt": "2024-04-05"}
+{"subject_id": " S0300798 ", "ae_id": "AE0300136", "pt_name": "vomiting", "pt_code": " 1000050 ", "severity": "MILD", "related": "PROBABLE", "serious": "YES", "ae_start_dt": "2024-04-12"}
+{"subject_id": "s0300471", "ae_id": "AE0300137", "pt_name": "Nausea", "pt_code": "1000020", "severity": "SEVERE", "related": "YES", "serious": " NO ", "ae_start_dt": "03/25/2025"}
+{"subject_id": " S0300026 ", "ae_id": "AE0300138", "pt_name": "Headache", "pt_code": "1000010", "severity": "MILD", "related": "probable", "serious": "YES", "ae_start_dt": " 2024-02-23 "}
+{"subject_id": " S0300918 ", "ae_id": "AE0300139", "pt_name": "Headache", "pt_code": " 1000010 ", "severity": "MILD", "related": "POSSIBLE", "serious": " NO ", "ae_start_dt": " 2024-02-08 "}
+{"subject_id": "S0300274", "ae_id": "AE0300140", "pt_name": "Headache", "pt_code": " 1000010 ", "severity": "MILD", "related": "PROBABLE", "serious": " NO ", "ae_start_dt": "2025-01-30"}
+{"subject_id": "s0300711", "ae_id": "AE0300141", "pt_name": "Nausea", "pt_code": "1000020", "severity": "severe", "related": "PROBABLE", "serious": " YES ", "ae_start_dt": "09/14/2024"}
+{"subject_id": "s0300678", "ae_id": "AE0300142", "pt_name": " Nausea ", "pt_code": "1000020", "severity": " MILD ", "related": "YES", "serious": "YES", "ae_start_dt": "2024-04-05"}
+{"subject_id": "S0300338", "ae_id": "AE0300143", "pt_name": "headache", "pt_code": "1000010", "severity": " MODERATE ", "related": " PROBABLE ", "serious": "NO", "ae_start_dt": "2025-01-03"}
+{"subject_id": " S0300126 ", "ae_id": "AE0300144", "pt_name": "Headache", "pt_code": "1000010", "severity": "MODERATE", "related": " NO ", "serious": "NO", "ae_start_dt": "03/12/2024"}
+{"subject_id": "S0300282", "ae_id": "AE0300145", "pt_name": "vomiting", "pt_code": "1000050", "severity": "MODERATE", "related": "POSSIBLE", "serious": "NO", "ae_start_dt": "10-04-2024"}
+{"subject_id": "S0300215", "ae_id": "AE0300146", "pt_name": "Vomiting", "pt_code": " 1000050 ", "severity": "severe", "related": " UNRELATED ", "serious": "yes", "ae_start_dt": "2025-08-03"}
+{"subject_id": "S0300883", "ae_id": "AE0300147", "pt_name": "Dizziness", "pt_code": "1000030", "severity": "severe", "related": " YES ", "serious": "YES", "ae_start_dt": "31-01-2024"}
+{"subject_id": "S0300638", "ae_id": "AE0300148", "pt_name": "VOMITING", "pt_code": "1000050", "severity": " SEVERE ", "related": " UNRELATED ", "serious": "NO", "ae_start_dt": "01/11/2025"}
+{"subject_id": "s0300296", "ae_id": "AE0300149", "pt_name": " Dizziness ", "pt_code": " 1000030 ", "severity": "MODERATE", "related": "UNRELATED", "serious": "YES", "ae_start_dt": "04-09-2025"}
+{"subject_id": "s0300537", "ae_id": "AE0300150", "pt_name": " Vomiting ", "pt_code": " 1000050 ", "severity": "SEVERE", "related": "no", "serious": " NO ", "ae_start_dt": " 2024-09-29 "}
+{"subject_id": "S0300086", "ae_id": "AE0300151", "pt_name": "Nausea", "pt_code": "1000020", "severity": "severe", "related": " PROBABLE ", "serious": "yes", "ae_start_dt": "03-08-2024"}
+{"subject_id": "S0300735", "ae_id": "AE0300152", "pt_name": "Nausea", "pt_code": "1000020", "severity": "MILD", "related": "UNRELATED", "serious": "YES", "ae_start_dt": "02/21/2024"}
+{"subject_id": "S0300286", "ae_id": "AE0300153", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": "MODERATE", "related": "unrelated", "serious": "yes", "ae_start_dt": "17-07-2025"}
+{"subject_id": "S0300113", "ae_id": "AE0300154", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": " MODERATE ", "related": "possible", "serious": "NO", "ae_start_dt": "05-04-2025"}
+{"subject_id": " S0300679 ", "ae_id": "AE0300155", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": "MILD", "related": "probable", "serious": " NO ", "ae_start_dt": " 2024-05-16 "}
+{"subject_id": "S0300494", "ae_id": "AE0300156", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "SEVERE", "related": "UNRELATED", "serious": " YES ", "ae_start_dt": "02-11-2025"}
+{"subject_id": "S0300381", "ae_id": "AE0300157", "pt_name": "fatigue", "pt_code": " 1000040 ", "severity": "MODERATE", "related": " POSSIBLE ", "serious": "yes", "ae_start_dt": " 2025-04-10 "}
+{"subject_id": " S0300949 ", "ae_id": "AE0300158", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": "MODERATE", "related": "UNRELATED", "serious": "no", "ae_start_dt": "2025-02-17"}
+{"subject_id": "S0300781", "ae_id": "AE0300159", "pt_name": "Vomiting", "pt_code": "1000050", "severity": "severe", "related": " PROBABLE ", "serious": "no", "ae_start_dt": " 2025-10-24 "}
+{"subject_id": "S0300278", "ae_id": "AE0300160", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": "MILD", "related": "POSSIBLE", "serious": "YES", "ae_start_dt": "17-01-2025"}
+{"subject_id": " S0300628 ", "ae_id": "AE0300161", "pt_name": "Nausea", "pt_code": " 1000020 ", "severity": " MODERATE ", "related": "PROBABLE", "serious": "NO", "ae_start_dt": "2024-09-10"}
+{"subject_id": "S0300735", "ae_id": "AE0300162", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": " MILD ", "related": "PROBABLE", "serious": "YES", "ae_start_dt": " 2025-09-30 "}
+{"subject_id": "s0300964", "ae_id": "AE0300163", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": "MODERATE", "related": " UNRELATED ", "serious": "YES", "ae_start_dt": " 2025-10-15 "}
+{"subject_id": " S0300522 ", "ae_id": "AE0300164", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": "MILD", "related": "PROBABLE", "serious": "YES", "ae_start_dt": " 2024-05-23 "}
+{"subject_id": "S0300445", "ae_id": "AE0300165", "pt_name": "Fatigue", "pt_code": "1000040", "severity": "moderate", "related": "NO", "serious": "NO", "ae_start_dt": "10-09-2025"}
+{"subject_id": "S0300245", "ae_id": "AE0300166", "pt_name": "Vomiting", "pt_code": " 1000050 ", "severity": " MODERATE ", "related": "no", "serious": "yes", "ae_start_dt": " 2024-12-22 "}
+{"subject_id": "s0300208", "ae_id": "AE0300167", "pt_name": "nausea", "pt_code": "1000020", "severity": " MODERATE ", "related": "PROBABLE", "serious": "NO", "ae_start_dt": " 2024-12-03 "}
+{"subject_id": "S0300854", "ae_id": "AE0300168", "pt_name": "vomiting", "pt_code": "1000050", "severity": "SEVERE", "related": "YES", "serious": "YES", "ae_start_dt": "10/15/2024"}
+{"subject_id": "S0300822", "ae_id": "AE0300169", "pt_name": "Fatigue", "pt_code": " 1000040 ", "severity": "MILD", "related": "YES", "serious": "YES", "ae_start_dt": "08-09-2025"}
+{"subject_id": " S0300335 ", "ae_id": "AE0300170", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": "SEVERE", "related": "YES", "serious": "no", "ae_start_dt": "29-11-2024"}
+{"subject_id": "S0300875", "ae_id": "AE0300171", "pt_name": " Headache ", "pt_code": "1000010", "severity": "moderate", "related": " YES ", "serious": " YES ", "ae_start_dt": "2025-11-06"}
+{"subject_id": "s0300898", "ae_id": "AE0300172", "pt_name": "Headache", "pt_code": "1000010", "severity": "MILD", "related": " YES ", "serious": "NO", "ae_start_dt": "02/05/2024"}
+{"subject_id": "S0300110", "ae_id": "AE0300173", "pt_name": " Dizziness ", "pt_code": " 1000030 ", "severity": " SEVERE ", "related": "unrelated", "serious": "yes", "ae_start_dt": "03/08/2024"}
+{"subject_id": " S0300757 ", "ae_id": "AE0300174", "pt_name": "Nausea", "pt_code": "1000020", "severity": "MODERATE", "related": " YES ", "serious": "yes", "ae_start_dt": "07/23/2024"}
+{"subject_id": "S0300369", "ae_id": "AE0300175", "pt_name": "dizziness", "pt_code": " 1000030 ", "severity": "moderate", "related": "NO", "serious": "YES", "ae_start_dt": " 2025-12-22 "}
+{"subject_id": " S0300896 ", "ae_id": "AE0300176", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": "mild", "related": " UNRELATED ", "serious": "YES", "ae_start_dt": "06/23/2024"}
+{"subject_id": "s0300161", "ae_id": "AE0300177", "pt_name": " Vomiting ", "pt_code": " 1000050 ", "severity": "SEVERE", "related": "unrelated", "serious": "YES", "ae_start_dt": " 2024-04-12 "}
+{"subject_id": "S0300298", "ae_id": "AE0300178", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": "severe", "related": "NO", "serious": "NO", "ae_start_dt": "05/17/2025"}
+{"subject_id": " S0300256 ", "ae_id": "AE0300179", "pt_name": "headache", "pt_code": "1000010", "severity": "MODERATE", "related": "unrelated", "serious": "no", "ae_start_dt": "2024-05-20"}
+{"subject_id": "s0300882", "ae_id": "AE0300180", "pt_name": "VOMITING", "pt_code": " 1000050 ", "severity": "MODERATE", "related": "UNRELATED", "serious": "NO", "ae_start_dt": "01-10-2025"}
+{"subject_id": "s0300528", "ae_id": "AE0300181", "pt_name": "nausea", "pt_code": " 1000020 ", "severity": "MILD", "related": "YES", "serious": "YES", "ae_start_dt": " 2025-03-27 "}
+{"subject_id": "s0300610", "ae_id": "AE0300182", "pt_name": "Headache", "pt_code": " 1000010 ", "severity": " MODERATE ", "related": "POSSIBLE", "serious": " NO ", "ae_start_dt": "2025-03-20"}
+{"subject_id": "S0300134", "ae_id": "AE0300183", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": "SEVERE", "related": " UNRELATED ", "serious": "NO", "ae_start_dt": " 2024-12-24 "}
+{"subject_id": "S0300275", "ae_id": "AE0300184", "pt_name": "Dizziness", "pt_code": "1000030", "severity": "moderate", "related": " UNRELATED ", "serious": " YES ", "ae_start_dt": " 2024-08-28 "}
+{"subject_id": "S0300956", "ae_id": "AE0300185", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": "moderate", "related": "possible", "serious": "YES", "ae_start_dt": "04/14/2024"}
+{"subject_id": "s0300875", "ae_id": "AE0300186", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": "SEVERE", "related": "YES", "serious": " YES ", "ae_start_dt": "04/18/2024"}
+{"subject_id": " S0300374 ", "ae_id": "AE0300187", "pt_name": " Dizziness ", "pt_code": " 1000030 ", "severity": "SEVERE", "related": "PROBABLE", "serious": "no", "ae_start_dt": "03-01-2025"}
+{"subject_id": "S0300398", "ae_id": "AE0300188", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": "MODERATE", "related": "possible", "serious": "NO", "ae_start_dt": "2025-02-14"}
+{"subject_id": "S0300839", "ae_id": "AE0300189", "pt_name": "Fatigue", "pt_code": "1000040", "severity": "MODERATE", "related": "PROBABLE", "serious": " YES ", "ae_start_dt": "12/04/2025"}
+{"subject_id": " S0300846 ", "ae_id": "AE0300190", "pt_name": "Vomiting", "pt_code": " 1000050 ", "severity": "SEVERE", "related": "NO", "serious": "NO", "ae_start_dt": "13-06-2025"}
+{"subject_id": " S0300389 ", "ae_id": "AE0300191", "pt_name": "fatigue", "pt_code": "1000040", "severity": " MODERATE ", "related": " UNRELATED ", "serious": "NO", "ae_start_dt": "10/26/2025"}
+{"subject_id": "S0300322", "ae_id": "AE0300192", "pt_name": "Dizziness", "pt_code": " 1000030 ", "severity": "moderate", "related": "probable", "serious": "YES", "ae_start_dt": "10/05/2025"}
+{"subject_id": " S0300621 ", "ae_id": "AE0300193", "pt_name": "Headache", "pt_code": "1000010", "severity": "severe", "related": " PROBABLE ", "serious": "YES", "ae_start_dt": "14-08-2025"}
+{"subject_id": "s0300497", "ae_id": "AE0300194", "pt_name": "vomiting", "pt_code": "1000050", "severity": "MILD", "related": "UNRELATED", "serious": "yes", "ae_start_dt": "2024-02-07"}
+{"subject_id": "S0300615", "ae_id": "AE0300195", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": " MILD ", "related": "YES", "serious": "yes", "ae_start_dt": "2024-08-17"}
+{"subject_id": "S0300544", "ae_id": "AE0300196", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": " MODERATE ", "related": " NO ", "serious": "YES", "ae_start_dt": " 2024-05-07 "}
+{"subject_id": " S0300207 ", "ae_id": "AE0300197", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "MODERATE", "related": "POSSIBLE", "serious": "no", "ae_start_dt": "2025-06-16"}
+{"subject_id": "S0300313", "ae_id": "AE0300198", "pt_name": "VOMITING", "pt_code": "1000050", "severity": " SEVERE ", "related": "POSSIBLE", "serious": "NO", "ae_start_dt": " 2025-05-08 "}
+{"subject_id": " S0300078 ", "ae_id": "AE0300199", "pt_name": "Headache", "pt_code": " 1000010 ", "severity": "MODERATE", "related": "probable", "serious": "no", "ae_start_dt": "2025-09-21"}
+{"subject_id": " S0300908 ", "ae_id": "AE0300200", "pt_name": "headache", "pt_code": "1000010", "severity": "MODERATE", "related": " PROBABLE ", "serious": "NO", "ae_start_dt": "09/29/2025"}
+{"subject_id": " S0300918 ", "ae_id": "AE0300201", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": " MILD ", "related": "YES", "serious": " NO ", "ae_start_dt": " 2026-01-01 "}
+{"subject_id": "S0300814", "ae_id": "AE0300202", "pt_name": "nausea", "pt_code": "1000020", "severity": " MODERATE ", "related": "no", "serious": "yes", "ae_start_dt": "12/22/2024"}
+{"subject_id": "S0300649", "ae_id": "AE0300203", "pt_name": "nausea", "pt_code": " 1000020 ", "severity": " MODERATE ", "related": "YES", "serious": "YES", "ae_start_dt": " 2025-04-11 "}
+{"subject_id": " S0300520 ", "ae_id": "AE0300204", "pt_name": " Vomiting ", "pt_code": " 1000050 ", "severity": "moderate", "related": "YES", "serious": " NO ", "ae_start_dt": "30-07-2024"}
+{"subject_id": "s0300175", "ae_id": "AE0300205", "pt_name": " Headache ", "pt_code": "1000010", "severity": "MILD", "related": " NO ", "serious": "YES", "ae_start_dt": "30-11-2025"}
+{"subject_id": "S0300818", "ae_id": "AE0300206", "pt_name": " Headache ", "pt_code": "1000010", "severity": " MODERATE ", "related": "UNRELATED", "serious": " NO ", "ae_start_dt": "2025-12-07"}
+{"subject_id": " S0300804 ", "ae_id": "AE0300207", "pt_name": "Vomiting", "pt_code": "1000050", "severity": "MILD", "related": "UNRELATED", "serious": " NO ", "ae_start_dt": "2025-04-09"}
+{"subject_id": "s0300243", "ae_id": "AE0300208", "pt_name": "VOMITING", "pt_code": "1000050", "severity": " SEVERE ", "related": "unrelated", "serious": " YES ", "ae_start_dt": " 2024-09-30 "}
+{"subject_id": " S0300155 ", "ae_id": "AE0300209", "pt_name": "Vomiting", "pt_code": " 1000050 ", "severity": "SEVERE", "related": "PROBABLE", "serious": " NO ", "ae_start_dt": "30-12-2025"}
+{"subject_id": "S0300170", "ae_id": "AE0300210", "pt_name": "NAUSEA", "pt_code": " 1000020 ", "severity": " SEVERE ", "related": "PROBABLE", "serious": "NO", "ae_start_dt": "10/12/2025"}
+{"subject_id": " S0300733 ", "ae_id": "AE0300211", "pt_name": " Vomiting ", "pt_code": " 1000050 ", "severity": "mild", "related": " UNRELATED ", "serious": "YES", "ae_start_dt": "04/23/2024"}
+{"subject_id": "S0300250", "ae_id": "AE0300212", "pt_name": "nausea", "pt_code": "1000020", "severity": "SEVERE", "related": "POSSIBLE", "serious": "no", "ae_start_dt": " 2024-04-10 "}
+{"subject_id": " S0300570 ", "ae_id": "AE0300213", "pt_name": "fatigue", "pt_code": "1000040", "severity": " MILD ", "related": "possible", "serious": "yes", "ae_start_dt": "2024-05-14"}
+{"subject_id": "S0300793", "ae_id": "AE0300214", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "MODERATE", "related": "no", "serious": " YES ", "ae_start_dt": " 2024-06-16 "}
+{"subject_id": "s0300753", "ae_id": "AE0300215", "pt_name": " Nausea ", "pt_code": "1000020", "severity": "severe", "related": "POSSIBLE", "serious": "NO", "ae_start_dt": "20-01-2025"}
+{"subject_id": "S0300077", "ae_id": "AE0300216", "pt_name": "Nausea", "pt_code": " 1000020 ", "severity": "MODERATE", "related": " POSSIBLE ", "serious": "YES", "ae_start_dt": "12-12-2024"}
+{"subject_id": "S0300588", "ae_id": "AE0300217", "pt_name": "DIZZINESS", "pt_code": " 1000030 ", "severity": "MODERATE", "related": "possible", "serious": "NO", "ae_start_dt": " 2024-05-22 "}
+{"subject_id": " S0300526 ", "ae_id": "AE0300218", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": " SEVERE ", "related": "PROBABLE", "serious": "YES", "ae_start_dt": "2025-04-03"}
+{"subject_id": " S0300600 ", "ae_id": "AE0300219", "pt_name": "dizziness", "pt_code": " 1000030 ", "severity": " SEVERE ", "related": "YES", "serious": "NO", "ae_start_dt": "2024-04-03"}
+{"subject_id": " S0300915 ", "ae_id": "AE0300220", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": "SEVERE", "related": "UNRELATED", "serious": "yes", "ae_start_dt": "11/26/2025"}
+{"subject_id": " S0300078 ", "ae_id": "AE0300221", "pt_name": "Headache", "pt_code": "1000010", "severity": "moderate", "related": "YES", "serious": " YES ", "ae_start_dt": "16-06-2025"}
+{"subject_id": "S0300511", "ae_id": "AE0300222", "pt_name": " Fatigue ", "pt_code": " 1000040 ", "severity": "severe", "related": "POSSIBLE", "serious": "yes", "ae_start_dt": "2024-11-10"}
+{"subject_id": "s0300646", "ae_id": "AE0300223", "pt_name": "FATIGUE", "pt_code": " 1000040 ", "severity": "SEVERE", "related": "unrelated", "serious": "YES", "ae_start_dt": " 2024-03-24 "}
+{"subject_id": "s0300143", "ae_id": "AE0300224", "pt_name": "nausea", "pt_code": "1000020", "severity": "mild", "related": " YES ", "serious": "no", "ae_start_dt": "17-04-2025"}
+{"subject_id": " S0300085 ", "ae_id": "AE0300225", "pt_name": "Fatigue", "pt_code": "1000040", "severity": " MILD ", "related": "PROBABLE", "serious": " YES ", "ae_start_dt": "09-05-2025"}
+{"subject_id": "S0300238", "ae_id": "AE0300226", "pt_name": "HEADACHE", "pt_code": " 1000010 ", "severity": "SEVERE", "related": "UNRELATED", "serious": "yes", "ae_start_dt": " 2024-06-03 "}
+{"subject_id": "S0300777", "ae_id": "AE0300227", "pt_name": "fatigue", "pt_code": "1000040", "severity": "mild", "related": " NO ", "serious": "no", "ae_start_dt": "13-12-2024"}
+{"subject_id": "S0300249", "ae_id": "AE0300228", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": " SEVERE ", "related": "UNRELATED", "serious": "yes", "ae_start_dt": "31-12-2025"}
+{"subject_id": " S0300785 ", "ae_id": "AE0300229", "pt_name": "Fatigue", "pt_code": "1000040", "severity": "SEVERE", "related": " POSSIBLE ", "serious": "YES", "ae_start_dt": " 2025-01-07 "}
+{"subject_id": "S0300927", "ae_id": "AE0300230", "pt_name": "Headache", "pt_code": "1000010", "severity": "MODERATE", "related": "UNRELATED", "serious": "no", "ae_start_dt": " 2025-11-17 "}
+{"subject_id": "S0300641", "ae_id": "AE0300231", "pt_name": "nausea", "pt_code": "1000020", "severity": " SEVERE ", "related": "PROBABLE", "serious": " YES ", "ae_start_dt": "06/09/2025"}
+{"subject_id": " S0300336 ", "ae_id": "AE0300232", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": "mild", "related": "unrelated", "serious": "YES", "ae_start_dt": "04/06/2024"}
+{"subject_id": "S0300894", "ae_id": "AE0300233", "pt_name": " Nausea ", "pt_code": "1000020", "severity": " MILD ", "related": " UNRELATED ", "serious": "YES", "ae_start_dt": " 2024-07-18 "}
+{"subject_id": "S0300564", "ae_id": "AE0300234", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": "moderate", "related": "POSSIBLE", "serious": "NO", "ae_start_dt": "10/10/2024"}
+{"subject_id": "s0300874", "ae_id": "AE0300235", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": "severe", "related": "NO", "serious": " NO ", "ae_start_dt": " 2025-04-11 "}
+{"subject_id": "S0300879", "ae_id": "AE0300236", "pt_name": "Headache", "pt_code": " 1000010 ", "severity": "MODERATE", "related": " UNRELATED ", "serious": "no", "ae_start_dt": "10-07-2025"}
+{"subject_id": "S0300726", "ae_id": "AE0300237", "pt_name": " Vomiting ", "pt_code": " 1000050 ", "severity": "mild", "related": "UNRELATED", "serious": "NO", "ae_start_dt": " 2025-08-05 "}
+{"subject_id": "S0300073", "ae_id": "AE0300238", "pt_name": "nausea", "pt_code": "1000020", "severity": "MODERATE", "related": "probable", "serious": "NO", "ae_start_dt": " 2024-09-15 "}
+{"subject_id": "S0300562", "ae_id": "AE0300239", "pt_name": "nausea", "pt_code": "1000020", "severity": "severe", "related": "PROBABLE", "serious": " YES ", "ae_start_dt": " 2024-04-20 "}
+{"subject_id": "s0300700", "ae_id": "AE0300240", "pt_name": "dizziness", "pt_code": "1000030", "severity": "MODERATE", "related": "YES", "serious": "YES", "ae_start_dt": "07/08/2025"}
+{"subject_id": " S0300113 ", "ae_id": "AE0300241", "pt_name": "FATIGUE", "pt_code": " 1000040 ", "severity": "MILD", "related": "YES", "serious": "NO", "ae_start_dt": "12/19/2025"}
+{"subject_id": " S0300008 ", "ae_id": "AE0300242", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": "severe", "related": "NO", "serious": "NO", "ae_start_dt": "2025-04-07"}
+{"subject_id": " S0300074 ", "ae_id": "AE0300243", "pt_name": "NAUSEA", "pt_code": " 1000020 ", "severity": "MODERATE", "related": "POSSIBLE", "serious": "no", "ae_start_dt": " 2024-10-13 "}
+{"subject_id": " S0300969 ", "ae_id": "AE0300244", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": " SEVERE ", "related": "UNRELATED", "serious": "yes", "ae_start_dt": " 2024-04-11 "}
+{"subject_id": "s0300069", "ae_id": "AE0300245", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": " MILD ", "related": " POSSIBLE ", "serious": "YES", "ae_start_dt": "2024-07-17"}
+{"subject_id": "s0300098", "ae_id": "AE0300246", "pt_name": "headache", "pt_code": "1000010", "severity": "SEVERE", "related": "UNRELATED", "serious": " NO ", "ae_start_dt": "06-10-2024"}
+{"subject_id": "S0300742", "ae_id": "AE0300247", "pt_name": "vomiting", "pt_code": " 1000050 ", "severity": "severe", "related": " YES ", "serious": "yes", "ae_start_dt": "2024-01-08"}
+{"subject_id": "s0300827", "ae_id": "AE0300248", "pt_name": " Headache ", "pt_code": " 1000010 ", "severity": " MODERATE ", "related": " PROBABLE ", "serious": " YES ", "ae_start_dt": " 2025-05-12 "}
+{"subject_id": "s0300303", "ae_id": "AE0300249", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": "SEVERE", "related": "yes", "serious": "YES", "ae_start_dt": "14-09-2024"}
+{"subject_id": "S0300534", "ae_id": "AE0300250", "pt_name": "VOMITING", "pt_code": "1000050", "severity": "MILD", "related": "NO", "serious": "YES", "ae_start_dt": "13-11-2024"}
+{"subject_id": "s0300557", "ae_id": "AE0300251", "pt_name": "Vomiting", "pt_code": "1000050", "severity": "severe", "related": " YES ", "serious": "NO", "ae_start_dt": " 2025-10-24 "}
+{"subject_id": " S0300172 ", "ae_id": "AE0300252", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": "moderate", "related": "UNRELATED", "serious": " YES ", "ae_start_dt": "08/21/2025"}
+{"subject_id": "s0300449", "ae_id": "AE0300253", "pt_name": "headache", "pt_code": "1000010", "severity": "moderate", "related": " YES ", "serious": "YES", "ae_start_dt": "06/28/2025"}
+{"subject_id": " S0300683 ", "ae_id": "AE0300254", "pt_name": "Headache", "pt_code": " 1000010 ", "severity": "MODERATE", "related": "yes", "serious": "yes", "ae_start_dt": "02/13/2024"}
+{"subject_id": "s0300817", "ae_id": "AE0300255", "pt_name": "fatigue", "pt_code": "1000040", "severity": "MILD", "related": "yes", "serious": "no", "ae_start_dt": " 2025-02-21 "}
+{"subject_id": " S0300296 ", "ae_id": "AE0300256", "pt_name": "VOMITING", "pt_code": "1000050", "severity": "moderate", "related": "YES", "serious": " NO ", "ae_start_dt": "2025-08-12"}
+{"subject_id": " S0300844 ", "ae_id": "AE0300257", "pt_name": "FATIGUE", "pt_code": " 1000040 ", "severity": "severe", "related": " YES ", "serious": "yes", "ae_start_dt": " 2024-09-13 "}
+{"subject_id": " S0300256 ", "ae_id": "AE0300258", "pt_name": "nausea", "pt_code": "1000020", "severity": "moderate", "related": "probable", "serious": "no", "ae_start_dt": "2024-07-27"}
+{"subject_id": " S0300254 ", "ae_id": "AE0300259", "pt_name": "headache", "pt_code": "1000010", "severity": "MODERATE", "related": "POSSIBLE", "serious": "NO", "ae_start_dt": "15-09-2025"}
+{"subject_id": "S0300051", "ae_id": "AE0300260", "pt_name": " Headache ", "pt_code": " 1000010 ", "severity": "SEVERE", "related": "NO", "serious": " NO ", "ae_start_dt": " 2025-05-11 "}
+{"subject_id": "s0300730", "ae_id": "AE0300261", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": "SEVERE", "related": "unrelated", "serious": "no", "ae_start_dt": " 2024-02-28 "}
+{"subject_id": "S0300960", "ae_id": "AE0300262", "pt_name": "fatigue", "pt_code": "1000040", "severity": "mild", "related": " NO ", "serious": "NO", "ae_start_dt": "10/05/2025"}
+{"subject_id": "S0300796", "ae_id": "AE0300263", "pt_name": "headache", "pt_code": "1000010", "severity": " SEVERE ", "related": "yes", "serious": "yes", "ae_start_dt": "2024-12-24"}
+{"subject_id": " S0300515 ", "ae_id": "AE0300264", "pt_name": "Headache", "pt_code": "1000010", "severity": "severe", "related": " YES ", "serious": "NO", "ae_start_dt": "01-07-2025"}
+{"subject_id": "S0300973", "ae_id": "AE0300265", "pt_name": "fatigue", "pt_code": "1000040", "severity": " SEVERE ", "related": "PROBABLE", "serious": " NO ", "ae_start_dt": " 2024-01-30 "}
+{"subject_id": " S0300739 ", "ae_id": "AE0300266", "pt_name": "Vomiting", "pt_code": "1000050", "severity": "moderate", "related": "YES", "serious": "NO", "ae_start_dt": "2024-04-02"}
+{"subject_id": " S0300176 ", "ae_id": "AE0300267", "pt_name": "fatigue", "pt_code": "1000040", "severity": "MODERATE", "related": " NO ", "serious": "YES", "ae_start_dt": " 2025-01-08 "}
+{"subject_id": "s0300221", "ae_id": "AE0300268", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": "MODERATE", "related": "PROBABLE", "serious": "YES", "ae_start_dt": "05-12-2024"}
+{"subject_id": "S0300913", "ae_id": "AE0300269", "pt_name": "nausea", "pt_code": "1000020", "severity": " MODERATE ", "related": "probable", "serious": " NO ", "ae_start_dt": "31-08-2025"}
+{"subject_id": "S0300271", "ae_id": "AE0300270", "pt_name": "NAUSEA", "pt_code": " 1000020 ", "severity": "SEVERE", "related": "POSSIBLE", "serious": "no", "ae_start_dt": "10/18/2024"}
+{"subject_id": "S0300959", "ae_id": "AE0300271", "pt_name": "fatigue", "pt_code": "1000040", "severity": " MILD ", "related": " POSSIBLE ", "serious": "NO", "ae_start_dt": "09/03/2025"}
+{"subject_id": "S0300674", "ae_id": "AE0300272", "pt_name": "Fatigue", "pt_code": "1000040", "severity": "severe", "related": " NO ", "serious": "yes", "ae_start_dt": "27-02-2024"}
+{"subject_id": "s0300203", "ae_id": "AE0300273", "pt_name": "VOMITING", "pt_code": "1000050", "severity": "severe", "related": "probable", "serious": " YES ", "ae_start_dt": " 2024-09-21 "}
+{"subject_id": " S0300021 ", "ae_id": "AE0300274", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": "severe", "related": "YES", "serious": "YES", "ae_start_dt": "14-04-2024"}
+{"subject_id": " S0300524 ", "ae_id": "AE0300275", "pt_name": "NAUSEA", "pt_code": " 1000020 ", "severity": "MILD", "related": " POSSIBLE ", "serious": "YES", "ae_start_dt": "2024-02-07"}
+{"subject_id": "S0300513", "ae_id": "AE0300276", "pt_name": "Dizziness", "pt_code": "1000030", "severity": "MODERATE", "related": "yes", "serious": "no", "ae_start_dt": "2025-02-16"}
+{"subject_id": "s0300130", "ae_id": "AE0300277", "pt_name": "vomiting", "pt_code": " 1000050 ", "severity": "MODERATE", "related": "yes", "serious": " NO ", "ae_start_dt": "11-05-2024"}
+{"subject_id": "S0300167", "ae_id": "AE0300278", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "severe", "related": "POSSIBLE", "serious": "no", "ae_start_dt": "2025-07-14"}
+{"subject_id": " S0300727 ", "ae_id": "AE0300279", "pt_name": " Headache ", "pt_code": "1000010", "severity": "MODERATE", "related": "no", "serious": " YES ", "ae_start_dt": "05/07/2024"}
+{"subject_id": "S0300566", "ae_id": "AE0300280", "pt_name": "nausea", "pt_code": "1000020", "severity": "MILD", "related": "POSSIBLE", "serious": " NO ", "ae_start_dt": "2025-07-15"}
+{"subject_id": "S0300153", "ae_id": "AE0300281", "pt_name": "Vomiting", "pt_code": "1000050", "severity": "MILD", "related": "yes", "serious": " YES ", "ae_start_dt": "01-07-2025"}
+{"subject_id": "S0300357", "ae_id": "AE0300282", "pt_name": "Headache", "pt_code": "1000010", "severity": "SEVERE", "related": "yes", "serious": "YES", "ae_start_dt": "2025-01-13"}
+{"subject_id": "S0300763", "ae_id": "AE0300283", "pt_name": "headache", "pt_code": "1000010", "severity": "moderate", "related": " UNRELATED ", "serious": "no", "ae_start_dt": "12-03-2025"}
+{"subject_id": "S0300032", "ae_id": "AE0300284", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": "SEVERE", "related": " NO ", "serious": " YES ", "ae_start_dt": " 2025-02-26 "}
+{"subject_id": "S0300591", "ae_id": "AE0300285", "pt_name": "Headache", "pt_code": " 1000010 ", "severity": "SEVERE", "related": " NO ", "serious": "no", "ae_start_dt": "03/04/2024"}
+{"subject_id": "s0300894", "ae_id": "AE0300286", "pt_name": "headache", "pt_code": " 1000010 ", "severity": " MILD ", "related": "no", "serious": "no", "ae_start_dt": "2024-10-19"}
+{"subject_id": " S0300400 ", "ae_id": "AE0300287", "pt_name": "vomiting", "pt_code": "1000050", "severity": "moderate", "related": "yes", "serious": "YES", "ae_start_dt": "06/20/2024"}
+{"subject_id": "S0300898", "ae_id": "AE0300288", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": " SEVERE ", "related": "unrelated", "serious": "NO", "ae_start_dt": "11-04-2024"}
+{"subject_id": " S0300848 ", "ae_id": "AE0300289", "pt_name": "Fatigue", "pt_code": "1000040", "severity": "MODERATE", "related": "PROBABLE", "serious": "YES", "ae_start_dt": "06-12-2024"}
+{"subject_id": "S0300791", "ae_id": "AE0300290", "pt_name": "nausea", "pt_code": "1000020", "severity": " MILD ", "related": " YES ", "serious": "yes", "ae_start_dt": "2024-07-17"}
+{"subject_id": "S0300633", "ae_id": "AE0300291", "pt_name": "Vomiting", "pt_code": "1000050", "severity": "severe", "related": "POSSIBLE", "serious": " NO ", "ae_start_dt": "05-09-2025"}
+{"subject_id": " S0300058 ", "ae_id": "AE0300292", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": "severe", "related": " NO ", "serious": "YES", "ae_start_dt": "20-04-2024"}
+{"subject_id": " S0300344 ", "ae_id": "AE0300293", "pt_name": "headache", "pt_code": "1000010", "severity": "MODERATE", "related": "POSSIBLE", "serious": "NO", "ae_start_dt": " 2024-07-07 "}
+{"subject_id": "S0300404", "ae_id": "AE0300294", "pt_name": "fatigue", "pt_code": "1000040", "severity": "MODERATE", "related": "UNRELATED", "serious": "YES", "ae_start_dt": "27-10-2024"}
+{"subject_id": "S0300916", "ae_id": "AE0300295", "pt_name": "FATIGUE", "pt_code": " 1000040 ", "severity": "MILD", "related": " PROBABLE ", "serious": "yes", "ae_start_dt": "10/13/2024"}
+{"subject_id": "S0300830", "ae_id": "AE0300296", "pt_name": "VOMITING", "pt_code": " 1000050 ", "severity": " MILD ", "related": "PROBABLE", "serious": " YES ", "ae_start_dt": "16-02-2025"}
+{"subject_id": "S0300045", "ae_id": "AE0300297", "pt_name": " Headache ", "pt_code": "1000010", "severity": "mild", "related": "UNRELATED", "serious": "no", "ae_start_dt": " 2025-08-03 "}
+{"subject_id": " S0300714 ", "ae_id": "AE0300298", "pt_name": "vomiting", "pt_code": "1000050", "severity": "MILD", "related": "NO", "serious": " YES ", "ae_start_dt": "2025-12-20"}
+{"subject_id": "S0300673", "ae_id": "AE0300299", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": " MILD ", "related": " POSSIBLE ", "serious": " YES ", "ae_start_dt": "07-11-2024"}
+{"subject_id": "S0300360", "ae_id": "AE0300300", "pt_name": "Fatigue", "pt_code": "1000040", "severity": " MODERATE ", "related": "YES", "serious": "yes", "ae_start_dt": "12/19/2024"}
+{"subject_id": "S0300539", "ae_id": "AE0300301", "pt_name": "vomiting", "pt_code": " 1000050 ", "severity": "severe", "related": "no", "serious": "NO", "ae_start_dt": "05/11/2025"}
+{"subject_id": "S0300226", "ae_id": "AE0300302", "pt_name": "DIZZINESS", "pt_code": " 1000030 ", "severity": "mild", "related": " NO ", "serious": " NO ", "ae_start_dt": "07/14/2024"}
+{"subject_id": "S0300604", "ae_id": "AE0300303", "pt_name": "Headache", "pt_code": "1000010", "severity": "moderate", "related": " NO ", "serious": "NO", "ae_start_dt": "04-09-2025"}
+{"subject_id": "S0300138", "ae_id": "AE0300304", "pt_name": "HEADACHE", "pt_code": " 1000010 ", "severity": "MODERATE", "related": " POSSIBLE ", "serious": " YES ", "ae_start_dt": "11/02/2024"}
+{"subject_id": "S0300806", "ae_id": "AE0300305", "pt_name": "VOMITING", "pt_code": "1000050", "severity": "MODERATE", "related": "probable", "serious": "no", "ae_start_dt": "06-10-2024"}
+{"subject_id": "S0300285", "ae_id": "AE0300306", "pt_name": "dizziness", "pt_code": "1000030", "severity": " MILD ", "related": "no", "serious": "YES", "ae_start_dt": " 2024-10-02 "}
+{"subject_id": " S0300502 ", "ae_id": "AE0300307", "pt_name": "dizziness", "pt_code": "1000030", "severity": "mild", "related": "possible", "serious": " YES ", "ae_start_dt": " 2025-06-18 "}
+{"subject_id": " S0300779 ", "ae_id": "AE0300308", "pt_name": "VOMITING", "pt_code": " 1000050 ", "severity": " SEVERE ", "related": "YES", "serious": "no", "ae_start_dt": "12-09-2025"}
+{"subject_id": " S0300195 ", "ae_id": "AE0300309", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": " MODERATE ", "related": " PROBABLE ", "serious": "yes", "ae_start_dt": "2024-08-01"}
+{"subject_id": "S0300490", "ae_id": "AE0300310", "pt_name": "Dizziness", "pt_code": "1000030", "severity": "MODERATE", "related": "PROBABLE", "serious": "YES", "ae_start_dt": "03/28/2024"}
+{"subject_id": "S0300906", "ae_id": "AE0300311", "pt_name": "dizziness", "pt_code": " 1000030 ", "severity": " SEVERE ", "related": "UNRELATED", "serious": "yes", "ae_start_dt": "05/11/2024"}
+{"subject_id": "S0300578", "ae_id": "AE0300312", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": " MODERATE ", "related": " YES ", "serious": "YES", "ae_start_dt": " 2025-09-22 "}
+{"subject_id": "S0300213", "ae_id": "AE0300313", "pt_name": "vomiting", "pt_code": "1000050", "severity": " MILD ", "related": " UNRELATED ", "serious": " YES ", "ae_start_dt": "2024-07-08"}
+{"subject_id": "S0300090", "ae_id": "AE0300314", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": "MILD", "related": "YES", "serious": "YES", "ae_start_dt": "02/03/2025"}
+{"subject_id": "s0300858", "ae_id": "AE0300315", "pt_name": "fatigue", "pt_code": "1000040", "severity": "MILD", "related": "yes", "serious": "NO", "ae_start_dt": "06/14/2025"}
+{"subject_id": "S0300210", "ae_id": "AE0300316", "pt_name": "nausea", "pt_code": "1000020", "severity": "MODERATE", "related": "possible", "serious": "NO", "ae_start_dt": "2025-09-06"}
+{"subject_id": " S0300133 ", "ae_id": "AE0300317", "pt_name": "fatigue", "pt_code": "1000040", "severity": "MODERATE", "related": " NO ", "serious": "YES", "ae_start_dt": " 2025-07-22 "}
+{"subject_id": "S0300273", "ae_id": "AE0300318", "pt_name": " Headache ", "pt_code": "1000010", "severity": "mild", "related": "NO", "serious": "YES", "ae_start_dt": " 2024-09-12 "}
+{"subject_id": "S0300232", "ae_id": "AE0300319", "pt_name": "fatigue", "pt_code": "1000040", "severity": "MILD", "related": " PROBABLE ", "serious": " NO ", "ae_start_dt": "19-04-2025"}
+{"subject_id": " S0300042 ", "ae_id": "AE0300320", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": " MILD ", "related": " UNRELATED ", "serious": "NO", "ae_start_dt": " 2024-01-11 "}
+{"subject_id": "S0300657", "ae_id": "AE0300321", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": " SEVERE ", "related": "unrelated", "serious": "NO", "ae_start_dt": "04/01/2025"}
+{"subject_id": "s0300616", "ae_id": "AE0300322", "pt_name": " Nausea ", "pt_code": "1000020", "severity": "moderate", "related": " POSSIBLE ", "serious": "NO", "ae_start_dt": "2025-10-28"}
+{"subject_id": " S0300320 ", "ae_id": "AE0300323", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": " MODERATE ", "related": " UNRELATED ", "serious": "YES", "ae_start_dt": "01-07-2024"}
+{"subject_id": "S0300889", "ae_id": "AE0300324", "pt_name": "FATIGUE", "pt_code": " 1000040 ", "severity": "moderate", "related": "yes", "serious": "YES", "ae_start_dt": "2025-02-27"}
+{"subject_id": "s0300040", "ae_id": "AE0300325", "pt_name": "dizziness", "pt_code": " 1000030 ", "severity": " SEVERE ", "related": "possible", "serious": "no", "ae_start_dt": " 2024-04-18 "}
+{"subject_id": "S0300055", "ae_id": "AE0300326", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": "SEVERE", "related": " POSSIBLE ", "serious": "YES", "ae_start_dt": "2024-04-24"}
+{"subject_id": "S0300394", "ae_id": "AE0300327", "pt_name": "nausea", "pt_code": "1000020", "severity": "moderate", "related": "PROBABLE", "serious": "NO", "ae_start_dt": "03/27/2024"}
+{"subject_id": " S0300627 ", "ae_id": "AE0300328", "pt_name": "vomiting", "pt_code": " 1000050 ", "severity": "mild", "related": " PROBABLE ", "serious": "yes", "ae_start_dt": "09/13/2024"}
+{"subject_id": "s0300027", "ae_id": "AE0300329", "pt_name": "Fatigue", "pt_code": "1000040", "severity": "MODERATE", "related": " YES ", "serious": "yes", "ae_start_dt": "11/02/2024"}
+{"subject_id": "S0300801", "ae_id": "AE0300330", "pt_name": "headache", "pt_code": "1000010", "severity": "MODERATE", "related": "YES", "serious": "YES", "ae_start_dt": "06/08/2025"}
+{"subject_id": "S0300552", "ae_id": "AE0300331", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": "moderate", "related": " PROBABLE ", "serious": "YES", "ae_start_dt": "01/01/2026"}
+{"subject_id": "s0300892", "ae_id": "AE0300332", "pt_name": "Fatigue", "pt_code": "1000040", "severity": "MILD", "related": "PROBABLE", "serious": "NO", "ae_start_dt": "11/06/2025"}
+{"subject_id": "s0300948", "ae_id": "AE0300333", "pt_name": "Headache", "pt_code": "1000010", "severity": "MILD", "related": " PROBABLE ", "serious": "yes", "ae_start_dt": " 2025-10-03 "}
+{"subject_id": "S0300151", "ae_id": "AE0300334", "pt_name": " Headache ", "pt_code": " 1000010 ", "severity": "MILD", "related": "UNRELATED", "serious": "NO", "ae_start_dt": "2025-06-24"}
+{"subject_id": "s0300701", "ae_id": "AE0300335", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": " SEVERE ", "related": " POSSIBLE ", "serious": " NO ", "ae_start_dt": "06/13/2025"}
+{"subject_id": "s0300202", "ae_id": "AE0300336", "pt_name": "vomiting", "pt_code": "1000050", "severity": "SEVERE", "related": "POSSIBLE", "serious": "NO", "ae_start_dt": "2024-07-29"}
+{"subject_id": " S0300407 ", "ae_id": "AE0300337", "pt_name": "Vomiting", "pt_code": "1000050", "severity": " MODERATE ", "related": "NO", "serious": " NO ", "ae_start_dt": " 2025-07-18 "}
+{"subject_id": "s0300636", "ae_id": "AE0300338", "pt_name": " Headache ", "pt_code": "1000010", "severity": " MODERATE ", "related": " UNRELATED ", "serious": "no", "ae_start_dt": "06/28/2025"}
+{"subject_id": "s0300215", "ae_id": "AE0300339", "pt_name": " Headache ", "pt_code": "1000010", "severity": "SEVERE", "related": "POSSIBLE", "serious": "NO", "ae_start_dt": "16-11-2024"}
+{"subject_id": "S0300198", "ae_id": "AE0300340", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": "severe", "related": "unrelated", "serious": " YES ", "ae_start_dt": " 2024-05-07 "}
+{"subject_id": " S0300765 ", "ae_id": "AE0300341", "pt_name": " Nausea ", "pt_code": "1000020", "severity": "MILD", "related": " YES ", "serious": " NO ", "ae_start_dt": "12-04-2025"}
+{"subject_id": "S0300661", "ae_id": "AE0300342", "pt_name": " Vomiting ", "pt_code": " 1000050 ", "severity": "MODERATE", "related": " POSSIBLE ", "serious": "no", "ae_start_dt": "05-10-2025"}
+{"subject_id": "S0300564", "ae_id": "AE0300343", "pt_name": " Nausea ", "pt_code": "1000020", "severity": "SEVERE", "related": "unrelated", "serious": " YES ", "ae_start_dt": "01-03-2024"}
+{"subject_id": "s0300539", "ae_id": "AE0300344", "pt_name": " Nausea ", "pt_code": "1000020", "severity": "MODERATE", "related": "UNRELATED", "serious": "NO", "ae_start_dt": " 2024-04-17 "}
+{"subject_id": " S0300507 ", "ae_id": "AE0300345", "pt_name": "Vomiting", "pt_code": "1000050", "severity": "MODERATE", "related": "probable", "serious": " NO ", "ae_start_dt": "2025-04-26"}
+{"subject_id": "S0300030", "ae_id": "AE0300346", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": "moderate", "related": " POSSIBLE ", "serious": "YES", "ae_start_dt": " 2024-07-28 "}
+{"subject_id": "s0300127", "ae_id": "AE0300347", "pt_name": " Vomiting ", "pt_code": " 1000050 ", "severity": "mild", "related": "POSSIBLE", "serious": "no", "ae_start_dt": "2024-03-30"}
+{"subject_id": "S0300328", "ae_id": "AE0300348", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": " SEVERE ", "related": "PROBABLE", "serious": "YES", "ae_start_dt": "06/29/2025"}
+{"subject_id": "S0300250", "ae_id": "AE0300349", "pt_name": " Headache ", "pt_code": "1000010", "severity": "SEVERE", "related": " UNRELATED ", "serious": "YES", "ae_start_dt": "27-10-2025"}
+{"subject_id": "S0300872", "ae_id": "AE0300350", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": "MILD", "related": "UNRELATED", "serious": "YES", "ae_start_dt": " 2025-03-22 "}
+{"subject_id": " S0300605 ", "ae_id": "AE0300351", "pt_name": "DIZZINESS", "pt_code": " 1000030 ", "severity": "MODERATE", "related": " PROBABLE ", "serious": "no", "ae_start_dt": "2024-03-30"}
+{"subject_id": "s0300843", "ae_id": "AE0300352", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": "MODERATE", "related": "UNRELATED", "serious": "yes", "ae_start_dt": " 2024-10-31 "}
+{"subject_id": " S0300496 ", "ae_id": "AE0300353", "pt_name": "VOMITING", "pt_code": "1000050", "severity": "MODERATE", "related": "possible", "serious": " YES ", "ae_start_dt": "11/22/2024"}
+{"subject_id": "S0300102", "ae_id": "AE0300354", "pt_name": "headache", "pt_code": "1000010", "severity": " MODERATE ", "related": "UNRELATED", "serious": " NO ", "ae_start_dt": "18-09-2025"}
+{"subject_id": "S0300632", "ae_id": "AE0300355", "pt_name": " Nausea ", "pt_code": "1000020", "severity": "MODERATE", "related": "POSSIBLE", "serious": "NO", "ae_start_dt": "07/10/2025"}
+{"subject_id": "S0300559", "ae_id": "AE0300356", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": "severe", "related": "NO", "serious": " NO ", "ae_start_dt": "07/21/2025"}
+{"subject_id": " S0300739 ", "ae_id": "AE0300357", "pt_name": "headache", "pt_code": "1000010", "severity": "MODERATE", "related": "NO", "serious": "NO", "ae_start_dt": " 2025-09-20 "}
+{"subject_id": "S0300437", "ae_id": "AE0300358", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "moderate", "related": "YES", "serious": " YES ", "ae_start_dt": " 2024-07-12 "}
+{"subject_id": "s0300542", "ae_id": "AE0300359", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": "mild", "related": " NO ", "serious": "YES", "ae_start_dt": "08/11/2025"}
+{"subject_id": "S0300600", "ae_id": "AE0300360", "pt_name": " Headache ", "pt_code": "1000010", "severity": " MODERATE ", "related": "NO", "serious": "NO", "ae_start_dt": "26-08-2025"}
+{"subject_id": "s0300816", "ae_id": "AE0300361", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": "moderate", "related": "UNRELATED", "serious": "yes", "ae_start_dt": " 2024-06-10 "}
+{"subject_id": "s0300045", "ae_id": "AE0300362", "pt_name": "DIZZINESS", "pt_code": " 1000030 ", "severity": "moderate", "related": "probable", "serious": "YES", "ae_start_dt": " 2024-06-21 "}
+{"subject_id": "s0300225", "ae_id": "AE0300363", "pt_name": "Dizziness", "pt_code": " 1000030 ", "severity": "SEVERE", "related": "possible", "serious": "YES", "ae_start_dt": "19-09-2025"}
+{"subject_id": " S0300659 ", "ae_id": "AE0300364", "pt_name": "headache", "pt_code": "1000010", "severity": "MILD", "related": "POSSIBLE", "serious": "NO", "ae_start_dt": "2025-03-30"}
+{"subject_id": " S0300823 ", "ae_id": "AE0300365", "pt_name": "Vomiting", "pt_code": "1000050", "severity": "MILD", "related": "PROBABLE", "serious": "YES", "ae_start_dt": "25-06-2024"}
+{"subject_id": "s0300439", "ae_id": "AE0300366", "pt_name": "VOMITING", "pt_code": "1000050", "severity": " MODERATE ", "related": "unrelated", "serious": " YES ", "ae_start_dt": "2024-02-26"}
+{"subject_id": "S0300964", "ae_id": "AE0300367", "pt_name": "vomiting", "pt_code": "1000050", "severity": " SEVERE ", "related": " POSSIBLE ", "serious": "NO", "ae_start_dt": "17-02-2024"}
+{"subject_id": "S0300100", "ae_id": "AE0300368", "pt_name": "Vomiting", "pt_code": "1000050", "severity": "SEVERE", "related": " NO ", "serious": "YES", "ae_start_dt": " 2024-08-26 "}
+{"subject_id": "S0300061", "ae_id": "AE0300369", "pt_name": "nausea", "pt_code": "1000020", "severity": " SEVERE ", "related": " PROBABLE ", "serious": "YES", "ae_start_dt": "11-04-2025"}
+{"subject_id": "S0300171", "ae_id": "AE0300370", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": "severe", "related": "POSSIBLE", "serious": "NO", "ae_start_dt": "28-08-2025"}
+{"subject_id": " S0300840 ", "ae_id": "AE0300371", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": " MILD ", "related": "yes", "serious": "yes", "ae_start_dt": "2025-02-06"}
+{"subject_id": "s0300880", "ae_id": "AE0300372", "pt_name": "vomiting", "pt_code": "1000050", "severity": "SEVERE", "related": "yes", "serious": "yes", "ae_start_dt": " 2024-12-25 "}
+{"subject_id": "S0300582", "ae_id": "AE0300373", "pt_name": "headache", "pt_code": "1000010", "severity": "MILD", "related": "PROBABLE", "serious": " NO ", "ae_start_dt": "09-09-2025"}
+{"subject_id": "s0300186", "ae_id": "AE0300374", "pt_name": "vomiting", "pt_code": " 1000050 ", "severity": "MODERATE", "related": "no", "serious": "no", "ae_start_dt": " 2025-04-24 "}
+{"subject_id": "s0300658", "ae_id": "AE0300375", "pt_name": "NAUSEA", "pt_code": " 1000020 ", "severity": "MODERATE", "related": " YES ", "serious": "YES", "ae_start_dt": "2025-03-08"}
+{"subject_id": " S0300630 ", "ae_id": "AE0300376", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": "SEVERE", "related": " NO ", "serious": "NO", "ae_start_dt": "05/06/2024"}
+{"subject_id": "S0300914", "ae_id": "AE0300377", "pt_name": "dizziness", "pt_code": "1000030", "severity": "SEVERE", "related": "NO", "serious": "NO", "ae_start_dt": " 2024-11-03 "}
+{"subject_id": " S0300511 ", "ae_id": "AE0300378", "pt_name": "Dizziness", "pt_code": "1000030", "severity": " MODERATE ", "related": "unrelated", "serious": "YES", "ae_start_dt": "04-02-2025"}
+{"subject_id": "S0300893", "ae_id": "AE0300379", "pt_name": "Fatigue", "pt_code": "1000040", "severity": " MODERATE ", "related": "UNRELATED", "serious": "YES", "ae_start_dt": "03/23/2024"}
+{"subject_id": "S0300130", "ae_id": "AE0300380", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": "MILD", "related": "unrelated", "serious": "yes", "ae_start_dt": "17-04-2025"}
+{"subject_id": "S0300994", "ae_id": "AE0300381", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": "MODERATE", "related": "YES", "serious": "YES", "ae_start_dt": "18-09-2025"}
+{"subject_id": "S0300808", "ae_id": "AE0300382", "pt_name": " Nausea ", "pt_code": " 1000020 ", "severity": "SEVERE", "related": "NO", "serious": "yes", "ae_start_dt": "16-01-2024"}
+{"subject_id": "s0300300", "ae_id": "AE0300383", "pt_name": "Nausea", "pt_code": " 1000020 ", "severity": "severe", "related": " NO ", "serious": " YES ", "ae_start_dt": "06-07-2024"}
+{"subject_id": "S0300554", "ae_id": "AE0300384", "pt_name": "VOMITING", "pt_code": "1000050", "severity": "SEVERE", "related": "POSSIBLE", "serious": " YES ", "ae_start_dt": "2025-12-02"}
+{"subject_id": "S0300761", "ae_id": "AE0300385", "pt_name": "DIZZINESS", "pt_code": " 1000030 ", "severity": "MILD", "related": "YES", "serious": "NO", "ae_start_dt": "2024-07-16"}
+{"subject_id": "S0300158", "ae_id": "AE0300386", "pt_name": "headache", "pt_code": "1000010", "severity": " MILD ", "related": "possible", "serious": " YES ", "ae_start_dt": "07-12-2025"}
+{"subject_id": "s0300818", "ae_id": "AE0300387", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "severe", "related": "no", "serious": " NO ", "ae_start_dt": " 2025-04-16 "}
+{"subject_id": "s0300469", "ae_id": "AE0300388", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": "MILD", "related": " YES ", "serious": " YES ", "ae_start_dt": "2025-10-13"}
+{"subject_id": "S0300203", "ae_id": "AE0300389", "pt_name": "vomiting", "pt_code": "1000050", "severity": " SEVERE ", "related": "possible", "serious": "YES", "ae_start_dt": " 2024-08-04 "}
+{"subject_id": "s0300693", "ae_id": "AE0300390", "pt_name": "VOMITING", "pt_code": "1000050", "severity": " MODERATE ", "related": "NO", "serious": "yes", "ae_start_dt": "22-03-2024"}
+{"subject_id": " S0300579 ", "ae_id": "AE0300391", "pt_name": "dizziness", "pt_code": "1000030", "severity": "MILD", "related": " YES ", "serious": "no", "ae_start_dt": "2024-02-09"}
+{"subject_id": "S0300307", "ae_id": "AE0300392", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": "MILD", "related": " POSSIBLE ", "serious": " YES ", "ae_start_dt": "03/27/2025"}
+{"subject_id": "s0300482", "ae_id": "AE0300393", "pt_name": "Nausea", "pt_code": "1000020", "severity": "MODERATE", "related": "unrelated", "serious": "yes", "ae_start_dt": "2025-08-08"}
+{"subject_id": "s0300722", "ae_id": "AE0300394", "pt_name": " Nausea ", "pt_code": "1000020", "severity": " MODERATE ", "related": "yes", "serious": " NO ", "ae_start_dt": "02-09-2025"}
+{"subject_id": "S0300704", "ae_id": "AE0300395", "pt_name": "Headache", "pt_code": "1000010", "severity": "MILD", "related": "PROBABLE", "serious": "yes", "ae_start_dt": "2024-01-25"}
+{"subject_id": "S0300691", "ae_id": "AE0300396", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": "severe", "related": "YES", "serious": "YES", "ae_start_dt": "2024-08-05"}
+{"subject_id": "S0300753", "ae_id": "AE0300397", "pt_name": " Nausea ", "pt_code": "1000020", "severity": "MILD", "related": " UNRELATED ", "serious": "NO", "ae_start_dt": "31-08-2025"}
+{"subject_id": "S0300874", "ae_id": "AE0300398", "pt_name": " Nausea ", "pt_code": " 1000020 ", "severity": " SEVERE ", "related": "POSSIBLE", "serious": "NO", "ae_start_dt": "18-01-2025"}
+{"subject_id": "S0300969", "ae_id": "AE0300399", "pt_name": "fatigue", "pt_code": "1000040", "severity": " MILD ", "related": " POSSIBLE ", "serious": "NO", "ae_start_dt": " 2025-12-07 "}
+{"subject_id": "S0300397", "ae_id": "AE0300400", "pt_name": "Headache", "pt_code": "1000010", "severity": "MODERATE", "related": "NO", "serious": "yes", "ae_start_dt": "2024-03-26"}
+{"subject_id": "S0300916", "ae_id": "AE0300401", "pt_name": "fatigue", "pt_code": "1000040", "severity": "MODERATE", "related": "POSSIBLE", "serious": " YES ", "ae_start_dt": "07/30/2024"}
+{"subject_id": " S0300017 ", "ae_id": "AE0300402", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": "MILD", "related": " NO ", "serious": "YES", "ae_start_dt": " 2024-08-12 "}
+{"subject_id": "S0300539", "ae_id": "AE0300403", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": "MODERATE", "related": "POSSIBLE", "serious": "NO", "ae_start_dt": "29-03-2024"}
+{"subject_id": "S0300513", "ae_id": "AE0300404", "pt_name": "Fatigue", "pt_code": "1000040", "severity": "MILD", "related": "possible", "serious": "no", "ae_start_dt": "27-08-2025"}
+{"subject_id": " S0300783 ", "ae_id": "AE0300405", "pt_name": "vomiting", "pt_code": "1000050", "severity": "SEVERE", "related": "probable", "serious": "no", "ae_start_dt": "26-11-2025"}
+{"subject_id": " S0300780 ", "ae_id": "AE0300406", "pt_name": "Headache", "pt_code": "1000010", "severity": "MODERATE", "related": "UNRELATED", "serious": " YES ", "ae_start_dt": "06/17/2025"}
+{"subject_id": " S0300907 ", "ae_id": "AE0300407", "pt_name": "NAUSEA", "pt_code": " 1000020 ", "severity": "MILD", "related": "POSSIBLE", "serious": "no", "ae_start_dt": " 2025-09-25 "}
+{"subject_id": "S0300290", "ae_id": "AE0300408", "pt_name": "Vomiting", "pt_code": "1000050", "severity": "severe", "related": "POSSIBLE", "serious": "NO", "ae_start_dt": " 2025-07-29 "}
+{"subject_id": "S0300679", "ae_id": "AE0300409", "pt_name": "fatigue", "pt_code": " 1000040 ", "severity": "SEVERE", "related": "NO", "serious": "YES", "ae_start_dt": " 2024-08-17 "}
+{"subject_id": "s0300272", "ae_id": "AE0300410", "pt_name": "Dizziness", "pt_code": "1000030", "severity": "mild", "related": " YES ", "serious": "YES", "ae_start_dt": "2025-06-29"}
+{"subject_id": "S0300835", "ae_id": "AE0300411", "pt_name": "Vomiting", "pt_code": " 1000050 ", "severity": "mild", "related": "YES", "serious": "yes", "ae_start_dt": "13-07-2024"}
+{"subject_id": "S0300227", "ae_id": "AE0300412", "pt_name": "nausea", "pt_code": "1000020", "severity": "MILD", "related": "YES", "serious": "YES", "ae_start_dt": " 2025-07-05 "}
+{"subject_id": " S0300669 ", "ae_id": "AE0300413", "pt_name": " Nausea ", "pt_code": "1000020", "severity": " MODERATE ", "related": "PROBABLE", "serious": "NO", "ae_start_dt": " 2024-12-17 "}
+{"subject_id": "s0300558", "ae_id": "AE0300414", "pt_name": "Dizziness", "pt_code": "1000030", "severity": "SEVERE", "related": " NO ", "serious": "NO", "ae_start_dt": "27-07-2024"}
+{"subject_id": "s0300206", "ae_id": "AE0300415", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": "MILD", "related": "probable", "serious": " NO ", "ae_start_dt": "2024-08-23"}
+{"subject_id": "S0300930", "ae_id": "AE0300416", "pt_name": "vomiting", "pt_code": " 1000050 ", "severity": "SEVERE", "related": "yes", "serious": "yes", "ae_start_dt": "05-06-2025"}
+{"subject_id": "S0300594", "ae_id": "AE0300417", "pt_name": "Dizziness", "pt_code": "1000030", "severity": "MODERATE", "related": " NO ", "serious": " NO ", "ae_start_dt": "11-07-2025"}
+{"subject_id": "S0300523", "ae_id": "AE0300418", "pt_name": "vomiting", "pt_code": "1000050", "severity": " MODERATE ", "related": "yes", "serious": " YES ", "ae_start_dt": "06/27/2024"}
+{"subject_id": "S0300881", "ae_id": "AE0300419", "pt_name": " Nausea ", "pt_code": "1000020", "severity": "MODERATE", "related": " POSSIBLE ", "serious": "yes", "ae_start_dt": "19-12-2025"}
+{"subject_id": "S0300216", "ae_id": "AE0300420", "pt_name": " Nausea ", "pt_code": "1000020", "severity": " MILD ", "related": "YES", "serious": "YES", "ae_start_dt": " 2024-02-13 "}
+{"subject_id": "S0300464", "ae_id": "AE0300421", "pt_name": "vomiting", "pt_code": "1000050", "severity": "SEVERE", "related": "POSSIBLE", "serious": "NO", "ae_start_dt": "07-06-2024"}
+{"subject_id": "S0300417", "ae_id": "AE0300422", "pt_name": "Nausea", "pt_code": "1000020", "severity": "MODERATE", "related": "unrelated", "serious": "no", "ae_start_dt": "18-04-2025"}
+{"subject_id": "S0300611", "ae_id": "AE0300423", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": "SEVERE", "related": "yes", "serious": "YES", "ae_start_dt": "25-03-2025"}
+{"subject_id": "S0300199", "ae_id": "AE0300424", "pt_name": "Headache", "pt_code": "1000010", "severity": "mild", "related": "PROBABLE", "serious": "NO", "ae_start_dt": "13-01-2024"}
+{"subject_id": "S0300137", "ae_id": "AE0300425", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": " MODERATE ", "related": "possible", "serious": "yes", "ae_start_dt": "2024-12-04"}
+{"subject_id": " S0300162 ", "ae_id": "AE0300426", "pt_name": "Nausea", "pt_code": "1000020", "severity": "SEVERE", "related": " PROBABLE ", "serious": " NO ", "ae_start_dt": " 2024-11-06 "}
+{"subject_id": "S0300090", "ae_id": "AE0300427", "pt_name": "VOMITING", "pt_code": "1000050", "severity": "SEVERE", "related": "POSSIBLE", "serious": "yes", "ae_start_dt": "2024-11-07"}
+{"subject_id": "s0300247", "ae_id": "AE0300428", "pt_name": "Dizziness", "pt_code": "1000030", "severity": "MODERATE", "related": "POSSIBLE", "serious": "no", "ae_start_dt": "16-09-2024"}
+{"subject_id": "S0300206", "ae_id": "AE0300429", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": "MILD", "related": " PROBABLE ", "serious": " YES ", "ae_start_dt": "11-04-2025"}
+{"subject_id": " S0300947 ", "ae_id": "AE0300430", "pt_name": "nausea", "pt_code": "1000020", "severity": "SEVERE", "related": "YES", "serious": "NO", "ae_start_dt": "04-09-2024"}
+{"subject_id": " S0300787 ", "ae_id": "AE0300431", "pt_name": "headache", "pt_code": "1000010", "severity": "moderate", "related": "UNRELATED", "serious": "yes", "ae_start_dt": " 2024-08-18 "}
+{"subject_id": "s0300010", "ae_id": "AE0300432", "pt_name": "Fatigue", "pt_code": "1000040", "severity": "SEVERE", "related": "NO", "serious": "NO", "ae_start_dt": " 2024-06-28 "}
+{"subject_id": " S0300110 ", "ae_id": "AE0300433", "pt_name": " Fatigue ", "pt_code": " 1000040 ", "severity": " MODERATE ", "related": "no", "serious": "NO", "ae_start_dt": "2024-06-13"}
+{"subject_id": "s0300872", "ae_id": "AE0300434", "pt_name": "dizziness", "pt_code": "1000030", "severity": "MILD", "related": "POSSIBLE", "serious": "yes", "ae_start_dt": "01/09/2025"}
+{"subject_id": "S0300266", "ae_id": "AE0300435", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": "MILD", "related": "NO", "serious": "NO", "ae_start_dt": "08/24/2025"}
+{"subject_id": "S0300904", "ae_id": "AE0300436", "pt_name": "nausea", "pt_code": "1000020", "severity": " MODERATE ", "related": "YES", "serious": "yes", "ae_start_dt": "09/18/2025"}
+{"subject_id": "S0300319", "ae_id": "AE0300437", "pt_name": "Vomiting", "pt_code": "1000050", "severity": "severe", "related": "unrelated", "serious": "NO", "ae_start_dt": " 2024-06-06 "}
+{"subject_id": "s0300653", "ae_id": "AE0300438", "pt_name": "dizziness", "pt_code": "1000030", "severity": "MODERATE", "related": "no", "serious": "YES", "ae_start_dt": "07/01/2024"}
+{"subject_id": "s0300722", "ae_id": "AE0300439", "pt_name": "nausea", "pt_code": "1000020", "severity": "moderate", "related": "yes", "serious": "YES", "ae_start_dt": "23-09-2025"}
+{"subject_id": "S0300342", "ae_id": "AE0300440", "pt_name": "Dizziness", "pt_code": "1000030", "severity": "mild", "related": " PROBABLE ", "serious": "yes", "ae_start_dt": " 2025-08-30 "}
+{"subject_id": "s0300609", "ae_id": "AE0300441", "pt_name": " Headache ", "pt_code": "1000010", "severity": "SEVERE", "related": "NO", "serious": "NO", "ae_start_dt": "24-04-2025"}
+{"subject_id": "S0300510", "ae_id": "AE0300442", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": "severe", "related": "NO", "serious": "YES", "ae_start_dt": "01/09/2025"}
+{"subject_id": " S0300634 ", "ae_id": "AE0300443", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": "mild", "related": "UNRELATED", "serious": " YES ", "ae_start_dt": "04-04-2024"}
+{"subject_id": "S0300964", "ae_id": "AE0300444", "pt_name": "nausea", "pt_code": "1000020", "severity": "MILD", "related": "POSSIBLE", "serious": " NO ", "ae_start_dt": "05-02-2024"}
+{"subject_id": "s0300729", "ae_id": "AE0300445", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": "severe", "related": "unrelated", "serious": " YES ", "ae_start_dt": "10-10-2025"}
+{"subject_id": "s0300536", "ae_id": "AE0300446", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": "moderate", "related": " PROBABLE ", "serious": "yes", "ae_start_dt": "2024-04-26"}
+{"subject_id": "S0300430", "ae_id": "AE0300447", "pt_name": "vomiting", "pt_code": " 1000050 ", "severity": "SEVERE", "related": "NO", "serious": "yes", "ae_start_dt": "06/28/2025"}
+{"subject_id": "S0300423", "ae_id": "AE0300448", "pt_name": "VOMITING", "pt_code": " 1000050 ", "severity": "SEVERE", "related": "NO", "serious": "no", "ae_start_dt": " 2024-05-21 "}
+{"subject_id": "S0300678", "ae_id": "AE0300449", "pt_name": " Nausea ", "pt_code": "1000020", "severity": "moderate", "related": "POSSIBLE", "serious": "YES", "ae_start_dt": "01/08/2025"}
+{"subject_id": "S0300051", "ae_id": "AE0300450", "pt_name": "Vomiting", "pt_code": "1000050", "severity": " MILD ", "related": "POSSIBLE", "serious": "NO", "ae_start_dt": "05/22/2025"}
+{"subject_id": "s0300678", "ae_id": "AE0300451", "pt_name": "Fatigue", "pt_code": "1000040", "severity": "SEVERE", "related": "UNRELATED", "serious": "YES", "ae_start_dt": "10/22/2024"}
+{"subject_id": "S0300543", "ae_id": "AE0300452", "pt_name": "Nausea", "pt_code": "1000020", "severity": "moderate", "related": "YES", "serious": "NO", "ae_start_dt": "11/29/2025"}
+{"subject_id": "S0300522", "ae_id": "AE0300453", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": " SEVERE ", "related": "PROBABLE", "serious": "yes", "ae_start_dt": "15-06-2024"}
+{"subject_id": "s0300856", "ae_id": "AE0300454", "pt_name": "Nausea", "pt_code": "1000020", "severity": "SEVERE", "related": " PROBABLE ", "serious": " NO ", "ae_start_dt": "05/27/2025"}
+{"subject_id": "S0300519", "ae_id": "AE0300455", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": " SEVERE ", "related": "UNRELATED", "serious": " YES ", "ae_start_dt": "08-01-2024"}
+{"subject_id": " S0300255 ", "ae_id": "AE0300456", "pt_name": " Headache ", "pt_code": "1000010", "severity": "SEVERE", "related": " UNRELATED ", "serious": "YES", "ae_start_dt": "2024-03-31"}
+{"subject_id": " S0300839 ", "ae_id": "AE0300457", "pt_name": " Dizziness ", "pt_code": " 1000030 ", "severity": "SEVERE", "related": "POSSIBLE", "serious": "YES", "ae_start_dt": " 2024-05-13 "}
+{"subject_id": "S0300874", "ae_id": "AE0300458", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": "severe", "related": "possible", "serious": "YES", "ae_start_dt": "01/16/2024"}
+{"subject_id": "s0300085", "ae_id": "AE0300459", "pt_name": "Nausea", "pt_code": "1000020", "severity": " SEVERE ", "related": "UNRELATED", "serious": " NO ", "ae_start_dt": " 2025-07-03 "}
+{"subject_id": " S0300274 ", "ae_id": "AE0300460", "pt_name": "Vomiting", "pt_code": " 1000050 ", "severity": "SEVERE", "related": " UNRELATED ", "serious": "YES", "ae_start_dt": "11-02-2025"}
+{"subject_id": "S0300703", "ae_id": "AE0300461", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": "MODERATE", "related": " UNRELATED ", "serious": "YES", "ae_start_dt": "04/09/2025"}
+{"subject_id": "S0300957", "ae_id": "AE0300462", "pt_name": "HEADACHE", "pt_code": " 1000010 ", "severity": "MILD", "related": "probable", "serious": "YES", "ae_start_dt": "10-06-2024"}
+{"subject_id": "s0300153", "ae_id": "AE0300463", "pt_name": "VOMITING", "pt_code": "1000050", "severity": "SEVERE", "related": "YES", "serious": "yes", "ae_start_dt": " 2025-06-28 "}
+{"subject_id": " S0300457 ", "ae_id": "AE0300464", "pt_name": "VOMITING", "pt_code": "1000050", "severity": "MODERATE", "related": "YES", "serious": " YES ", "ae_start_dt": "12/04/2025"}
+{"subject_id": "s0300869", "ae_id": "AE0300465", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": "MILD", "related": " UNRELATED ", "serious": "NO", "ae_start_dt": "2024-06-02"}
+{"subject_id": " S0300514 ", "ae_id": "AE0300466", "pt_name": "Vomiting", "pt_code": " 1000050 ", "severity": " SEVERE ", "related": "NO", "serious": "YES", "ae_start_dt": "03/17/2025"}
+{"subject_id": "S0300410", "ae_id": "AE0300467", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": " SEVERE ", "related": " YES ", "serious": " NO ", "ae_start_dt": "2025-04-18"}
+{"subject_id": "S0300066", "ae_id": "AE0300468", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": "MODERATE", "related": "POSSIBLE", "serious": "NO", "ae_start_dt": "23-04-2025"}
+{"subject_id": "s0300796", "ae_id": "AE0300469", "pt_name": "headache", "pt_code": " 1000010 ", "severity": "moderate", "related": " UNRELATED ", "serious": " NO ", "ae_start_dt": "2024-04-25"}
+{"subject_id": "S0300219", "ae_id": "AE0300470", "pt_name": "Dizziness", "pt_code": "1000030", "severity": "MODERATE", "related": "unrelated", "serious": "YES", "ae_start_dt": "04-05-2025"}
+{"subject_id": "s0300455", "ae_id": "AE0300471", "pt_name": "nausea", "pt_code": " 1000020 ", "severity": " SEVERE ", "related": " YES ", "serious": "NO", "ae_start_dt": " 2024-12-15 "}
+{"subject_id": " S0300120 ", "ae_id": "AE0300472", "pt_name": "Fatigue", "pt_code": " 1000040 ", "severity": "MODERATE", "related": "UNRELATED", "serious": "NO", "ae_start_dt": "2025-01-26"}
+{"subject_id": "S0300183", "ae_id": "AE0300473", "pt_name": "Vomiting", "pt_code": "1000050", "severity": " SEVERE ", "related": " UNRELATED ", "serious": "YES", "ae_start_dt": "2025-06-28"}
+{"subject_id": " S0300683 ", "ae_id": "AE0300474", "pt_name": "Headache", "pt_code": " 1000010 ", "severity": "SEVERE", "related": "POSSIBLE", "serious": "YES", "ae_start_dt": "10/16/2024"}
+{"subject_id": " S0300882 ", "ae_id": "AE0300475", "pt_name": "Vomiting", "pt_code": "1000050", "severity": "SEVERE", "related": " PROBABLE ", "serious": " YES ", "ae_start_dt": "06/12/2025"}
+{"subject_id": "S0300561", "ae_id": "AE0300476", "pt_name": "Headache", "pt_code": "1000010", "severity": "SEVERE", "related": " UNRELATED ", "serious": "YES", "ae_start_dt": "2024-09-27"}
+{"subject_id": "S0300675", "ae_id": "AE0300477", "pt_name": " Nausea ", "pt_code": "1000020", "severity": "MODERATE", "related": "NO", "serious": "YES", "ae_start_dt": "2025-02-26"}
+{"subject_id": " S0300330 ", "ae_id": "AE0300478", "pt_name": "fatigue", "pt_code": "1000040", "severity": "MILD", "related": "possible", "serious": " YES ", "ae_start_dt": "2025-12-17"}
+{"subject_id": "s0300601", "ae_id": "AE0300479", "pt_name": "VOMITING", "pt_code": "1000050", "severity": "MODERATE", "related": "PROBABLE", "serious": "YES", "ae_start_dt": " 2024-02-11 "}
+{"subject_id": "s0300155", "ae_id": "AE0300480", "pt_name": "VOMITING", "pt_code": "1000050", "severity": "MODERATE", "related": "probable", "serious": "YES", "ae_start_dt": "05/25/2024"}
+{"subject_id": "S0300347", "ae_id": "AE0300481", "pt_name": "VOMITING", "pt_code": "1000050", "severity": "MODERATE", "related": "probable", "serious": "YES", "ae_start_dt": " 2024-11-06 "}
+{"subject_id": " S0300218 ", "ae_id": "AE0300482", "pt_name": "dizziness", "pt_code": "1000030", "severity": " MODERATE ", "related": "NO", "serious": "NO", "ae_start_dt": " 2025-05-09 "}
+{"subject_id": "s0300604", "ae_id": "AE0300483", "pt_name": " Headache ", "pt_code": " 1000010 ", "severity": "MODERATE", "related": "UNRELATED", "serious": "NO", "ae_start_dt": "2025-06-20"}
+{"subject_id": "S0300621", "ae_id": "AE0300484", "pt_name": "Dizziness", "pt_code": "1000030", "severity": "MODERATE", "related": "YES", "serious": " NO ", "ae_start_dt": " 2024-08-11 "}
+{"subject_id": "S0300486", "ae_id": "AE0300485", "pt_name": "Nausea", "pt_code": "1000020", "severity": " MILD ", "related": " YES ", "serious": " NO ", "ae_start_dt": " 2024-04-10 "}
+{"subject_id": "S0300433", "ae_id": "AE0300486", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": "SEVERE", "related": "NO", "serious": "YES", "ae_start_dt": "04/02/2024"}
+{"subject_id": "S0300377", "ae_id": "AE0300487", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "MILD", "related": "NO", "serious": "NO", "ae_start_dt": " 2024-12-27 "}
+{"subject_id": "S0300910", "ae_id": "AE0300488", "pt_name": "Fatigue", "pt_code": "1000040", "severity": " SEVERE ", "related": "NO", "serious": "YES", "ae_start_dt": "2024-05-26"}
+{"subject_id": "S0300487", "ae_id": "AE0300489", "pt_name": "Dizziness", "pt_code": "1000030", "severity": "MILD", "related": "YES", "serious": " YES ", "ae_start_dt": "02/11/2025"}
+{"subject_id": "S0300045", "ae_id": "AE0300490", "pt_name": "FATIGUE", "pt_code": " 1000040 ", "severity": " MILD ", "related": "UNRELATED", "serious": "NO", "ae_start_dt": "17-08-2025"}
+{"subject_id": "S0300974", "ae_id": "AE0300491", "pt_name": "headache", "pt_code": " 1000010 ", "severity": "severe", "related": " POSSIBLE ", "serious": " NO ", "ae_start_dt": "2025-08-23"}
+{"subject_id": "s0300974", "ae_id": "AE0300492", "pt_name": "nausea", "pt_code": "1000020", "severity": "mild", "related": "yes", "serious": " NO ", "ae_start_dt": "13-08-2024"}
+{"subject_id": "s0300587", "ae_id": "AE0300493", "pt_name": "nausea", "pt_code": "1000020", "severity": "severe", "related": " PROBABLE ", "serious": "NO", "ae_start_dt": "24-12-2024"}
+{"subject_id": "s0300307", "ae_id": "AE0300494", "pt_name": "FATIGUE", "pt_code": " 1000040 ", "severity": " MILD ", "related": " UNRELATED ", "serious": "NO", "ae_start_dt": "02/04/2025"}
+{"subject_id": " S0300502 ", "ae_id": "AE0300495", "pt_name": "headache", "pt_code": "1000010", "severity": "MILD", "related": "YES", "serious": "no", "ae_start_dt": " 2025-12-13 "}
+{"subject_id": "S0300243", "ae_id": "AE0300496", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": "SEVERE", "related": "yes", "serious": "yes", "ae_start_dt": "2024-10-26"}
+{"subject_id": "s0300163", "ae_id": "AE0300497", "pt_name": "Headache", "pt_code": "1000010", "severity": "MODERATE", "related": " NO ", "serious": " NO ", "ae_start_dt": " 2024-10-29 "}
+{"subject_id": "s0300235", "ae_id": "AE0300498", "pt_name": "VOMITING", "pt_code": "1000050", "severity": "MILD", "related": "UNRELATED", "serious": "NO", "ae_start_dt": "13-02-2025"}
+{"subject_id": " S0300152 ", "ae_id": "AE0300499", "pt_name": " Nausea ", "pt_code": "1000020", "severity": " MODERATE ", "related": "POSSIBLE", "serious": " NO ", "ae_start_dt": "16-12-2025"}
+{"subject_id": " S0300051 ", "ae_id": "AE0300500", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": "MODERATE", "related": "yes", "serious": "YES", "ae_start_dt": "10/17/2024"}
+{"subject_id": "S0300171", "ae_id": "AE0300501", "pt_name": "fatigue", "pt_code": "1000040", "severity": " MODERATE ", "related": "YES", "serious": "NO", "ae_start_dt": "2024-05-15"}
+{"subject_id": " S0300400 ", "ae_id": "AE0300502", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "severe", "related": "probable", "serious": "YES", "ae_start_dt": "2024-11-25"}
+{"subject_id": "s0300094", "ae_id": "AE0300503", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": "mild", "related": "NO", "serious": "no", "ae_start_dt": "07/04/2025"}
+{"subject_id": " S0300038 ", "ae_id": "AE0300504", "pt_name": "vomiting", "pt_code": "1000050", "severity": "MODERATE", "related": "possible", "serious": " YES ", "ae_start_dt": "01/10/2024"}
+{"subject_id": " S0300167 ", "ae_id": "AE0300505", "pt_name": " Nausea ", "pt_code": "1000020", "severity": "SEVERE", "related": "UNRELATED", "serious": " NO ", "ae_start_dt": " 2024-08-12 "}
+{"subject_id": "S0300287", "ae_id": "AE0300506", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": " SEVERE ", "related": "NO", "serious": "no", "ae_start_dt": "29-03-2024"}
+{"subject_id": "s0300078", "ae_id": "AE0300507", "pt_name": "NAUSEA", "pt_code": " 1000020 ", "severity": "MILD", "related": " POSSIBLE ", "serious": "no", "ae_start_dt": " 2024-03-30 "}
+{"subject_id": "S0300761", "ae_id": "AE0300508", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "SEVERE", "related": "UNRELATED", "serious": "yes", "ae_start_dt": "2025-02-12"}
+{"subject_id": "S0300998", "ae_id": "AE0300509", "pt_name": "Dizziness", "pt_code": "1000030", "severity": "mild", "related": "POSSIBLE", "serious": "yes", "ae_start_dt": "27-04-2025"}
+{"subject_id": "s0300411", "ae_id": "AE0300510", "pt_name": "VOMITING", "pt_code": "1000050", "severity": "severe", "related": "UNRELATED", "serious": "NO", "ae_start_dt": "2025-06-22"}
+{"subject_id": "s0300421", "ae_id": "AE0300511", "pt_name": "FATIGUE", "pt_code": " 1000040 ", "severity": "MODERATE", "related": "UNRELATED", "serious": "NO", "ae_start_dt": "12-05-2025"}
+{"subject_id": "s0300823", "ae_id": "AE0300512", "pt_name": "Dizziness", "pt_code": "1000030", "severity": " MILD ", "related": "no", "serious": "NO", "ae_start_dt": "03/14/2025"}
+{"subject_id": "s0300427", "ae_id": "AE0300513", "pt_name": "nausea", "pt_code": "1000020", "severity": "MILD", "related": "YES", "serious": "YES", "ae_start_dt": "22-07-2025"}
+{"subject_id": "S0300177", "ae_id": "AE0300514", "pt_name": "headache", "pt_code": " 1000010 ", "severity": "SEVERE", "related": " UNRELATED ", "serious": " NO ", "ae_start_dt": "2025-03-01"}
+{"subject_id": " S0300746 ", "ae_id": "AE0300515", "pt_name": "fatigue", "pt_code": "1000040", "severity": "severe", "related": "NO", "serious": "NO", "ae_start_dt": "20-12-2025"}
+{"subject_id": " S0300979 ", "ae_id": "AE0300516", "pt_name": "dizziness", "pt_code": "1000030", "severity": "severe", "related": " POSSIBLE ", "serious": "YES", "ae_start_dt": "17-08-2025"}
+{"subject_id": " S0300969 ", "ae_id": "AE0300517", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": "SEVERE", "related": " POSSIBLE ", "serious": " NO ", "ae_start_dt": "08-03-2024"}
+{"subject_id": "s0300774", "ae_id": "AE0300518", "pt_name": " Fatigue ", "pt_code": " 1000040 ", "severity": "severe", "related": " NO ", "serious": " NO ", "ae_start_dt": "23-05-2025"}
+{"subject_id": "S0300032", "ae_id": "AE0300519", "pt_name": "Vomiting", "pt_code": " 1000050 ", "severity": "mild", "related": "no", "serious": "YES", "ae_start_dt": "28-09-2024"}
+{"subject_id": "S0300648", "ae_id": "AE0300520", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": "moderate", "related": " UNRELATED ", "serious": "YES", "ae_start_dt": " 2024-07-30 "}
+{"subject_id": "S0300767", "ae_id": "AE0300521", "pt_name": "Headache", "pt_code": "1000010", "severity": "MODERATE", "related": "UNRELATED", "serious": "NO", "ae_start_dt": " 2025-05-15 "}
+{"subject_id": "S0300056", "ae_id": "AE0300522", "pt_name": " Nausea ", "pt_code": " 1000020 ", "severity": " SEVERE ", "related": "probable", "serious": "YES", "ae_start_dt": "2024-06-05"}
+{"subject_id": " S0300129 ", "ae_id": "AE0300523", "pt_name": "Headache", "pt_code": "1000010", "severity": " MILD ", "related": "unrelated", "serious": "no", "ae_start_dt": " 2025-07-01 "}
+{"subject_id": "s0300725", "ae_id": "AE0300524", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": "mild", "related": " PROBABLE ", "serious": "YES", "ae_start_dt": "2024-07-10"}
+{"subject_id": "S0300474", "ae_id": "AE0300525", "pt_name": "vomiting", "pt_code": "1000050", "severity": "SEVERE", "related": "YES", "serious": "no", "ae_start_dt": "16-10-2024"}
+{"subject_id": " S0300065 ", "ae_id": "AE0300526", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": "mild", "related": "NO", "serious": "YES", "ae_start_dt": "06/07/2025"}
+{"subject_id": "S0300816", "ae_id": "AE0300527", "pt_name": " Nausea ", "pt_code": "1000020", "severity": "MILD", "related": "NO", "serious": " YES ", "ae_start_dt": "2024-02-11"}
+{"subject_id": "s0300997", "ae_id": "AE0300528", "pt_name": "VOMITING", "pt_code": " 1000050 ", "severity": "moderate", "related": "no", "serious": "no", "ae_start_dt": "22-06-2025"}
+{"subject_id": " S0300150 ", "ae_id": "AE0300529", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": "severe", "related": " YES ", "serious": " YES ", "ae_start_dt": "08/30/2025"}
+{"subject_id": "s0300342", "ae_id": "AE0300530", "pt_name": "Vomiting", "pt_code": "1000050", "severity": " MILD ", "related": "UNRELATED", "serious": "yes", "ae_start_dt": "29-10-2024"}
+{"subject_id": "S0300196", "ae_id": "AE0300531", "pt_name": "Headache", "pt_code": " 1000010 ", "severity": " MILD ", "related": "probable", "serious": "NO", "ae_start_dt": "2025-02-18"}
+{"subject_id": "S0300076", "ae_id": "AE0300532", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": "mild", "related": "possible", "serious": "yes", "ae_start_dt": "17-11-2025"}
+{"subject_id": "s0300963", "ae_id": "AE0300533", "pt_name": "vomiting", "pt_code": " 1000050 ", "severity": " MODERATE ", "related": " UNRELATED ", "serious": "NO", "ae_start_dt": "31-03-2024"}
+{"subject_id": "S0300581", "ae_id": "AE0300534", "pt_name": " Fatigue ", "pt_code": " 1000040 ", "severity": "MODERATE", "related": "YES", "serious": "YES", "ae_start_dt": "02/18/2025"}
+{"subject_id": "S0300050", "ae_id": "AE0300535", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": "severe", "related": " PROBABLE ", "serious": "YES", "ae_start_dt": "19-11-2025"}
+{"subject_id": "s0300944", "ae_id": "AE0300536", "pt_name": "vomiting", "pt_code": "1000050", "severity": "moderate", "related": " YES ", "serious": "NO", "ae_start_dt": "02/15/2024"}
+{"subject_id": "s0300947", "ae_id": "AE0300537", "pt_name": "dizziness", "pt_code": "1000030", "severity": " MILD ", "related": "YES", "serious": " NO ", "ae_start_dt": " 2025-09-18 "}
+{"subject_id": "S0300509", "ae_id": "AE0300538", "pt_name": "VOMITING", "pt_code": "1000050", "severity": "mild", "related": "no", "serious": " NO ", "ae_start_dt": "08-05-2025"}
+{"subject_id": "s0300087", "ae_id": "AE0300539", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": "MILD", "related": "YES", "serious": " YES ", "ae_start_dt": "2025-07-21"}
+{"subject_id": "S0300901", "ae_id": "AE0300540", "pt_name": " Nausea ", "pt_code": " 1000020 ", "severity": "MODERATE", "related": "NO", "serious": "yes", "ae_start_dt": " 2024-07-01 "}
+{"subject_id": "S0300378", "ae_id": "AE0300541", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "MODERATE", "related": " NO ", "serious": " YES ", "ae_start_dt": "2025-01-09"}
+{"subject_id": "s0300183", "ae_id": "AE0300542", "pt_name": "fatigue", "pt_code": " 1000040 ", "severity": " MODERATE ", "related": " POSSIBLE ", "serious": "no", "ae_start_dt": " 2025-04-16 "}
+{"subject_id": "S0300496", "ae_id": "AE0300543", "pt_name": "fatigue", "pt_code": " 1000040 ", "severity": "moderate", "related": "YES", "serious": "NO", "ae_start_dt": "08-08-2025"}
+{"subject_id": "S0300611", "ae_id": "AE0300544", "pt_name": "Headache", "pt_code": " 1000010 ", "severity": "MODERATE", "related": " PROBABLE ", "serious": "no", "ae_start_dt": "2024-06-09"}
+{"subject_id": "s0300715", "ae_id": "AE0300545", "pt_name": "dizziness", "pt_code": "1000030", "severity": "MODERATE", "related": "PROBABLE", "serious": "yes", "ae_start_dt": "2024-11-24"}
+{"subject_id": "S0300771", "ae_id": "AE0300546", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": " MODERATE ", "related": "YES", "serious": "yes", "ae_start_dt": "13-11-2025"}
+{"subject_id": "S0300513", "ae_id": "AE0300547", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": " SEVERE ", "related": " YES ", "serious": "NO", "ae_start_dt": "2024-02-25"}
+{"subject_id": "S0300040", "ae_id": "AE0300548", "pt_name": "fatigue", "pt_code": "1000040", "severity": "moderate", "related": "POSSIBLE", "serious": "yes", "ae_start_dt": "2025-08-13"}
+{"subject_id": "S0300421", "ae_id": "AE0300549", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": " SEVERE ", "related": "no", "serious": "NO", "ae_start_dt": "08/02/2025"}
+{"subject_id": "S0300061", "ae_id": "AE0300550", "pt_name": "HEADACHE", "pt_code": " 1000010 ", "severity": "MODERATE", "related": " YES ", "serious": "no", "ae_start_dt": "02/21/2024"}
+{"subject_id": "s0300417", "ae_id": "AE0300551", "pt_name": "nausea", "pt_code": "1000020", "severity": " SEVERE ", "related": "YES", "serious": "YES", "ae_start_dt": "03-06-2024"}
+{"subject_id": "S0300210", "ae_id": "AE0300552", "pt_name": "Dizziness", "pt_code": "1000030", "severity": " SEVERE ", "related": "unrelated", "serious": "yes", "ae_start_dt": " 2025-02-18 "}
+{"subject_id": "s0300961", "ae_id": "AE0300553", "pt_name": " Headache ", "pt_code": "1000010", "severity": "mild", "related": "probable", "serious": "NO", "ae_start_dt": "2025-09-12"}
+{"subject_id": "S0300651", "ae_id": "AE0300554", "pt_name": " Dizziness ", "pt_code": " 1000030 ", "severity": "SEVERE", "related": "POSSIBLE", "serious": "yes", "ae_start_dt": "22-05-2024"}
+{"subject_id": "S0300656", "ae_id": "AE0300555", "pt_name": "Dizziness", "pt_code": "1000030", "severity": "mild", "related": "YES", "serious": " YES ", "ae_start_dt": "15-12-2025"}
+{"subject_id": "s0300339", "ae_id": "AE0300556", "pt_name": "vomiting", "pt_code": " 1000050 ", "severity": "SEVERE", "related": "YES", "serious": "YES", "ae_start_dt": "2024-09-26"}
+{"subject_id": "S0300566", "ae_id": "AE0300557", "pt_name": "VOMITING", "pt_code": "1000050", "severity": "MODERATE", "related": "YES", "serious": "yes", "ae_start_dt": " 2025-05-20 "}
+{"subject_id": "S0300801", "ae_id": "AE0300558", "pt_name": " Vomiting ", "pt_code": " 1000050 ", "severity": "MODERATE", "related": " YES ", "serious": " NO ", "ae_start_dt": "09-08-2024"}
+{"subject_id": "S0300639", "ae_id": "AE0300559", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": "moderate", "related": "YES", "serious": " NO ", "ae_start_dt": "08/11/2025"}
+{"subject_id": "S0300592", "ae_id": "AE0300560", "pt_name": "Headache", "pt_code": "1000010", "severity": "MODERATE", "related": " PROBABLE ", "serious": "YES", "ae_start_dt": "2025-06-12"}
+{"subject_id": " S0300081 ", "ae_id": "AE0300561", "pt_name": " Headache ", "pt_code": "1000010", "severity": " SEVERE ", "related": "PROBABLE", "serious": " NO ", "ae_start_dt": "08/18/2025"}
+{"subject_id": "S0300720", "ae_id": "AE0300562", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": "mild", "related": "UNRELATED", "serious": "NO", "ae_start_dt": "29-03-2025"}
+{"subject_id": "s0300990", "ae_id": "AE0300563", "pt_name": "DIZZINESS", "pt_code": " 1000030 ", "severity": " MODERATE ", "related": "YES", "serious": "NO", "ae_start_dt": "14-09-2024"}
+{"subject_id": "S0300107", "ae_id": "AE0300564", "pt_name": "dizziness", "pt_code": "1000030", "severity": "MODERATE", "related": "UNRELATED", "serious": " YES ", "ae_start_dt": " 2025-02-20 "}
+{"subject_id": "s0300318", "ae_id": "AE0300565", "pt_name": "Vomiting", "pt_code": " 1000050 ", "severity": " MODERATE ", "related": "yes", "serious": " NO ", "ae_start_dt": "2024-07-12"}
+{"subject_id": " S0300678 ", "ae_id": "AE0300566", "pt_name": "nausea", "pt_code": "1000020", "severity": "severe", "related": "yes", "serious": "YES", "ae_start_dt": "17-06-2025"}
+{"subject_id": "S0300502", "ae_id": "AE0300567", "pt_name": "fatigue", "pt_code": "1000040", "severity": " SEVERE ", "related": "PROBABLE", "serious": "YES", "ae_start_dt": " 2026-01-05 "}
+{"subject_id": "s0300898", "ae_id": "AE0300568", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": " SEVERE ", "related": " NO ", "serious": " NO ", "ae_start_dt": "02/03/2025"}
+{"subject_id": "s0300009", "ae_id": "AE0300569", "pt_name": " Headache ", "pt_code": " 1000010 ", "severity": " SEVERE ", "related": " POSSIBLE ", "serious": " YES ", "ae_start_dt": "23-02-2025"}
+{"subject_id": "S0300882", "ae_id": "AE0300570", "pt_name": "Headache", "pt_code": " 1000010 ", "severity": "MODERATE", "related": " POSSIBLE ", "serious": "no", "ae_start_dt": "2024-02-20"}
+{"subject_id": " S0300282 ", "ae_id": "AE0300571", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": "moderate", "related": "UNRELATED", "serious": "YES", "ae_start_dt": "06/27/2025"}
+{"subject_id": " S0300996 ", "ae_id": "AE0300572", "pt_name": " Headache ", "pt_code": "1000010", "severity": "moderate", "related": " POSSIBLE ", "serious": "NO", "ae_start_dt": "2025-05-07"}
+{"subject_id": "S0300674", "ae_id": "AE0300573", "pt_name": "Vomiting", "pt_code": "1000050", "severity": "moderate", "related": "probable", "serious": "NO", "ae_start_dt": "08/18/2025"}
+{"subject_id": "S0300148", "ae_id": "AE0300574", "pt_name": "Headache", "pt_code": " 1000010 ", "severity": "SEVERE", "related": "yes", "serious": "NO", "ae_start_dt": " 2024-06-28 "}
+{"subject_id": "S0300842", "ae_id": "AE0300575", "pt_name": "Fatigue", "pt_code": "1000040", "severity": "mild", "related": "UNRELATED", "serious": "no", "ae_start_dt": "18-10-2024"}
+{"subject_id": " S0300914 ", "ae_id": "AE0300576", "pt_name": " Nausea ", "pt_code": "1000020", "severity": " SEVERE ", "related": "YES", "serious": "yes", "ae_start_dt": "10-10-2024"}
+{"subject_id": "S0300228", "ae_id": "AE0300577", "pt_name": " Nausea ", "pt_code": "1000020", "severity": "SEVERE", "related": "no", "serious": "yes", "ae_start_dt": "07/27/2025"}
+{"subject_id": "S0300672", "ae_id": "AE0300578", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": " MODERATE ", "related": "no", "serious": "YES", "ae_start_dt": "2025-05-18"}
+{"subject_id": " S0300622 ", "ae_id": "AE0300579", "pt_name": " Headache ", "pt_code": "1000010", "severity": " MODERATE ", "related": "NO", "serious": "yes", "ae_start_dt": "20-09-2024"}
+{"subject_id": "S0300068", "ae_id": "AE0300580", "pt_name": "Vomiting", "pt_code": "1000050", "severity": "severe", "related": " NO ", "serious": " YES ", "ae_start_dt": " 2024-01-26 "}
+{"subject_id": "S0300809", "ae_id": "AE0300581", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": "MILD", "related": "POSSIBLE", "serious": " YES ", "ae_start_dt": "2025-01-19"}
+{"subject_id": "S0300572", "ae_id": "AE0300582", "pt_name": "Vomiting", "pt_code": " 1000050 ", "severity": "severe", "related": "NO", "serious": "YES", "ae_start_dt": "2025-01-29"}
+{"subject_id": "s0300046", "ae_id": "AE0300583", "pt_name": "fatigue", "pt_code": "1000040", "severity": "mild", "related": "unrelated", "serious": "no", "ae_start_dt": "08-03-2024"}
+{"subject_id": "s0300143", "ae_id": "AE0300584", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": "SEVERE", "related": "PROBABLE", "serious": " YES ", "ae_start_dt": "17-02-2024"}
+{"subject_id": "S0300339", "ae_id": "AE0300585", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": "severe", "related": "NO", "serious": "YES", "ae_start_dt": "11/30/2025"}
+{"subject_id": " S0300570 ", "ae_id": "AE0300586", "pt_name": "vomiting", "pt_code": "1000050", "severity": "mild", "related": "YES", "serious": "YES", "ae_start_dt": "06/17/2025"}
+{"subject_id": "s0300504", "ae_id": "AE0300587", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "SEVERE", "related": "POSSIBLE", "serious": " YES ", "ae_start_dt": "2024-09-16"}
+{"subject_id": "S0300962", "ae_id": "AE0300588", "pt_name": "fatigue", "pt_code": "1000040", "severity": "SEVERE", "related": " POSSIBLE ", "serious": "NO", "ae_start_dt": "10/29/2025"}
+{"subject_id": "S0300815", "ae_id": "AE0300589", "pt_name": "VOMITING", "pt_code": "1000050", "severity": "MODERATE", "related": "no", "serious": "NO", "ae_start_dt": "09/17/2024"}
+{"subject_id": "S0300406", "ae_id": "AE0300590", "pt_name": "vomiting", "pt_code": "1000050", "severity": " MODERATE ", "related": "UNRELATED", "serious": "YES", "ae_start_dt": " 2025-08-29 "}
+{"subject_id": " S0300849 ", "ae_id": "AE0300591", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": "MODERATE", "related": "NO", "serious": " YES ", "ae_start_dt": "11/13/2024"}
+{"subject_id": "S0300999", "ae_id": "AE0300592", "pt_name": " Dizziness ", "pt_code": " 1000030 ", "severity": " MILD ", "related": "YES", "serious": "NO", "ae_start_dt": "25-02-2025"}
+{"subject_id": "s0300487", "ae_id": "AE0300593", "pt_name": " Nausea ", "pt_code": "1000020", "severity": "MODERATE", "related": "NO", "serious": "YES", "ae_start_dt": "10-04-2025"}
+{"subject_id": "S0300661", "ae_id": "AE0300594", "pt_name": "vomiting", "pt_code": " 1000050 ", "severity": "MILD", "related": "probable", "serious": "NO", "ae_start_dt": "2024-11-30"}
+{"subject_id": "S0300096", "ae_id": "AE0300595", "pt_name": "VOMITING", "pt_code": "1000050", "severity": " MODERATE ", "related": "YES", "serious": "NO", "ae_start_dt": "16-06-2025"}
+{"subject_id": "S0300028", "ae_id": "AE0300596", "pt_name": "NAUSEA", "pt_code": " 1000020 ", "severity": "MILD", "related": "PROBABLE", "serious": " NO ", "ae_start_dt": "12/24/2025"}
+{"subject_id": "s0300208", "ae_id": "AE0300597", "pt_name": "nausea", "pt_code": "1000020", "severity": "MILD", "related": " NO ", "serious": "YES", "ae_start_dt": "2025-11-30"}
+{"subject_id": " S0300073 ", "ae_id": "AE0300598", "pt_name": "Fatigue", "pt_code": "1000040", "severity": "MILD", "related": "YES", "serious": "YES", "ae_start_dt": " 2025-04-01 "}
+{"subject_id": "s0300610", "ae_id": "AE0300599", "pt_name": " Headache ", "pt_code": "1000010", "severity": " MODERATE ", "related": "PROBABLE", "serious": "NO", "ae_start_dt": "2025-12-13"}
+{"subject_id": " S0300327 ", "ae_id": "AE0300600", "pt_name": "Vomiting", "pt_code": " 1000050 ", "severity": "MODERATE", "related": "POSSIBLE", "serious": "YES", "ae_start_dt": "11/28/2024"}
+{"subject_id": "S0300237", "ae_id": "AE0300601", "pt_name": "headache", "pt_code": "1000010", "severity": "mild", "related": "NO", "serious": "YES", "ae_start_dt": "01-02-2025"}
+{"subject_id": "S0300825", "ae_id": "AE0300602", "pt_name": "Dizziness", "pt_code": " 1000030 ", "severity": " MODERATE ", "related": " YES ", "serious": "YES", "ae_start_dt": "2024-09-27"}
+{"subject_id": "s0300526", "ae_id": "AE0300603", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": "MILD", "related": "NO", "serious": "YES", "ae_start_dt": "07/14/2025"}
+{"subject_id": "S0300405", "ae_id": "AE0300604", "pt_name": "Nausea", "pt_code": "1000020", "severity": " MILD ", "related": "UNRELATED", "serious": "NO", "ae_start_dt": "09/29/2025"}
+{"subject_id": "s0300451", "ae_id": "AE0300605", "pt_name": "dizziness", "pt_code": "1000030", "severity": "SEVERE", "related": "PROBABLE", "serious": "YES", "ae_start_dt": "30-11-2025"}
+{"subject_id": " S0300150 ", "ae_id": "AE0300606", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": "severe", "related": "yes", "serious": "YES", "ae_start_dt": "07/18/2024"}
+{"subject_id": " S0300040 ", "ae_id": "AE0300607", "pt_name": "Dizziness", "pt_code": "1000030", "severity": " MODERATE ", "related": "YES", "serious": " YES ", "ae_start_dt": "07-07-2025"}
+{"subject_id": "S0300204", "ae_id": "AE0300608", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": "mild", "related": "POSSIBLE", "serious": "YES", "ae_start_dt": " 2025-07-26 "}
+{"subject_id": "S0300294", "ae_id": "AE0300609", "pt_name": "dizziness", "pt_code": "1000030", "severity": " MODERATE ", "related": " NO ", "serious": "NO", "ae_start_dt": " 2024-10-26 "}
+{"subject_id": "s0300623", "ae_id": "AE0300610", "pt_name": "Headache", "pt_code": " 1000010 ", "severity": " MILD ", "related": "possible", "serious": "YES", "ae_start_dt": "13-09-2024"}
+{"subject_id": " S0300472 ", "ae_id": "AE0300611", "pt_name": "fatigue", "pt_code": "1000040", "severity": " MODERATE ", "related": "yes", "serious": "no", "ae_start_dt": "2024-07-12"}
+{"subject_id": "S0300363", "ae_id": "AE0300612", "pt_name": "Fatigue", "pt_code": " 1000040 ", "severity": "MILD", "related": "YES", "serious": " NO ", "ae_start_dt": "2025-05-16"}
+{"subject_id": "S0300758", "ae_id": "AE0300613", "pt_name": "fatigue", "pt_code": "1000040", "severity": " MODERATE ", "related": "POSSIBLE", "serious": "yes", "ae_start_dt": "02/03/2024"}
+{"subject_id": "S0300516", "ae_id": "AE0300614", "pt_name": "Dizziness", "pt_code": " 1000030 ", "severity": "SEVERE", "related": " YES ", "serious": "yes", "ae_start_dt": "2025-08-19"}
+{"subject_id": "S0300019", "ae_id": "AE0300615", "pt_name": "fatigue", "pt_code": "1000040", "severity": "severe", "related": " POSSIBLE ", "serious": "NO", "ae_start_dt": "2024-07-25"}
+{"subject_id": "S0300058", "ae_id": "AE0300616", "pt_name": " Headache ", "pt_code": "1000010", "severity": "MILD", "related": "POSSIBLE", "serious": "yes", "ae_start_dt": "09/23/2024"}
+{"subject_id": "S0300329", "ae_id": "AE0300617", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": " MODERATE ", "related": "POSSIBLE", "serious": "yes", "ae_start_dt": "11/20/2025"}
+{"subject_id": "S0300205", "ae_id": "AE0300618", "pt_name": "dizziness", "pt_code": "1000030", "severity": "severe", "related": "UNRELATED", "serious": "no", "ae_start_dt": "03/04/2024"}
+{"subject_id": "S0300101", "ae_id": "AE0300619", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": "severe", "related": "yes", "serious": "yes", "ae_start_dt": "10/13/2025"}
+{"subject_id": "S0300887", "ae_id": "AE0300620", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": "moderate", "related": "probable", "serious": "NO", "ae_start_dt": "2025-08-23"}
+{"subject_id": "s0300641", "ae_id": "AE0300621", "pt_name": "Headache", "pt_code": " 1000010 ", "severity": "mild", "related": "YES", "serious": " YES ", "ae_start_dt": "22-05-2025"}
+{"subject_id": "S0300210", "ae_id": "AE0300622", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": "SEVERE", "related": "unrelated", "serious": " NO ", "ae_start_dt": "12/27/2025"}
+{"subject_id": "S0300807", "ae_id": "AE0300623", "pt_name": " Headache ", "pt_code": "1000010", "severity": "moderate", "related": " UNRELATED ", "serious": "no", "ae_start_dt": "11/21/2025"}
+{"subject_id": "S0300960", "ae_id": "AE0300624", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": " MILD ", "related": "UNRELATED", "serious": "no", "ae_start_dt": "07/27/2025"}
+{"subject_id": "S0300474", "ae_id": "AE0300625", "pt_name": " Nausea ", "pt_code": " 1000020 ", "severity": "MILD", "related": "YES", "serious": " NO ", "ae_start_dt": "2025-04-07"}
+{"subject_id": " S0300196 ", "ae_id": "AE0300626", "pt_name": "nausea", "pt_code": "1000020", "severity": "SEVERE", "related": "POSSIBLE", "serious": "YES", "ae_start_dt": " 2024-05-18 "}
+{"subject_id": "S0300336", "ae_id": "AE0300627", "pt_name": "vomiting", "pt_code": "1000050", "severity": "MODERATE", "related": "probable", "serious": "yes", "ae_start_dt": "12/01/2025"}
+{"subject_id": " S0300460 ", "ae_id": "AE0300628", "pt_name": "Vomiting", "pt_code": " 1000050 ", "severity": " MODERATE ", "related": " POSSIBLE ", "serious": "NO", "ae_start_dt": " 2024-03-05 "}
+{"subject_id": " S0300600 ", "ae_id": "AE0300629", "pt_name": "Fatigue", "pt_code": " 1000040 ", "severity": "moderate", "related": " UNRELATED ", "serious": "yes", "ae_start_dt": " 2024-12-24 "}
+{"subject_id": "s0300604", "ae_id": "AE0300630", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "SEVERE", "related": "POSSIBLE", "serious": "NO", "ae_start_dt": "29-06-2024"}
+{"subject_id": "S0300000", "ae_id": "AE0300631", "pt_name": "Headache", "pt_code": "1000010", "severity": "MODERATE", "related": "NO", "serious": " NO ", "ae_start_dt": " 2024-03-31 "}
+{"subject_id": "S0300225", "ae_id": "AE0300632", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": "MILD", "related": " YES ", "serious": "YES", "ae_start_dt": "05/23/2024"}
+{"subject_id": " S0300386 ", "ae_id": "AE0300633", "pt_name": "Dizziness", "pt_code": "1000030", "severity": " MODERATE ", "related": "UNRELATED", "serious": "yes", "ae_start_dt": "03/15/2025"}
+{"subject_id": " S0300994 ", "ae_id": "AE0300634", "pt_name": " Nausea ", "pt_code": "1000020", "severity": " MODERATE ", "related": "no", "serious": " NO ", "ae_start_dt": " 2025-05-12 "}
+{"subject_id": "s0300299", "ae_id": "AE0300635", "pt_name": "Dizziness", "pt_code": "1000030", "severity": "SEVERE", "related": "NO", "serious": "NO", "ae_start_dt": "2024-09-17"}
+{"subject_id": " S0300038 ", "ae_id": "AE0300636", "pt_name": "dizziness", "pt_code": "1000030", "severity": " SEVERE ", "related": "PROBABLE", "serious": "YES", "ae_start_dt": "10/19/2024"}
+{"subject_id": " S0300904 ", "ae_id": "AE0300637", "pt_name": "headache", "pt_code": "1000010", "severity": "SEVERE", "related": " YES ", "serious": "NO", "ae_start_dt": "05/14/2025"}
+{"subject_id": "S0300393", "ae_id": "AE0300638", "pt_name": "Dizziness", "pt_code": "1000030", "severity": " MODERATE ", "related": "NO", "serious": "NO", "ae_start_dt": " 2025-07-29 "}
+{"subject_id": "s0300034", "ae_id": "AE0300639", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": " MILD ", "related": "PROBABLE", "serious": "NO", "ae_start_dt": " 2024-12-18 "}
+{"subject_id": "s0300180", "ae_id": "AE0300640", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": " MILD ", "related": "UNRELATED", "serious": "yes", "ae_start_dt": " 2025-10-24 "}
+{"subject_id": "s0300555", "ae_id": "AE0300641", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": "moderate", "related": "possible", "serious": "yes", "ae_start_dt": "2024-08-23"}
+{"subject_id": "S0300657", "ae_id": "AE0300642", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": "severe", "related": "UNRELATED", "serious": "YES", "ae_start_dt": "12/18/2025"}
+{"subject_id": "S0300529", "ae_id": "AE0300643", "pt_name": "VOMITING", "pt_code": " 1000050 ", "severity": "severe", "related": "YES", "serious": " NO ", "ae_start_dt": " 2025-04-25 "}
+{"subject_id": "S0300532", "ae_id": "AE0300644", "pt_name": "Vomiting", "pt_code": "1000050", "severity": "MILD", "related": " YES ", "serious": "YES", "ae_start_dt": "2024-03-14"}
+{"subject_id": " S0300674 ", "ae_id": "AE0300645", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": "SEVERE", "related": "PROBABLE", "serious": " YES ", "ae_start_dt": "28-11-2024"}
+{"subject_id": " S0300378 ", "ae_id": "AE0300646", "pt_name": " Vomiting ", "pt_code": " 1000050 ", "severity": " MODERATE ", "related": "YES", "serious": "NO", "ae_start_dt": "12/28/2024"}
+{"subject_id": "S0300677", "ae_id": "AE0300647", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": "moderate", "related": "NO", "serious": "YES", "ae_start_dt": "2025-03-16"}
+{"subject_id": "s0300109", "ae_id": "AE0300648", "pt_name": " Nausea ", "pt_code": "1000020", "severity": "MILD", "related": "YES", "serious": "NO", "ae_start_dt": "2025-09-19"}
+{"subject_id": "S0300914", "ae_id": "AE0300649", "pt_name": "Dizziness", "pt_code": " 1000030 ", "severity": "SEVERE", "related": "yes", "serious": "yes", "ae_start_dt": "2025-03-25"}
+{"subject_id": "S0300699", "ae_id": "AE0300650", "pt_name": "Headache", "pt_code": "1000010", "severity": "mild", "related": "possible", "serious": "YES", "ae_start_dt": "2025-06-04"}
+{"subject_id": "s0300110", "ae_id": "AE0300651", "pt_name": "dizziness", "pt_code": "1000030", "severity": " MODERATE ", "related": "UNRELATED", "serious": "NO", "ae_start_dt": "11/29/2025"}
+{"subject_id": "s0300924", "ae_id": "AE0300652", "pt_name": "dizziness", "pt_code": "1000030", "severity": "MODERATE", "related": "UNRELATED", "serious": "NO", "ae_start_dt": "2025-12-07"}
+{"subject_id": "S0300937", "ae_id": "AE0300653", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": "MILD", "related": "UNRELATED", "serious": "yes", "ae_start_dt": "12/04/2024"}
+{"subject_id": "S0300268", "ae_id": "AE0300654", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": " MILD ", "related": "UNRELATED", "serious": "YES", "ae_start_dt": "23-09-2024"}
+{"subject_id": " S0300592 ", "ae_id": "AE0300655", "pt_name": "Dizziness", "pt_code": " 1000030 ", "severity": "SEVERE", "related": " UNRELATED ", "serious": " NO ", "ae_start_dt": "16-04-2025"}
+{"subject_id": " S0300651 ", "ae_id": "AE0300656", "pt_name": "Dizziness", "pt_code": "1000030", "severity": "mild", "related": "UNRELATED", "serious": " NO ", "ae_start_dt": "2025-06-28"}
+{"subject_id": "S0300318", "ae_id": "AE0300657", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": "SEVERE", "related": "PROBABLE", "serious": " YES ", "ae_start_dt": "20-12-2025"}
+{"subject_id": "s0300961", "ae_id": "AE0300658", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": " MODERATE ", "related": "UNRELATED", "serious": "YES", "ae_start_dt": "2025-09-08"}
+{"subject_id": " S0300475 ", "ae_id": "AE0300659", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": " MODERATE ", "related": "NO", "serious": "yes", "ae_start_dt": "2025-01-23"}
+{"subject_id": "s0300114", "ae_id": "AE0300660", "pt_name": "Fatigue", "pt_code": "1000040", "severity": "SEVERE", "related": " UNRELATED ", "serious": "no", "ae_start_dt": "2024-09-08"}
+{"subject_id": "S0300636", "ae_id": "AE0300661", "pt_name": "HEADACHE", "pt_code": " 1000010 ", "severity": "MILD", "related": " PROBABLE ", "serious": "NO", "ae_start_dt": "13-05-2025"}
+{"subject_id": "s0300763", "ae_id": "AE0300662", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": "moderate", "related": "NO", "serious": "NO", "ae_start_dt": "06/18/2025"}
+{"subject_id": " S0300307 ", "ae_id": "AE0300663", "pt_name": "vomiting", "pt_code": "1000050", "severity": " SEVERE ", "related": "POSSIBLE", "serious": "NO", "ae_start_dt": " 2025-12-07 "}
+{"subject_id": " S0300612 ", "ae_id": "AE0300664", "pt_name": "FATIGUE", "pt_code": " 1000040 ", "severity": "MODERATE", "related": "PROBABLE", "serious": "YES", "ae_start_dt": "24-02-2024"}
+{"subject_id": "S0300013", "ae_id": "AE0300665", "pt_name": "headache", "pt_code": " 1000010 ", "severity": "SEVERE", "related": " YES ", "serious": " NO ", "ae_start_dt": " 2025-12-30 "}
+{"subject_id": "S0300435", "ae_id": "AE0300666", "pt_name": "VOMITING", "pt_code": " 1000050 ", "severity": "SEVERE", "related": "yes", "serious": "YES", "ae_start_dt": "2025-12-15"}
+{"subject_id": "S0300174", "ae_id": "AE0300667", "pt_name": "Headache", "pt_code": "1000010", "severity": "MILD", "related": " NO ", "serious": "NO", "ae_start_dt": " 2024-08-01 "}
+{"subject_id": " S0300599 ", "ae_id": "AE0300668", "pt_name": "nausea", "pt_code": "1000020", "severity": "MODERATE", "related": " PROBABLE ", "serious": "NO", "ae_start_dt": "07/02/2024"}
+{"subject_id": "S0300022", "ae_id": "AE0300669", "pt_name": "Dizziness", "pt_code": "1000030", "severity": "moderate", "related": "probable", "serious": "NO", "ae_start_dt": " 2024-04-26 "}
+{"subject_id": " S0300298 ", "ae_id": "AE0300670", "pt_name": "nausea", "pt_code": "1000020", "severity": "MODERATE", "related": "YES", "serious": "no", "ae_start_dt": "06/25/2024"}
+{"subject_id": "S0300753", "ae_id": "AE0300671", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": "severe", "related": " UNRELATED ", "serious": " NO ", "ae_start_dt": "2024-06-07"}
+{"subject_id": " S0300719 ", "ae_id": "AE0300672", "pt_name": "dizziness", "pt_code": "1000030", "severity": "mild", "related": "POSSIBLE", "serious": " YES ", "ae_start_dt": "06-04-2025"}
+{"subject_id": "S0300079", "ae_id": "AE0300673", "pt_name": "fatigue", "pt_code": " 1000040 ", "severity": "SEVERE", "related": "YES", "serious": "no", "ae_start_dt": "2024-10-29"}
+{"subject_id": "S0300926", "ae_id": "AE0300674", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": "MILD", "related": "PROBABLE", "serious": "YES", "ae_start_dt": "2024-04-23"}
+{"subject_id": "S0300375", "ae_id": "AE0300675", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "MODERATE", "related": "no", "serious": "YES", "ae_start_dt": "02/22/2024"}
+{"subject_id": "S0300918", "ae_id": "AE0300676", "pt_name": "Nausea", "pt_code": " 1000020 ", "severity": "MILD", "related": "yes", "serious": " NO ", "ae_start_dt": "2025-11-20"}
+{"subject_id": "S0300327", "ae_id": "AE0300677", "pt_name": " Nausea ", "pt_code": "1000020", "severity": " SEVERE ", "related": " NO ", "serious": "NO", "ae_start_dt": "12/19/2024"}
+{"subject_id": "S0300613", "ae_id": "AE0300678", "pt_name": "dizziness", "pt_code": "1000030", "severity": "severe", "related": "PROBABLE", "serious": "NO", "ae_start_dt": "2025-10-16"}
+{"subject_id": "S0300926", "ae_id": "AE0300679", "pt_name": "vomiting", "pt_code": "1000050", "severity": " MODERATE ", "related": " UNRELATED ", "serious": "YES", "ae_start_dt": " 2024-05-01 "}
+{"subject_id": "S0300236", "ae_id": "AE0300680", "pt_name": "dizziness", "pt_code": " 1000030 ", "severity": "MODERATE", "related": " YES ", "serious": " YES ", "ae_start_dt": "2025-03-06"}
+{"subject_id": "S0300101", "ae_id": "AE0300681", "pt_name": "Vomiting", "pt_code": " 1000050 ", "severity": "mild", "related": "possible", "serious": "NO", "ae_start_dt": " 2024-10-02 "}
+{"subject_id": "s0300759", "ae_id": "AE0300682", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": "MILD", "related": "POSSIBLE", "serious": "no", "ae_start_dt": "12/25/2025"}
+{"subject_id": "S0300131", "ae_id": "AE0300683", "pt_name": "Fatigue", "pt_code": "1000040", "severity": "MODERATE", "related": "NO", "serious": "YES", "ae_start_dt": "02-02-2025"}
+{"subject_id": "s0300513", "ae_id": "AE0300684", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": "MODERATE", "related": "YES", "serious": "YES", "ae_start_dt": "15-09-2025"}
+{"subject_id": " S0300863 ", "ae_id": "AE0300685", "pt_name": "Dizziness", "pt_code": "1000030", "severity": "SEVERE", "related": " UNRELATED ", "serious": "no", "ae_start_dt": "2024-08-17"}
+{"subject_id": " S0300267 ", "ae_id": "AE0300686", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": "severe", "related": "NO", "serious": "NO", "ae_start_dt": "30-11-2025"}
+{"subject_id": "s0300658", "ae_id": "AE0300687", "pt_name": " Dizziness ", "pt_code": " 1000030 ", "severity": "mild", "related": " PROBABLE ", "serious": "NO", "ae_start_dt": "07/08/2025"}
+{"subject_id": "s0300549", "ae_id": "AE0300688", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": "moderate", "related": "PROBABLE", "serious": "YES", "ae_start_dt": "18-06-2025"}
+{"subject_id": "s0300428", "ae_id": "AE0300689", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "SEVERE", "related": "NO", "serious": "no", "ae_start_dt": "17-06-2025"}
+{"subject_id": " S0300625 ", "ae_id": "AE0300690", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": "MODERATE", "related": "YES", "serious": " YES ", "ae_start_dt": "2025-06-12"}
+{"subject_id": " S0300478 ", "ae_id": "AE0300691", "pt_name": "Headache", "pt_code": " 1000010 ", "severity": "moderate", "related": "no", "serious": "YES", "ae_start_dt": " 2024-06-30 "}
+{"subject_id": "S0300935", "ae_id": "AE0300692", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": "MODERATE", "related": " YES ", "serious": " NO ", "ae_start_dt": "2025-09-03"}
+{"subject_id": "S0300595", "ae_id": "AE0300693", "pt_name": "headache", "pt_code": "1000010", "severity": "mild", "related": " NO ", "serious": "YES", "ae_start_dt": "2025-08-08"}
+{"subject_id": "S0300156", "ae_id": "AE0300694", "pt_name": "Fatigue", "pt_code": "1000040", "severity": "severe", "related": "PROBABLE", "serious": "NO", "ae_start_dt": "10/15/2025"}
+{"subject_id": "S0300586", "ae_id": "AE0300695", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": " MODERATE ", "related": "PROBABLE", "serious": "no", "ae_start_dt": "2024-10-29"}
+{"subject_id": "S0300724", "ae_id": "AE0300696", "pt_name": "vomiting", "pt_code": "1000050", "severity": "MILD", "related": "YES", "serious": "YES", "ae_start_dt": "03/12/2025"}
+{"subject_id": "S0300480", "ae_id": "AE0300697", "pt_name": "NAUSEA", "pt_code": " 1000020 ", "severity": "MODERATE", "related": " UNRELATED ", "serious": "NO", "ae_start_dt": "2025-05-13"}
+{"subject_id": "s0300533", "ae_id": "AE0300698", "pt_name": "headache", "pt_code": "1000010", "severity": " SEVERE ", "related": "YES", "serious": " YES ", "ae_start_dt": " 2025-03-24 "}
+{"subject_id": "S0300967", "ae_id": "AE0300699", "pt_name": "Vomiting", "pt_code": "1000050", "severity": "MILD", "related": " POSSIBLE ", "serious": "YES", "ae_start_dt": "2025-06-07"}
+{"subject_id": "S0300575", "ae_id": "AE0300700", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": "SEVERE", "related": "NO", "serious": "YES", "ae_start_dt": "23-03-2024"}
+{"subject_id": "S0300197", "ae_id": "AE0300701", "pt_name": " Nausea ", "pt_code": "1000020", "severity": " MILD ", "related": "probable", "serious": "YES", "ae_start_dt": "2025-10-01"}
+{"subject_id": "S0300155", "ae_id": "AE0300702", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": "SEVERE", "related": "NO", "serious": "YES", "ae_start_dt": " 2024-10-22 "}
+{"subject_id": "s0300097", "ae_id": "AE0300703", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "MODERATE", "related": "POSSIBLE", "serious": "YES", "ae_start_dt": "12/13/2024"}
+{"subject_id": "s0300473", "ae_id": "AE0300704", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": "moderate", "related": " YES ", "serious": "YES", "ae_start_dt": "09/14/2025"}
+{"subject_id": "s0300359", "ae_id": "AE0300705", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": "mild", "related": "NO", "serious": "YES", "ae_start_dt": "16-11-2025"}
+{"subject_id": "S0300386", "ae_id": "AE0300706", "pt_name": " Dizziness ", "pt_code": " 1000030 ", "severity": "SEVERE", "related": "probable", "serious": "no", "ae_start_dt": "01-02-2024"}
+{"subject_id": "S0300329", "ae_id": "AE0300707", "pt_name": "Dizziness", "pt_code": " 1000030 ", "severity": "SEVERE", "related": "UNRELATED", "serious": "YES", "ae_start_dt": " 2025-07-11 "}
+{"subject_id": "s0300879", "ae_id": "AE0300708", "pt_name": "fatigue", "pt_code": "1000040", "severity": "severe", "related": " UNRELATED ", "serious": "yes", "ae_start_dt": "04/17/2024"}
+{"subject_id": "S0300250", "ae_id": "AE0300709", "pt_name": "headache", "pt_code": "1000010", "severity": "MODERATE", "related": "NO", "serious": "YES", "ae_start_dt": "05/31/2024"}
+{"subject_id": "s0300789", "ae_id": "AE0300710", "pt_name": "VOMITING", "pt_code": " 1000050 ", "severity": "severe", "related": " POSSIBLE ", "serious": " YES ", "ae_start_dt": " 2024-04-29 "}
+{"subject_id": "S0300909", "ae_id": "AE0300711", "pt_name": "Headache", "pt_code": " 1000010 ", "severity": "MODERATE", "related": "NO", "serious": "NO", "ae_start_dt": " 2024-06-15 "}
+{"subject_id": "S0300088", "ae_id": "AE0300712", "pt_name": "Nausea", "pt_code": " 1000020 ", "severity": " MODERATE ", "related": "UNRELATED", "serious": "YES", "ae_start_dt": "2025-02-17"}
+{"subject_id": "S0300922", "ae_id": "AE0300713", "pt_name": "VOMITING", "pt_code": "1000050", "severity": "severe", "related": "NO", "serious": "YES", "ae_start_dt": " 2025-09-22 "}
+{"subject_id": "s0300435", "ae_id": "AE0300714", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": "mild", "related": " YES ", "serious": "NO", "ae_start_dt": "2024-08-24"}
+{"subject_id": "S0300098", "ae_id": "AE0300715", "pt_name": " Vomiting ", "pt_code": " 1000050 ", "severity": "MILD", "related": "YES", "serious": "no", "ae_start_dt": " 2024-05-17 "}
+{"subject_id": "S0300858", "ae_id": "AE0300716", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": "MODERATE", "related": " PROBABLE ", "serious": "NO", "ae_start_dt": "11-06-2024"}
+{"subject_id": "S0300314", "ae_id": "AE0300717", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": " MODERATE ", "related": "PROBABLE", "serious": "no", "ae_start_dt": " 2025-12-29 "}
+{"subject_id": "S0300296", "ae_id": "AE0300718", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": "MODERATE", "related": "UNRELATED", "serious": "NO", "ae_start_dt": " 2024-09-11 "}
+{"subject_id": "s0300429", "ae_id": "AE0300719", "pt_name": "VOMITING", "pt_code": "1000050", "severity": "moderate", "related": "yes", "serious": " YES ", "ae_start_dt": "04-11-2025"}
+{"subject_id": "s0300270", "ae_id": "AE0300720", "pt_name": "HEADACHE", "pt_code": " 1000010 ", "severity": "MILD", "related": "NO", "serious": "yes", "ae_start_dt": "08/13/2025"}
+{"subject_id": " S0300782 ", "ae_id": "AE0300721", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "severe", "related": "possible", "serious": "YES", "ae_start_dt": " 2024-10-22 "}
+{"subject_id": "s0300330", "ae_id": "AE0300722", "pt_name": "Nausea", "pt_code": "1000020", "severity": "SEVERE", "related": "yes", "serious": " YES ", "ae_start_dt": "25-04-2025"}
+{"subject_id": " S0300727 ", "ae_id": "AE0300723", "pt_name": "headache", "pt_code": "1000010", "severity": "MODERATE", "related": "probable", "serious": "yes", "ae_start_dt": "02/07/2025"}
+{"subject_id": "s0300463", "ae_id": "AE0300724", "pt_name": "fatigue", "pt_code": "1000040", "severity": "MILD", "related": "PROBABLE", "serious": "NO", "ae_start_dt": "07/18/2025"}
+{"subject_id": "s0300885", "ae_id": "AE0300725", "pt_name": "Headache", "pt_code": "1000010", "severity": "SEVERE", "related": "probable", "serious": " YES ", "ae_start_dt": "2024-12-05"}
+{"subject_id": "s0300556", "ae_id": "AE0300726", "pt_name": "fatigue", "pt_code": "1000040", "severity": "mild", "related": " POSSIBLE ", "serious": "NO", "ae_start_dt": "25-08-2024"}
+{"subject_id": "S0300106", "ae_id": "AE0300727", "pt_name": "Nausea", "pt_code": "1000020", "severity": "MILD", "related": " POSSIBLE ", "serious": "YES", "ae_start_dt": "06/27/2025"}
+{"subject_id": "S0300376", "ae_id": "AE0300728", "pt_name": "VOMITING", "pt_code": "1000050", "severity": "SEVERE", "related": " UNRELATED ", "serious": "NO", "ae_start_dt": " 2025-12-02 "}
+{"subject_id": "s0300047", "ae_id": "AE0300729", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": "MODERATE", "related": " PROBABLE ", "serious": " YES ", "ae_start_dt": "07/18/2025"}
+{"subject_id": " S0300244 ", "ae_id": "AE0300730", "pt_name": "nausea", "pt_code": "1000020", "severity": "SEVERE", "related": "YES", "serious": "YES", "ae_start_dt": " 2025-07-22 "}
+{"subject_id": " S0300334 ", "ae_id": "AE0300731", "pt_name": " Headache ", "pt_code": " 1000010 ", "severity": " MODERATE ", "related": "NO", "serious": "yes", "ae_start_dt": "24-06-2025"}
+{"subject_id": "S0300079", "ae_id": "AE0300732", "pt_name": "Nausea", "pt_code": "1000020", "severity": "MILD", "related": "POSSIBLE", "serious": " NO ", "ae_start_dt": " 2024-01-23 "}
+{"subject_id": "S0300814", "ae_id": "AE0300733", "pt_name": " Fatigue ", "pt_code": " 1000040 ", "severity": "SEVERE", "related": " YES ", "serious": "yes", "ae_start_dt": " 2024-08-05 "}
+{"subject_id": "S0300016", "ae_id": "AE0300734", "pt_name": "Vomiting", "pt_code": "1000050", "severity": " MODERATE ", "related": " POSSIBLE ", "serious": "yes", "ae_start_dt": "22-06-2025"}
+{"subject_id": "S0300212", "ae_id": "AE0300735", "pt_name": "Headache", "pt_code": " 1000010 ", "severity": "SEVERE", "related": "no", "serious": " YES ", "ae_start_dt": "2025-01-14"}
+{"subject_id": "s0300268", "ae_id": "AE0300736", "pt_name": "headache", "pt_code": "1000010", "severity": "moderate", "related": "possible", "serious": "YES", "ae_start_dt": "2024-01-16"}
+{"subject_id": "s0300501", "ae_id": "AE0300737", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": "MILD", "related": " UNRELATED ", "serious": "YES", "ae_start_dt": "07/19/2025"}
+{"subject_id": "S0300324", "ae_id": "AE0300738", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": "MILD", "related": "NO", "serious": " YES ", "ae_start_dt": " 2024-05-15 "}
+{"subject_id": " S0300871 ", "ae_id": "AE0300739", "pt_name": "nausea", "pt_code": "1000020", "severity": " SEVERE ", "related": "YES", "serious": " YES ", "ae_start_dt": "2025-11-09"}
+{"subject_id": "S0300863", "ae_id": "AE0300740", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": " SEVERE ", "related": "PROBABLE", "serious": " NO ", "ae_start_dt": "04/02/2025"}
+{"subject_id": " S0300780 ", "ae_id": "AE0300741", "pt_name": "HEADACHE", "pt_code": " 1000010 ", "severity": "SEVERE", "related": "yes", "serious": "YES", "ae_start_dt": "2024-04-22"}
+{"subject_id": "S0300569", "ae_id": "AE0300742", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": " MODERATE ", "related": "possible", "serious": "NO", "ae_start_dt": "2025-09-21"}
+{"subject_id": "S0300558", "ae_id": "AE0300743", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": " MODERATE ", "related": "unrelated", "serious": "YES", "ae_start_dt": "04-04-2025"}
+{"subject_id": "S0300022", "ae_id": "AE0300744", "pt_name": "VOMITING", "pt_code": " 1000050 ", "severity": "MODERATE", "related": " POSSIBLE ", "serious": "NO", "ae_start_dt": "05/13/2025"}
+{"subject_id": "S0300515", "ae_id": "AE0300745", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": "severe", "related": "POSSIBLE", "serious": "yes", "ae_start_dt": "03/19/2025"}
+{"subject_id": "s0300294", "ae_id": "AE0300746", "pt_name": "fatigue", "pt_code": "1000040", "severity": "mild", "related": "PROBABLE", "serious": "YES", "ae_start_dt": "2025-05-26"}
+{"subject_id": "S0300374", "ae_id": "AE0300747", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": "MILD", "related": "NO", "serious": "no", "ae_start_dt": " 2024-02-16 "}
+{"subject_id": "s0300854", "ae_id": "AE0300748", "pt_name": "vomiting", "pt_code": "1000050", "severity": "MODERATE", "related": "YES", "serious": "NO", "ae_start_dt": "2025-03-23"}
+{"subject_id": "s0300895", "ae_id": "AE0300749", "pt_name": " Headache ", "pt_code": " 1000010 ", "severity": "MILD", "related": "YES", "serious": "yes", "ae_start_dt": "27-06-2024"}
+{"subject_id": "S0300883", "ae_id": "AE0300750", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": "MODERATE", "related": "NO", "serious": "yes", "ae_start_dt": "01/22/2025"}
+{"subject_id": "s0300635", "ae_id": "AE0300751", "pt_name": "Fatigue", "pt_code": " 1000040 ", "severity": " MODERATE ", "related": " NO ", "serious": "YES", "ae_start_dt": "03-11-2025"}
+{"subject_id": "S0300109", "ae_id": "AE0300752", "pt_name": "HEADACHE", "pt_code": " 1000010 ", "severity": "severe", "related": " UNRELATED ", "serious": "yes", "ae_start_dt": "2025-03-27"}
+{"subject_id": "s0300513", "ae_id": "AE0300753", "pt_name": "Headache", "pt_code": "1000010", "severity": " MILD ", "related": "no", "serious": "NO", "ae_start_dt": "2024-12-31"}
+{"subject_id": "S0300443", "ae_id": "AE0300754", "pt_name": "vomiting", "pt_code": " 1000050 ", "severity": "moderate", "related": "yes", "serious": "YES", "ae_start_dt": "2025-10-27"}
+{"subject_id": "S0300129", "ae_id": "AE0300755", "pt_name": "Vomiting", "pt_code": "1000050", "severity": "MODERATE", "related": "PROBABLE", "serious": " YES ", "ae_start_dt": "2025-12-08"}
+{"subject_id": "S0300325", "ae_id": "AE0300756", "pt_name": "FATIGUE", "pt_code": " 1000040 ", "severity": "SEVERE", "related": " UNRELATED ", "serious": "YES", "ae_start_dt": "06/30/2025"}
+{"subject_id": "s0300096", "ae_id": "AE0300757", "pt_name": "VOMITING", "pt_code": "1000050", "severity": "MODERATE", "related": "UNRELATED", "serious": "YES", "ae_start_dt": "2024-09-02"}
+{"subject_id": " S0300939 ", "ae_id": "AE0300758", "pt_name": "Dizziness", "pt_code": "1000030", "severity": "MODERATE", "related": " UNRELATED ", "serious": "NO", "ae_start_dt": "04/28/2025"}
+{"subject_id": " S0300023 ", "ae_id": "AE0300759", "pt_name": "VOMITING", "pt_code": "1000050", "severity": "MODERATE", "related": "YES", "serious": " NO ", "ae_start_dt": " 2025-05-11 "}
+{"subject_id": "S0300031", "ae_id": "AE0300760", "pt_name": "Dizziness", "pt_code": "1000030", "severity": "MODERATE", "related": "no", "serious": "NO", "ae_start_dt": "11/04/2025"}
+{"subject_id": "S0300723", "ae_id": "AE0300761", "pt_name": " Nausea ", "pt_code": "1000020", "severity": "MILD", "related": "unrelated", "serious": "no", "ae_start_dt": " 2024-02-05 "}
+{"subject_id": "S0300160", "ae_id": "AE0300762", "pt_name": "fatigue", "pt_code": "1000040", "severity": " MODERATE ", "related": "UNRELATED", "serious": " NO ", "ae_start_dt": "2024-08-28"}
+{"subject_id": " S0300898 ", "ae_id": "AE0300763", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "MILD", "related": "UNRELATED", "serious": "yes", "ae_start_dt": "20-10-2025"}
+{"subject_id": " S0300267 ", "ae_id": "AE0300764", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "MODERATE", "related": "yes", "serious": " NO ", "ae_start_dt": "27-08-2025"}
+{"subject_id": "S0300234", "ae_id": "AE0300765", "pt_name": "Dizziness", "pt_code": "1000030", "severity": " MODERATE ", "related": "UNRELATED", "serious": " YES ", "ae_start_dt": "27-12-2025"}
+{"subject_id": "S0300628", "ae_id": "AE0300766", "pt_name": " Vomiting ", "pt_code": " 1000050 ", "severity": "MODERATE", "related": " NO ", "serious": "NO", "ae_start_dt": "2024-04-23"}
+{"subject_id": "S0300979", "ae_id": "AE0300767", "pt_name": "Dizziness", "pt_code": " 1000030 ", "severity": " SEVERE ", "related": "NO", "serious": "YES", "ae_start_dt": " 2024-04-21 "}
+{"subject_id": "s0300978", "ae_id": "AE0300768", "pt_name": " Headache ", "pt_code": "1000010", "severity": "MILD", "related": " PROBABLE ", "serious": "NO", "ae_start_dt": " 2025-07-11 "}
+{"subject_id": "s0300405", "ae_id": "AE0300769", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "MILD", "related": "UNRELATED", "serious": "YES", "ae_start_dt": "12/17/2024"}
+{"subject_id": "s0300779", "ae_id": "AE0300770", "pt_name": "fatigue", "pt_code": "1000040", "severity": "MODERATE", "related": "NO", "serious": "NO", "ae_start_dt": "2025-04-15"}
+{"subject_id": "S0300630", "ae_id": "AE0300771", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": "MODERATE", "related": " NO ", "serious": " YES ", "ae_start_dt": " 2024-11-20 "}
+{"subject_id": " S0300047 ", "ae_id": "AE0300772", "pt_name": " Fatigue ", "pt_code": " 1000040 ", "severity": "MODERATE", "related": "UNRELATED", "serious": " YES ", "ae_start_dt": "03-02-2024"}
+{"subject_id": " S0300912 ", "ae_id": "AE0300773", "pt_name": " Nausea ", "pt_code": " 1000020 ", "severity": "severe", "related": "NO", "serious": "no", "ae_start_dt": "2024-03-30"}
+{"subject_id": "s0300778", "ae_id": "AE0300774", "pt_name": "vomiting", "pt_code": " 1000050 ", "severity": "mild", "related": "POSSIBLE", "serious": "NO", "ae_start_dt": "19-04-2024"}
+{"subject_id": " S0300363 ", "ae_id": "AE0300775", "pt_name": "DIZZINESS", "pt_code": " 1000030 ", "severity": " SEVERE ", "related": "NO", "serious": "no", "ae_start_dt": " 2024-09-11 "}
+{"subject_id": "s0300166", "ae_id": "AE0300776", "pt_name": "nausea", "pt_code": "1000020", "severity": "MODERATE", "related": "YES", "serious": " NO ", "ae_start_dt": "29-03-2025"}
+{"subject_id": "S0300524", "ae_id": "AE0300777", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": "severe", "related": "PROBABLE", "serious": " NO ", "ae_start_dt": "05/19/2024"}
+{"subject_id": "S0300788", "ae_id": "AE0300778", "pt_name": "Headache", "pt_code": "1000010", "severity": "SEVERE", "related": "PROBABLE", "serious": "no", "ae_start_dt": "02/23/2024"}
+{"subject_id": "S0300894", "ae_id": "AE0300779", "pt_name": "Fatigue", "pt_code": "1000040", "severity": "mild", "related": " PROBABLE ", "serious": "YES", "ae_start_dt": "2025-02-16"}
+{"subject_id": " S0300620 ", "ae_id": "AE0300780", "pt_name": " Dizziness ", "pt_code": " 1000030 ", "severity": " MODERATE ", "related": "POSSIBLE", "serious": "no", "ae_start_dt": "02-06-2024"}
+{"subject_id": "S0300590", "ae_id": "AE0300781", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": " SEVERE ", "related": "PROBABLE", "serious": "NO", "ae_start_dt": " 2024-12-05 "}
+{"subject_id": "S0300215", "ae_id": "AE0300782", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": " SEVERE ", "related": "yes", "serious": " YES ", "ae_start_dt": "26-03-2024"}
+{"subject_id": "S0300599", "ae_id": "AE0300783", "pt_name": "Dizziness", "pt_code": "1000030", "severity": " SEVERE ", "related": "yes", "serious": " YES ", "ae_start_dt": "19-07-2024"}
+{"subject_id": "S0300821", "ae_id": "AE0300784", "pt_name": " Nausea ", "pt_code": "1000020", "severity": "MILD", "related": "YES", "serious": "NO", "ae_start_dt": "2024-12-08"}
+{"subject_id": " S0300815 ", "ae_id": "AE0300785", "pt_name": "dizziness", "pt_code": "1000030", "severity": " SEVERE ", "related": "POSSIBLE", "serious": "NO", "ae_start_dt": "2024-09-14"}
+{"subject_id": " S0300553 ", "ae_id": "AE0300786", "pt_name": "nausea", "pt_code": " 1000020 ", "severity": "severe", "related": "UNRELATED", "serious": " NO ", "ae_start_dt": " 2024-01-22 "}
+{"subject_id": " S0300140 ", "ae_id": "AE0300787", "pt_name": "fatigue", "pt_code": " 1000040 ", "severity": "MILD", "related": "YES", "serious": " YES ", "ae_start_dt": " 2025-06-11 "}
+{"subject_id": "S0300299", "ae_id": "AE0300788", "pt_name": "Headache", "pt_code": "1000010", "severity": "severe", "related": "PROBABLE", "serious": "NO", "ae_start_dt": "07-02-2025"}
+{"subject_id": "S0300158", "ae_id": "AE0300789", "pt_name": "Dizziness", "pt_code": "1000030", "severity": "MODERATE", "related": " POSSIBLE ", "serious": "YES", "ae_start_dt": "2024-02-25"}
+{"subject_id": " S0300716 ", "ae_id": "AE0300790", "pt_name": " Headache ", "pt_code": "1000010", "severity": "moderate", "related": "YES", "serious": "YES", "ae_start_dt": "2025-04-12"}
+{"subject_id": "s0300956", "ae_id": "AE0300791", "pt_name": "Headache", "pt_code": "1000010", "severity": "MILD", "related": "YES", "serious": "no", "ae_start_dt": "2025-03-08"}
+{"subject_id": "S0300324", "ae_id": "AE0300792", "pt_name": "vomiting", "pt_code": "1000050", "severity": " MILD ", "related": "possible", "serious": "no", "ae_start_dt": "12-09-2024"}
+{"subject_id": " S0300767 ", "ae_id": "AE0300793", "pt_name": "vomiting", "pt_code": "1000050", "severity": "MILD", "related": " UNRELATED ", "serious": " YES ", "ae_start_dt": "19-01-2024"}
+{"subject_id": "s0300313", "ae_id": "AE0300794", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": " SEVERE ", "related": "PROBABLE", "serious": "YES", "ae_start_dt": "09/22/2025"}
+{"subject_id": "S0300930", "ae_id": "AE0300795", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": "SEVERE", "related": "unrelated", "serious": "NO", "ae_start_dt": "2024-11-22"}
+{"subject_id": "S0300354", "ae_id": "AE0300796", "pt_name": "fatigue", "pt_code": "1000040", "severity": "moderate", "related": " PROBABLE ", "serious": "no", "ae_start_dt": " 2024-09-23 "}
+{"subject_id": " S0300337 ", "ae_id": "AE0300797", "pt_name": "nausea", "pt_code": " 1000020 ", "severity": "MILD", "related": " UNRELATED ", "serious": " NO ", "ae_start_dt": "2025-04-15"}
+{"subject_id": "s0300085", "ae_id": "AE0300798", "pt_name": "Vomiting", "pt_code": "1000050", "severity": "moderate", "related": "POSSIBLE", "serious": "NO", "ae_start_dt": "01/09/2024"}
+{"subject_id": "s0300549", "ae_id": "AE0300799", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": "moderate", "related": "YES", "serious": " NO ", "ae_start_dt": "09/28/2025"}
+{"subject_id": "S0300517", "ae_id": "AE0300800", "pt_name": "Headache", "pt_code": "1000010", "severity": " SEVERE ", "related": "UNRELATED", "serious": "yes", "ae_start_dt": "2025-12-16"}
+{"subject_id": " S0300634 ", "ae_id": "AE0300801", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": " MODERATE ", "related": "yes", "serious": "yes", "ae_start_dt": " 2025-09-05 "}
+{"subject_id": " S0300638 ", "ae_id": "AE0300802", "pt_name": "Dizziness", "pt_code": " 1000030 ", "severity": "MODERATE", "related": "POSSIBLE", "serious": "no", "ae_start_dt": " 2024-12-01 "}
+{"subject_id": "s0300311", "ae_id": "AE0300803", "pt_name": "nausea", "pt_code": "1000020", "severity": "MILD", "related": "unrelated", "serious": "YES", "ae_start_dt": "15-02-2024"}
+{"subject_id": "S0300303", "ae_id": "AE0300804", "pt_name": "nausea", "pt_code": "1000020", "severity": "SEVERE", "related": " NO ", "serious": "NO", "ae_start_dt": "07-02-2025"}
+{"subject_id": "S0300505", "ae_id": "AE0300805", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": " MILD ", "related": "POSSIBLE", "serious": "YES", "ae_start_dt": "09/25/2024"}
+{"subject_id": "S0300141", "ae_id": "AE0300806", "pt_name": "fatigue", "pt_code": "1000040", "severity": "MODERATE", "related": "POSSIBLE", "serious": "yes", "ae_start_dt": "07-09-2025"}
+{"subject_id": "S0300576", "ae_id": "AE0300807", "pt_name": "vomiting", "pt_code": "1000050", "severity": "MILD", "related": "no", "serious": "NO", "ae_start_dt": "2024-11-20"}
+{"subject_id": "S0300890", "ae_id": "AE0300808", "pt_name": "Nausea", "pt_code": "1000020", "severity": "MILD", "related": "POSSIBLE", "serious": " NO ", "ae_start_dt": " 2025-02-12 "}
+{"subject_id": " S0300756 ", "ae_id": "AE0300809", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "SEVERE", "related": " UNRELATED ", "serious": " YES ", "ae_start_dt": "2025-09-11"}
+{"subject_id": "S0300258", "ae_id": "AE0300810", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": "moderate", "related": " POSSIBLE ", "serious": "NO", "ae_start_dt": "12-02-2025"}
+{"subject_id": " S0300414 ", "ae_id": "AE0300811", "pt_name": "headache", "pt_code": "1000010", "severity": "SEVERE", "related": "YES", "serious": "NO", "ae_start_dt": "11-04-2025"}
+{"subject_id": " S0300664 ", "ae_id": "AE0300812", "pt_name": "VOMITING", "pt_code": "1000050", "severity": "MILD", "related": " POSSIBLE ", "serious": "YES", "ae_start_dt": "26-08-2025"}
+{"subject_id": "s0300667", "ae_id": "AE0300813", "pt_name": "HEADACHE", "pt_code": " 1000010 ", "severity": "MILD", "related": "POSSIBLE", "serious": " YES ", "ae_start_dt": " 2024-12-27 "}
+{"subject_id": "s0300910", "ae_id": "AE0300814", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": "SEVERE", "related": " UNRELATED ", "serious": " YES ", "ae_start_dt": " 2025-10-19 "}
+{"subject_id": " S0300632 ", "ae_id": "AE0300815", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "MILD", "related": "PROBABLE", "serious": "yes", "ae_start_dt": " 2025-08-17 "}
+{"subject_id": " S0300722 ", "ae_id": "AE0300816", "pt_name": "vomiting", "pt_code": "1000050", "severity": "SEVERE", "related": "no", "serious": " YES ", "ae_start_dt": " 2024-11-26 "}
+{"subject_id": "S0300159", "ae_id": "AE0300817", "pt_name": "dizziness", "pt_code": "1000030", "severity": " SEVERE ", "related": " NO ", "serious": "YES", "ae_start_dt": "04-02-2024"}
+{"subject_id": " S0300557 ", "ae_id": "AE0300818", "pt_name": "Headache", "pt_code": "1000010", "severity": "SEVERE", "related": " NO ", "serious": "YES", "ae_start_dt": "23-06-2025"}
+{"subject_id": "S0300827", "ae_id": "AE0300819", "pt_name": "Dizziness", "pt_code": "1000030", "severity": "MODERATE", "related": " YES ", "serious": "YES", "ae_start_dt": "2025-05-07"}
+{"subject_id": " S0300322 ", "ae_id": "AE0300820", "pt_name": "headache", "pt_code": "1000010", "severity": "MILD", "related": " UNRELATED ", "serious": "YES", "ae_start_dt": "28-10-2024"}
+{"subject_id": "s0300061", "ae_id": "AE0300821", "pt_name": " Headache ", "pt_code": "1000010", "severity": " SEVERE ", "related": "yes", "serious": " NO ", "ae_start_dt": "2024-02-12"}
+{"subject_id": "S0300762", "ae_id": "AE0300822", "pt_name": " Nausea ", "pt_code": "1000020", "severity": " SEVERE ", "related": "yes", "serious": " NO ", "ae_start_dt": "2024-02-22"}
+{"subject_id": "S0300079", "ae_id": "AE0300823", "pt_name": "VOMITING", "pt_code": " 1000050 ", "severity": " MODERATE ", "related": "UNRELATED", "serious": "yes", "ae_start_dt": "2024-01-11"}
+{"subject_id": "S0300816", "ae_id": "AE0300824", "pt_name": " Vomiting ", "pt_code": " 1000050 ", "severity": "MODERATE", "related": "POSSIBLE", "serious": "yes", "ae_start_dt": "2025-02-06"}
+{"subject_id": "S0300710", "ae_id": "AE0300825", "pt_name": "vomiting", "pt_code": "1000050", "severity": " SEVERE ", "related": "YES", "serious": "YES", "ae_start_dt": " 2024-02-01 "}
+{"subject_id": "S0300353", "ae_id": "AE0300826", "pt_name": " Nausea ", "pt_code": "1000020", "severity": "MILD", "related": "YES", "serious": "NO", "ae_start_dt": "07/26/2025"}
+{"subject_id": "s0300776", "ae_id": "AE0300827", "pt_name": "headache", "pt_code": "1000010", "severity": "MODERATE", "related": "NO", "serious": " NO ", "ae_start_dt": " 2024-11-27 "}
+{"subject_id": "S0300599", "ae_id": "AE0300828", "pt_name": " Dizziness ", "pt_code": " 1000030 ", "severity": "SEVERE", "related": "PROBABLE", "serious": "yes", "ae_start_dt": "09/26/2025"}
+{"subject_id": " S0300941 ", "ae_id": "AE0300829", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": "severe", "related": "UNRELATED", "serious": "NO", "ae_start_dt": "11/28/2024"}
+{"subject_id": "S0300127", "ae_id": "AE0300830", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": "SEVERE", "related": " POSSIBLE ", "serious": " YES ", "ae_start_dt": "2024-01-15"}
+{"subject_id": "s0300022", "ae_id": "AE0300831", "pt_name": " Headache ", "pt_code": " 1000010 ", "severity": "MODERATE", "related": "yes", "serious": "NO", "ae_start_dt": " 2025-03-24 "}
+{"subject_id": "s0300130", "ae_id": "AE0300832", "pt_name": " Headache ", "pt_code": "1000010", "severity": " SEVERE ", "related": " PROBABLE ", "serious": "no", "ae_start_dt": "2024-03-12"}
+{"subject_id": "S0300428", "ae_id": "AE0300833", "pt_name": "Headache", "pt_code": "1000010", "severity": "SEVERE", "related": " PROBABLE ", "serious": "yes", "ae_start_dt": "18-02-2025"}
+{"subject_id": "S0300665", "ae_id": "AE0300834", "pt_name": "Nausea", "pt_code": "1000020", "severity": " SEVERE ", "related": " UNRELATED ", "serious": " NO ", "ae_start_dt": " 2024-08-06 "}
+{"subject_id": " S0300875 ", "ae_id": "AE0300835", "pt_name": "Nausea", "pt_code": "1000020", "severity": "MODERATE", "related": "POSSIBLE", "serious": "yes", "ae_start_dt": " 2025-09-01 "}
+{"subject_id": "S0300359", "ae_id": "AE0300836", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": "MILD", "related": "YES", "serious": "NO", "ae_start_dt": " 2024-04-04 "}
+{"subject_id": " S0300687 ", "ae_id": "AE0300837", "pt_name": "dizziness", "pt_code": "1000030", "severity": "moderate", "related": "NO", "serious": "NO", "ae_start_dt": " 2024-07-01 "}
+{"subject_id": "S0300354", "ae_id": "AE0300838", "pt_name": "Headache", "pt_code": "1000010", "severity": " MODERATE ", "related": "possible", "serious": "NO", "ae_start_dt": "19-11-2025"}
+{"subject_id": "S0300661", "ae_id": "AE0300839", "pt_name": "Nausea", "pt_code": "1000020", "severity": "SEVERE", "related": "unrelated", "serious": "yes", "ae_start_dt": "30-08-2025"}
+{"subject_id": "s0300887", "ae_id": "AE0300840", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": "severe", "related": "unrelated", "serious": "NO", "ae_start_dt": "08/26/2025"}
+{"subject_id": "S0300616", "ae_id": "AE0300841", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": "MODERATE", "related": "YES", "serious": " YES ", "ae_start_dt": " 2024-03-03 "}
+{"subject_id": "s0300457", "ae_id": "AE0300842", "pt_name": "NAUSEA", "pt_code": " 1000020 ", "severity": "MODERATE", "related": " UNRELATED ", "serious": " NO ", "ae_start_dt": "02/06/2025"}
+{"subject_id": "s0300024", "ae_id": "AE0300843", "pt_name": "VOMITING", "pt_code": "1000050", "severity": "MILD", "related": "unrelated", "serious": "NO", "ae_start_dt": "16-06-2024"}
+{"subject_id": " S0300870 ", "ae_id": "AE0300844", "pt_name": "headache", "pt_code": "1000010", "severity": "mild", "related": "YES", "serious": "yes", "ae_start_dt": "2025-03-31"}
+{"subject_id": "S0300701", "ae_id": "AE0300845", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "MODERATE", "related": "probable", "serious": " NO ", "ae_start_dt": "10/28/2025"}
+{"subject_id": " S0300398 ", "ae_id": "AE0300846", "pt_name": " Headache ", "pt_code": "1000010", "severity": "mild", "related": "probable", "serious": "NO", "ae_start_dt": "2025-06-12"}
+{"subject_id": "s0300147", "ae_id": "AE0300847", "pt_name": "Headache", "pt_code": "1000010", "severity": " SEVERE ", "related": "NO", "serious": " NO ", "ae_start_dt": " 2025-06-05 "}
+{"subject_id": " S0300841 ", "ae_id": "AE0300848", "pt_name": "Headache", "pt_code": "1000010", "severity": "MILD", "related": "yes", "serious": "NO", "ae_start_dt": " 2024-07-29 "}
+{"subject_id": "S0300161", "ae_id": "AE0300849", "pt_name": "Nausea", "pt_code": "1000020", "severity": "moderate", "related": " YES ", "serious": "no", "ae_start_dt": " 2025-03-09 "}
+{"subject_id": "s0300037", "ae_id": "AE0300850", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": "moderate", "related": "probable", "serious": "no", "ae_start_dt": " 2025-07-20 "}
+{"subject_id": " S0300286 ", "ae_id": "AE0300851", "pt_name": "FATIGUE", "pt_code": " 1000040 ", "severity": " SEVERE ", "related": "YES", "serious": " NO ", "ae_start_dt": "05/17/2025"}
+{"subject_id": "S0300410", "ae_id": "AE0300852", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": "MODERATE", "related": "yes", "serious": "YES", "ae_start_dt": " 2024-05-11 "}
+{"subject_id": " S0300194 ", "ae_id": "AE0300853", "pt_name": "Vomiting", "pt_code": "1000050", "severity": "MILD", "related": "NO", "serious": "no", "ae_start_dt": "14-10-2025"}
+{"subject_id": "s0300324", "ae_id": "AE0300854", "pt_name": "nausea", "pt_code": "1000020", "severity": "severe", "related": "PROBABLE", "serious": "NO", "ae_start_dt": "01/18/2024"}
+{"subject_id": "S0300422", "ae_id": "AE0300855", "pt_name": " Headache ", "pt_code": "1000010", "severity": " MILD ", "related": "YES", "serious": "YES", "ae_start_dt": "11/18/2025"}
+{"subject_id": "S0300593", "ae_id": "AE0300856", "pt_name": "fatigue", "pt_code": "1000040", "severity": "SEVERE", "related": "PROBABLE", "serious": "NO", "ae_start_dt": "06/29/2025"}
+{"subject_id": "s0300047", "ae_id": "AE0300857", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": "severe", "related": "YES", "serious": "yes", "ae_start_dt": "2025-04-26"}
+{"subject_id": "S0300577", "ae_id": "AE0300858", "pt_name": "headache", "pt_code": " 1000010 ", "severity": "SEVERE", "related": "no", "serious": "yes", "ae_start_dt": " 2024-06-01 "}
+{"subject_id": "S0300793", "ae_id": "AE0300859", "pt_name": "VOMITING", "pt_code": "1000050", "severity": " MILD ", "related": "yes", "serious": "NO", "ae_start_dt": " 2026-01-01 "}
+{"subject_id": " S0300405 ", "ae_id": "AE0300860", "pt_name": "headache", "pt_code": " 1000010 ", "severity": "SEVERE", "related": "probable", "serious": "yes", "ae_start_dt": "13-04-2025"}
+{"subject_id": "S0300945", "ae_id": "AE0300861", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": "MILD", "related": "PROBABLE", "serious": "yes", "ae_start_dt": " 2024-09-11 "}
+{"subject_id": "S0300638", "ae_id": "AE0300862", "pt_name": "DIZZINESS", "pt_code": " 1000030 ", "severity": " MILD ", "related": "YES", "serious": "YES", "ae_start_dt": "02/09/2024"}
+{"subject_id": "S0300141", "ae_id": "AE0300863", "pt_name": "fatigue", "pt_code": "1000040", "severity": "SEVERE", "related": " POSSIBLE ", "serious": " NO ", "ae_start_dt": "2024-08-29"}
+{"subject_id": "s0300405", "ae_id": "AE0300864", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": " SEVERE ", "related": " YES ", "serious": " NO ", "ae_start_dt": "02/02/2025"}
+{"subject_id": "s0300217", "ae_id": "AE0300865", "pt_name": " Fatigue ", "pt_code": " 1000040 ", "severity": "mild", "related": " POSSIBLE ", "serious": "NO", "ae_start_dt": " 2025-07-22 "}
+{"subject_id": "S0300966", "ae_id": "AE0300866", "pt_name": "headache", "pt_code": "1000010", "severity": " MODERATE ", "related": "no", "serious": "NO", "ae_start_dt": "2024-01-16"}
+{"subject_id": "S0300057", "ae_id": "AE0300867", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": "MILD", "related": " YES ", "serious": "no", "ae_start_dt": "07/25/2025"}
+{"subject_id": "S0300659", "ae_id": "AE0300868", "pt_name": "Dizziness", "pt_code": " 1000030 ", "severity": " SEVERE ", "related": "unrelated", "serious": "yes", "ae_start_dt": "30-01-2025"}
+{"subject_id": "s0300257", "ae_id": "AE0300869", "pt_name": "fatigue", "pt_code": " 1000040 ", "severity": "MODERATE", "related": "UNRELATED", "serious": "YES", "ae_start_dt": "09-01-2024"}
+{"subject_id": "s0300308", "ae_id": "AE0300870", "pt_name": "nausea", "pt_code": "1000020", "severity": "severe", "related": " UNRELATED ", "serious": "NO", "ae_start_dt": "2025-07-15"}
+{"subject_id": "S0300980", "ae_id": "AE0300871", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "SEVERE", "related": "yes", "serious": "YES", "ae_start_dt": "2024-07-27"}
+{"subject_id": " S0300167 ", "ae_id": "AE0300872", "pt_name": "Vomiting", "pt_code": "1000050", "severity": "SEVERE", "related": " YES ", "serious": "yes", "ae_start_dt": "2024-05-07"}
+{"subject_id": " S0300984 ", "ae_id": "AE0300873", "pt_name": "headache", "pt_code": " 1000010 ", "severity": " MILD ", "related": "yes", "serious": "YES", "ae_start_dt": "27-11-2025"}
+{"subject_id": "S0300780", "ae_id": "AE0300874", "pt_name": "vomiting", "pt_code": " 1000050 ", "severity": "SEVERE", "related": "no", "serious": "YES", "ae_start_dt": "2025-04-13"}
+{"subject_id": "S0300707", "ae_id": "AE0300875", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "SEVERE", "related": "YES", "serious": " YES ", "ae_start_dt": "2025-08-27"}
+{"subject_id": " S0300212 ", "ae_id": "AE0300876", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": "MODERATE", "related": "UNRELATED", "serious": "YES", "ae_start_dt": "08/07/2024"}
+{"subject_id": "S0300254", "ae_id": "AE0300877", "pt_name": "Dizziness", "pt_code": "1000030", "severity": "SEVERE", "related": " NO ", "serious": "YES", "ae_start_dt": "2025-12-19"}
+{"subject_id": "S0300575", "ae_id": "AE0300878", "pt_name": "fatigue", "pt_code": " 1000040 ", "severity": "severe", "related": "unrelated", "serious": "no", "ae_start_dt": "2024-04-13"}
+{"subject_id": "s0300474", "ae_id": "AE0300879", "pt_name": "headache", "pt_code": "1000010", "severity": " SEVERE ", "related": "NO", "serious": "NO", "ae_start_dt": "2025-05-23"}
+{"subject_id": "S0300901", "ae_id": "AE0300880", "pt_name": "Nausea", "pt_code": " 1000020 ", "severity": "SEVERE", "related": " UNRELATED ", "serious": "no", "ae_start_dt": "2025-05-27"}
+{"subject_id": "S0300644", "ae_id": "AE0300881", "pt_name": "Vomiting", "pt_code": "1000050", "severity": " MODERATE ", "related": "PROBABLE", "serious": "NO", "ae_start_dt": "10/06/2024"}
+{"subject_id": "S0300282", "ae_id": "AE0300882", "pt_name": "headache", "pt_code": "1000010", "severity": " MODERATE ", "related": "yes", "serious": " YES ", "ae_start_dt": "01/13/2025"}
+{"subject_id": "S0300096", "ae_id": "AE0300883", "pt_name": "vomiting", "pt_code": "1000050", "severity": "severe", "related": " UNRELATED ", "serious": "NO", "ae_start_dt": "13-03-2024"}
+{"subject_id": "S0300782", "ae_id": "AE0300884", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": "mild", "related": "UNRELATED", "serious": " YES ", "ae_start_dt": "2024-07-16"}
+{"subject_id": "S0300118", "ae_id": "AE0300885", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": "severe", "related": " PROBABLE ", "serious": "yes", "ae_start_dt": "2024-07-30"}
+{"subject_id": "S0300046", "ae_id": "AE0300886", "pt_name": " Vomiting ", "pt_code": " 1000050 ", "severity": "MILD", "related": " POSSIBLE ", "serious": "YES", "ae_start_dt": "2024-04-05"}
+{"subject_id": " S0300619 ", "ae_id": "AE0300887", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": "mild", "related": " UNRELATED ", "serious": "no", "ae_start_dt": " 2025-06-04 "}
+{"subject_id": " S0300266 ", "ae_id": "AE0300888", "pt_name": "Nausea", "pt_code": " 1000020 ", "severity": "MILD", "related": "unrelated", "serious": "YES", "ae_start_dt": " 2025-01-30 "}
+{"subject_id": " S0300874 ", "ae_id": "AE0300889", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "severe", "related": " YES ", "serious": "NO", "ae_start_dt": "2024-10-19"}
+{"subject_id": "s0300710", "ae_id": "AE0300890", "pt_name": "Nausea", "pt_code": "1000020", "severity": "moderate", "related": "unrelated", "serious": "YES", "ae_start_dt": "04/25/2024"}
+{"subject_id": "S0300931", "ae_id": "AE0300891", "pt_name": "fatigue", "pt_code": "1000040", "severity": " SEVERE ", "related": "unrelated", "serious": "no", "ae_start_dt": "02/26/2024"}
+{"subject_id": " S0300976 ", "ae_id": "AE0300892", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": "MILD", "related": "PROBABLE", "serious": " NO ", "ae_start_dt": " 2025-10-31 "}
+{"subject_id": "s0300455", "ae_id": "AE0300893", "pt_name": " Nausea ", "pt_code": " 1000020 ", "severity": "MILD", "related": "PROBABLE", "serious": "NO", "ae_start_dt": "02/26/2024"}
+{"subject_id": "S0300930", "ae_id": "AE0300894", "pt_name": "fatigue", "pt_code": "1000040", "severity": " MILD ", "related": "YES", "serious": "YES", "ae_start_dt": "02/18/2025"}
+{"subject_id": "S0300244", "ae_id": "AE0300895", "pt_name": "fatigue", "pt_code": "1000040", "severity": "mild", "related": "POSSIBLE", "serious": " NO ", "ae_start_dt": "2025-01-02"}
+{"subject_id": "S0300240", "ae_id": "AE0300896", "pt_name": "fatigue", "pt_code": "1000040", "severity": " MILD ", "related": "probable", "serious": "NO", "ae_start_dt": "22-12-2025"}
+{"subject_id": "S0300341", "ae_id": "AE0300897", "pt_name": "dizziness", "pt_code": "1000030", "severity": "MILD", "related": "possible", "serious": "no", "ae_start_dt": "05-02-2025"}
+{"subject_id": " S0300306 ", "ae_id": "AE0300898", "pt_name": "Headache", "pt_code": "1000010", "severity": "SEVERE", "related": "unrelated", "serious": "yes", "ae_start_dt": "2025-01-28"}
+{"subject_id": "S0300575", "ae_id": "AE0300899", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": " SEVERE ", "related": "probable", "serious": "NO", "ae_start_dt": "10-02-2024"}
+{"subject_id": "S0300792", "ae_id": "AE0300900", "pt_name": "Vomiting", "pt_code": "1000050", "severity": "moderate", "related": "probable", "serious": "NO", "ae_start_dt": "11/03/2025"}
+{"subject_id": "S0300465", "ae_id": "AE0300901", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": " SEVERE ", "related": "PROBABLE", "serious": "YES", "ae_start_dt": "24-12-2024"}
+{"subject_id": "S0300131", "ae_id": "AE0300902", "pt_name": "dizziness", "pt_code": " 1000030 ", "severity": "severe", "related": " PROBABLE ", "serious": " YES ", "ae_start_dt": "10-02-2025"}
+{"subject_id": " S0300823 ", "ae_id": "AE0300903", "pt_name": "Headache", "pt_code": "1000010", "severity": "MODERATE", "related": "NO", "serious": "no", "ae_start_dt": " 2025-02-22 "}
+{"subject_id": " S0300075 ", "ae_id": "AE0300904", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "MODERATE", "related": "UNRELATED", "serious": "YES", "ae_start_dt": "2025-01-19"}
+{"subject_id": "s0300209", "ae_id": "AE0300905", "pt_name": "fatigue", "pt_code": "1000040", "severity": "MODERATE", "related": "YES", "serious": "NO", "ae_start_dt": " 2024-01-27 "}
+{"subject_id": "S0300500", "ae_id": "AE0300906", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": " SEVERE ", "related": "possible", "serious": "YES", "ae_start_dt": "2024-04-28"}
+{"subject_id": " S0300501 ", "ae_id": "AE0300907", "pt_name": "dizziness", "pt_code": "1000030", "severity": "SEVERE", "related": "unrelated", "serious": "no", "ae_start_dt": "2024-05-03"}
+{"subject_id": " S0300322 ", "ae_id": "AE0300908", "pt_name": "dizziness", "pt_code": "1000030", "severity": "MODERATE", "related": "UNRELATED", "serious": "yes", "ae_start_dt": " 2024-11-11 "}
+{"subject_id": "s0300364", "ae_id": "AE0300909", "pt_name": "Nausea", "pt_code": "1000020", "severity": "MILD", "related": " YES ", "serious": "yes", "ae_start_dt": "2025-08-11"}
+{"subject_id": "S0300062", "ae_id": "AE0300910", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": " MODERATE ", "related": "POSSIBLE", "serious": " NO ", "ae_start_dt": " 2025-08-25 "}
+{"subject_id": "S0300144", "ae_id": "AE0300911", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": " SEVERE ", "related": "yes", "serious": " YES ", "ae_start_dt": "2025-04-17"}
+{"subject_id": "S0300364", "ae_id": "AE0300912", "pt_name": "VOMITING", "pt_code": "1000050", "severity": " MODERATE ", "related": "NO", "serious": "NO", "ae_start_dt": "01/08/2024"}
+{"subject_id": "S0300684", "ae_id": "AE0300913", "pt_name": "Headache", "pt_code": "1000010", "severity": "moderate", "related": "unrelated", "serious": "NO", "ae_start_dt": "11/21/2024"}
+{"subject_id": " S0300035 ", "ae_id": "AE0300914", "pt_name": "VOMITING", "pt_code": "1000050", "severity": "severe", "related": "UNRELATED", "serious": "YES", "ae_start_dt": "11/17/2024"}
+{"subject_id": " S0300988 ", "ae_id": "AE0300915", "pt_name": "Headache", "pt_code": "1000010", "severity": "MILD", "related": "NO", "serious": "NO", "ae_start_dt": " 2025-05-05 "}
+{"subject_id": "S0300056", "ae_id": "AE0300916", "pt_name": " Dizziness ", "pt_code": " 1000030 ", "severity": " MODERATE ", "related": "UNRELATED", "serious": "yes", "ae_start_dt": "02/11/2024"}
+{"subject_id": "S0300290", "ae_id": "AE0300917", "pt_name": "Fatigue", "pt_code": " 1000040 ", "severity": "MODERATE", "related": " UNRELATED ", "serious": "no", "ae_start_dt": "04-08-2024"}
+{"subject_id": " S0300463 ", "ae_id": "AE0300918", "pt_name": "FATIGUE", "pt_code": " 1000040 ", "severity": " SEVERE ", "related": "yes", "serious": " NO ", "ae_start_dt": " 2025-06-23 "}
+{"subject_id": "s0300650", "ae_id": "AE0300919", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": "MODERATE", "related": "UNRELATED", "serious": "NO", "ae_start_dt": "09-07-2024"}
+{"subject_id": " S0300044 ", "ae_id": "AE0300920", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": " MODERATE ", "related": "probable", "serious": "YES", "ae_start_dt": "02-10-2025"}
+{"subject_id": " S0300858 ", "ae_id": "AE0300921", "pt_name": "Headache", "pt_code": "1000010", "severity": "mild", "related": "YES", "serious": " NO ", "ae_start_dt": "23-03-2024"}
+{"subject_id": " S0300094 ", "ae_id": "AE0300922", "pt_name": "NAUSEA", "pt_code": " 1000020 ", "severity": "MODERATE", "related": " PROBABLE ", "serious": "no", "ae_start_dt": " 2024-09-18 "}
+{"subject_id": " S0300003 ", "ae_id": "AE0300923", "pt_name": "VOMITING", "pt_code": "1000050", "severity": "severe", "related": "YES", "serious": " YES ", "ae_start_dt": " 2025-06-12 "}
+{"subject_id": "s0300120", "ae_id": "AE0300924", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": " SEVERE ", "related": "NO", "serious": " NO ", "ae_start_dt": "16-09-2025"}
+{"subject_id": "S0300720", "ae_id": "AE0300925", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": "SEVERE", "related": "PROBABLE", "serious": " NO ", "ae_start_dt": "18-07-2024"}
+{"subject_id": " S0300200 ", "ae_id": "AE0300926", "pt_name": " Nausea ", "pt_code": " 1000020 ", "severity": "mild", "related": "possible", "serious": "yes", "ae_start_dt": " 2024-12-17 "}
+{"subject_id": " S0300928 ", "ae_id": "AE0300927", "pt_name": " Vomiting ", "pt_code": " 1000050 ", "severity": " MILD ", "related": "PROBABLE", "serious": " YES ", "ae_start_dt": " 2025-11-03 "}
+{"subject_id": "s0300802", "ae_id": "AE0300928", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": "MODERATE", "related": "probable", "serious": " NO ", "ae_start_dt": " 2025-11-11 "}
+{"subject_id": " S0300471 ", "ae_id": "AE0300929", "pt_name": " Headache ", "pt_code": " 1000010 ", "severity": "moderate", "related": "POSSIBLE", "serious": "NO", "ae_start_dt": " 2025-08-01 "}
+{"subject_id": "s0300883", "ae_id": "AE0300930", "pt_name": "vomiting", "pt_code": "1000050", "severity": " MILD ", "related": "YES", "serious": " NO ", "ae_start_dt": " 2024-05-02 "}
+{"subject_id": " S0300583 ", "ae_id": "AE0300931", "pt_name": " Nausea ", "pt_code": "1000020", "severity": " SEVERE ", "related": " UNRELATED ", "serious": "NO", "ae_start_dt": "2025-11-16"}
+{"subject_id": "S0300955", "ae_id": "AE0300932", "pt_name": "DIZZINESS", "pt_code": " 1000030 ", "severity": "MILD", "related": "PROBABLE", "serious": "NO", "ae_start_dt": " 2025-08-27 "}
+{"subject_id": "S0300420", "ae_id": "AE0300933", "pt_name": " Nausea ", "pt_code": "1000020", "severity": "MILD", "related": "probable", "serious": "no", "ae_start_dt": " 2024-07-24 "}
+{"subject_id": "S0300212", "ae_id": "AE0300934", "pt_name": "Vomiting", "pt_code": " 1000050 ", "severity": "SEVERE", "related": "unrelated", "serious": "NO", "ae_start_dt": "04/15/2025"}
+{"subject_id": "S0300185", "ae_id": "AE0300935", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": "SEVERE", "related": "yes", "serious": "YES", "ae_start_dt": " 2025-06-24 "}
+{"subject_id": "s0300654", "ae_id": "AE0300936", "pt_name": "dizziness", "pt_code": " 1000030 ", "severity": "MODERATE", "related": "no", "serious": " YES ", "ae_start_dt": "2024-01-12"}
+{"subject_id": "s0300052", "ae_id": "AE0300937", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": "MODERATE", "related": "NO", "serious": "NO", "ae_start_dt": " 2024-02-07 "}
+{"subject_id": "s0300080", "ae_id": "AE0300938", "pt_name": "vomiting", "pt_code": " 1000050 ", "severity": "moderate", "related": " POSSIBLE ", "serious": "yes", "ae_start_dt": "04/26/2024"}
+{"subject_id": "S0300789", "ae_id": "AE0300939", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": " MILD ", "related": "UNRELATED", "serious": "NO", "ae_start_dt": "20-07-2024"}
+{"subject_id": "S0300352", "ae_id": "AE0300940", "pt_name": " Headache ", "pt_code": "1000010", "severity": "mild", "related": "UNRELATED", "serious": " NO ", "ae_start_dt": "07/09/2024"}
+{"subject_id": " S0300610 ", "ae_id": "AE0300941", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "mild", "related": "YES", "serious": " YES ", "ae_start_dt": "07-05-2025"}
+{"subject_id": "s0300212", "ae_id": "AE0300942", "pt_name": "dizziness", "pt_code": " 1000030 ", "severity": "moderate", "related": "NO", "serious": "YES", "ae_start_dt": "05-06-2025"}
+{"subject_id": "S0300984", "ae_id": "AE0300943", "pt_name": "fatigue", "pt_code": "1000040", "severity": "moderate", "related": "YES", "serious": "yes", "ae_start_dt": "05/05/2024"}
+{"subject_id": " S0300062 ", "ae_id": "AE0300944", "pt_name": "VOMITING", "pt_code": "1000050", "severity": "MILD", "related": "YES", "serious": "NO", "ae_start_dt": "2024-09-27"}
+{"subject_id": "s0300663", "ae_id": "AE0300945", "pt_name": "Nausea", "pt_code": "1000020", "severity": "MILD", "related": " YES ", "serious": "NO", "ae_start_dt": "2025-12-13"}
+{"subject_id": "S0300394", "ae_id": "AE0300946", "pt_name": "nausea", "pt_code": "1000020", "severity": "MODERATE", "related": "POSSIBLE", "serious": "yes", "ae_start_dt": "12/02/2025"}
+{"subject_id": "S0300432", "ae_id": "AE0300947", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": " MODERATE ", "related": "PROBABLE", "serious": "NO", "ae_start_dt": "2025-06-10"}
+{"subject_id": "s0300234", "ae_id": "AE0300948", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": " MODERATE ", "related": "POSSIBLE", "serious": "NO", "ae_start_dt": "2024-02-03"}
+{"subject_id": "s0300321", "ae_id": "AE0300949", "pt_name": "Fatigue", "pt_code": "1000040", "severity": "severe", "related": "UNRELATED", "serious": "yes", "ae_start_dt": "03/15/2024"}
+{"subject_id": "s0300002", "ae_id": "AE0300950", "pt_name": "Vomiting", "pt_code": "1000050", "severity": "MILD", "related": " YES ", "serious": "YES", "ae_start_dt": "01/19/2024"}
+{"subject_id": "S0300960", "ae_id": "AE0300951", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": "severe", "related": " POSSIBLE ", "serious": "YES", "ae_start_dt": "02/17/2025"}
+{"subject_id": "S0300869", "ae_id": "AE0300952", "pt_name": "Fatigue", "pt_code": " 1000040 ", "severity": " SEVERE ", "related": "yes", "serious": "no", "ae_start_dt": "08/14/2025"}
+{"subject_id": " S0300955 ", "ae_id": "AE0300953", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "SEVERE", "related": "PROBABLE", "serious": "no", "ae_start_dt": "24-09-2025"}
+{"subject_id": " S0300894 ", "ae_id": "AE0300954", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": "SEVERE", "related": "PROBABLE", "serious": "YES", "ae_start_dt": "05/03/2024"}
+{"subject_id": "S0300694", "ae_id": "AE0300955", "pt_name": "headache", "pt_code": "1000010", "severity": "SEVERE", "related": "no", "serious": "NO", "ae_start_dt": "2025-08-12"}
+{"subject_id": "S0300628", "ae_id": "AE0300956", "pt_name": "fatigue", "pt_code": "1000040", "severity": " SEVERE ", "related": "POSSIBLE", "serious": "YES", "ae_start_dt": "27-09-2025"}
+{"subject_id": "S0300355", "ae_id": "AE0300957", "pt_name": "fatigue", "pt_code": "1000040", "severity": "MILD", "related": "PROBABLE", "serious": "no", "ae_start_dt": " 2024-06-19 "}
+{"subject_id": "S0300690", "ae_id": "AE0300958", "pt_name": "headache", "pt_code": "1000010", "severity": "SEVERE", "related": "YES", "serious": "yes", "ae_start_dt": " 2025-12-16 "}
+{"subject_id": "S0300293", "ae_id": "AE0300959", "pt_name": "Vomiting", "pt_code": "1000050", "severity": "SEVERE", "related": "POSSIBLE", "serious": "YES", "ae_start_dt": " 2025-01-27 "}
+{"subject_id": "S0300467", "ae_id": "AE0300960", "pt_name": "Headache", "pt_code": " 1000010 ", "severity": "SEVERE", "related": "possible", "serious": "yes", "ae_start_dt": "28-09-2025"}
+{"subject_id": " S0300505 ", "ae_id": "AE0300961", "pt_name": " Fatigue ", "pt_code": " 1000040 ", "severity": " MODERATE ", "related": "POSSIBLE", "serious": "YES", "ae_start_dt": " 2024-05-04 "}
+{"subject_id": " S0300200 ", "ae_id": "AE0300962", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": " MILD ", "related": " YES ", "serious": " NO ", "ae_start_dt": "01/25/2025"}
+{"subject_id": "S0300653", "ae_id": "AE0300963", "pt_name": " Nausea ", "pt_code": " 1000020 ", "severity": " SEVERE ", "related": "probable", "serious": "NO", "ae_start_dt": "03/12/2025"}
+{"subject_id": "s0300486", "ae_id": "AE0300964", "pt_name": "Nausea", "pt_code": "1000020", "severity": "moderate", "related": "unrelated", "serious": "NO", "ae_start_dt": "2025-11-01"}
+{"subject_id": "s0300385", "ae_id": "AE0300965", "pt_name": "Fatigue", "pt_code": "1000040", "severity": "MILD", "related": " UNRELATED ", "serious": "yes", "ae_start_dt": "2025-08-12"}
+{"subject_id": "s0300570", "ae_id": "AE0300966", "pt_name": "Dizziness", "pt_code": "1000030", "severity": "SEVERE", "related": "NO", "serious": "yes", "ae_start_dt": " 2025-09-28 "}
+{"subject_id": "s0300388", "ae_id": "AE0300967", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": "MILD", "related": "no", "serious": " NO ", "ae_start_dt": "2024-05-11"}
+{"subject_id": " S0300786 ", "ae_id": "AE0300968", "pt_name": "FATIGUE", "pt_code": " 1000040 ", "severity": "severe", "related": "YES", "serious": "no", "ae_start_dt": "15-06-2025"}
+{"subject_id": "S0300054", "ae_id": "AE0300969", "pt_name": "fatigue", "pt_code": "1000040", "severity": "severe", "related": "NO", "serious": "YES", "ae_start_dt": " 2024-05-06 "}
+{"subject_id": "S0300541", "ae_id": "AE0300970", "pt_name": "VOMITING", "pt_code": "1000050", "severity": " MILD ", "related": " PROBABLE ", "serious": "NO", "ae_start_dt": "10/06/2025"}
+{"subject_id": " S0300215 ", "ae_id": "AE0300971", "pt_name": " Headache ", "pt_code": "1000010", "severity": " MODERATE ", "related": " NO ", "serious": "no", "ae_start_dt": "02/19/2024"}
+{"subject_id": "S0300018", "ae_id": "AE0300972", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": "MILD", "related": "YES", "serious": " YES ", "ae_start_dt": "2025-09-23"}
+{"subject_id": " S0300875 ", "ae_id": "AE0300973", "pt_name": "DIZZINESS", "pt_code": "1000030", "severity": "severe", "related": "NO", "serious": "NO", "ae_start_dt": "2024-08-03"}
+{"subject_id": "S0300709", "ae_id": "AE0300974", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": "moderate", "related": "probable", "serious": "YES", "ae_start_dt": " 2024-12-15 "}
+{"subject_id": " S0300941 ", "ae_id": "AE0300975", "pt_name": "Vomiting", "pt_code": "1000050", "severity": "MILD", "related": " POSSIBLE ", "serious": " YES ", "ae_start_dt": "07-08-2024"}
+{"subject_id": "S0300007", "ae_id": "AE0300976", "pt_name": "HEADACHE", "pt_code": "1000010", "severity": " MODERATE ", "related": "PROBABLE", "serious": "NO", "ae_start_dt": "2025-07-10"}
+{"subject_id": "s0300078", "ae_id": "AE0300977", "pt_name": "NAUSEA", "pt_code": " 1000020 ", "severity": "MILD", "related": "UNRELATED", "serious": "no", "ae_start_dt": "2024-08-29"}
+{"subject_id": "S0300724", "ae_id": "AE0300978", "pt_name": "Vomiting", "pt_code": "1000050", "severity": "SEVERE", "related": "YES", "serious": "NO", "ae_start_dt": " 2024-12-09 "}
+{"subject_id": "S0300459", "ae_id": "AE0300979", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": "SEVERE", "related": " PROBABLE ", "serious": "yes", "ae_start_dt": "12/28/2025"}
+{"subject_id": "s0300440", "ae_id": "AE0300980", "pt_name": "headache", "pt_code": " 1000010 ", "severity": "SEVERE", "related": "NO", "serious": "NO", "ae_start_dt": "10-04-2025"}
+{"subject_id": "S0300216", "ae_id": "AE0300981", "pt_name": "headache", "pt_code": " 1000010 ", "severity": "SEVERE", "related": " UNRELATED ", "serious": " NO ", "ae_start_dt": " 2024-12-18 "}
+{"subject_id": "S0300614", "ae_id": "AE0300982", "pt_name": "dizziness", "pt_code": "1000030", "severity": "MILD", "related": "NO", "serious": "NO", "ae_start_dt": " 2024-03-26 "}
+{"subject_id": " S0300555 ", "ae_id": "AE0300983", "pt_name": "headache", "pt_code": "1000010", "severity": " MILD ", "related": "YES", "serious": " YES ", "ae_start_dt": " 2025-11-18 "}
+{"subject_id": " S0300592 ", "ae_id": "AE0300984", "pt_name": "VOMITING", "pt_code": " 1000050 ", "severity": "severe", "related": "YES", "serious": "no", "ae_start_dt": "2024-12-19"}
+{"subject_id": "s0300005", "ae_id": "AE0300985", "pt_name": "nausea", "pt_code": " 1000020 ", "severity": "SEVERE", "related": "NO", "serious": "YES", "ae_start_dt": "2024-10-11"}
+{"subject_id": "S0300207", "ae_id": "AE0300986", "pt_name": " Fatigue ", "pt_code": "1000040", "severity": " SEVERE ", "related": " PROBABLE ", "serious": "no", "ae_start_dt": " 2025-07-09 "}
+{"subject_id": "S0300238", "ae_id": "AE0300987", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": " SEVERE ", "related": " POSSIBLE ", "serious": "YES", "ae_start_dt": "2025-07-11"}
+{"subject_id": "S0300007", "ae_id": "AE0300988", "pt_name": " Vomiting ", "pt_code": " 1000050 ", "severity": "MODERATE", "related": "possible", "serious": "YES", "ae_start_dt": "03/02/2024"}
+{"subject_id": "S0300865", "ae_id": "AE0300989", "pt_name": " Dizziness ", "pt_code": "1000030", "severity": "moderate", "related": " NO ", "serious": "NO", "ae_start_dt": "07/20/2025"}
+{"subject_id": " S0300445 ", "ae_id": "AE0300990", "pt_name": "nausea", "pt_code": "1000020", "severity": "moderate", "related": "POSSIBLE", "serious": "YES", "ae_start_dt": "2025-12-26"}
+{"subject_id": "S0300434", "ae_id": "AE0300991", "pt_name": " Vomiting ", "pt_code": "1000050", "severity": "severe", "related": "POSSIBLE", "serious": " YES ", "ae_start_dt": "08-05-2024"}
+{"subject_id": " S0300697 ", "ae_id": "AE0300992", "pt_name": " Vomiting ", "pt_code": " 1000050 ", "severity": " SEVERE ", "related": " PROBABLE ", "serious": "NO", "ae_start_dt": "17-11-2024"}
+{"subject_id": "S0300786", "ae_id": "AE0300993", "pt_name": "FATIGUE", "pt_code": "1000040", "severity": "moderate", "related": "YES", "serious": "no", "ae_start_dt": "2025-10-18"}
+{"subject_id": "S0300155", "ae_id": "AE0300994", "pt_name": "Headache", "pt_code": " 1000010 ", "severity": "MILD", "related": "YES", "serious": "no", "ae_start_dt": "2024-05-01"}
+{"subject_id": "S0300151", "ae_id": "AE0300995", "pt_name": "headache", "pt_code": " 1000010 ", "severity": "mild", "related": "NO", "serious": "NO", "ae_start_dt": " 2024-11-29 "}
+{"subject_id": "S0300765", "ae_id": "AE0300996", "pt_name": "fatigue", "pt_code": "1000040", "severity": "MILD", "related": "PROBABLE", "serious": "no", "ae_start_dt": "2025-01-31"}
+{"subject_id": "S0300557", "ae_id": "AE0300997", "pt_name": "NAUSEA", "pt_code": "1000020", "severity": " MODERATE ", "related": " NO ", "serious": "no", "ae_start_dt": " 2025-12-12 "}
+{"subject_id": "s0300889", "ae_id": "AE0300998", "pt_name": "Fatigue", "pt_code": "1000040", "severity": "SEVERE", "related": "PROBABLE", "serious": "YES", "ae_start_dt": "2025-08-12"}
+{"subject_id": "S0300987", "ae_id": "AE0300999", "pt_name": " Nausea ", "pt_code": "1000020", "severity": "SEVERE", "related": "NO", "serious": "YES", "ae_start_dt": "2025-03-26"}
