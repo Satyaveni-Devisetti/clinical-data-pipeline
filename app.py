@@ -49,11 +49,15 @@ if sys.platform == 'win32':
 logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
-app.config['SECRET_KEY'] = 'clinical-data-pipeline-secret-key'
+app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'clinical-data-pipeline-secret-key')
 app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///clinical_pipeline.db'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size
+
+# Ensure required directories exist on startup
+os.makedirs('uploads', exist_ok=True)
+os.makedirs('uploads/tmp_chunks', exist_ok=True)
 
 db = SQLAlchemy(app)
 
@@ -7162,16 +7166,19 @@ def api_schedule_runs():
         })
     return jsonify({'success': True, 'runs': result})
 
+# Run on startup regardless of how the app is launched (gunicorn or direct)
+with app.app_context():
+    db.create_all()
+    if not User.query.first():
+        admin = User(username='admin', email='admin@clinicalpipeline.com', role='admin')
+        admin.set_password('Admin@123')
+        db.session.add(admin)
+        db.session.commit()
+        logger.info('Default admin user created: admin / Admin@123')
+    os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
+    os.makedirs('uploads/tmp_chunks', exist_ok=True)
+
+_start_scheduler()
+
 if __name__ == '__main__':
-    with app.app_context():
-        db.create_all()
-        # Create default admin if no users exist
-        if not User.query.first():
-            admin = User(username='admin', email='admin@clinicalpipeline.com', role='admin')
-            admin.set_password('Admin@123')
-            db.session.add(admin)
-            db.session.commit()
-            logger.info('Default admin user created: admin / Admin@123')
-        os.makedirs(app.config['UPLOAD_FOLDER'], exist_ok=True)
-    _start_scheduler()
     app.run(debug=True, host='0.0.0.0', port=5000)
