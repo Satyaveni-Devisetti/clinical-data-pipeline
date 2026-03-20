@@ -182,26 +182,42 @@ function openEdit(id, role, isActive) {
   document.getElementById('editActive').value = isActive ? '1' : '0';
   document.getElementById('editPassword').value = '';
   document.getElementById('editUserError').classList.add('d-none');
-  new bootstrap.Modal(document.getElementById('editUserModal')).show();
+  // Store modal instance on the element so saveUser can reliably hide it
+  const modalEl = document.getElementById('editUserModal');
+  modalEl._bsModalInstance = new bootstrap.Modal(modalEl);
+  modalEl._bsModalInstance.show();
 }
 
 async function saveUser() {
   const id = document.getElementById('editUserId').value;
   const errEl = document.getElementById('editUserError');
   errEl.classList.add('d-none');
+  const passwordVal = document.getElementById('editPassword').value.trim();
   const body = {
     role: document.getElementById('editRole').value,
-    is_active: document.getElementById('editActive').value === '1',
-    password: document.getElementById('editPassword').value.trim() || undefined
+    is_active: document.getElementById('editActive').value === '1'
   };
-  const r = await fetch(`/api/admin/users/${id}`, { method: 'PUT', headers: {'Content-Type':'application/json'}, body: JSON.stringify(body) });
-  const d = await r.json();
-  if (d.success) {
-    bootstrap.Modal.getInstance(document.getElementById('editUserModal')).hide();
-    showNotification(d.message, 'success');
-    loadUsers();
-  } else {
-    errEl.textContent = d.message; errEl.classList.remove('d-none');
+  if (passwordVal) body.password = passwordVal;
+  try {
+    const r = await fetch(`/api/admin/users/${id}`, {
+      method: 'PUT',
+      headers: {'Content-Type': 'application/json'},
+      body: JSON.stringify(body)
+    });
+    const d = await r.json();
+    if (d.success) {
+      const modalEl = document.getElementById('editUserModal');
+      const instance = modalEl._bsModalInstance || bootstrap.Modal.getInstance(modalEl);
+      if (instance) instance.hide();
+      showNotification(d.message, 'success');
+      loadUsers();
+    } else {
+      errEl.textContent = d.message;
+      errEl.classList.remove('d-none');
+    }
+  } catch (e) {
+    errEl.textContent = 'Network error — please try again.';
+    errEl.classList.remove('d-none');
   }
 }
 

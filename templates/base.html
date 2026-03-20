@@ -455,13 +455,15 @@
                             <i class="fas fa-upload"></i> Upload
                         </a>
                     </li>
+                    {% endif %}
+                    {% if session.get('user_role') in ('admin', 'data_engineer') %}
                     <li class="nav-item">
                         <a class="nav-link {{ 'active' if request.endpoint == 'results' }}" href="{{ url_for('results') }}">
                             <i class="fas fa-chart-bar"></i> Results
                         </a>
                     </li>
                     {% endif %}
-                    {% if session.get('user_role') in ('admin', 'data_analyst', 'data_engineer') %}
+                    {% if session.get('user_role') in ('admin', 'data_analyst') %}
                     <li class="nav-item">
                         <a class="nav-link {{ 'active' if request.endpoint == 'analytics' }}" href="{{ url_for('analytics') }}">
                             <i class="fas fa-chart-line"></i> Analytics

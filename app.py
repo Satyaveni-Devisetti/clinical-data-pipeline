@@ -1077,13 +1077,13 @@ def get_results_data():
 
 @app.route('/analytics')
 @login_required
-@role_required('admin', 'data_analyst', 'data_engineer')
+@role_required('admin', 'data_analyst')
 def analytics():
     return render_template('analytics.html')
 
 @app.route('/predictions')
 @login_required
-@role_required('admin', 'data_analyst', 'data_engineer')
+@role_required('admin', 'data_analyst')
 def predictions():
     return render_template('predictions.html')
 
@@ -6848,19 +6848,19 @@ def api_create_user():
         return jsonify({'success': False, 'message': 'All fields are required'})
     if role not in ('admin', 'data_engineer', 'data_analyst'):
         return jsonify({'success': False, 'message': 'Invalid role'})
-    # Use raw SQL with a fresh session to bypass SQLAlchemy identity-map cache
+    # Use a direct engine connection (bypasses all SQLAlchemy session/identity-map caching)
     from sqlalchemy import text
-    db.session.remove()  # discard any cached state from this worker's session
-    existing_username = db.session.execute(
-        text("SELECT id FROM user WHERE username = :u"), {'u': username}
-    ).fetchone()
-    if existing_username:
-        return jsonify({'success': False, 'message': 'Username already exists'})
-    existing_email = db.session.execute(
-        text("SELECT id FROM user WHERE email = :e"), {'e': email}
-    ).fetchone()
-    if existing_email:
-        return jsonify({'success': False, 'message': 'Email already exists'})
+    with db.engine.connect() as raw_conn:
+        existing_username = raw_conn.execute(
+            text('SELECT id FROM "user" WHERE username = :u'), {'u': username}
+        ).fetchone()
+        if existing_username:
+            return jsonify({'success': False, 'message': 'Username already exists'})
+        existing_email = raw_conn.execute(
+            text('SELECT id FROM "user" WHERE email = :e'), {'e': email}
+        ).fetchone()
+        if existing_email:
+            return jsonify({'success': False, 'message': 'Email already exists'})
     user = User(username=username, email=email, role=role, created_by=session['user_id'])
     user.set_password(password)
     db.session.add(user)
@@ -6876,16 +6876,25 @@ def api_create_user():
 @login_required
 @role_required('admin')
 def api_update_user(user_id):
-    user = User.query.get_or_404(user_id)
+    user = db.session.get(User, user_id)
+    if not user:
+        return jsonify({'success': False, 'message': 'User not found'}), 404
     data = request.get_json()
+    if not data:
+        return jsonify({'success': False, 'message': 'No data provided'}), 400
     if 'role' in data and data['role'] in ('admin', 'data_engineer', 'data_analyst'):
         user.role = data['role']
     if 'is_active' in data:
         user.is_active = bool(data['is_active'])
     if 'password' in data and data['password']:
         user.set_password(data['password'])
-    db.session.commit()
-    return jsonify({'success': True, 'message': 'User updated'})
+    try:
+        db.session.commit()
+    except Exception as e:
+        db.session.rollback()
+        logger.error(f"Error updating user {user_id}: {e}")
+        return jsonify({'success': False, 'message': 'Database error while saving'}), 500
+    return jsonify({'success': True, 'message': f'User {user.username} updated successfully'})
 
 @app.route('/api/admin/users/<int:user_id>', methods=['DELETE'])
 @login_required
