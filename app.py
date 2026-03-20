@@ -647,21 +647,18 @@ def create_database_schemas(connection_string):
         # Prediction tables — ae_predictions is intentionally excluded
         cursor.execute("""
             CREATE TABLE IF NOT EXISTS prediction.site_predictions (
-                database_id INTEGER,
-                site_id TEXT,
-                prediction_date DATE,
+                id SERIAL PRIMARY KEY,
+                database_id INTEGER NOT NULL,
+                site_id TEXT NOT NULL,
+                prediction_date DATE NOT NULL,
                 predicted_total_ae INTEGER,
                 predicted_total_serious_events INTEGER,
                 predicted_total_ae_signal_count INTEGER,
                 predicted_avg_lab_ratio FLOAT,
                 predicted_new_subjects INTEGER,
                 predicted_risk_group TEXT,
-                total_subjects INTEGER,
-                total_aes INTEGER,
-                risk_level TEXT,
-                predicted_enrollments INTEGER,
-                confidence_score FLOAT,
-                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+                created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP,
+                CONSTRAINT uq_site_pred UNIQUE (database_id, site_id, prediction_date)
             )
         """)
 
@@ -6851,11 +6848,18 @@ def api_create_user():
         return jsonify({'success': False, 'message': 'All fields are required'})
     if role not in ('admin', 'data_engineer', 'data_analyst'):
         return jsonify({'success': False, 'message': 'Invalid role'})
-    # Expire session cache to ensure fresh read from DB
-    db.session.expire_all()
-    if User.query.filter(User.username == username).first():
+    # Use raw SQL with a fresh session to bypass SQLAlchemy identity-map cache
+    from sqlalchemy import text
+    db.session.remove()  # discard any cached state from this worker's session
+    existing_username = db.session.execute(
+        text("SELECT id FROM user WHERE username = :u"), {'u': username}
+    ).fetchone()
+    if existing_username:
         return jsonify({'success': False, 'message': 'Username already exists'})
-    if User.query.filter(User.email == email).first():
+    existing_email = db.session.execute(
+        text("SELECT id FROM user WHERE email = :e"), {'e': email}
+    ).fetchone()
+    if existing_email:
         return jsonify({'success': False, 'message': 'Email already exists'})
     user = User(username=username, email=email, role=role, created_by=session['user_id'])
     user.set_password(password)

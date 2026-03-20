@@ -43,11 +43,11 @@
       <div class="modal-body">
         <div class="mb-3">
           <label class="form-label fw-semibold">Username <span class="text-danger">*</span></label>
-          <input type="text" class="form-control" id="newUsername" placeholder="e.g. john_doe">
+          <input type="text" class="form-control" id="newUsername" placeholder="e.g. john_doe" autocomplete="off">
         </div>
         <div class="mb-3">
           <label class="form-label fw-semibold">Email <span class="text-danger">*</span></label>
-          <input type="email" class="form-control" id="newEmail" placeholder="user@example.com">
+          <input type="email" class="form-control" id="newEmail" placeholder="user@example.com" autocomplete="off">
           <div class="form-text">Login credentials will be emailed if SMTP is configured.</div>
         </div>
         <div class="mb-3">
@@ -61,7 +61,7 @@
         <div class="mb-3">
           <label class="form-label fw-semibold">Password <span class="text-danger">*</span></label>
           <div class="input-group">
-            <input type="password" class="form-control" id="newPassword" placeholder="Min 6 characters">
+            <input type="password" class="form-control" id="newPassword" placeholder="Min 6 characters" autocomplete="new-password">
             <button class="btn btn-outline-secondary" type="button" onclick="genPassword()"><i class="fas fa-dice"></i></button>
           </div>
         </div>
@@ -214,5 +214,24 @@ async function deleteUser(id, username) {
 }
 
 document.addEventListener('DOMContentLoaded', loadUsers);
+
+// Reset form every time the Add User modal opens
+document.getElementById('addUserModal').addEventListener('show.bs.modal', function () {
+  document.getElementById('newUsername').value = '';
+  document.getElementById('newEmail').value = '';
+  document.getElementById('newRole').value = 'data_analyst';
+  document.getElementById('newPassword').value = '';
+  document.getElementById('newPassword').type = 'password';
+  const errEl = document.getElementById('addUserError');
+  errEl.classList.add('d-none');
+  errEl.textContent = '';
+});
+
+// Clear error when modal is fully hidden
+document.getElementById('addUserModal').addEventListener('hidden.bs.modal', function () {
+  const errEl = document.getElementById('addUserError');
+  errEl.classList.add('d-none');
+  errEl.textContent = '';
+});
 </script>
 {% endblock %}
