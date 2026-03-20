@@ -2442,7 +2442,7 @@ function showUploadResult(fileType, message, success, fileData = null) {
         content += `
             <small class="text-muted">
                 Records: ${fileData.record_count || 0} | 
-                Size: ${formatFileSize(fileData.file_size)}
+                Size: ${formatFileSize(fileData.file_size || 0)}
             </small>
         `;
     }

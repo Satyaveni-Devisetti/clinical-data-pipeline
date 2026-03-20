@@ -2234,6 +2234,7 @@ def upload_file_optimized():
                 'filename': secure_filename(file.filename),
                 'original_filename': file.filename,
                 'file_type': file_type,
+                'file_size': file_size,
                 'record_count': record_count,
                 'inserted_count': total_inserted,
                 'database_id': database_id,
