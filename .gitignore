@@ -1,9 +1,12 @@
 __pycache__/
 *.pyc
 *.pyo
-instance/
 uploads/tmp_chunks/
 *.parquet
 app.log
 .env
+
+# Ignore SQLite binaries but keep instance/ folder via .gitkeep
+instance/clinical_pipeline.db
+database.db
 *.db

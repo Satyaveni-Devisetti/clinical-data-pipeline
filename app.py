@@ -50,7 +50,13 @@ logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 app.config['SECRET_KEY'] = os.environ.get('SECRET_KEY', 'clinical-data-pipeline-secret-key')
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///clinical_pipeline.db'
+
+# Use absolute path for SQLite so it always persists in the instance folder
+# regardless of working directory
+_BASE_DIR = os.path.abspath(os.path.dirname(__file__))
+_INSTANCE_DIR = os.path.join(_BASE_DIR, 'instance')
+os.makedirs(_INSTANCE_DIR, exist_ok=True)
+app.config['SQLALCHEMY_DATABASE_URI'] = f'sqlite:///{os.path.join(_INSTANCE_DIR, "clinical_pipeline.db")}'
 app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
 app.config['UPLOAD_FOLDER'] = 'uploads'
 app.config['MAX_CONTENT_LENGTH'] = 16 * 1024 * 1024  # 16MB max file size
