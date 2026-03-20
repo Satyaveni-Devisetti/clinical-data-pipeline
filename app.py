@@ -6851,9 +6851,11 @@ def api_create_user():
         return jsonify({'success': False, 'message': 'All fields are required'})
     if role not in ('admin', 'data_engineer', 'data_analyst'):
         return jsonify({'success': False, 'message': 'Invalid role'})
-    if User.query.filter_by(username=username).first():
+    # Expire session cache to ensure fresh read from DB
+    db.session.expire_all()
+    if User.query.filter(User.username == username).first():
         return jsonify({'success': False, 'message': 'Username already exists'})
-    if User.query.filter_by(email=email).first():
+    if User.query.filter(User.email == email).first():
         return jsonify({'success': False, 'message': 'Email already exists'})
     user = User(username=username, email=email, role=role, created_by=session['user_id'])
     user.set_password(password)

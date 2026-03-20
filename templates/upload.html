@@ -2620,12 +2620,16 @@ function updatePipelineUI(status) {
     const allCompleted = stages.every(s => status[s] === 'completed');
 
     if (allCompleted) {
-        // Pipeline already completed — show View Report, disable Run
-        runBtn.innerHTML = '<i class="fas fa-check-circle"></i> Pipeline Completed';
-        runBtn.classList.remove('btn-success');
-        runBtn.classList.add('btn-secondary');
-        runBtn.disabled = true;
+        // Pipeline completed — show View Report, reset Run button for new uploads
+        runBtn.innerHTML = '<i class="fas fa-redo"></i> Run Pipeline Again';
+        runBtn.classList.remove('btn-secondary');
+        runBtn.classList.add('btn-success');
+        runBtn.disabled = false;
         viewReportBtn.classList.remove('d-none');
+
+        // Ensure upload sections stay active
+        const uploadSectionsContainer = document.querySelector('.upload-sections-container');
+        if (uploadSectionsContainer) uploadSectionsContainer.classList.remove('no-database');
 
         // Update progress bar
         const progressBar = document.getElementById('pipelineProgressBar');
@@ -2681,11 +2685,15 @@ function monitorPipeline() {
                 clearInterval(pipelineMonitorInterval);
                 pipelineMonitorInterval = null;
 
-                // Button: completed state
-                runBtn.innerHTML = '<i class="fas fa-check-circle"></i> Pipeline Completed';
-                runBtn.classList.remove('btn-success');
-                runBtn.classList.add('btn-secondary');
-                runBtn.disabled = true;
+                // Button: reset to allow running again
+                runBtn.innerHTML = '<i class="fas fa-redo"></i> Run Pipeline Again';
+                runBtn.classList.remove('btn-secondary');
+                runBtn.classList.add('btn-success');
+                runBtn.disabled = false;
+
+                // Ensure upload sections stay active
+                const uploadSectionsContainer = document.querySelector('.upload-sections-container');
+                if (uploadSectionsContainer) uploadSectionsContainer.classList.remove('no-database');
 
                 // Show View Report button
                 const viewReportBtn = document.getElementById('viewReportBtn');
@@ -2822,18 +2830,16 @@ async function loadCurrentDatabase() {
         const response = await makeRequest('/api/database/current');
         if (response.success) {
             currentDatabaseId = response.database.id;
-            document.getElementById('dbConnectionStatus').innerHTML = `
-                <div class="alert alert-info">
-                    <i class="fas fa-info-circle"></i> Connected to: ${response.database.name}
-                </div>
-            `;
-            loadFileList();
+            // Properly restore connected state so upload sections are enabled
+            updateConnectionStatus(true, response.database.name);
+            loadFileHistory();
+            loadUnprocessedFiles();
             checkPipelineStatus();
-            updateRunPipelineButtonState(); // Update button state
+            updateRunPipelineButtonState();
         }
     } catch (error) {
         console.error('Failed to load current database:', error);
-        updateRunPipelineButtonState(); // Update button state even on error
+        updateRunPipelineButtonState();
     }
 }
 
