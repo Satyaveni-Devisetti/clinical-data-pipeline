@@ -1370,9 +1370,9 @@ def connect_database():
 
 @app.route('/api/database/list')
 def list_databases():
-    """Get list of databases"""
-    validate_connections = request.args.get('validate', 'false').lower() == 'true'
-    
+    """Get list of databases — always validates live connection status"""
+    validate_connections = request.args.get('validate', 'true').lower() != 'false'
+
     databases = DatabaseConnection.query.all()
     result = []
 
@@ -1381,7 +1381,7 @@ def list_databases():
 
         if validate_connections:
             try:
-                test_conn = psycopg2.connect(db_conn.url, connect_timeout=10)
+                test_conn = psycopg2.connect(db_conn.url, connect_timeout=5)
                 test_cursor = test_conn.cursor()
                 test_cursor.execute("SELECT 1")
                 test_cursor.close()
