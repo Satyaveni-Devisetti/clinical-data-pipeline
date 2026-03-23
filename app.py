@@ -983,6 +983,37 @@ def generate_subject_pseudonym(subject_id):
     """Generate pseudonym for subject ID"""
     return hashlib.sha256(subject_id.encode()).hexdigest()[:16]
 
+# ── Role-based page access enforced at request level ──────────────────────
+# Maps URL prefixes → which roles are allowed (most specific first)
+_ROLE_ACCESS = [
+    ('/admin',       {'admin'}),
+    ('/upload',      {'admin', 'data_engineer'}),
+    ('/file-history',{'admin', 'data_engineer'}),
+    ('/unprocessed', {'admin', 'data_engineer'}),
+    ('/results',     {'admin', 'data_engineer', 'data_analyst'}),
+    ('/automation',  {'admin', 'data_engineer'}),
+    ('/analytics',   {'admin', 'data_analyst'}),
+    ('/predictions', {'admin', 'data_analyst'}),
+    ('/report',      {'admin', 'data_engineer'}),
+]
+
+@app.before_request
+def enforce_rbac():
+    # Skip static files, login/logout, and unauthenticated users
+    # (login_required handles the unauthenticated redirect separately)
+    if request.endpoint in ('static', 'login', 'logout', None):
+        return
+    if 'user_id' not in session:
+        return  # login_required on each route handles this
+    role = session.get('user_role', '')
+    path = request.path
+    for prefix, allowed_roles in _ROLE_ACCESS:
+        if path.startswith(prefix):
+            if role not in allowed_roles:
+                flash('Access denied: you do not have permission to view that page.', 'danger')
+                return redirect(url_for('home'))
+            break  # matched — no need to check further
+
 @app.route('/')
 @login_required
 def home():
@@ -3083,13 +3114,9 @@ def insert_subjects_to_bronze(cursor, df, database_id, conn):
     """Insert subjects data directly into bronze layer with optimized performance"""
     logger.info(f"Inserting {len(df)} subjects into bronze layer")
     
-    # Create bronze_subjects table if not exists with all required columns
-    # Force drop and recreate to fix column type issues
-    cursor.execute("DROP TABLE IF EXISTS bronze.bronze_subjects CASCADE")
-    logger.info("Dropped existing bronze_subjects table to fix column types")
-    
+    # Create bronze_subjects table if not exists — preserve existing data
     cursor.execute("""
-        CREATE TABLE bronze.bronze_subjects (
+        CREATE TABLE IF NOT EXISTS bronze.bronze_subjects (
             id SERIAL PRIMARY KEY,
             database_id INTEGER NOT NULL,
             subject_id VARCHAR(100),
@@ -3103,7 +3130,16 @@ def insert_subjects_to_bronze(cursor, df, database_id, conn):
             UNIQUE(database_id, subject_id)
         )
     """)
-    logger.info("Recreated bronze_subjects table with correct column types")
+    # Ensure all required columns exist (safe migration, no data loss)
+    for col_name, col_type in [('dob', 'TEXT'), ('start_date', 'VARCHAR(50)'), ('raw_data', 'JSONB')]:
+        cursor.execute("""
+            SELECT column_name FROM information_schema.columns
+            WHERE table_schema = 'bronze' AND table_name = 'bronze_subjects' AND column_name = %s
+        """, (col_name,))
+        if not cursor.fetchone():
+            cursor.execute(f"ALTER TABLE bronze.bronze_subjects ADD COLUMN {col_name} {col_type}")
+            logger.info(f"Added missing column {col_name} to bronze_subjects")
+    logger.info("bronze_subjects table ready (existing data preserved)")
     
     # OPTIMIZATION: Bulk fetch existing subjects instead of individual queries
     cursor.execute("SELECT subject_id FROM bronze.bronze_subjects WHERE database_id = %s", (database_id,))
@@ -3459,13 +3495,9 @@ def insert_aes_to_bronze(cursor, df, database_id, conn):
     logger.info(f"AES DataFrame shape: {df.shape}")
     logger.info(f"Sample AES data: {df.head().to_dict() if not df.empty else 'Empty DataFrame'}")
     
-    # Create bronze_aes table if not exists with all required columns
-    # Force drop and recreate to fix column type issues
-    cursor.execute("DROP TABLE IF EXISTS bronze.bronze_aes CASCADE")
-    logger.info("Dropped existing bronze_aes table to fix column types")
-    
+    # Create bronze_aes table if not exists — preserve existing data
     cursor.execute("""
-        CREATE TABLE bronze.bronze_aes (
+        CREATE TABLE IF NOT EXISTS bronze.bronze_aes (
             id SERIAL PRIMARY KEY,
             database_id INTEGER NOT NULL,
             subject_id VARCHAR(100),
@@ -3481,7 +3513,18 @@ def insert_aes_to_bronze(cursor, df, database_id, conn):
             UNIQUE(database_id, subject_id, ae_id)
         )
     """)
-    logger.info("Recreated bronze_aes table with correct column types")
+    # Ensure all required columns exist (safe migration, no data loss)
+    for col_name, col_type in [('pt_name', 'VARCHAR(200)'), ('pt_code', 'VARCHAR(100)'),
+                                ('related', 'VARCHAR(20)'), ('serious', 'VARCHAR(20)'),
+                                ('ae_start_date', 'TEXT'), ('raw_data', 'JSONB')]:
+        cursor.execute("""
+            SELECT column_name FROM information_schema.columns
+            WHERE table_schema = 'bronze' AND table_name = 'bronze_aes' AND column_name = %s
+        """, (col_name,))
+        if not cursor.fetchone():
+            cursor.execute(f"ALTER TABLE bronze.bronze_aes ADD COLUMN {col_name} {col_type}")
+            logger.info(f"Added missing column {col_name} to bronze_aes")
+    logger.info("bronze_aes table ready (existing data preserved)")
     
     # Check for existing AES to avoid duplicates
     existing_aes = set()
@@ -6848,19 +6891,11 @@ def api_create_user():
         return jsonify({'success': False, 'message': 'All fields are required'})
     if role not in ('admin', 'data_engineer', 'data_analyst'):
         return jsonify({'success': False, 'message': 'Invalid role'})
-    # Use a direct engine connection (bypasses all SQLAlchemy session/identity-map caching)
-    from sqlalchemy import text
-    with db.engine.connect() as raw_conn:
-        existing_username = raw_conn.execute(
-            text('SELECT id FROM "user" WHERE username = :u'), {'u': username}
-        ).fetchone()
-        if existing_username:
-            return jsonify({'success': False, 'message': 'Username already exists'})
-        existing_email = raw_conn.execute(
-            text('SELECT id FROM "user" WHERE email = :e'), {'e': email}
-        ).fetchone()
-        if existing_email:
-            return jsonify({'success': False, 'message': 'Email already exists'})
+    # Check for duplicates using the ORM (simple and reliable)
+    if User.query.filter_by(username=username).first():
+        return jsonify({'success': False, 'message': 'Username already exists'})
+    if User.query.filter_by(email=email).first():
+        return jsonify({'success': False, 'message': 'Email already exists'})
     user = User(username=username, email=email, role=role, created_by=session['user_id'])
     user.set_password(password)
     db.session.add(user)

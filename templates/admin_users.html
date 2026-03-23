@@ -155,6 +155,7 @@ function genPassword() {
 
 async function createUser() {
   const errEl = document.getElementById('addUserError');
+  const btn = document.querySelector('#addUserModal .btn-clinical');
   errEl.classList.add('d-none');
   const body = {
     username: document.getElementById('newUsername').value.trim(),
@@ -165,14 +166,23 @@ async function createUser() {
   if (!body.username || !body.email || !body.password) {
     errEl.textContent = 'All fields are required.'; errEl.classList.remove('d-none'); return;
   }
-  const r = await fetch('/api/admin/users', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(body) });
-  const d = await r.json();
-  if (d.success) {
-    bootstrap.Modal.getInstance(document.getElementById('addUserModal')).hide();
-    showNotification(d.message, 'success');
-    loadUsers();
-  } else {
-    errEl.textContent = d.message; errEl.classList.remove('d-none');
+  btn.disabled = true;
+  btn.innerHTML = '<i class="fas fa-spinner fa-spin me-1"></i> Creating…';
+  try {
+    const r = await fetch('/api/admin/users', { method: 'POST', headers: {'Content-Type':'application/json'}, body: JSON.stringify(body) });
+    const d = await r.json();
+    if (d.success) {
+      bootstrap.Modal.getInstance(document.getElementById('addUserModal')).hide();
+      showNotification(d.message, 'success');
+      loadUsers();
+    } else {
+      errEl.textContent = d.message; errEl.classList.remove('d-none');
+    }
+  } catch (e) {
+    errEl.textContent = 'Network error — please try again.'; errEl.classList.remove('d-none');
+  } finally {
+    btn.disabled = false;
+    btn.innerHTML = '<i class="fas fa-save me-1"></i> Create User';
   }
 }
 
